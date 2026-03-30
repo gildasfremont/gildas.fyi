@@ -42,24 +42,30 @@ body {
   font-size: 0.8125rem;
 }
 
-/* Language toggle */
+/* Language toggle — segmented control */
 .lang-toggle {
   display: flex;
-  gap: 0.125rem;
+  background: var(--border);
+  border-radius: 6px;
+  padding: 2px;
 }
 
 .lang-toggle a {
   display: block;
-  padding: 0.15rem 0.35rem;
+  padding: 0.1rem 0.4rem;
   font-size: 0.55rem;
   text-decoration: none;
   color: var(--light);
-  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s, box-shadow 0.15s;
 }
 
-.lang-toggle a:first-child { border-radius: 3px 0 0 3px; }
-.lang-toggle a:last-child  { border-radius: 0 3px 3px 0; border-left: none; }
-.lang-toggle a.active       { color: var(--dark); background: var(--white); border-color: var(--subtle); }
+.lang-toggle a.active {
+  color: var(--dark);
+  background: var(--white);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
 .lang-toggle a:hover:not(.active) { color: var(--mid); }
 
 /* Contact toggle */
@@ -275,14 +281,46 @@ section { margin-bottom: 3rem; }
   border-radius: 2px;
 }
 
-/* Footer */
-footer { margin-top: 3rem; }
+/* Cal.com section */
+.section-cal {
+  margin-top: 3rem;
+}
 
-footer .contact-dropdown {
-  top: auto;
-  bottom: 100%;
-  margin-top: 0;
-  margin-bottom: 0.35rem;
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+}
+
+.footer-contact h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 0.75rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.footer-link-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer-links a {
+  color: var(--mid);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--border);
+}
+
+.footer-links a:hover {
+  color: var(--black);
+  text-decoration-color: var(--subtle);
 }
 
 /* Responsive — tablet */
@@ -305,6 +343,7 @@ footer .contact-dropdown {
   .edu-row {
     grid-template-columns: 1fr;
   }
+
 }
 
 /* Responsive — small mobile */
@@ -329,6 +368,7 @@ footer .contact-dropdown {
   .container { padding: 1rem 0; max-width: 100%; }
   .contact-dropdown { display: flex !important; gap: 1.5rem; position: static; border: none; box-shadow: none; padding: 0.5rem 0 0; background: none; flex-direction: row; }
   footer { display: none; }
+  .section-cal { display: none; }
   .print-only { display: inline; }
   .section-salarie .row { grid-template-columns: 1fr 2fr auto; }
 }

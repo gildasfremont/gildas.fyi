@@ -12,12 +12,7 @@ for (const { url, output } of pages) {
   const page = await browser.newPage();
   await page.goto(`http://localhost:${PORT}/${url}`, { waitUntil: 'networkidle0' });
 
-  // Reveal contacts by clicking the header toggle, then close it
-  await page.click('header .contact-toggle');
-  await page.waitForSelector('header .contact-dropdown.open');
-  // Close it so it doesn't appear open in the PDF (print CSS shows contacts inline)
-  await page.click('header .contact-toggle');
-  await page.waitForFunction(() => !document.querySelector('header .contact-dropdown.open'));
+  // Contacts are revealed automatically on page load via reveal()
 
   await page.pdf({
     path: output,

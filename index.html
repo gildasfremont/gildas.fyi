@@ -197,36 +197,31 @@
     </div>
   </section>
 
-  <footer>
-    <div class="header-top">
-      <button class="contact-toggle" aria-expanded="false">
-        <h1>Gildas Frémont <img src="img/gildas.jpg" alt="" class="avatar"></h1>
-        <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <nav class="lang-toggle">
-        <a href="index.html" class="active">FR</a>
-        <a href="en.html">EN</a>
-      </nav>
-    <div class="contact-dropdown contact">
-      <span class="contact-item">
-        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
-        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">···</a>
-      </span>
-      <span class="contact-item">
-        <button class="copy-btn" data-copy="tel" aria-label="Copier le téléphone"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
-        <a href="#" data-t="+33660247171" data-l="+33 6 60 24 71 71" class="contact-tel">···</a>
-      </span>
-      <span class="contact-item">
-        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+  <footer class="footer-contact contact">
+    <h2>Gildas Frémont</h2>
+    <div class="footer-links">
+      <span class="footer-link-row">
         <a href="https://www.linkedin.com/in/gildasfremont/" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
       </span>
-      <span class="contact-item">
-        <svg class="download-icon" width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M6 2v6M6 8L3.5 5.5M6 8l2.5-2.5M2 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="footer-link-row">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email footer-email">···</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row">
+        <a href="#" data-t="+33660247171" data-l="+33 6 60 24 71 71" class="contact-tel footer-tel">···</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le téléphone"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row">
         <a href="cv-gildas-fremont.pdf" download>Télécharger le cv</a>
       </span>
     </div>
-    </div>
   </footer>
+
+  <section class="section-cal">
+    <div class="section-title">Rendez-vous de 15 min.</div>
+    <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-15min"></div>
+  </section>
 
 </div>
 
@@ -238,14 +233,14 @@
   function reveal(){
     if(revealed)return;
     revealed=true;
-    dropdowns.forEach(function(d){
+    document.querySelectorAll('.contact').forEach(function(d){
       var e=d.querySelector('.contact-email');
-      var addr=e.dataset.u+'@'+e.dataset.d;
-      e.href='mailto:'+addr;e.textContent=addr;
+      if(e){var addr=e.dataset.u+'@'+e.dataset.d;e.href='mailto:'+addr;e.textContent=addr;}
       var p=d.querySelector('.contact-tel');
-      p.href='tel:'+p.dataset.t;p.textContent=p.dataset.l;
+      if(p){p.href='tel:'+p.dataset.t;p.textContent=p.dataset.l;}
     });
   }
+  reveal();
   toggles.forEach(function(t,i){
     var d=dropdowns[i];
     t.addEventListener('click',function(){
@@ -269,30 +264,33 @@
       if(a) a.click();
     });
   });
-  dropdowns.forEach(function(d){
-    d.querySelectorAll('.copy-btn').forEach(function(btn){
-      btn.addEventListener('click',function(ev){
-        ev.stopPropagation();
-        var type=btn.dataset.copy;
-        var text='';
-        if(type==='email'){
-          var e=d.querySelector('.contact-email');
-          text=e.dataset.u+'@'+e.dataset.d;
-        }else if(type==='tel'){
-          var p=d.querySelector('.contact-tel');
-          text=p.dataset.l;
-        }else if(type==='linkedin'){
-          text='https://www.linkedin.com/in/gildasfremont/';
-        }
-        navigator.clipboard.writeText(text).then(function(){
-          var svg=btn.querySelector('svg');
-          svg.style.color='var(--dark)';
-          setTimeout(function(){svg.style.color='';},800);
-        });
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click',function(ev){
+      ev.stopPropagation();
+      var type=btn.dataset.copy;
+      var text='';
+      if(type==='email'){
+        text=document.querySelector('.contact-email').dataset.u+'@'+document.querySelector('.contact-email').dataset.d;
+      }else if(type==='tel'){
+        text=document.querySelector('.contact-tel').dataset.l;
+      }else if(type==='linkedin'){
+        text='https://www.linkedin.com/in/gildasfremont/';
+      }
+      navigator.clipboard.writeText(text).then(function(){
+        var svg=btn.querySelector('svg');
+        svg.style.color='var(--dark)';
+        setTimeout(function(){svg.style.color='';},800);
       });
     });
   });
 })();
+</script>
+<!-- Cal inline embed -->
+<script>
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");
+Cal("init","15min",{origin:"https://app.cal.com"});
+Cal.ns["15min"]("inline",{elementOrSelector:"#my-cal-inline-15min",config:{"layout":"month_view","useSlotsViewOnSmallScreen":"true"},calLink:"gildas/15min"});
+Cal.ns["15min"]("ui",{"hideEventTypeDetails":true,"layout":"month_view"});
 </script>
 </body>
 </html>
