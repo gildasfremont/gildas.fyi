@@ -1,0 +1,334 @@
+/* ------------------------------------------------
+   Gildas Frémont — Personal Site
+   Hyper-minimal, green-tinted grayscale
+   Single font: Inter. Hierarchy by weight + color.
+   Consistent 2-column grid across all sections.
+   ------------------------------------------------ */
+
+:root {
+  --black: #1a1d1a;
+  --dark: #313633;
+  --mid: #636860;
+  --light: #959a93;
+  --subtle: #c8ccc6;
+  --border: #e5e8e3;
+  --bg: #fafcf9;
+  --white: #fff;
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Reset */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 24px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--dark);
+  background: var(--bg);
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+/* Layout */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 3rem;
+  font-size: 0.8125rem;
+}
+
+/* Language toggle */
+.lang-toggle {
+  display: flex;
+  gap: 0.125rem;
+}
+
+.lang-toggle a {
+  display: block;
+  padding: 0.15rem 0.35rem;
+  font-size: 0.55rem;
+  text-decoration: none;
+  color: var(--light);
+  border: 1px solid var(--border);
+}
+
+.lang-toggle a:first-child { border-radius: 3px 0 0 3px; }
+.lang-toggle a:last-child  { border-radius: 0 3px 3px 0; border-left: none; }
+.lang-toggle a.active       { color: var(--dark); background: var(--white); border-color: var(--subtle); }
+.lang-toggle a:hover:not(.active) { color: var(--mid); }
+
+/* Contact toggle */
+.contact-toggle {
+  all: unset;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.contact-toggle .chevron {
+  color: var(--subtle);
+  transition: transform 0.2s;
+  vertical-align: middle;
+}
+
+.contact-toggle[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+/* Contact dropdown */
+.contact-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.35rem;
+  min-width: 16rem;
+  padding: 0.35rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  z-index: 10;
+}
+
+.contact-dropdown.open {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background 0.12s;
+  cursor: pointer;
+}
+
+.contact-item:hover { background: var(--bg); }
+.contact-item a     { flex: 1; }
+
+.contact-item .copy-btn,
+.contact-item .download-icon {
+  order: 1;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.copy-btn {
+  all: unset;
+  cursor: pointer;
+  color: var(--subtle);
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem;
+  border-radius: 3px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.copy-btn:hover {
+  color: var(--mid);
+  background: var(--border);
+}
+
+.download-icon {
+  color: var(--subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  box-sizing: content-box;
+}
+
+/* Header */
+header { margin-bottom: 2rem; }
+
+.header-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  position: relative;
+}
+
+h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: -0.01em;
+}
+
+/* Shared inline images: avatar, logos */
+.avatar,
+.entry-logo,
+.tool-logo {
+  height: 0.72em;
+  width: auto;
+  object-fit: contain;
+  vertical-align: cap;
+}
+
+.avatar {
+  width: 0.72em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.entry-logo { opacity: 0.35; filter: grayscale(1); }
+.tool-logo  { opacity: 0.45; filter: grayscale(1); }
+
+/* Role + section titles */
+.role {
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-weight: 600;
+  color: var(--light);
+  margin-bottom: 1.25rem;
+}
+
+/* Shared row grid: left / mid / right */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0 1rem;
+}
+
+.row .left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.row .mid,
+.row .right { color: var(--light); }
+
+/* Contact links */
+.contact a {
+  color: var(--mid);
+  text-decoration: none;
+}
+
+.contact a:hover { color: var(--black); }
+
+/* Intro */
+.intro {
+  color: var(--mid);
+  margin-bottom: 2rem;
+}
+
+/* Sections */
+section { margin-bottom: 3rem; }
+
+/* Experience entries */
+.entry { margin-bottom: 2rem; }
+
+.entry-header { margin-bottom: 0.35rem; }
+
+.entry-header .left .entry-company {
+  font-weight: 600;
+  color: var(--black);
+}
+
+.entry p {
+  color: var(--mid);
+}
+
+/* Print-only elements */
+.print-only { display: none; }
+
+/* Education */
+.edu-row {
+  margin-bottom: 0.75rem;
+  align-items: baseline;
+}
+
+.edu-row .left span {
+  font-weight: 600;
+  color: var(--black);
+}
+
+/* Tools */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.5rem;
+}
+
+.tool-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--light);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+
+/* Footer */
+footer { margin-top: 3rem; }
+
+footer .contact-dropdown {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+}
+
+/* Responsive — tablet */
+@media (max-width: 860px) {
+  html { font-size: 20px; }
+  .container { max-width: 100%; padding: 3rem 2rem 2rem; }
+}
+
+/* Responsive — large mobile */
+@media (max-width: 600px) {
+  html { font-size: 17px; }
+  .container { padding: 2.5rem 1.5rem 2rem; }
+
+  .row {
+    grid-template-columns: 1fr auto;
+    gap: 0.125rem 0.75rem;
+  }
+
+  .section-salarie .row,
+  .edu-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive — small mobile */
+@media (max-width: 400px) {
+  html { font-size: 15px; }
+  .container { padding: 2rem 1.25rem 1.5rem; }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0.125rem;
+  }
+
+  .row .right { text-align: left; }
+}
+
+/* Print */
+@media print {
+  .lang-toggle,
+  .contact-toggle .chevron,
+  .contact-dropdown .copy-btn { display: none; }
+  body { background: white; }
+  .container { padding: 1rem 0; max-width: 100%; }
+  .contact-dropdown { display: flex !important; gap: 1.5rem; position: static; border: none; box-shadow: none; padding: 0.5rem 0 0; background: none; flex-direction: row; }
+  footer { display: none; }
+  .print-only { display: inline; }
+  .section-salarie .row { grid-template-columns: 1fr 2fr auto; }
+}
