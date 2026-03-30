@@ -186,8 +186,11 @@ h1 {
   object-fit: cover;
 }
 
-.entry-logo { opacity: 0.35; filter: grayscale(1); }
-.tool-logo  { opacity: 0.45; filter: grayscale(1); }
+.entry-logo { opacity: 0.35; filter: grayscale(1); transition: opacity 0.2s, filter 0.2s; }
+.tool-logo  { opacity: 0.45; filter: grayscale(1); transition: opacity 0.2s, filter 0.2s; }
+
+.entry:hover .entry-logo { opacity: 1; filter: grayscale(0); }
+.tool-tag:hover .tool-logo { opacity: 1; filter: grayscale(0); }
 
 /* Role + section titles */
 .role {
