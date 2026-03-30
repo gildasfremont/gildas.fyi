@@ -191,6 +191,7 @@ h1 {
 
 .entry:hover .entry-logo { opacity: 1; filter: grayscale(0); }
 .tool-tag:hover .tool-logo { opacity: 1; filter: grayscale(0); }
+.edu-row:hover .entry-logo { opacity: 1; filter: grayscale(0); }
 
 /* Role + section titles */
 .role {
@@ -219,7 +220,7 @@ h1 {
 }
 
 .row .mid,
-.row .right { color: var(--light); }
+.row .right { color: var(--light); transition: color 0.2s; }
 
 /* Contact links */
 .contact a {
@@ -266,6 +267,8 @@ section { margin-bottom: 3rem; }
   color: var(--black);
 }
 
+.edu-row.row .mid { color: var(--dark); }
+
 /* Tools */
 .tools {
   display: flex;
@@ -278,7 +281,7 @@ section { margin-bottom: 3rem; }
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  color: var(--light);
+  color: var(--dark);
   border: 1px solid var(--border);
   padding: 0.2rem 0.5rem;
   border-radius: 2px;
