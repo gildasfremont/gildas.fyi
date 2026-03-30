@@ -226,8 +226,8 @@ h1 {
   gap: 0.4rem;
 }
 
-.row .mid,
-.row .right { color: var(--light); transition: color 0.2s; }
+.row .mid { color: var(--mid); }
+.row .right { color: var(--light); }
 
 /* Contact links */
 .contact a {
@@ -245,6 +245,8 @@ h1 {
 
 /* Sections */
 section { margin-bottom: 3rem; }
+
+.row .left:only-child { grid-column: 1 / -1; }
 
 /* Experience entries */
 .entry { margin-bottom: 2rem; }
@@ -273,8 +275,6 @@ section { margin-bottom: 3rem; }
   font-weight: 600;
   color: var(--black);
 }
-
-.edu-row.row .mid { color: var(--dark); }
 
 /* Tools */
 .tools {
