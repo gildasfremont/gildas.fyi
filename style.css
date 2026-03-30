@@ -281,12 +281,6 @@ section { margin-bottom: 3rem; }
   border-radius: 2px;
 }
 
-/* Cal.com section */
-.section-cal {
-  margin-top: 3rem;
-}
-
-
 /* Footer */
 footer {
   margin-top: 3rem;
@@ -368,7 +362,6 @@ footer {
   .container { padding: 1rem 0; max-width: 100%; }
   .contact-dropdown { display: flex !important; gap: 1.5rem; position: static; border: none; box-shadow: none; padding: 0.5rem 0 0; background: none; flex-direction: row; }
   footer { display: none; }
-  .section-cal { display: none; }
   .print-only { display: inline; }
   .section-salarie .row { grid-template-columns: 1fr 2fr auto; }
 }
