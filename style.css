@@ -157,7 +157,7 @@ header { margin-bottom: 2rem; }
 
 .header-top {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 0.25rem;
   position: relative;
