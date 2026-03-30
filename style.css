@@ -414,9 +414,9 @@ footer {
   }
   .contact-item { padding: 0.1rem 0; white-space: nowrap; }
   .intro { margin-bottom: 0.5rem; font-size: 0.75rem; }
-  section { margin-bottom: 1.25rem; }
-  .section-title { margin-bottom: 0.5rem; }
-  .entry { margin-bottom: 0.6rem; }
+  section { margin-bottom: 0.75rem; }
+  .section-title { margin-bottom: 0.3rem; }
+  .entry { margin-bottom: 0.4rem; }
   .entry-header { margin-bottom: 0.15rem; }
   .edu-row { margin-bottom: 0.25rem; }
   .tools { margin-top: 0.25rem; }
