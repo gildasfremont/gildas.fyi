@@ -39,6 +39,14 @@ body {
   background: var(--bg);
   line-height: 1.65;
   min-height: 100vh;
+  filter: blur(6px);
+  opacity: 0;
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+body.fonts-loaded {
+  filter: blur(0);
+  opacity: 1;
 }
 
 /* Layout */
@@ -262,9 +270,6 @@ section { margin-bottom: 3rem; }
   color: var(--mid);
 }
 
-/* Print-only elements */
-.print-only { display: none; }
-
 /* Education */
 .edu-row {
   margin-bottom: 0.75rem;
@@ -371,10 +376,8 @@ footer {
   .lang-toggle,
   .contact-toggle .chevron,
   .contact-dropdown .copy-btn { display: none; }
-  body { background: white; }
+  body { background: white; filter: none; opacity: 1; }
   .container { padding: 1rem 0; max-width: 100%; }
   .contact-dropdown { display: flex !important; gap: 1.5rem; position: static; border: none; box-shadow: none; padding: 0.5rem 0 0; background: none; flex-direction: row; }
   footer { display: none; }
-  .print-only { display: inline; }
-  .section-salarie .row { grid-template-columns: 1fr 2fr auto; }
 }
