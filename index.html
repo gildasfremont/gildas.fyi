@@ -262,6 +262,7 @@
   document.querySelectorAll('.contact-item').forEach(function(item){
     item.addEventListener('click',function(ev){
       if(ev.target.closest('.copy-btn'))return;
+      if(ev.target.closest('a'))return;
       var a=item.querySelector('a');
       if(a) a.click();
     });
