@@ -374,9 +374,23 @@ footer {
 @media print {
   .lang-toggle,
   .contact-toggle .chevron,
-  .contact-dropdown .copy-btn { display: none; }
-  body { background: white; filter: none; opacity: 1; }
-  .container { padding: 1rem 0; max-width: 100%; }
-  .contact-dropdown { display: flex !important; gap: 1.5rem; position: static; border: none; box-shadow: none; padding: 0.5rem 0 0; background: none; flex-direction: row; }
+  .contact-dropdown .copy-btn,
+  .contact-dropdown .download-icon { display: none; }
+  body { background: white; filter: none; opacity: 1; line-height: 1.4; }
+  .container { padding: 0.15rem 0; max-width: 100%; font-size: 0.65rem; }
+  header { margin-bottom: 0.5rem; }
+  .contact-dropdown {
+    display: flex !important; flex-direction: row; flex-wrap: wrap;
+    position: static; border: none; box-shadow: none; padding: 0.15rem 0 0;
+    background: none; gap: 0.1rem 0.75rem;
+  }
+  .contact-item { padding: 0.1rem 0; white-space: nowrap; }
+  .intro { margin-bottom: 0.75rem; }
+  section { margin-bottom: 1.25rem; }
+  .section-title { margin-bottom: 0.5rem; }
+  .entry { margin-bottom: 0.75rem; }
+  .entry-header { margin-bottom: 0.15rem; }
+  .edu-row { margin-bottom: 0.25rem; }
+  .tools { margin-top: 0.25rem; }
   footer { display: none; }
 }

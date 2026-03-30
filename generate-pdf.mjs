@@ -2,13 +2,13 @@ import puppeteer from 'puppeteer';
 
 const PORT = process.env.PORT || 55666;
 const pages = [
-  { url: 'index.html', output: 'cv-gildas-fremont.pdf' },
-  { url: 'en.html', output: 'cv-gildas-fremont-en.pdf' },
+  { url: 'index.html', output: 'cv-gildas-fremont.pdf', format: 'A4' },
+  { url: 'en.html', output: 'cv-gildas-fremont-en.pdf', format: 'Letter' },
 ];
 
 const browser = await puppeteer.launch({ headless: true });
 
-for (const { url, output } of pages) {
+for (const { url, output, format } of pages) {
   const page = await browser.newPage();
   await page.goto(`http://localhost:${PORT}/${url}`, { waitUntil: 'networkidle0' });
 
@@ -16,9 +16,9 @@ for (const { url, output } of pages) {
 
   await page.pdf({
     path: output,
-    format: 'A4',
+    format,
     printBackground: true,
-    margin: { top: '1cm', bottom: '1cm', left: '1cm', right: '1cm' },
+    margin: { top: '0.8cm', bottom: '0.8cm', left: '1cm', right: '1cm' },
   });
 
   console.log(`Generated ${output}`);
