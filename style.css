@@ -63,6 +63,8 @@ body.fonts-loaded {
   background: var(--border);
   border-radius: 6px;
   padding: 2px;
+  width: fit-content;
+  margin-bottom: 0.75rem;
 }
 
 .lang-toggle a {
@@ -411,7 +413,7 @@ footer {
   .contact-toggle .chevron,
   .contact-dropdown .copy-btn,
   .contact-dropdown .download-icon,
-  .contact-dropdown .contact-item:has(a[download]),
+  .contact-dropdown .contact-item:has(a[href$=".pdf"]),
   .contact-dropdown .contact-item:has(a[data-cal-link]),
   .contact-dropdown .contact-item:has(a[href*="linkedin"]) { display: none; }
   body { background: white; filter: none; opacity: 1; line-height: 1.4; }

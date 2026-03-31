@@ -16,16 +16,17 @@
 
 <div class="container">
 
+  <nav class="lang-toggle">
+    <a href="en.html" class="active">EN</a>
+    <a href="index.html">FR</a>
+  </nav>
+
   <header>
     <div class="header-top">
       <button class="contact-toggle" aria-expanded="false">
         <h1>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar"></span></h1>
         <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <nav class="lang-toggle">
-        <a href="index.html">FR</a>
-        <a href="en.html" class="active">EN</a>
-      </nav>
     <div class="contact-dropdown contact">
       <span class="contact-item">
         <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
@@ -37,11 +38,11 @@
       </span>
       <span class="contact-item">
         <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
-        <a href="https://www.linkedin.com/in/gildasfremont/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
       </span>
       <span class="contact-item">
         <svg class="download-icon" width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M6 2v6M6 8L3.5 5.5M6 8l2.5-2.5M2 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <a href="cv-gildas-fremont-en.pdf" download>Download CV</a>
+        <a href="cv-gildas-fremont-en.pdf" target="_blank" rel="noopener">CV</a>
       </span>
       <span class="contact-item">
         <svg class="download-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 7V1A6 6 0 0 1 13 7z" fill="currentColor" opacity="0.3"/></svg>
@@ -218,7 +219,7 @@
     <h2>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar"></span></h2>
     <div class="footer-links">
       <span class="footer-link-row">
-        <a href="https://www.linkedin.com/in/gildasfremont/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
         <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
       </span>
       <span class="footer-link-row">
@@ -230,7 +231,7 @@
         <button class="copy-btn" data-copy="tel" aria-label="Copy phone"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
       </span>
       <span class="footer-link-row">
-        <a href="cv-gildas-fremont-en.pdf" download>Download CV</a>
+        <a href="cv-gildas-fremont-en.pdf" target="_blank" rel="noopener">CV</a>
       </span>
       <span class="footer-link-row">
         <a href="javascript:void(0)" data-cal-link="gildas/1h-meeting" data-cal-namespace="1h-meeting" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a call (15 min)</a>
@@ -290,7 +291,7 @@
       }else if(type==='tel'){
         text=document.querySelector('.contact-tel').dataset.l;
       }else if(type==='linkedin'){
-        text='https://www.linkedin.com/in/gildasfremont/';
+        text='https://linkedin.com/in/gildasfremont';
       }
       navigator.clipboard.writeText(text).then(function(){
         var svg=btn.querySelector('svg');
