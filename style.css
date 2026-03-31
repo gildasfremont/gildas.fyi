@@ -422,23 +422,23 @@ footer {
   .contact-dropdown .contact-item:has(a[href$=".pdf"]),
   .contact-dropdown .contact-item:has(a[href*="cal.com"]),
   .contact-dropdown .contact-item:has(a[href*="linkedin"]) { display: none; }
-  body { background: white; filter: none; opacity: 1; line-height: 1.4; }
-  .container { padding: 0.15rem 0; max-width: 100%; font-size: 0.62rem; }
-  header { margin-bottom: 0.5rem; }
+  body { background: white; filter: none; opacity: 1; line-height: 1.35; }
+  .container { padding: 0.15rem 0; max-width: 100%; font-size: 0.58rem; }
+  header { margin-bottom: 0.35rem; }
   .contact-dropdown {
     display: flex !important; flex-direction: row; flex-wrap: wrap;
-    position: static; border: none; box-shadow: none; padding: 0.15rem 0 0;
+    position: static; border: none; box-shadow: none; padding: 0.1rem 0 0;
     background: none; gap: 0.1rem 0.75rem;
   }
   .contact-item { padding: 0.1rem 0; white-space: nowrap; }
-  .intro { margin-bottom: 0.3rem; font-size: 0.75rem; }
-  section { margin-bottom: 0.75rem; }
-  .section-title { margin-bottom: 0.3rem; }
-  .entry { margin-bottom: 0.4rem; }
-  .entry-header { margin-bottom: 0.15rem; }
-  .edu-row { margin-bottom: 0.25rem; }
-  .tools { margin-top: 0.25rem; }
-  .sector-tags { margin: 0.15rem 0; gap: 0.15rem; }
-  .sector-tag { font-size: 0.5rem; padding: 0.05rem 0.3rem; }
+  .intro { margin-bottom: 0.2rem; font-size: 0.7rem; }
+  section { margin-bottom: 0.5rem; }
+  .section-title { margin-bottom: 0.2rem; }
+  .entry { margin-bottom: 0.3rem; }
+  .entry-header { margin-bottom: 0.1rem; }
+  .edu-row { margin-bottom: 0.15rem; }
+  .tools { margin-top: 0.15rem; }
+  .sector-tags { margin: 0.1rem 0; gap: 0.1rem; }
+  .sector-tag { font-size: 0.45rem; padding: 0.05rem 0.25rem; }
   footer { display: none; }
 }
