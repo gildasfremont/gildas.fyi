@@ -22,6 +22,8 @@
   <meta name="twitter:title" content="Gildas Frémont — Product Advisor">
   <meta name="twitter:description" content="Product Advisor. I step in when things stop moving.">
   <meta name="twitter:image" content="https://gildas.fyi/img/og.png">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
   <link rel="stylesheet" href="style.css">
@@ -38,7 +40,7 @@
 </head>
 <body>
 <script>
-var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},1500);
+var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);
 document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')});
 </script>
 
@@ -51,7 +53,7 @@ document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add
 
   <header>
     <div class="header-top">
-      <h1 class="header-name">Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar"></span></h1>
+      <h1 class="header-name">Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span></h1>
       <button class="contact-toggle" aria-expanded="false" aria-label="Show contact details">
         <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
@@ -80,6 +82,7 @@ document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add
     </div>
   </header>
 
+  <main>
   <p class="intro">
     <span class="role">Product Advisor,</span><br>I step in when things stop moving.
   </p>
@@ -250,8 +253,10 @@ document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add
     </div>
   </section>
 
+  </main>
+
   <footer class="footer-contact contact">
-    <h2>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar"></span></h2>
+    <h2>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span></h2>
     <div class="footer-links">
       <span class="footer-link-row">
         <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener">Book a call</a>
