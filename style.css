@@ -84,13 +84,19 @@ body.fonts-loaded {
 
 .lang-toggle a:hover:not(.active) { color: var(--mid); }
 
+/* Header name + toggle */
+.header-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+}
+
 /* Contact toggle */
 .contact-toggle {
   all: unset;
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.35rem;
-
+  align-items: center;
+  margin-left: 0.25rem;
 }
 
 .contact-toggle .chevron {

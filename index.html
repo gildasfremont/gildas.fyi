@@ -5,19 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gildas Frémont — Directeur produit</title>
   <meta name="description" content="Directeur produit conseil. Simplification de parcours, design systems, alignement produit-tech-GTM.">
-  <link rel="canonical" href="https://gildas.fyi/index.html">
+  <link rel="canonical" href="https://gildas.fyi/">
   <link rel="alternate" hreflang="fr" href="https://gildas.fyi/index.html">
   <link rel="alternate" hreflang="en" href="https://gildas.fyi/en.html">
   <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gildas Frémont — Directeur produit">
   <meta property="og:description" content="Directeur produit conseil. Je décoince ce qui s'enraye.">
-  <meta property="og:url" content="https://gildas.fyi/index.html">
+  <meta property="og:url" content="https://gildas.fyi/">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:locale:alternate" content="en_US">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Gildas Frémont — Directeur produit">
   <meta name="twitter:description" content="Directeur produit conseil. Je décoince ce qui s'enraye.">
+  <meta name="twitter:image" content="https://gildas.fyi/img/og.png">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
   <link rel="stylesheet" href="style.css">
@@ -33,7 +37,10 @@
   </script>
 </head>
 <body>
-<script>document.fonts.ready.then(function(){document.body.classList.add('fonts-loaded')})</script>
+<script>
+var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},1500);
+document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')});
+</script>
 
 <div class="container">
 
@@ -44,8 +51,8 @@
 
   <header>
     <div class="header-top">
-      <button class="contact-toggle" aria-expanded="false">
-        <h1>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar"></span></h1>
+      <h1 class="header-name">Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar"></span></h1>
+      <button class="contact-toggle" aria-expanded="false" aria-label="Afficher les coordonnées">
         <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     <div class="contact-dropdown contact">
@@ -282,19 +289,28 @@
       if(e){var addr=e.dataset.u+'@'+e.dataset.d;e.href='mailto:'+addr;e.textContent=addr;}
     });
   }
-  reveal();
+  function revealOnce(){reveal();document.removeEventListener('click',revealOnce);document.removeEventListener('touchstart',revealOnce);}
+  document.addEventListener('click',revealOnce);
+  document.addEventListener('touchstart',revealOnce);
   toggles.forEach(function(t,i){
     var d=dropdowns[i];
     t.addEventListener('click',function(){
       var open=d.classList.toggle('open');
       t.setAttribute('aria-expanded',open);
-      if(open)reveal();
+    });
+  });
+  document.querySelectorAll('.header-name').forEach(function(h){
+    h.style.cursor='pointer';
+    h.addEventListener('click',function(){
+      var t=toggles[0],d=dropdowns[0];
+      var open=d.classList.toggle('open');
+      t.setAttribute('aria-expanded',open);
     });
   });
   document.addEventListener('click',function(ev){
     toggles.forEach(function(t,i){
       var d=dropdowns[i];
-      if(!t.contains(ev.target)&&!d.contains(ev.target)){
+      if(!t.contains(ev.target)&&!d.contains(ev.target)&&!(ev.target.closest&&ev.target.closest('.header-name'))){
         d.classList.remove('open');t.setAttribute('aria-expanded','false');
       }
     });
