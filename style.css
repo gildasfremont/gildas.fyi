@@ -90,7 +90,7 @@ body.fonts-loaded {
   display: inline-flex;
   align-items: baseline;
   gap: 0.35rem;
-  cursor: pointer;
+
 }
 
 .contact-toggle .chevron {
@@ -128,7 +128,7 @@ body.fonts-loaded {
   align-items: center;
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
-  cursor: pointer;
+
 }
 
 .contact-item:hover { background: var(--bg); }
@@ -143,7 +143,7 @@ body.fonts-loaded {
 
 .copy-btn {
   all: unset;
-  cursor: pointer;
+
   color: var(--subtle);
   display: inline-flex;
   align-items: center;
