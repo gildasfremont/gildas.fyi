@@ -74,7 +74,6 @@ body.fonts-loaded {
   text-decoration: none;
   color: var(--light);
   border-radius: 4px;
-  transition: color 0.15s, background 0.15s, box-shadow 0.15s;
 }
 
 .lang-toggle a.active {
@@ -96,7 +95,6 @@ body.fonts-loaded {
 
 .contact-toggle .chevron {
   color: var(--light);
-  transition: transform 0.2s;
   vertical-align: middle;
 }
 
@@ -130,7 +128,6 @@ body.fonts-loaded {
   align-items: center;
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
-  transition: background 0.12s;
   cursor: pointer;
 }
 
@@ -152,7 +149,6 @@ body.fonts-loaded {
   align-items: center;
   padding: 0.3rem;
   border-radius: 3px;
-  transition: color 0.15s, background 0.15s;
 }
 
 .copy-btn:hover {
@@ -224,12 +220,8 @@ h1, .footer-contact h2 {
   object-fit: cover;
 }
 
-.entry-logo { opacity: 0.35; filter: grayscale(1); transition: opacity 0.2s, filter 0.2s; }
-.tool-logo  { opacity: 0.45; filter: grayscale(1); transition: opacity 0.2s, filter 0.2s; }
-
-.entry:hover .entry-logo { opacity: 1; filter: grayscale(0); }
-.tool-tag:hover .tool-logo { opacity: 1; filter: grayscale(0); }
-.edu-row:hover .entry-logo { opacity: 1; filter: grayscale(0); }
+.entry-logo { opacity: 0.85; }
+.tool-logo  { opacity: 0.85; }
 
 /* Role + section titles */
 .role {
@@ -303,7 +295,7 @@ section { margin-bottom: 3rem; }
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
-  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .sector-tag {
