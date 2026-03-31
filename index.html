@@ -8,8 +8,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://app.cal.com">
-  <link rel="prefetch" href="https://app.cal.com/embed/embed.js">
 </head>
 <body>
 <script>document.fonts.ready.then(function(){document.body.classList.add('fonts-loaded')})</script>
@@ -46,7 +44,7 @@
       </span>
       <span class="contact-item">
         <svg class="download-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 7V1A6 6 0 0 1 13 7z" fill="currentColor" opacity="0.3"/></svg>
-        <a href="javascript:void(0)" data-cal-link="gildas/1h-meeting" data-cal-namespace="1h-meeting" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Prendre rendez-vous</a>
+        <a href="https://cal.com/gildas/15min" target="_blank" rel="noopener">Prendre rendez-vous</a>
       </span>
     </div>
     </div>
@@ -234,7 +232,7 @@
         <a href="cv-gildas-fremont.pdf" target="_blank" rel="noopener">CV</a>
       </span>
       <span class="footer-link-row">
-        <a href="javascript:void(0)" data-cal-link="gildas/1h-meeting" data-cal-namespace="1h-meeting" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Prendre rendez-vous (15 min)</a>
+        <a href="https://cal.com/gildas/15min" target="_blank" rel="noopener">Prendre rendez-vous</a>
       </span>
     </div>
   </footer>
@@ -301,12 +299,6 @@
     });
   });
 })();
-</script>
-<!-- Cal element-click embed -->
-<script>
-(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");
-Cal("init","1h-meeting",{origin:"https://app.cal.com"});
-Cal.ns["1h-meeting"]("ui",{"hideEventTypeDetails":true,"layout":"month_view"});
 </script>
 </body>
 </html>

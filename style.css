@@ -414,7 +414,7 @@ footer {
   .contact-dropdown .copy-btn,
   .contact-dropdown .download-icon,
   .contact-dropdown .contact-item:has(a[href$=".pdf"]),
-  .contact-dropdown .contact-item:has(a[data-cal-link]),
+  .contact-dropdown .contact-item:has(a[href*="cal.com"]),
   .contact-dropdown .contact-item:has(a[href*="linkedin"]) { display: none; }
   body { background: white; filter: none; opacity: 1; line-height: 1.4; }
   .container { padding: 0.15rem 0; max-width: 100%; font-size: 0.62rem; }
