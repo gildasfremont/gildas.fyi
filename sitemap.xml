@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://gildas.fyi/en.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/index.html"/>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en.html"/>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+</urlset>
