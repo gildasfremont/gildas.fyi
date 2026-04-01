@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anatomie d'un audit produit — Gildas Frémont</title>
+  <meta name="description" content="Comment un audit UX de cinq entretiens révèle des dysfonctionnements organisationnels. Méthode et raisonnement à travers le cas UBAQ.">
+  <link rel="canonical" href="https://gildas.fyi/audit-ubaq-methode">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Anatomie d'un audit produit — Gildas Frémont">
+  <meta property="og:description" content="Ce qu'on trouve quand on cherche les causes des causes. Méthode et raisonnement à travers un cas réel.">
+  <meta property="og:url" content="https://gildas.fyi/audit-ubaq-methode">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="index.html" onclick="if(history.length>1){history.back();return false;}">← Retour</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>Anatomie d'un audit produit</h1>
+      <p class="article-page-subtitle">Ce qu'on trouve quand on cherche les causes des causes</p>
+      <p class="article-meta">juin 2025 · mission via Grandwork pour UBAQ</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>UBAQ édite des solutions SaaS de conformité réglementaire pour les industriels de la santé. NTU (NAYACT Transparency by UBAQ) gère la transparence des liens d'intérêt entre laboratoires et professionnels de santé, dans le cadre de la loi d'encadrement des avantages. L'équipe sentait que quelque chose coinçait dans l'interface mais ne parvenait pas à localiser précisément quoi, ni pourquoi les corrections successives n'amélioraient rien. Ils ont commandé un audit UX via Grandwork. Le cadrage tenait en une phrase&nbsp;: comprendre ce qui ne va pas et dire quoi faire.</p>
+
+      <h2>Le dispositif</h2>
+
+      <p>Cinq entretiens avec des profils différents au sein de l'équipe, complétés par une analyse directe de l'application en recette. Pas de tests utilisateurs finaux, pas de données analytics, pas de heatmaps. C'est un choix délibéré&nbsp;: sur un produit B2B de niche avec peu d'utilisateurs actifs, les signaux quantitatifs sont trop bruités pour être exploitables. Les entretiens internes, en revanche, permettent de croiser la perception de l'outil avec les contraintes de ceux qui le construisent, ce qui est précisément le point aveugle habituel.</p>
+
+      <p>Le diagnostic ne porte ni sur les décisions business ni sur la couverture fonctionnelle. Il porte sur ce qui empêche l'outil de fonctionner comme ses utilisateurs s'y attendent, et sur les raisons pour lesquelles ça continue.</p>
+
+      <h2>Premier niveau&nbsp;: les problèmes d'interface</h2>
+
+      <p>L'analyse de l'application fait apparaître cinq catégories de dysfonctionnements qui, pris isolément, ressemblent à des erreurs de conception classiques, mais qui ensemble dessinent un pattern plus profond.</p>
+
+      <p>Le modèle de données central est confus. L'objet «&nbsp;manifestation&nbsp;» regroupe sous la même étiquette des événements, des dons et des contrats, trois concepts que les utilisateurs distinguent nettement. Les commerciaux pensent en termes de dépenses et de clients, pas de manifestations. La volonté de simplifier le modèle technique s'est faite au détriment du modèle mental de ceux qui utilisent l'outil au quotidien. C'est un cas d'école de ce que Don Norman appelle le gulf of evaluation&nbsp;: l'écart entre la représentation du système et la représentation de l'utilisateur.</p>
+
+      <p>Le kanban, censé apporter de la visibilité sur l'avancement, n'offre aucun des bénéfices attendus du pattern. Pas de drag and drop, des étapes non linéaires, un rendering lent, et des cards qui accumulent des informations pertinentes à certains stades mais parasitaires à d'autres. Le pattern promet un modèle de flux&nbsp;; ce qui est livré est une vue tabulaire déguisée.</p>
+
+      <p>La navigation change selon le contexte. Le menu d'une manifestation apparaît dans le menu général et se modifie en fonction de l'état de cette manifestation. Un menu de navigation dynamique dont les options varient selon l'état d'un objet métier est un red flag majeur en ergonomie&nbsp;: la navigation doit rester le repère stable de l'utilisateur, pas une surface réactive de plus.</p>
+
+      <p>Les formulaires mélangent quatre types d'informations dans un même écran, les relations entre objets ne sont pas visibles, et deux flux métier distincts, gérer les contrats et gérer les dépenses, cohabitent dans la même interface sans que l'utilisateur puisse les traiter séparément. L'interface est dense sans être efficace&nbsp;: la densité vient d'un refus de choisir, pas d'une hiérarchie maîtrisée.</p>
+
+      <h2>Second niveau&nbsp;: les causes organisationnelles</h2>
+
+      <p>Chacun de ces problèmes pourrait être corrigé isolément. Mais la question intéressante n'est pas «&nbsp;comment réparer le kanban&nbsp;», c'est «&nbsp;pourquoi le kanban est-il dans cet état alors que l'équipe le sait dysfonctionnel&nbsp;». Les entretiens permettent de remonter aux mécanismes qui produisent ces symptômes.</p>
+
+      <p>L'urgence domine la planification. Quand chaque demande client génère une solution ponctuelle qui s'empile sur l'existant, les cards du kanban finissent par accumuler des champs disparates, la navigation s'adapte au cas par cas, les formulaires absorbent de nouvelles sections sans refactorisation. Ce n'est pas un problème de compétence technique, c'est un problème d'allocation du temps.</p>
+
+      <p>L'équipe fonctionne en feature factory&nbsp;: chaque demande client devient une feature à développer sans questionnement sur la valeur réelle ni l'impact sur la cohérence globale. Les choix de roadmap sont pilotés par la migration des clients de l'ancienne solution, une forme de gestion de churn au coup par coup qui sacrifie les clients de demain au profit de la rétention immédiate. Il n'existe pas de framework de priorisation fondé sur la valeur business, la faisabilité et la viabilité utilisateur.</p>
+
+      <p>L'absence de compétences UX et PM structurées dans l'équipe explique pourquoi chaque nouvelle fonctionnalité atterrit là où c'est le plus simple à implémenter plutôt que là où ce serait le plus logique pour l'utilisateur. Ce déficit produit un cercle vicieux&nbsp;: les solutions rapides d'aujourd'hui deviennent la dette conceptuelle de demain, la dette augmente la pression, la pression pousse vers des solutions encore plus expéditives. Le mécanisme n'est pas linéaire mais exponentiel, parce que chaque feature incohérente crée sa propre branche de complexité.</p>
+
+      <h2>Ce que le diagnostic change dans les préconisations</h2>
+
+      <p>Un audit qui s'arrête aux problèmes d'interface produit une liste de corrections. Utile, mais fragile&nbsp;: si les conditions qui ont généré les problèmes persistent, les mêmes dysfonctionnements réapparaissent sous d'autres formes en quelques mois. Le vrai livrable d'un audit à deux niveaux, c'est un diagnostic qui permet au commanditaire de choisir à quelle profondeur il veut intervenir.</p>
+
+      <p>Les préconisations couvrent donc trois registres. Le registre interface, d'abord&nbsp;: séparer le modèle de données en objets qui correspondent aux concepts métier, remplacer le kanban par une vue adaptée aux flux réels, stabiliser la navigation, dégrouper les formulaires. Le registre compétences, ensuite&nbsp;: faire entrer de l'expertise UX et PM dans l'équipe, que ce soit par recrutement, accompagnement externe ou montée en compétence interne. Le registre processus, enfin&nbsp;: mettre en place un framework de priorisation, sortir du mode réactif, sanctuariser du temps pour la cohérence.</p>
+
+      <p>Le point délicat est que ces trois registres ne sont pas indépendants. Corriger l'interface sans changer le mode de travail revient à repeindre un mur dont les fondations bougent. Monter en compétence sans framework de priorisation revient à mieux diagnostiquer des problèmes qu'on n'a pas le temps de traiter. L'audit rend ces dépendances explicites pour que la décision soit prise en connaissance de cause.</p>
+
+      <h2>Ce que cet exercice montre de la méthode</h2>
+
+      <p>Le réflexe classique face à une interface défaillante, c'est de proposer un redesign. Le réflexe que je défends, c'est de chercher d'abord pourquoi l'interface est dans cet état avant de décider quoi en faire. Cinq entretiens et une analyse de l'application suffisent à établir ce double diagnostic, à condition de ne pas traiter les entretiens comme une collecte de desiderata mais comme un matériau d'investigation sur les mécanismes en jeu.</p>
+
+      <p>Dans le cas d'UBAQ, les recommandations ont amorcé la refonte de la navigation, et l'accompagnement s'est prolongé sur l'exécution avec l'équipe produit, qui n'avait pas de profil UX en interne. La suite a montré que le diagnostic organisationnel était le levier le plus utile&nbsp;: l'équipe a pu arbitrer autrement parce qu'elle disposait d'un cadre pour nommer ce qui coinçait au-delà de l'interface.</p>
+
+    </div>
+  </article>
+
+  <footer class="footer-contact contact">
+    <h2>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span></h2>
+    <div class="footer-links">
+      <span class="footer-link-row"><a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener">Prendre rendez-vous</a></span>
+      <span class="footer-link-row"><a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a></span>
+      <span class="footer-link-row"><a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a></span>
+      <span class="footer-link-row"><a href="https://x.com/legildas" target="_blank" rel="noopener">X</a></span>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
