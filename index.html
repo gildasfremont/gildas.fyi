@@ -70,7 +70,8 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
   </p>
 
   <header>
-    <h1 class="header-name"><span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> Gildas Frémont, <span class="header-title">CPO à la demande</span></h1>
+    <div class="header-title">CPO à la demande</div>
+    <h1 class="header-name"><span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> Gildas Frémont</h1>
   </header>
 
   <section id="missions">
@@ -85,9 +86,9 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
         </div>
       </div>
       <p>
-        Je travaille avec Lucca depuis trois ans, en lien direct avec les responsables de chaque suite métier. C'est un éditeur RH de 13 modules et plus de 7 800 clients, ce qui veut dire que chaque décision de design a des ramifications sur tout l'écosystème. J'interviens sur des registres très différents selon les missions : du design system (composants partagés, patterns transverses, guidelines), de la création produit (comme l'outil de revue de salaires, où nous sommes passés de vingt vues proposées à trois, et c'est cette feature qui sert de démo commerciale aujourd'hui), du PLG, de la simplification de parcours complexes, et du travail sur les outils d'administration qui avaient accumulé vingt ans de sédimentation. Plus de 200 jours d'intervention au total.
+        Je travaille avec Lucca depuis 2023, en lien direct avec les responsables de chaque suite métier. C'est un éditeur RH de 13 modules et plus de 7 800 clients, ce qui veut dire que chaque décision de design a des ramifications sur tout l'écosystème. J'interviens sur des registres très différents selon les missions : du design system (composants partagés, patterns transverses, guidelines), de la création produit (comme l'outil de revue de salaires, où nous sommes passés de vingt vues proposées à trois, et c'est cette feature qui sert de démo commerciale aujourd'hui), du PLG, de la simplification de parcours complexes, et du travail sur les outils d'administration qui avaient accumulé vingt ans de sédimentation. Plus de 200 jours d'intervention au total.
+        <a href="/impersonation-pattern" class="entry-link">L'impersonation : un pattern qui structure un logiciel entier →</a>
       </p>
-      <p class="entry-readmore"><a href="/impersonation-pattern">L'impersonation : un pattern qui structure un logiciel entier →</a></p>
     </div>
 
     <div class="entry" style="--glow: 30,30,120">
@@ -123,13 +124,13 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
       </div>
       <p>
         La plateforme NTU accumulait des irritants depuis longtemps, il n'y avait pas de profil UX en interne, et l'équipe produit vivait en mode pompier permanent. J'ai mené un audit complet (entretiens internes, cartographie des problèmes, diagnostic des modèles mentaux mal maîtrisés), puis livré les maquettes de correction et une roadmap revue. L'équipe est sortie du mode urgence et la refonte de la navigation a pu démarrer.
+        <a href="/audit-ubaq-methode" class="entry-link">Anatomie d'un audit produit : méthode et raisonnement →</a>
       </p>
-      <p class="entry-readmore"><a href="/audit-ubaq-methode">Anatomie d'un audit produit : méthode et raisonnement →</a></p>
     </div>
   </section>
 
   <section id="parcours" class="section-salarie">
-    <div class="section-title">Parcours salarié</div>
+    <div class="section-title">Parcours</div>
 
     <div class="entry" style="--glow: 242,123,63">
       <div class="row entry-header">
@@ -137,8 +138,8 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
           <img src="img/lucca.png" alt="" class="entry-logo">
           <span class="entry-company">Lucca</span>
         </div>
-        <span class="mid">Employé nº 10, <span class="year">2011 à 2014</span></span>
       </div>
+      <div class="entry-role">Employé nº 10, 2011 à 2014</div>
       <p>
         Premier UX designer, je crée le pôle Design et expérience utilisateur. J'ai refondu les parcours d'onboarding, qui sont passés de trois jours d'implémentation à 45 minutes, et démarré et amélioré plusieurs produits en cohérence qui sont devenus plus tard la suite Lucca.
       </p>
@@ -153,8 +154,8 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
           <img src="img/ornikar.png" alt="" class="entry-logo">
           <span class="entry-company">Ornikar</span>
         </div>
-        <span class="mid">Employé nº 8, <span class="year">2014 à 2016</span></span>
       </div>
+      <div class="entry-role">Employé nº 8, 2014 à 2016</div>
       <p>
         Premier product manager sur le marché réglementé du permis de conduire, avec des contraintes fortes sur ce qu'il est possible de faire en ligne. J'ai recruté l'équipe technique, conçu les parcours élèves et enseignants, et poussé une priorisation par réduction de friction sur le parcours existant plutôt que par acquisition. En dix-huit mois nous sommes passés de zéro à 15 000 utilisateurs payants.
       </p>
@@ -170,8 +171,8 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
           <img src="img/monbanquet.png" alt="" class="entry-logo">
           <span class="entry-company">monbanquet.fr</span>
         </div>
-        <span class="mid">Directeur produit, <span class="year">2017 à 2019</span></span>
       </div>
+      <div class="entry-role">Directeur produit, 2017 à 2019</div>
       <p>
         Un traiteur en ligne qui travaille avec des artisans indépendants. Le problème central était l'outil commercial et le processus d'acquisition très concurrentiel : créer un devis sur-mesure en respectant la marge et des contraintes opérationnelles non-déterministes (tournées de picking, livraisons, charge des cuisines) et réduire les frictions sur le site. J'ai conçu l'outil, qui sortait un menu personnalisé en trente minutes là où les concurrents répondaient en plusieurs jours en mangeant régulièrement leur marge. Le CEO de l'époque dit que c'est ce qui a permis de sauver la boîte. Le funnel d'acquisition sur le site a été amélioré de +50 %.
       </p>
@@ -186,8 +187,8 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
           <img src="img/zoneadsl.svg" alt="" class="entry-logo">
           <span class="entry-company">zoneadsl.com</span>
         </div>
-        <span class="mid">Directeur produit, <span class="year">2019 à 2020</span></span>
       </div>
+      <div class="entry-role">Directeur produit, 2019 à 2020</div>
       <p>
         1,2 million de visiteurs par mois, un système monolithique. Refonte des parcours d'acquisition et du CMS, pilotage par la donnée, contribution à la migration vers une organisation orientée produit. Le système d'organisation de l'information est encore celui utilisé sur le site aujourd'hui.
       </p>
@@ -204,7 +205,7 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
         <img src="img/lewagon.svg" alt="" class="entry-logo">
         <span>Le Wagon</span>
       </div>
-      <span class="mid">Bootcamp développeur full-stack</span>
+      <span class="mid">Bootcamp développeur full-stack <span class="milestone-tag">Batch 30</span></span>
     </div>
     <div class="row edu-row" style="--glow: 0,0,255">
       <div class="left">
@@ -224,7 +225,7 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
       <div class="left">
         <span>Saint-Jean de Douai</span>
       </div>
-      <span class="mid">Classes préparatoires</span>
+      <span class="mid">Classes préparatoires ECS</span>
     </div>
   </section>
 
@@ -252,14 +253,14 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
         <a href="/unsolicited-redesign-luko">Unsolicited redesign de Luko by Allianz Direct</a>
         <span class="article-date">mars 26</span>
       </div>
-      <p class="article-subtitle">Dix ans après la mode Dribbble, un exercice concret sur l'espace Mon Compte.</p>
+      <p class="article-subtitle">Un exercice concret sur l'espace personnel d'un assuré.</p>
     </div>
     <div class="article-entry">
       <div class="article-header">
         <a href="/audit-ubaq-methode">Anatomie d'un audit produit</a>
         <span class="article-date">juin 25</span>
       </div>
-      <p class="article-subtitle">Ce qu'on trouve quand on cherche les causes des causes. Méthode et raisonnement à travers un cas réel.</p>
+      <p class="article-subtitle">Méthode et raisonnement à travers un cas réel.</p>
     </div>
     <div class="article-entry">
       <div class="article-header">
@@ -270,7 +271,7 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
     </div>
     <div class="article-entry">
       <div class="article-header">
-        <a href="/impersonation-pattern">L'impersonation : anatomie d'un pattern qui structure un logiciel entier</a>
+        <a href="/impersonation-pattern">L'impersonation : anatomie d'un pattern</a>
         <span class="article-date">mars 25</span>
       </div>
       <p class="article-subtitle">Un mécanisme transversal qui contraint la navigation, le nommage, les permissions et la traçabilité.</p>
@@ -280,14 +281,14 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
         <a href="/gmail-etats-binaires">Gmail a deux choses à nous apprendre</a>
         <span class="article-date">nov. 24</span>
       </div>
-      <p class="article-subtitle">La perfection en UI se mesure par ce qu'on ne peut plus enlever. Sur les états binaires, la charge cognitive et le design de listes.</p>
+      <p class="article-subtitle">Sur les états binaires, la charge cognitive et la conception de listes.</p>
     </div>
     <div class="article-entry">
       <div class="article-header">
         <a href="/think-different-write-smarter">De 'Think Different' à 'Write Smarter'</a>
         <span class="article-date">nov. 24</span>
       </div>
-      <p class="article-subtitle">Ce n'est pas la vision qui change, c'est le contexte de son expression.</p>
+      <p class="article-subtitle">Commentaires sur une pub Apple et une vision cinquantenaire.</p>
     </div>
     <div class="article-entry">
       <div class="article-header">
@@ -310,7 +311,7 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
         <a href="/vous-navez-pas-besoin-dun-pm">Vous n'avez pas besoin d'un Product Manager</a>
         <span class="article-date">sept. 24</span>
       </div>
-      <p class="article-subtitle">Ce n'est pas une provocation, c'est un constat. Sur le rôle du PM, le modèle IT vs produit, et Shape Up.</p>
+      <p class="article-subtitle">Sur le rôle du PM, le modèle IT vs produit, et Shape Up.</p>
     </div>
     <div class="article-entry">
       <div class="article-header">
@@ -318,36 +319,36 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
         <a href="https://ux.stackexchange.com/users/25125/gildas-fr%c3%a9mont?tab=answers" target="_blank" rel="noopener">UX Stack Exchange</a>
         <span class="article-date">2013–14</span>
       </div>
-      <p class="article-subtitle">Top 0.1% overall. 45 réponses sur la recherche utilisateur, les heuristiques et les patterns d'interface.</p>
+      <p class="article-subtitle">Top 0.1% overall. 45 réponses sur IHM au début des années 2010.</p>
     </div>
   </section>
 
   </main>
 
   <footer id="contact" class="footer-contact contact">
-    <h2>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <span class="header-title">Directeur produit à la demande</span></h2>
-    <div class="footer-links">
-      <span class="footer-link-row">
+    <h2 class="header-name"><span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> Gildas Frémont, <span class="header-title">CPO à la demande</span></h2>
+    <div class="footer-cols">
+      <div class="footer-col">
         <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener">Prendre rendez-vous</a>
-      </span>
-      <span class="footer-link-row">
-        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
-        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
-      </span>
-      <span class="footer-link-row">
-        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
-        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
-      </span>
-      <span class="footer-link-row">
-        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
-        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
-      </span>
-      <span class="footer-link-row">
+        <span class="footer-link-row">
+          <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+          <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+        </span>
+      </div>
+      <div class="footer-col">
+        <span class="footer-link-row">
+          <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+          <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+        </span>
+        <span class="footer-link-row">
+          <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+          <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+        </span>
+      </div>
+      <div class="footer-col">
         <a href="https://x.com/legildas" target="_blank" rel="noopener">X</a>
-      </span>
-      <span class="footer-link-row">
         <a href="cv-gildas-fremont.pdf" target="_blank" rel="noopener">CV</a>
-      </span>
+      </div>
     </div>
   </footer>
 

@@ -52,19 +52,19 @@
       });
     });
   });
-  // Text clamping: truncate entry paragraphs longer than ~4 lines
+  // Text clamping: truncate entry paragraphs, expand on click anywhere in entry
   document.querySelectorAll('.entry > p:first-of-type').forEach(function(p){
+    if(p.closest('.section-salarie'))return;
     var lineH=parseFloat(getComputedStyle(p).lineHeight);
     if(p.scrollHeight>lineH*4.5){
       p.classList.add('clamped');
-      var btn=document.createElement('button');
-      btn.className='expand-toggle';
-      btn.textContent='Lire la suite';
-      btn.addEventListener('click',function(){
+      var entry=p.closest('.entry');
+      entry.classList.add('has-clamp');
+      entry.addEventListener('click',function(ev){
+        if(ev.target.closest('a'))return;
         var expanded=p.classList.toggle('expanded');
-        btn.textContent=expanded?'Réduire':'Lire la suite';
+        entry.classList.toggle('expanded',expanded);
       });
-      p.parentNode.insertBefore(btn,p.nextSibling);
     }
   });
   // Fit intro: binary search for max font-size that keeps exactly 3 lines
@@ -95,6 +95,29 @@
       if(a) a.click();
     });
   });
+  // Article-page cursor halo: random bright color, mouse only (no background)
+  if(document.querySelector('.article-page')){
+    var aHalo=document.createElement('div');
+    var hue=Math.random()*360;
+    var r,g,b,c=0.5*(1-Math.abs(2*0.55-1)),x=c*(1-Math.abs((hue/60)%2-1)),m=0.55-c/2;
+    if(hue<60){r=c;g=x;b=0;}else if(hue<120){r=x;g=c;b=0;}else if(hue<180){r=0;g=c;b=x;}
+    else if(hue<240){r=0;g=x;b=c;}else if(hue<300){r=x;g=0;b=c;}else{r=c;g=0;b=x;}
+    var rgb=Math.round((r+m)*255)+','+Math.round((g+m)*255)+','+Math.round((b+m)*255);
+    aHalo.style.cssText='position:fixed;width:120px;height:120px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.3s ease;filter:blur(40px);transform:translate(-50%,-50%);background:rgba('+rgb+',0.12);';
+    document.body.appendChild(aHalo);
+    var aRaf=null;
+    document.addEventListener('mousemove',function(e){
+      if(aRaf)return;
+      aRaf=requestAnimationFrame(function(){
+        aRaf=null;
+        aHalo.style.left=e.clientX+'px';
+        aHalo.style.top=e.clientY+'px';
+        aHalo.style.opacity='1';
+      });
+    });
+    document.addEventListener('mouseleave',function(){aHalo.style.opacity='0';});
+  }
+
   // Glow feature flag: everything below only runs if <html> has .glow-enabled
   if(!document.documentElement.classList.contains('glow-enabled')) return;
 
