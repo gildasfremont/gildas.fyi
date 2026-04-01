@@ -56,14 +56,21 @@
   document.querySelectorAll('.entry > p:first-of-type').forEach(function(p){
     if(p.closest('.section-salarie'))return;
     var lineH=parseFloat(getComputedStyle(p).lineHeight);
-    if(p.scrollHeight>lineH*4.5){
+    if(p.scrollHeight>lineH*2.5){
       p.classList.add('clamped');
       var entry=p.closest('.entry');
       entry.classList.add('has-clamp');
+      var isEn=document.documentElement.lang==='en';
+      var toggle=document.createElement('span');
+      toggle.className='clamp-toggle';
+      toggle.textContent=(isEn?'See more':'Voir plus')+' \u2193';
+      var header=entry.querySelector('.entry-header');
+      if(header) header.appendChild(toggle);
       entry.addEventListener('click',function(ev){
         if(ev.target.closest('a'))return;
         var expanded=p.classList.toggle('expanded');
         entry.classList.toggle('expanded',expanded);
+        toggle.textContent=expanded?((isEn?'See less':'Voir moins')+' \u2191'):((isEn?'See more':'Voir plus')+' \u2193');
       });
     }
   });

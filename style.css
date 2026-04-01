@@ -378,7 +378,7 @@ section { margin-bottom: 3rem; }
 /* Experience entries */
 .entry { margin-bottom: 1rem; }
 
-.entry-header { margin-bottom: 0.35rem; }
+.entry-header { margin-bottom: 0.35rem; display: flex; align-items: baseline; }
 
 .entry-header .left .entry-company {
   font-weight: 600;
@@ -406,21 +406,22 @@ section { margin-bottom: 3rem; }
   cursor: pointer;
 }
 
-.entry.has-clamp::after {
-  content: 'Lire la suite';
-  display: none;
+.clamp-toggle {
   color: var(--light);
-  font-size: 0.75em;
-  margin-top: 0.45rem;
+  font-size: 0.7rem;
+  margin-left: auto;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  white-space: nowrap;
 }
 
-.entry.has-clamp:hover::after {
-  display: block;
+.entry.has-clamp:hover .clamp-toggle {
+  opacity: 1;
 }
 
-.entry.has-clamp.expanded::after {
-  content: 'Réduire';
-  display: block;
+.clamp-toggle:hover {
+  color: var(--mid);
 }
 
 .entry-role {
@@ -894,8 +895,7 @@ footer {
   .entry::before,
   .edu-row::before,
   .article-entry::before,
-  .entry.has-clamp::after,
-  .entry.has-clamp.expanded::after,
+  .clamp-toggle,
   .entry-link,
   .copy-btn,
   .no-print,
