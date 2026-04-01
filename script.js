@@ -92,6 +92,7 @@
       el.style.fontSize=lo+'px';
     }
     fit();
+    el.style.opacity='1';
     window.addEventListener('resize',function(){clearTimeout(tid);tid=setTimeout(fit,80);});
   })();
   // Clickable article entries

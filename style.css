@@ -335,6 +335,7 @@ h1, .footer-contact h2 {
   font-size: 3.5rem;
   line-height: 1.05;
   letter-spacing: -0.02em;
+  opacity: 0;
   font-weight: 300;
   font-variation-settings: 'GEOM' 0;
   /* Extend symmetrically beyond container */
@@ -376,7 +377,7 @@ section { margin-bottom: 3rem; }
 .row .left:only-child { grid-column: 1 / -1; }
 
 /* Experience entries */
-.entry { margin-bottom: 1rem; }
+.entry { margin-bottom: 1.75rem; }
 
 .entry-header { margin-bottom: 0.35rem; display: flex; align-items: baseline; }
 
@@ -537,7 +538,7 @@ span.milestone-tag {
 
 /* Education */
 .edu-row {
-  margin-bottom: 1rem;
+  margin-bottom: 0.875rem;
   align-items: baseline;
 }
 
@@ -570,7 +571,7 @@ span.milestone-tag {
 
 /* Articles */
 .article-entry {
-  margin-bottom: 1rem;
+  margin-bottom: 1.75rem;
   cursor: pointer;
 }
 
