@@ -389,6 +389,7 @@ section { margin-bottom: 3rem; }
 .entry p {
   color: var(--mid);
 }
+.short-text { display: none; }
 
 .entry p.clamped {
   display: -webkit-box;
@@ -897,7 +898,9 @@ footer {
   .entry.has-clamp.expanded::after,
   .entry-link,
   .copy-btn,
-  .no-print { display: none; }
+  .no-print,
+  .entry-logo,
+  .tool-logo { display: none; }
 
   /* Expose actual values instead of link labels */
   .contact-tel { font-size: 0; }
@@ -909,14 +912,14 @@ footer {
   footer a[href*="x.com"] { font-size: 0; }
   footer a[href*="x.com"]::after { content: 'x.com/legildas'; font-size: 0.58rem; }
 
-  body { background: white; filter: none; opacity: 1; line-height: 1.4; }
-  .container { display: flex; flex-direction: column; padding: 0; max-width: 100%; font-size: 0.6rem; }
+  body { background: white; filter: none; opacity: 1; line-height: 1.5; }
+  .container { display: flex; flex-direction: column; padding: 0; max-width: 100%; font-size: 0.65rem; }
 
   /* Move footer to top as CV header via order */
-  footer { display: block; order: -1; margin: 0 0 0.75rem; padding-bottom: 0; border: none; font-size: 0.6rem; }
-  footer h2 { margin-bottom: 0.25rem; }
-  footer .header-name { font-size: 0.95rem; }
-  footer .header-title { display: inline; font-size: 0.95rem; }
+  footer { display: block; order: -1; margin: 0 0 0.7rem; padding-bottom: 0; border: none; font-size: 0.65rem; }
+  footer h2 { margin-bottom: 0.2rem; }
+  footer .header-name { font-size: 0.85rem; }
+  footer .header-title { display: inline; font-size: 0.85rem; }
   .footer-cols { display: flex; flex-wrap: wrap; gap: 0 0.75rem; }
   .footer-col { flex-direction: row; gap: 0.5rem; }
 
@@ -927,26 +930,23 @@ footer {
   :lang(en) .avatar-wrap { display: none; }
 
   /* Sections */
-  section { margin-bottom: 0.75rem; }
-  .section-title { margin-bottom: 0.3rem; font-size: 0.62rem; font-weight: 700; border: none; }
+  section { margin-bottom: 1.6rem; }
+  .section-title { margin-bottom: 0.35rem; font-size: 0.67rem; font-weight: 700; border: none; }
 
   /* Entries: company + role on same line */
-  .entry { margin-bottom: 0.5rem; }
+  .entry { margin-bottom: 0.55rem; }
   .entry-header { margin-bottom: 0; display: inline-flex; align-items: center; }
   .entry-header .left { display: inline-flex; align-items: center; }
   .entry-role { display: inline; margin-bottom: 0; margin-left: 0.3rem; font-size: 0.52rem; }
-  .entry p {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-  }
+  .entry p { margin: 0; }
+  .entry .long-text { display: none; }
+  .entry .short-text { display: block; }
 
   /* Education */
-  .edu-row { margin-bottom: 0.3rem; }
+  .edu-row { margin-bottom: 0.4rem; }
 
   /* Tools */
-  .tools { margin-top: 0.15rem; }
+  .tools { margin-top: 0.25rem; }
 
   /* Milestones */
   .milestone-tags { margin: 0.1rem 0; gap: 0.08rem; }
