@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <style>
+    .label { font-size: 11px; fill: #959a93; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+    .step { font-size: 12px; fill: #1a1d1a; }
+    .step-muted { font-size: 12px; fill: #959a93; }
+    .count { font-size: 11px; fill: #959a93; }
+    .box { fill: #fff; stroke: #e5e8e3; stroke-width: 1; rx: 4; }
+    .box-problem { fill: #fff; stroke: #c8ccc6; stroke-width: 1; rx: 4; stroke-dasharray: 4 3; }
+    .arrow { stroke: #c8ccc6; stroke-width: 1; fill: none; marker-end: url(#arr); }
+    .arrow-new { stroke: #1a1d1a; stroke-width: 1; fill: none; marker-end: url(#arr2); }
+    .divider { stroke: #e5e8e3; stroke-width: 1; stroke-dasharray: 4 3; }
+  </style>
+  <defs>
+    <marker id="arr" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><path d="M0,0 L6,2 L0,4" fill="none" stroke="#c8ccc6" stroke-width="1"/></marker>
+    <marker id="arr2" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><path d="M0,0 L6,2 L0,4" fill="none" stroke="#1a1d1a" stroke-width="1"/></marker>
+  </defs>
+
+  <!-- Existing flow -->
+  <text x="20" y="24" class="label">Existant</text>
+
+  <rect x="20" y="40" width="90" height="36" class="box"/>
+  <text x="65" y="62" class="step" text-anchor="middle">Home</text>
+  <line x1="110" y1="58" x2="134" y2="58" class="arrow"/>
+
+  <rect x="136" y="40" width="100" height="36" class="box"/>
+  <text x="186" y="62" class="step" text-anchor="middle">Ouvrir contrat</text>
+  <line x1="236" y1="58" x2="260" y2="58" class="arrow"/>
+
+  <rect x="262" y="40" width="120" height="36" class="box-problem"/>
+  <text x="322" y="55" class="step-muted" text-anchor="middle">Trouver le lien</text>
+  <text x="322" y="68" class="step-muted" text-anchor="middle">dans le contrat</text>
+  <line x1="382" y1="58" x2="406" y2="58" class="arrow"/>
+
+  <rect x="408" y="40" width="130" height="36" class="box-problem"/>
+  <text x="473" y="55" class="step-muted" text-anchor="middle">Formulaire de</text>
+  <text x="473" y="68" class="step-muted" text-anchor="middle">déclaration</text>
+
+  <text x="322" y="100" class="count" text-anchor="middle">présuppose que l'utilisateur pense en n° de contrat</text>
+
+  <!-- Divider -->
+  <line x1="20" y1="126" x2="700" y2="126" class="divider"/>
+
+  <!-- Redesign flow -->
+  <text x="20" y="160" class="label">Redesign</text>
+
+  <rect x="20" y="176" width="150" height="36" class="box"/>
+  <text x="95" y="191" class="step" text-anchor="middle">Home →</text>
+  <text x="95" y="204" class="step" text-anchor="middle">Déclarer un sinistre</text>
+  <line x1="170" y1="194" x2="204" y2="194" class="arrow-new"/>
+
+  <rect x="206" y="176" width="140" height="36" class="box"/>
+  <text x="276" y="191" class="step" text-anchor="middle">Quel logement</text>
+  <text x="276" y="204" class="step" text-anchor="middle">est concerné ?</text>
+  <line x1="346" y1="194" x2="380" y2="194" class="arrow-new"/>
+
+  <rect x="382" y="176" width="84" height="36" class="box"/>
+  <text x="424" y="198" class="step" text-anchor="middle">Type</text>
+  <line x1="466" y1="194" x2="490" y2="194" class="arrow-new"/>
+
+  <rect x="492" y="176" width="84" height="36" class="box"/>
+  <text x="534" y="198" class="step" text-anchor="middle">Détails</text>
+  <line x1="576" y1="194" x2="600" y2="194" class="arrow-new"/>
+
+  <rect x="602" y="176" width="84" height="36" class="box"/>
+  <text x="644" y="198" class="step" text-anchor="middle">Photos</text>
+
+  <text x="20" y="242" class="count">Le point de départ est le problème (« j'ai un sinistre »), pas le contrat.</text>
+  <text x="20" y="258" class="count">Le wizard guide l'utilisateur étape par étape au lieu de le laisser chercher.</text>
+
+</svg>

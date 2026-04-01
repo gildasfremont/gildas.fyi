@@ -57,6 +57,12 @@ body.fonts-loaded {
   font-size: 0.8125rem;
 }
 
+/* Article pages: readable size, restore padding reduced for CV hero */
+.container.article-page {
+  font-size: 1rem;
+  padding-top: 4rem;
+}
+
 /* Topbar */
 .topbar {
   display: flex;
@@ -337,7 +343,7 @@ h1, .footer-contact h2 {
   font-variation-settings: 'GEOM' 0;
   /* Extend to viewport right edge minus margin */
   margin-right: calc(-50vw + 50%);
-  padding-right: 2rem;
+  padding-right: 5rem;
 }
 
 .intro strong {
@@ -361,9 +367,9 @@ h1, .footer-contact h2 {
   pointer-events: none;
 }
 
-.intro em.glow-red::before { background: rgba(230,90,50, 0.15); }
-.intro em.glow-blue::before { background: rgba(40,170,180, 0.15); }
-.intro em.glow-green::before { background: rgba(160,80,200, 0.15); }
+.intro em.glow-red::before { background: rgba(230,120,30, 0.08); }
+.intro em.glow-blue::before { background: rgba(40,180,80, 0.08); }
+.intro em.glow-green::before { background: rgba(140,60,200, 0.08); }
 
 /* Sections */
 section { margin-bottom: 3rem; }
@@ -433,15 +439,13 @@ section { margin-bottom: 3rem; }
    Feature flag: add class "glow-enabled" on <html> to activate.
    Remove the class to disable all glow effects (halos + cursor). */
 .glow-enabled .entry[style*="--glow"],
-.glow-enabled .edu-row[style*="--glow"],
-.glow-enabled .article-entry[style*="--glow"] {
+.glow-enabled .edu-row[style*="--glow"] {
   position: relative;
   isolation: isolate;
 }
 
 .glow-enabled .entry[style*="--glow"]::before,
-.glow-enabled .edu-row[style*="--glow"]::before,
-.glow-enabled .article-entry[style*="--glow"]::before {
+.glow-enabled .edu-row[style*="--glow"]::before {
   content: '';
   position: absolute;
   inset: -1rem -2rem;
@@ -455,8 +459,7 @@ section { margin-bottom: 3rem; }
 }
 
 .glow-enabled .entry[style*="--glow"]:hover::before,
-.glow-enabled .edu-row[style*="--glow"]:hover::before,
-.glow-enabled .article-entry[style*="--glow"]:hover::before {
+.glow-enabled .edu-row[style*="--glow"]:hover::before {
   transform: scale(1.04);
   filter: blur(55px);
 }
@@ -550,11 +553,9 @@ section { margin-bottom: 3rem; }
 .article-entry {
   margin-bottom: 1rem;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.15s;
 }
 
-.article-entry:hover { background: rgba(0,0,0,0.015); }
+.article-entry:hover .article-header a { color: var(--black); text-decoration-color: var(--subtle); }
 
 .article-header {
   display: flex;
@@ -596,6 +597,10 @@ section { margin-bottom: 3rem; }
 }
 
 /* Article pages */
+.article-page .lang-toggle {
+  margin-bottom: 0.75rem;
+}
+
 .article-page .lang-toggle a {
   color: var(--light);
   text-decoration: none;

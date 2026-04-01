@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le parti pris du logiciel — Gildas Frémont</title>
+  <meta name="description" content="Un logiciel sans opinion offre plus de choix. Un logiciel avec un parti pris offre moins de décisions à prendre. Ce n'est pas le même problème.">
+  <link rel="canonical" href="https://gildas.fyi/parti-pris-logiciel">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Le parti pris du logiciel — Gildas Frémont">
+  <meta property="og:description" content="Un logiciel sans opinion offre plus de choix. Un logiciel avec un parti pris offre moins de décisions à prendre. Ce n'est pas le même problème.">
+  <meta property="og:url" content="https://gildas.fyi/parti-pris-logiciel">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="index.html" onclick="if(history.length>1){history.back();return false;}">← Retour</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>Le parti pris du logiciel</h1>
+      <p class="article-meta">Mars 2026</p>
+    </header>
+
+    <div class="article-body">
+      <p>Il y a deux façons de concevoir un logiciel, et le choix entre les deux se fait souvent sans que personne ne le formule. La première consiste à ne pas prendre position : on expose des options, on laisse l'utilisateur configurer, on construit un outil qui s'adapte à la manière dont chacun veut travailler. La seconde consiste à décider pour lui, à incarner une façon de faire les choses, quitte à exclure les autres. La première approche produit des logiciels sans parti pris. La seconde produit des logiciels avec un avis.</p>
+
+      <h2>Le coût caché de la flexibilité</h2>
+
+      <p>Un logiciel sans parti pris semble généreux. Il offre plus de choix, plus de personnalisation, plus de latitude. Il promet de s'adapter au fonctionnement de l'utilisateur plutôt que de lui imposer le sien. En pratique, cette générosité a un prix qui se paie trois fois.</p>
+
+      <p>Elle se paie d'abord à la construction. Offrir de la flexibilité, c'est prendre en charge des combinaisons de scénarios qui croissent de façon combinatoire avec le nombre d'options. Un formulaire avec trois modes d'affichage, deux logiques de validation et un paramétrage de droits par rôle ne produit pas six cas à tester mais un espace de configurations dont les bords sont difficiles à cartographier. Le logiciel devient plus dur à construire non pas parce que chaque chemin est complexe, mais parce que l'interaction entre les chemins l'est.</p>
+
+      <p>Elle se paie ensuite à la mise en place. Un logiciel paramétrable exige un paramétrage. Quelqu'un doit décider comment le configurer, ce qui suppose de comprendre les options disponibles, d'anticiper leurs conséquences, et souvent de faire appel à un intégrateur ou à un consultant. Le temps gagné en flexibilité par le concepteur est transféré en charge de décision chez le client.</p>
+
+      <p>Elle se paie enfin à l'usage. Chaque option visible dans l'interface est une question posée à l'utilisateur, et chaque question consomme de l'attention. Un logiciel qui ne prend pas position délègue en permanence la décision à celui qui l'utilise, y compris quand celui-ci n'a ni le contexte ni l'envie de décider.</p>
+
+      <h2>L'opinion comme acte de conception</h2>
+
+      <p>Un logiciel à parti pris fonctionne à l'inverse. Il embarque une philosophie sur la bonne façon de traiter un problème, et il l'impose. Il ne demande pas à l'utilisateur comment il veut organiser ses données, il lui propose une organisation. Il ne présente pas cinq workflows possibles, il en incarne un. Les choix qui restent à faire sont ceux qui relèvent de l'utilisateur, pas ceux qui relèvent de l'outil.</p>
+
+      <p>Chez Lucca, cette approche prend la forme du workflow. Quand un module de gestion des congés est conçu, il n'expose pas un moteur de règles configurable dans lequel chaque entreprise viendrait brancher sa logique. Il encode une séquence : le collaborateur pose, le manager valide, le solde se met à jour, la paie est informée. Les étapes, les rôles, les transitions sont décidés par le produit. Ce que le client paramètre, c'est le contenu des règles (combien de jours, quel type de congé, quel calendrier), pas la structure du processus.</p>
+
+      <p>Cette distinction entre le quoi et le comment est le cœur du sujet. Le logiciel sans parti pris laisse l'utilisateur définir le comment : la structure du workflow, l'enchaînement des écrans, la logique de validation. Le logiciel à parti pris fixe le comment et ne laisse ouvert que le quoi : les données métier, les seuils, les contenus spécifiques à chaque organisation.</p>
+
+      <h2>Ce que ça coûte de décider</h2>
+
+      <p>Prendre un parti pris dans un logiciel est plus difficile que de ne pas en prendre, contrairement à ce qu'on pourrait croire. Ne pas prendre position, c'est construire un framework, un ensemble de capacités génériques que le client assemblera. C'est un travail d'ingénierie, parfois sophistiqué, mais qui ne nécessite pas de comprendre le métier en profondeur. On construit un espace de possibilités.</p>
+
+      <p>Prendre position, c'est autre chose. Ça suppose de savoir comment le travail devrait se dérouler, ce qui implique d'avoir observé assez de clients, d'avoir compris les contraintes réglementaires, d'avoir identifié ce qui distingue les cas marginaux des cas structurants. Le workflow qu'on encode dans le logiciel est un pari sur la bonne façon de faire, et ce pari doit être juste pour la majorité des utilisateurs. S'il est faux, on n'a pas un logiciel flexible qui s'adapte, on a un logiciel rigide qui bloque.</p>
+
+      <p>C'est pour cette raison que les logiciels à parti pris vieillissent différemment. Quand ils ont raison, ils sont perçus comme simples, fluides, évidents. Quand ils ont tort, ils sont perçus comme contraignants, fermés, inadaptés. Il n'y a pas de position intermédiaire confortable. L'opinion du logiciel est soit un accélérateur soit un mur, rarement un inconvénient mineur.</p>
+
+      <h2>Le vrai arbitrage</h2>
+
+      <p>Le choix entre un logiciel avec ou sans parti pris n'est pas un choix esthétique ou philosophique. C'est un arbitrage sur l'allocation de la complexité. La complexité du domaine métier ne disparaît pas, elle se déplace. Un logiciel sans parti pris la pousse vers l'utilisateur final sous forme de configuration et de décisions à prendre. Un logiciel à parti pris l'absorbe dans la conception, sous forme de recherche utilisateur, de choix de design et de dette d'opinion à maintenir dans le temps.</p>
+
+      <p>Dans le B2B, où le logiciel est utilisé par des gens qui n'ont pas choisi de l'utiliser et qui ont autre chose à faire que de le configurer, la deuxième option est presque toujours la bonne. Le travail du concepteur n'est pas d'offrir des possibilités, c'est de supprimer des décisions. Chaque décision que le logiciel prend à la place de l'utilisateur est une décision que l'utilisateur n'a pas à prendre, et donc un moment de friction en moins dans sa journée.</p>
+
+      <p>Le problème, c'est que ça demande d'avoir raison. Et avoir raison demande d'avoir compris le métier mieux que la plupart des clients ne le comprennent eux-mêmes, ce qui est la partie du travail produit qu'on ne peut ni automatiser ni raccourcir.</p>
+    </div>
+  </article>
+
+  <footer class="footer-contact contact">
+    <h2>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span></h2>
+    <div class="footer-links">
+      <span class="footer-link-row"><a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener">Prendre rendez-vous</a></span>
+      <span class="footer-link-row"><a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a></span>
+      <span class="footer-link-row"><a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a></span>
+      <span class="footer-link-row"><a href="https://x.com/legildas" target="_blank" rel="noopener">X</a></span>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

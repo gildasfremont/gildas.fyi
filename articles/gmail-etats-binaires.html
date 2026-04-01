@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gmail a deux choses à nous apprendre — Gildas Frémont</title>
+  <meta name="description" content="La perfection en UI se mesure par ce qu'on ne peut plus enlever. Sur les états binaires, la charge cognitive et le design de listes.">
+  <link rel="canonical" href="https://gildas.fyi/gmail-etats-binaires">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Gmail a deux choses à nous apprendre — Gildas Frémont">
+  <meta property="og:description" content="La perfection en UI se mesure par ce qu'on ne peut plus enlever. Sur les états binaires et le design de listes.">
+  <meta property="og:url" content="https://gildas.fyi/gmail-etats-binaires">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="index.html" onclick="if(history.length>1){history.back();return false;}">← Retour</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>Gmail a deux choses à nous apprendre</h1>
+      <p class="article-meta">Publié sur <a href="https://www.linkedin.com/feed/update/urn:li:activity:7268200889633406976/" target="_blank" rel="noopener">LinkedIn</a>, novembre 2024</p>
+    </header>
+
+    <div class="article-body">
+      <p>La perfection en UI se mesure par ce qu'on ne peut plus enlever ni ajouter. Chaque élément superflu augmente la charge mentale de l'utilisateur, et par là les risques de confusion, de saturation et d'erreur.</p>
+
+      <p>Dans une vue de détail, nous pouvons prendre le temps d'absorber une information complexe, de comprendre des états nuancés. Mais dans une liste, chaque état supplémentaire est un effort cognitif multiplié par le nombre d'éléments à traiter. Le type de vue où le pattern des «&nbsp;états binaires&nbsp;» déploie sa force.</p>
+
+      <p>Le contexte est ce qui donne son sens à l'interface. C'est l'environnement cognitif, la situation que l'utilisateur comprend a priori quand il utilise une fonctionnalité. Quand on ouvre une liste de tâches, on s'attend à voir des choses à faire. Quand on consulte sa messagerie, on cherche les messages qui demandent notre attention. Ces attentes naturelles définissent l'état normal des choses, celui qui n'a pas besoin d'être signalé.</p>
+
+      <p>Cette compréhension du contexte nous permet d'identifier l'état par défaut, celui que le contexte nous fait comprendre. La tâche terminée mérite un signalement, une simple coche qui vient modifier cet état par défaut. Cette économie de moyens permet à notre cerveau de scanner l'avancement global et celui des éléments qui le compose.</p>
+
+      <p>La force des états binaires ne réside pas uniquement dans leur capacité à rendre un état implicite. Leur vraie puissance vient de leur simplicité cognitive&nbsp;: notre cerveau n'a pas à classifier, juste à détecter la présence ou l'absence d'un marqueur. Cette simplicité permet d'empiler plusieurs états binaires sans créer de confusion.</p>
+
+      <p>Nous détectons les exceptions plus vite que les règles. En ne marquant que ce qui sort de l'ordinaire, nous créons des interfaces où l'information importante émerge d'elle-même, sans effort conscient de l'utilisateur.</p>
+
+      <p>Cette économie de moyens représente l'essence du design d'interface. Pourtant, nous voyons souvent l'opposé&nbsp;: des interfaces qui tentent d'exposer toute leur complexité. Chaque pixel affiché doit porter une intention, un sens. Le défi n'est pas de réduire les pixels, mais d'augmenter le ratio entre les pixels affichés et leur puissance de signification. Les interfaces les plus puissantes sont celles qui donnent le plus avec moins.</p>
+
+      <p>La prochaine fois que vous concevrez une interface de liste, ne vous demandez pas comment représenter tous les états possibles des items avec des colonnes de statuts, des dropdowns qui exposent tout le workflow ou des tableaux avec tous les attributs.</p>
+
+      <p>Demandez-vous comment découper vos états complexes en paires simples, puis quel signifiant visuel distinct vous pouvez utiliser pour chacun. Le contexte pourra parfois porter l'état par défaut c'est l'idéal, mais l'essentiel est de maintenir cette simplicité binaire qui permet au cerveau de scanner l'information sans effort.</p>
+
+      <figure class="article-figure">
+        <img src="img/gmail-inbox.png" alt="Boîte de réception Gmail montrant les états binaires empilés" loading="lazy">
+        <figcaption>
+          <strong>Dans Gmail, chaque dimension d'un mail est réduite à un couple on/off avec son propre signifiant visuel&nbsp;:</strong>
+          <ul>
+            <li>lu/non-lu&nbsp;: gras/normal + background</li>
+            <li>favori/standard&nbsp;: étoile pleine/vide</li>
+            <li>important/normal&nbsp;: chevron jaune/vide</li>
+            <li>sélectionné/non&nbsp;: case cochée/case vide</li>
+          </ul>
+          <br>
+          <strong>La capacité à empiler ces états sans créer de confusion cognitive&nbsp;:</strong>
+          <ul>
+            <li>Chaque dimension utilise son propre signifiant visuel distinct</li>
+            <li>Notre cerveau peut scanner chaque dimension indépendamment</li>
+            <li>On peut combiner les états (un mail peut être à la fois non-lu ET important)</li>
+            <li>Le scan visuel reste efficace malgré la densité d'information</li>
+          </ul>
+          <br>
+          Ce qu'on ne voit pas, c'est aussi ce qui est issu de la navigation (spam/pas spam, archivé, etc.) qui est une forme de présenter un état binaire et «&nbsp;factorise&nbsp;» un état sans l'exposer dans la liste des items.
+        </figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <footer class="footer-contact contact">
+    <h2>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span></h2>
+    <div class="footer-links">
+      <span class="footer-link-row"><a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener">Prendre rendez-vous</a></span>
+      <span class="footer-link-row"><a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a></span>
+      <span class="footer-link-row"><a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a></span>
+      <span class="footer-link-row"><a href="https://x.com/legildas" target="_blank" rel="noopener">X</a></span>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

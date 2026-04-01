@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Étude de cas : redesign de Luko avec Claude — Gildas Frémont</title>
+  <meta name="description" content="Comment j'ai contacté l'équipe Luko, audité l'espace Mon Compte et reconstruit un prototype React avec Claude en une session.">
+  <link rel="canonical" href="https://gildas.fyi/etude-de-cas-luko">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Étude de cas : redesign de Luko avec Claude — Gildas Frémont">
+  <meta property="og:description" content="Contacter l'équipe, comprendre le contexte, auditer, prototyper. Anatomie d'un unsolicited redesign qui ne reste pas dans le vide.">
+  <meta property="og:url" content="https://gildas.fyi/etude-de-cas-luko">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="unsolicited-redesign-luko.html" onclick="if(history.length>1){history.back();return false;}">← Article original</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>Étude de cas : redesign de Luko avec Claude</h1>
+      <p class="article-page-subtitle">Contacter l'équipe, auditer, prototyper, envoyer</p>
+      <p class="article-meta">mars 2026</p>
+    </header>
+
+    <div class="article-body">
+
+      <h2>Contexte</h2>
+
+      <p>J'avais besoin d'une attestation de responsabilité civile. Chez Luko by Allianz Direct, obtenir ce document demande de naviguer dans le contrat, trouver le bon accordéon, comprendre un choix de type d'attestation, puis générer. L'interface ne comprend pas pourquoi l'utilisateur est là. Quand quelqu'un ouvre son espace client d'assurance, il veut deux choses&nbsp;: accéder à ses documents ou déclarer un sinistre. Tout le reste est du bruit.</p>
+
+      <p>J'ai contacté quelqu'un à l'intérieur, ancien de Luko. Il a confirmé ce que l'interface laissait deviner&nbsp;: après le rachat, l'équipe avait beaucoup bougé, et les décisions produit étaient difficiles à faire passer.</p>
+
+      <h2>Audit</h2>
+
+      <p>L'espace Mon Compte ne sait pas ce qu'il est. Il hésite entre un outil de gestion et un canal d'acquisition. En product management, c'est un problème de positionnement&nbsp;: quand un produit essaie de servir deux jobs-to-be-done contradictoires, il échoue sur les deux.</p>
+
+      <p>Sur la confiance&nbsp;: le chat bascule en anglais quand le site plante. Les temps de chargement sont visibles sur des pages quasi vides. Quand on rafraîchit on prend une 503 qui ne récupère pas, avec la page en texte brut, bandeau cookies compris. En UX, la performance perçue est un signal de fiabilité. Quand l'interface est lente ou instable, l'utilisateur projette cette fragilité sur le service lui-même.</p>
+
+      <p>Sur la hiérarchie&nbsp;: les documents sont éclatés entre trois endroits. Les blocs de la home sont rédigés comme des pages marketing. Le prompt newsletter est plus visible que l'accès aux contrats. La bannière Allianz Travel apparaît jusque dans le formulaire d'attestation. Le modèle mental de l'utilisateur (« je gère mes assurances ») ne correspond pas à l'architecture de l'information qui lui est présentée (« voici nos offres »).</p>
+
+      <figure class="article-figure">
+        <img src="img/luko-original.jpg" alt="Page d'accueil de l'espace Mon Compte Luko by Allianz Direct" loading="lazy">
+        <figcaption>
+          <strong>L'espace Mon Compte tel qu'il existe aujourd'hui.</strong> Bannière Allianz Travel en haut de page, prompt newsletter avant les contrats, documents éclatés en trois blocs rédigés comme des pages marketing.
+        </figcaption>
+      </figure>
+
+      <h2>Prototype</h2>
+
+      <p>À partir de cet audit, j'ai ouvert une session avec <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>. L'outil a navigué dans l'app, exploré les parcours et formalisé l'audit. Le site est tombé en 503 pendant l'exploration.</p>
+
+      <p>Principe directeur&nbsp;: l'espace client répond aux deux raisons pour lesquelles un assuré se connecte. Obtenir un document, ou déclarer un sinistre. Tout ce qui ne sert pas ces deux objectifs est supprimé. C'est un exercice de priorisation produit classique&nbsp;: identifier les parcours critiques et éliminer le bruit qui les dilue.</p>
+
+      <p>Trois rounds d'itération, chacun guidé par un principe de design différent.</p>
+
+      <p>Progressive disclosure&nbsp;: la déclaration de sinistre part de la home avec sélection du logement. L'utilisateur voit d'abord ses contrats, puis accède aux actions dans leur contexte. Plus besoin de naviguer dans un contrat pour trouver un tunnel enterré.</p>
+
+      <p>Wording as UI&nbsp;: le framing «&nbsp;ajouter un contrat&nbsp;» devient «&nbsp;s'assurer&nbsp;». Le premier décrit une action système, le second décrit l'intention de l'utilisateur. Le catalogue réel (habitation, voyage, auto via Eurofil) remplace un bouton générique qui ne promet rien.</p>
+
+      <p>Proximity principle&nbsp;: l'onglet Documents disparaît. Les documents appartiennent au contexte de chaque contrat, pas à un silo séparé. Le profil est sous l'avatar, pas dans un onglet. La navigation passe de trois onglets à zéro&nbsp;: tout est accessible depuis la home parce que tout est au bon endroit.</p>
+
+      <figure class="article-figure">
+        <img src="img/luko-redesign.jpg" alt="Prototype du redesign Luko" loading="lazy">
+        <figcaption>
+          <strong>Le prototype après trois itérations.</strong> Attestations et déclaration de sinistre au premier plan. Contrats en cartes avec adresse et prix. Catalogue d'assurances à la place des faux boutons «&nbsp;ajouter un contrat&nbsp;».
+        </figcaption>
+      </figure>
+
+      <div class="article-body-cta">
+        <a href="https://dist-neon-delta-32.vercel.app/" target="_blank" rel="noopener">Voir le redesign →</a>
+      </div>
+
+      <h2>Les flux</h2>
+
+      <p>Le prototype ne s'arrête pas à la home. Deux parcours critiques ont été reconstruits de bout en bout, parce que c'est là que l'interface actuelle perd le plus de temps et de confiance.</p>
+
+      <p>La déclaration de sinistre part désormais de la home en un clic. L'utilisateur choisit le logement concerné, puis un wizard en cinq étapes (logement, type, détails, photos, confirmation) le guide sans jamais le renvoyer vers un contrat ou un accordéon. Dans l'interface actuelle, déclarer un sinistre suppose de trouver d'abord le bon contrat, puis de naviguer dans ses sous-menus — un parcours qui présuppose que l'utilisateur pense en termes de numéros de contrat, pas en termes de problème à résoudre.</p>
+
+      <figure class="article-figure">
+        <img src="img/luko-flow-sinistre.svg" alt="Comparaison des flux de déclaration de sinistre : existant (contrat → chercher le lien) vs redesign (home → wizard 5 étapes)" loading="lazy">
+        <figcaption>
+          <strong>Déclaration de sinistre : existant vs redesign.</strong> Le parcours actuel part du contrat et demande de trouver un lien enterré. Le redesign part du problème et guide avec un wizard.
+        </figcaption>
+      </figure>
+
+      <figure class="article-figure">
+        <img src="img/luko-sinistre.jpg" alt="Flux de déclaration de sinistre : étape 1 Logement avec sélection parmi les adresses assurées, stepper 5 étapes" loading="lazy">
+        <figcaption>
+          <strong>Déclaration de sinistre, étape 1.</strong> L'utilisateur choisit le logement concerné. Le wizard affiche les cinq étapes restantes. Pas de tunnel caché dans un contrat.
+        </figcaption>
+      </figure>
+
+      <p>La génération d'attestation suit la même logique. Depuis la home, l'utilisateur clique, choisit le contrat, puis voit immédiatement les quatre types d'attestation disponibles (responsabilité civile, assurance scolaire, location de salle, location de vacances) avec leur usage indiqué en sous-titre. Un clic génère le PDF. Dans l'interface actuelle, ce même parcours demande cinq interactions et un accordéon.</p>
+
+      <figure class="article-figure">
+        <img src="img/luko-flow-attestation.svg" alt="Comparaison des flux d'attestation : existant (5 interactions, accordéon caché) vs redesign (3 interactions, téléchargement direct)" loading="lazy">
+        <figcaption>
+          <strong>Génération d'attestation : existant vs redesign.</strong> Cinq interactions avec scroll et accordéon contre trois interactions avec téléchargement direct.
+        </figcaption>
+      </figure>
+
+      <figure class="article-figure">
+        <img src="img/luko-attestation.jpg" alt="Génération d'attestation : quatre types affichés en cartes avec icône de téléchargement et description d'usage" loading="lazy">
+        <figcaption>
+          <strong>Génération d'attestation après sélection du contrat.</strong> Les quatre types sont visibles d'un coup avec leur contexte d'usage. Un clic télécharge le PDF.
+        </figcaption>
+      </figure>
+
+      <h2>La vue contrat</h2>
+
+      <p>Chaque contrat a sa propre page. En haut, l'adresse, le statut, les dates, le prix annuel. En dessous, la déclaration de sinistre contextualisée à ce bien. Puis les attestations disponibles pour ce contrat spécifique — pas dans un onglet Documents séparé, mais là où l'utilisateur les cherche. Les documents (conditions particulières, échéancier, conditions générales) sont regroupés sous le contrat auquel ils appartiennent, avec leur date. Les accordéons Garanties, Assuré(s) et Paiement complètent la page sans encombrer la vue par défaut.</p>
+
+      <p>Le principe est celui de la co-localisation : chaque information vit dans le contexte qui lui donne du sens. L'original éparpille ces éléments entre la home, un onglet Documents et les sous-pages de chaque contrat. Le redesign les rassemble en un seul endroit hiérarchisé.</p>
+
+      <figure class="article-figure">
+        <img src="img/luko-architecture.svg" alt="Architecture de l'information : existant avec données dispersées entre Home, onglet Documents et sous-page contrat vs redesign avec tout regroupé sous la vue contrat" loading="lazy">
+        <figcaption>
+          <strong>Architecture de l'information : dispersion vs co-localisation.</strong> L'existant répartit les données entre trois écrans. Le redesign regroupe tout sous le contrat.
+        </figcaption>
+      </figure>
+
+      <figure class="article-figure">
+        <img src="img/luko-detail-contrat.jpg" alt="Vue de détail d'un contrat : en-tête avec adresse et statut, cartes d'attestation, liste de documents, accordéons garanties et paiement" loading="lazy">
+        <figcaption>
+          <strong>Vue de détail du contrat 8 Rue des Lilas.</strong> Attestations, documents, garanties et paiement regroupés sur une seule page. Les documents appartiennent au contrat, pas à un onglet séparé.
+        </figcaption>
+      </figure>
+
+    </div>
+  </article>
+
+  <footer class="footer-contact contact">
+    <h2>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span></h2>
+    <div class="footer-links">
+      <span class="footer-link-row"><a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener">Prendre rendez-vous</a></span>
+      <span class="footer-link-row"><a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a></span>
+      <span class="footer-link-row"><a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a></span>
+      <span class="footer-link-row"><a href="https://x.com/legildas" target="_blank" rel="noopener">X</a></span>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

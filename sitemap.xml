@@ -2,15 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gildas.fyi/en.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/index.html"/>
+    <loc>https://gildas.fyi/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en"/>
     <lastmod>2026-03-31</lastmod>
   </url>
   <url>
-    <loc>https://gildas.fyi/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/index.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en.html"/>
+    <loc>https://gildas.fyi/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/"/>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/parti-pris-logiciel</loc>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/unsolicited-redesign-luko</loc>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/audit-ubaq-methode</loc>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/paradoxe-solow-ia</loc>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/impersonation-pattern</loc>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/gmail-etats-binaires</loc>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/think-different-write-smarter</loc>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/vous-navez-pas-besoin-dun-pm</loc>
+    <lastmod>2026-03-31</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/etude-de-cas-luko</loc>
     <lastmod>2026-03-31</lastmod>
   </url>
 </urlset>

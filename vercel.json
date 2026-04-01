@@ -1,6 +1,17 @@
 {
+  "buildCommand": "",
+  "outputDirectory": ".",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "destination": "/en.html" }
+    { "source": "/", "destination": "/en.html" },
+    { "source": "/gmail-etats-binaires", "destination": "/articles/gmail-etats-binaires" },
+    { "source": "/think-different-write-smarter", "destination": "/articles/think-different-write-smarter" },
+    { "source": "/unsolicited-redesign-luko", "destination": "/articles/unsolicited-redesign-luko" },
+    { "source": "/paradoxe-solow-ia", "destination": "/articles/paradoxe-solow-ia" },
+    { "source": "/etude-de-cas-luko", "destination": "/articles/etude-de-cas-luko" },
+    { "source": "/vous-navez-pas-besoin-dun-pm", "destination": "/articles/vous-navez-pas-besoin-dun-pm" },
+    { "source": "/impersonation-pattern", "destination": "/articles/impersonation-pattern" },
+    { "source": "/parti-pris-logiciel", "destination": "/articles/parti-pris-logiciel" },
+    { "source": "/audit-ubaq-methode", "destination": "/articles/audit-ubaq-methode" }
   ]
 }

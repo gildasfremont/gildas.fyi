@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vous n'avez pas besoin d'un Product Manager — Gildas Frémont</title>
+  <meta name="description" content="Ce n'est pas une provocation, c'est un constat. Sur le rôle du PM, le modèle IT vs produit, et Shape Up.">
+  <link rel="canonical" href="https://gildas.fyi/vous-navez-pas-besoin-dun-pm">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Vous n'avez pas besoin d'un Product Manager — Gildas Frémont">
+  <meta property="og:description" content="Ce n'est pas une provocation, c'est un constat. Sur le rôle du PM, le modèle IT vs produit, et Shape Up.">
+  <meta property="og:url" content="https://gildas.fyi/vous-navez-pas-besoin-dun-pm">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="index.html" onclick="if(history.length>1){history.back();return false;}">← Retour</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>Vous n'avez pas besoin d'un Product Manager</h1>
+      <p class="article-meta">Septembre 2024</p>
+    </header>
+
+    <div class="article-body">
+      <p>Ce n'est pas une provocation, c'est un constat. Dans la majorité des équipes avec lesquelles j'ai travaillé ces quinze dernières années, le Product Manager était soit la personne qui faisait tout fonctionner, soit celle qui ralentissait tout. Il y avait rarement d'entre-deux. Et quand j'ai commencé à me demander pourquoi, la réponse ne tenait pas aux personnes, elle tenait à ce qu'on leur demandait de faire.</p>
+
+      <p>Le modèle standard ressemble à peu près à ceci&nbsp;: le business a un problème, un PM le traduit en spécifications, les designers produisent des maquettes, les développeurs écrivent du code. C'est un pipeline. Chaque étape dépend de la précédente. Et au centre de ce pipeline se trouve le PM, qui est censé comprendre le client, négocier les priorités avec les parties prenantes, écrire des specs assez détaillées pour ne laisser aucune ambiguïté, et trouver encore le temps de penser stratégie. Ce sont quatre métiers différents. La plupart des gens en font un ou deux bien. Presque personne ne fait les quatre.</p>
+
+      <p>Le résultat est prévisible. Dans beaucoup d'organisations, le PM devient un goulet d'étranglement non pas parce qu'il est incompétent, mais parce que le rôle est surchargé par construction. Il passe ses journées en réunions d'alignement, à traduire entre des groupes qui pourraient se parler si quelqu'un avait pensé à organiser ça. Il rédige des documents qui tentent de supprimer toute ambiguïté de problèmes ambigus par nature, puis s'étonne que l'équipe construise quelque chose qui correspond au spec sur le papier mais passe à côté du sujet.</p>
+
+      <p>Voilà ce que j'en suis venu à penser&nbsp;: pas de PM vaut mieux qu'un mauvais PM. Un mauvais PM, c'est-à-dire pas une mauvaise personne mais quelqu'un piégé dans une mauvaise définition de rôle, fait du tort actif. Il s'interpose entre l'équipe et le problème. Il prend des décisions que l'équipe prendrait mieux, parce que l'équipe est plus proche de la matière. Il crée une dépendance là où aucune n'a besoin d'exister.</p>
+
+      <h2>Le modèle IT contre le modèle produit</h2>
+
+      <p>La plupart des entreprises qui pensent faire du produit font de l'IT avec un vocabulaire différent. Le test est simple&nbsp;: regardez ce qui descend du management vers l'équipe. Si ce sont des solutions, vous êtes en mode IT, peu importe ce qui est écrit sur les cartes de visite. En mode IT, vous avez besoin d'un PM, ou au moins d'un chef de projet, parce que quelqu'un doit coordonner l'exécution de solutions déjà décidées. C'est un travail de logistique, et il n'y a rien de mal à ça, mais appelons les choses par leur nom.</p>
+
+      <p>Le modèle produit est d'une autre nature. Dans un modèle produit, ce qui arrive à l'équipe est un problème. Pas une solution, pas une demande de fonctionnalité déguisée en user story, mais un vrai problème qu'un vrai client rencontre, formulé assez bien pour que l'équipe puisse vérifier si elle l'a résolu. La différence semble subtile mais elle change tout en aval.</p>
+
+      <p>Quand vous donnez un problème à une équipe au lieu d'une solution, plusieurs choses se produisent. D'abord, les personnes les plus proches de l'espace d'implémentation, designers et développeurs, commencent à générer des solutions. Ensuite, l'éventail des solutions possibles s'élargit, parce que vous ne l'avez pas pré-filtré à travers l'imagination d'une seule personne. Enfin, et c'est la partie que la plupart des managers trouvent inconfortable, l'équipe s'approprie le résultat.</p>
+
+      <h2>Les designers qui connaissent les clients</h2>
+
+      <p>Il existe une fiction organisationnelle tenace selon laquelle les designers ont besoin des PM pour savoir ce que veulent les clients. Cette fiction survit parce que dans la plupart des entreprises, les designers sont tenus à distance des vrais clients. Ils reçoivent de l'information de seconde main, filtrée par les PM ou par les données d'enquête qu'on a pensé à partager.</p>
+
+      <p>Mais c'est une contrainte auto-renforçante, pas une loi de la nature. Quand les designers passent du temps avec les clients, qu'ils les regardent travailler, qu'ils écoutent leurs plaintes, qu'ils comprennent le contexte dans lequel ils utilisent le produit, ils développent une intuition pour ce qui compte qu'aucune quantité de spécifications ne peut remplacer. Un designer qui a regardé vingt clients buter sur le même parcours n'a pas besoin qu'un PM lui écrive une user story. Il a déjà intériorisé le problème, et il griffonne des solutions dans son carnet depuis des semaines.</p>
+
+      <h2>Les développeurs se gèrent</h2>
+
+      <p>L'autre moitié de l'équation, c'est l'autonomie technique. Le modèle IT suppose que les développeurs sont des ressources d'exécution&nbsp;: ils reçoivent des spécifications et produisent du code. Cette hypothèse crée un besoin de specs toujours plus détaillées, parce que si le travail du développeur est d'implémenter ce qui est décrit, alors toute lacune dans la description devient un défaut.</p>
+
+      <p>D'expérience, les développeurs qui comprennent le problème qu'ils résolvent prennent de meilleures décisions d'implémentation que n'importe quelle spécification ne pourrait prescrire. Ils savent des choses sur le système qu'aucun document de PM ne capture&nbsp;: où se trouve la dette technique, quelles abstractions sont fragiles, où un petit changement d'approche pourrait économiser des semaines de travail. Quand vous leur confiez le problème, ils mobilisent ce savoir pour la solution. Quand vous leur tendez un spec, ils garent ce savoir et suivent les instructions.</p>
+
+      <p>Ça ne veut pas dire qu'il n'y a pas de structure. C'est même l'inverse. Une équipe sans PM a besoin de plus de rigueur méthodologique, pas moins, parce qu'il n'y a personne dont le métier est d'imposer l'ordre par la force de sa personnalité. La méthodologie devient la structure.</p>
+
+      <h2>Un framework qui remplace le coordinateur</h2>
+
+      <p>L'approche que j'utilise s'inspire de Shape Up, le travail de Ryan Singer chez Basecamp, adapté aux contextes dans lesquels j'ai opéré. Elle comporte quatre étapes, et l'ordre compte.</p>
+
+      <p>La première étape est de trouver une solution. Ça semble à l'envers, mais la logique est délibérée. On part du problème, oui. Mais le premier vrai travail que fait l'équipe est d'explorer si une solution viable existe dans des contraintes réalistes. C'est une investigation courte et ciblée&nbsp;: peut-on résoudre ça, comment en gros, et quelles seraient les parties difficiles&nbsp;?</p>
+
+      <p>La deuxième étape est de cadrer. Cadrer signifie décrire la solution au bon niveau d'abstraction, assez concret pour que tout le monde comprenne ce qu'on construit, assez abstrait pour que l'équipe garde une marge de manœuvre pendant l'implémentation. Un bon cadrage comporte des esquisses au feutre épais plutôt que des maquettes au pixel près. Le cadrage est ce qu'un spec de PM essaie d'être mais réussit rarement, parce qu'un spec essaie d'être exhaustif là où un cadrage essaie d'être clair.</p>
+
+      <p>La troisième étape est de définir l'appétit. L'appétit n'est pas une estimation. Une estimation répond à « combien de temps ça va prendre&nbsp;?&nbsp;», l'appétit répond à « combien de temps ça vaut&nbsp;?&nbsp;». La distinction compte. Une estimation est une prédiction sur l'avenir. L'appétit est une décision business sur l'investissement. Si la réponse est deux semaines et que la meilleure estimation de l'équipe est quatre, on ne négocie pas l'estimation, on réduit le périmètre ou on tue le projet.</p>
+
+      <p>La quatrième étape est de découper. Le découpage a lieu après que l'appétit est fixé, et il est fait par l'équipe qui va faire le travail. C'est là qu'on décompose la solution cadrée en morceaux qui peuvent être complétés un par un, qu'on identifie les inconnues qui doivent être résolues en premier, et qu'on prend les mille petites décisions que les specs essaient de prendre à l'avance mais n'y arrivent pas.</p>
+
+      <h2>Ce que ça donne en pratique</h2>
+
+      <p>En pratique, fonctionner de cette manière signifie que la personne qui aurait été PM devient quelque chose de plus proche d'un stratège produit ou d'un PO, quelqu'un qui maintient la liste des problèmes qui valent la peine d'être résolus, qui s'assure que l'équipe a accès aux clients, et qui participe aux décisions d'appétit. Il ne rédige pas de specs. Il ne gère pas le travail quotidien de l'équipe. Il ne s'assoit pas entre le problème et les gens qui le résolvent.</p>
+
+      <p>Les deux premières semaines sont toujours inconfortables. Les designers se demandent qui va leur dire quoi designer. Les développeurs demandent où sont les tickets. Les parties prenantes s'inquiètent parce que personne ne produit les rapports de suivi auxquels ils sont habitués. Ça passe. Une fois que l'équipe résout son premier vrai problème de bout en bout, sans qu'on lui dise comment, quelque chose bascule. Elle arrête de demander la permission et commence à demander de la clarté.</p>
+
+      <p>Le titre de ce texte est réducteur à dessein. Certaines équipes ont besoin d'un PM, et certains PM sont extraordinaires, le genre qui élève tout le monde autour d'eux parce qu'ils comprennent leur rôle comme celui d'un connecteur plutôt que d'un contrôleur. Mais le réflexe d'embaucher un PM chaque fois qu'une équipe galère mérite d'être questionné. Souvent l'équipe n'a pas besoin d'une personne de plus. Elle a besoin d'une meilleure méthode, d'un accès plus direct aux clients, et de la confiance pour résoudre les problèmes à sa manière.</p>
+    </div>
+  </article>
+
+  <footer class="footer-contact contact">
+    <h2>Gildas Frémont <span class="avatar-wrap"><img src="img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span></h2>
+    <div class="footer-links">
+      <span class="footer-link-row"><a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener">Prendre rendez-vous</a></span>
+      <span class="footer-link-row"><a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a></span>
+      <span class="footer-link-row"><a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a></span>
+      <span class="footer-link-row"><a href="https://x.com/legildas" target="_blank" rel="noopener">X</a></span>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

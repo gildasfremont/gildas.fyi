@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <style>
+    .label { font-size: 11px; fill: #959a93; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+    .step { font-size: 12px; fill: #1a1d1a; }
+    .step-muted { font-size: 12px; fill: #959a93; }
+    .count { font-size: 11px; fill: #959a93; }
+    .box { fill: #fff; stroke: #e5e8e3; stroke-width: 1; rx: 4; }
+    .box-problem { fill: #fff; stroke: #c8ccc6; stroke-width: 1; rx: 4; stroke-dasharray: 4 3; }
+    .arrow { stroke: #c8ccc6; stroke-width: 1; fill: none; marker-end: url(#arr); }
+    .arrow-new { stroke: #1a1d1a; stroke-width: 1; fill: none; marker-end: url(#arr2); }
+    .divider { stroke: #e5e8e3; stroke-width: 1; stroke-dasharray: 4 3; }
+  </style>
+  <defs>
+    <marker id="arr" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><path d="M0,0 L6,2 L0,4" fill="none" stroke="#c8ccc6" stroke-width="1"/></marker>
+    <marker id="arr2" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><path d="M0,0 L6,2 L0,4" fill="none" stroke="#1a1d1a" stroke-width="1"/></marker>
+  </defs>
+
+  <!-- Existing flow -->
+  <text x="20" y="24" class="label">Existant</text>
+  <text x="680" y="24" class="count" text-anchor="end">5 interactions</text>
+
+  <rect x="20" y="40" width="90" height="36" class="box"/>
+  <text x="65" y="62" class="step" text-anchor="middle">Home</text>
+  <line x1="110" y1="58" x2="134" y2="58" class="arrow"/>
+
+  <rect x="136" y="40" width="90" height="36" class="box"/>
+  <text x="181" y="62" class="step" text-anchor="middle">Contrats</text>
+  <line x1="226" y1="58" x2="250" y2="58" class="arrow"/>
+
+  <rect x="252" y="40" width="100" height="36" class="box"/>
+  <text x="302" y="62" class="step" text-anchor="middle">Ouvrir contrat</text>
+  <line x1="352" y1="58" x2="376" y2="58" class="arrow"/>
+
+  <rect x="378" y="40" width="72" height="36" class="box-problem"/>
+  <text x="414" y="62" class="step-muted" text-anchor="middle">Scroll ↓</text>
+  <line x1="450" y1="58" x2="474" y2="58" class="arrow"/>
+
+  <rect x="476" y="40" width="100" height="36" class="box-problem"/>
+  <text x="526" y="55" class="step-muted" text-anchor="middle">Accordéon</text>
+  <text x="526" y="68" class="step-muted" text-anchor="middle">Attestation</text>
+  <line x1="576" y1="58" x2="600" y2="58" class="arrow"/>
+
+  <rect x="602" y="40" width="98" height="36" class="box-problem"/>
+  <text x="651" y="55" class="step-muted" text-anchor="middle">Choisir type</text>
+  <text x="651" y="68" class="step-muted" text-anchor="middle">+ Générer</text>
+
+  <!-- Noise indicators -->
+  <text x="414" y="100" class="count" text-anchor="middle">bruit : bannière, newsletter, FAQ</text>
+
+  <!-- Divider -->
+  <line x1="20" y1="130" x2="700" y2="130" class="divider"/>
+
+  <!-- Redesign flow -->
+  <text x="20" y="164" class="label">Redesign</text>
+  <text x="680" y="164" class="count" text-anchor="end">3 interactions</text>
+
+  <rect x="20" y="180" width="150" height="36" class="box"/>
+  <text x="95" y="195" class="step" text-anchor="middle">Home →</text>
+  <text x="95" y="208" class="step" text-anchor="middle">Générer attestation</text>
+  <line x1="170" y1="198" x2="204" y2="198" class="arrow-new"/>
+
+  <rect x="206" y="180" width="150" height="36" class="box"/>
+  <text x="281" y="202" class="step" text-anchor="middle">Choisir le contrat</text>
+  <line x1="356" y1="198" x2="390" y2="198" class="arrow-new"/>
+
+  <rect x="392" y="180" width="170" height="36" class="box"/>
+  <text x="477" y="195" class="step" text-anchor="middle">Choisir le type →</text>
+  <text x="477" y="208" class="step" text-anchor="middle">téléchargement direct</text>
+
+  <!-- Comparison note -->
+  <text x="20" y="250" class="count">Le parcours existant demande de savoir dans quel contrat chercher.</text>
+  <text x="20" y="266" class="count">Le redesign part de l'intention (« j'ai besoin d'une attestation ») et guide vers le bon contrat.</text>
+
+</svg>
