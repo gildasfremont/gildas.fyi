@@ -331,7 +331,7 @@ h1, .footer-contact h2 {
 /* Intro — breaks out of container to the right */
 .intro {
   color: var(--dark);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-size: 3.5rem;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -407,27 +407,25 @@ section { margin-bottom: 3rem; }
 
 .entry.has-clamp::after {
   content: 'Lire la suite';
-  display: block;
+  display: none;
   color: var(--light);
   font-size: 0.75em;
-  margin-top: 0.2rem;
-  opacity: 0;
-  transition: opacity 0.15s;
+  margin-top: 0.45rem;
 }
 
 .entry.has-clamp:hover::after {
-  opacity: 1;
+  display: block;
 }
 
 .entry.has-clamp.expanded::after {
   content: 'Réduire';
-  opacity: 1;
+  display: block;
 }
 
 .entry-role {
   color: var(--light);
   font-size: 0.7rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
 }
 
 .entry-link {
@@ -514,6 +512,9 @@ section { margin-bottom: 3rem; }
 
 span.milestone-tag {
   pointer-events: none;
+}
+
+.edu-row .mid > span.milestone-tag {
   margin-left: 0.25rem;
 }
 
@@ -534,9 +535,11 @@ span.milestone-tag {
 
 /* Education */
 .edu-row {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   align-items: baseline;
 }
+
+.edu-row:last-child { margin-bottom: 0; }
 
 .edu-row .left span {
   font-weight: 500;
@@ -762,7 +765,7 @@ span.milestone-tag {
   margin: 2rem 0 0.75rem;
 }
 
-.article-body h2:first-of-type { margin-top: 1rem; }
+.article-body h2:first-of-type { margin-top: 1.5rem; }
 
 .article-body-cta {
   margin: 1.5rem 0;
@@ -811,7 +814,7 @@ footer {
 }
 
 .footer-contact h2 {
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .footer-cols {
@@ -883,31 +886,69 @@ footer {
 
 /* Print */
 @media print {
+  /* Hide interactive/decorative elements */
   .topbar,
   .milestone-tag svg,
   .section-articles,
   .entry::before,
   .edu-row::before,
-  .article-entry::before { display: none; }
-  body { background: white; filter: none; opacity: 1; line-height: 1.4; }
-  .container { padding: 0.15rem 0; max-width: 100%; font-size: 0.62rem; }
-  header { margin-bottom: 0.5rem; }
-  .contact-dropdown {
-    display: flex !important; flex-direction: row; flex-wrap: wrap;
-    position: static; border: none; box-shadow: none; padding: 0.15rem 0 0;
-    background: none; gap: 0.1rem 0.75rem;
+  .article-entry::before,
+  .entry.has-clamp::after,
+  .entry-link,
+  .copy-btn,
+  .no-print { display: none; }
+
+  /* Expose actual values instead of link labels */
+  .contact-tel { font-size: 0; }
+  .contact-tel::after { content: '+33 6 60 24 71 71'; font-size: 0.58rem; }
+  .contact-email { font-size: 0; }
+  .contact-email::after { content: 'gildas@hey.com'; font-size: 0.58rem; }
+  footer a[href*="linkedin"] { font-size: 0; }
+  footer a[href*="linkedin"]::after { content: 'linkedin.com/in/gildasfremont'; font-size: 0.58rem; }
+  footer a[href*="x.com"] { font-size: 0; }
+  footer a[href*="x.com"]::after { content: 'x.com/legildas'; font-size: 0.58rem; }
+
+  body { background: white; filter: none; opacity: 1; line-height: 1.35; }
+  .container { display: flex; flex-direction: column; padding: 0; max-width: 100%; font-size: 0.58rem; }
+
+  /* Move footer to top as CV header via order */
+  footer { display: block; order: -1; margin: 0 0 0.5rem; padding-bottom: 0.35rem; border-bottom: 0.5px solid #ddd; font-size: 0.58rem; }
+  footer h2 { margin-bottom: 0.2rem; }
+  footer .header-name { font-size: 0.9rem; }
+  footer .header-title { display: inline; font-size: 0.9rem; }
+  .footer-cols { display: flex; flex-wrap: wrap; gap: 0 0.75rem; }
+  .footer-col { flex-direction: row; gap: 0.5rem; }
+
+  /* Hide page header (name + intro — redundant with footer-as-header) */
+  header { display: none; }
+
+  /* EN resume: no photo (US/UK convention) */
+  :lang(en) .avatar-wrap { display: none; }
+
+  /* Sections */
+  section { margin-bottom: 0.4rem; }
+  .section-title { margin-bottom: 0.2rem; font-size: 0.6rem; font-weight: 700; }
+
+  /* Entries: clamp paragraphs to 2 lines for density */
+  .entry { margin-bottom: 0.35rem; }
+  .entry-header { margin-bottom: 0.1rem; }
+  .entry-role { margin-bottom: 0.05rem; font-size: 0.52rem; }
+  .entry p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
   }
-  .contact-item { padding: 0.1rem 0; white-space: nowrap; }
-  .intro { margin-bottom: 0.3rem; font-size: 0.75rem; font-weight: 400; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; text-align: left; }
-  .hero-title { font-size: 0.75rem; margin-bottom: 0.2rem; }
-  .header-title { display: none; }
-  section { margin-bottom: 0.75rem; }
-  .section-title { margin-bottom: 0.3rem; }
-  .entry { margin-bottom: 0.4rem; }
-  .entry-header { margin-bottom: 0.15rem; }
-  .edu-row { margin-bottom: 0.25rem; }
-  .tools { margin-top: 0.25rem; }
-  .sector-tags { margin: 0.15rem 0; gap: 0.15rem; }
-  .sector-tag { font-size: 0.5rem; padding: 0.05rem 0.3rem; }
-  footer { display: none; }
+
+  /* Education */
+  .edu-row { margin-bottom: 0.15rem; }
+
+  /* Tools */
+  .tools { margin-top: 0.15rem; }
+
+  /* Milestones */
+  .milestone-tags { margin: 0.1rem 0; gap: 0.08rem; }
+  .milestone-tag { font-size: 0.46rem; padding: 0.02rem 0.2rem; }
+  .sector-tags { margin: 0.1rem 0; gap: 0.1rem; }
+  .sector-tag { font-size: 0.46rem; padding: 0.02rem 0.2rem; }
 }
