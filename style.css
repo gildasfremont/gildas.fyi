@@ -332,7 +332,7 @@ h1, .footer-contact h2 {
 .intro {
   color: var(--dark);
   margin-bottom: 1.5rem;
-  font-size: 3.5rem;
+  font-size: 1rem;
   line-height: 1.05;
   letter-spacing: -0.02em;
   opacity: 0;
