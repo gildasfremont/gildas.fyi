@@ -53,7 +53,7 @@ body.fonts-loaded {
 .container {
   max-width: 860px;
   margin: 0 auto;
-  padding: 4rem 1.5rem 3rem;
+  padding: 1rem 1.5rem 3rem;
   font-size: 0.8125rem;
 }
 
@@ -62,7 +62,7 @@ body.fonts-loaded {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 3rem;
 }
 
 /* Language toggle — segmented control */
@@ -218,7 +218,12 @@ body.fonts-loaded {
 }
 
 /* Header */
-header { margin-bottom: 2rem; margin-top: 0.5rem; }
+header { margin-bottom: 2rem; }
+
+.header-name .avatar {
+  width: 1.8rem;
+  height: 1.8rem;
+}
 
 h1, .footer-contact h2 {
   font-size: 1rem;
@@ -324,7 +329,7 @@ h1, .footer-contact h2 {
 /* Intro — breaks out of container to the right */
 .intro {
   color: var(--dark);
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   font-size: 3.5rem;
   line-height: 1.05;
   letter-spacing: -0.02em;
