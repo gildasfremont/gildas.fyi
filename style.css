@@ -894,6 +894,7 @@ footer {
   .edu-row::before,
   .article-entry::before,
   .entry.has-clamp::after,
+  .entry.has-clamp.expanded::after,
   .entry-link,
   .copy-btn,
   .no-print { display: none; }
@@ -912,7 +913,7 @@ footer {
   .container { display: flex; flex-direction: column; padding: 0; max-width: 100%; font-size: 0.58rem; }
 
   /* Move footer to top as CV header via order */
-  footer { display: block; order: -1; margin: 0 0 0.5rem; padding-bottom: 0.35rem; border-bottom: 0.5px solid #ddd; font-size: 0.58rem; }
+  footer { display: block; order: -1; margin: 0 0 0.6rem; padding-bottom: 0; border: none; font-size: 0.58rem; }
   footer h2 { margin-bottom: 0.2rem; }
   footer .header-name { font-size: 0.9rem; }
   footer .header-title { display: inline; font-size: 0.9rem; }
@@ -926,13 +927,13 @@ footer {
   :lang(en) .avatar-wrap { display: none; }
 
   /* Sections */
-  section { margin-bottom: 0.4rem; }
-  .section-title { margin-bottom: 0.2rem; font-size: 0.6rem; font-weight: 700; }
+  section { margin-bottom: 0.6rem; }
+  .section-title { margin-bottom: 0.25rem; font-size: 0.6rem; font-weight: 700; border: none; }
 
-  /* Entries: clamp paragraphs to 2 lines for density */
-  .entry { margin-bottom: 0.35rem; }
-  .entry-header { margin-bottom: 0.1rem; }
-  .entry-role { margin-bottom: 0.05rem; font-size: 0.52rem; }
+  /* Entries */
+  .entry { margin-bottom: 0.45rem; }
+  .entry-header { margin-bottom: 0.1rem; display: inline; }
+  .entry-role { display: inline; margin-bottom: 0; margin-left: 0.3rem; font-size: 0.52rem; }
   .entry p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -941,7 +942,7 @@ footer {
   }
 
   /* Education */
-  .edu-row { margin-bottom: 0.15rem; }
+  .edu-row { margin-bottom: 0.25rem; }
 
   /* Tools */
   .tools { margin-top: 0.15rem; }
