@@ -71,6 +71,10 @@
         var expanded=p.classList.toggle('expanded');
         entry.classList.toggle('expanded',expanded);
         toggle.textContent=expanded?((isEn?'See less':'Voir moins')+' \u2191'):((isEn?'See more':'Voir plus')+' \u2193');
+        if(!expanded){
+          var rect=entry.getBoundingClientRect();
+          if(rect.top<0) entry.scrollIntoView({behavior:'smooth',block:'start'});
+        }
       });
     }
   });
