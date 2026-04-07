@@ -160,8 +160,8 @@ body.fonts-loaded {
 .menu-dropdown {
   display: none;
   position: absolute;
-  top: 100%;
-  left: calc(50vw - 50%);
+  top: calc(100% + 0.3rem);
+  left: 0;
   min-width: 10rem;
   padding: 0.25rem;
   background: var(--white);
@@ -1001,8 +1001,8 @@ footer {
   .intro { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
 
   /* Hide hamburger, show title+chevron as menu trigger */
-  .menu-wrap { display: none; }
-  .menu-dropdown { left: 0; right: auto; }
+  .menu-toggle { display: none; }
+  .menu-wrap { flex: 1; min-width: 0; }
   .title-toggle {
     position: static;
     transform: none;
