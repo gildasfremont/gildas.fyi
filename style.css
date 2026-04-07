@@ -125,7 +125,7 @@ body.fonts-loaded {
 
 /* Hamburger menu */
 .menu-wrap {
-  position: relative;
+  position: static;
 }
 
 .menu-toggle {
@@ -1002,7 +1002,7 @@ footer {
 
   /* Hide hamburger, show title+chevron as menu trigger */
   .menu-toggle { display: none; }
-  .menu-wrap { flex: 1; min-width: 0; }
+  .menu-wrap { position: relative; flex: 1; min-width: 0; }
   .title-toggle {
     position: static;
     transform: none;
