@@ -992,12 +992,7 @@ footer {
   html { font-size: 20px; }
   .container { max-width: 100%; padding: 3rem 2rem 2rem; }
   .intro { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
-}
 
-/* Responsive — large mobile */
-@media (max-width: 600px) {
-  html { font-size: 19.7px; }
-  .container { padding: 2.5rem 1.5rem 2rem; }
   /* Title + chevron as one clickable unit */
   .menu-toggle {
     width: auto;
@@ -1033,6 +1028,12 @@ footer {
     padding: 0.1rem 0.4rem;
   }
   .lang-toggle a:hover { color: var(--dark); border-color: var(--subtle); }
+}
+
+/* Responsive — large mobile */
+@media (max-width: 600px) {
+  html { font-size: 19.7px; }
+  .container { padding: 2.5rem 1.5rem 2rem; }
 
   .row {
     grid-template-columns: 1fr auto;
