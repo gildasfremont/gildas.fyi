@@ -983,11 +983,12 @@ footer {
   .lang-toggle a.active { display: none; }
   .lang-toggle a {
     color: var(--light);
-    background: var(--border);
+    background: none;
+    border: 1px solid var(--border);
     border-radius: 4px;
     padding: 0.1rem 0.4rem;
   }
-  .lang-toggle a:hover { color: var(--dark); }
+  .lang-toggle a:hover { color: var(--dark); border-color: var(--subtle); }
 
   .row {
     grid-template-columns: 1fr auto;
