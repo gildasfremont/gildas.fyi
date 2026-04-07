@@ -132,7 +132,7 @@ body.fonts-loaded {
   display: none;
   position: absolute;
   top: calc(100% + 0.3rem);
-  right: 0;
+  left: 0;
   min-width: 10rem;
   padding: 0.25rem;
   background: var(--white);
