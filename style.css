@@ -93,9 +93,6 @@ body.fonts-loaded {
 }
 
 .header-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   pointer-events: none;
 }
 
@@ -143,10 +140,14 @@ body.fonts-loaded {
   cursor: pointer;
 }
 
-/* Title-toggle: hidden on desktop, visible on mobile */
+/* Title-toggle: on desktop shows title centered, no chevron, no click */
 .title-toggle {
   all: unset;
-  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 .title-toggle .icon-chevron { display: none; }
@@ -1003,19 +1004,19 @@ footer {
   .menu-wrap { display: none; }
   .menu-dropdown { left: 0; right: auto; }
   .title-toggle {
+    position: static;
+    transform: none;
     display: inline-flex;
     align-items: center;
     gap: 0.2rem;
     flex: 1;
     min-width: 0;
     cursor: pointer;
+    pointer-events: auto;
     color: var(--light);
   }
   .title-toggle .icon-chevron { display: block; flex-shrink: 0; }
   .header-title {
-    position: static;
-    transform: none;
-    pointer-events: auto;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
