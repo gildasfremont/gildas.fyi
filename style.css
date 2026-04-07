@@ -160,8 +160,8 @@ body.fonts-loaded {
 .menu-dropdown {
   display: none;
   position: absolute;
-  top: calc(100% + 0.3rem);
-  left: 0;
+  top: 100%;
+  left: calc(50vw - 50%);
   min-width: 10rem;
   padding: 0.25rem;
   background: var(--white);
