@@ -998,25 +998,29 @@ footer {
 @media (max-width: 600px) {
   html { font-size: 19.7px; }
   .container { padding: 2.5rem 1.5rem 2rem; }
-  /* Title left-aligned with chevron inline */
-  .header-title {
-    position: static;
-    transform: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0;
-    order: -1;
-  }
-
-  /* Menu: inline chevron next to title */
-  .menu-wrap { order: 0; }
+  /* Title + chevron as one clickable unit */
   .menu-toggle {
     width: auto;
     height: auto;
     padding: 0;
+    gap: 0.2rem;
+    border-radius: 0;
+    flex: 1;
+    min-width: 0;
+    justify-content: flex-start;
   }
+  .menu-toggle:hover { background: none; }
   .menu-toggle .icon-burger { display: none; }
-  .menu-toggle .icon-chevron { display: block; }
+  .menu-toggle .icon-chevron { display: block; flex-shrink: 0; }
+  .header-title {
+    position: static;
+    transform: none;
+    pointer-events: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+  .menu-wrap { flex: 1; min-width: 0; }
 
   /* Lang toggle: single button for the other language */
   .lang-toggle { background: none; padding: 0; }
