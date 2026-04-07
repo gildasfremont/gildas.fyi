@@ -143,6 +143,8 @@ body.fonts-loaded {
   cursor: pointer;
 }
 
+.menu-toggle .icon-chevron { display: none; }
+
 .menu-toggle:hover {
   color: var(--dark);
   background: var(--border);
@@ -997,6 +999,10 @@ footer {
   html { font-size: 19.7px; }
   .container { padding: 2.5rem 1.5rem 2rem; }
   .header-title { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+
+  /* Menu: chevron instead of hamburger */
+  .menu-toggle .icon-burger { display: none; }
+  .menu-toggle .icon-chevron { display: block; }
 
   /* Lang toggle: single button for the other language */
   .lang-toggle { background: none; padding: 0; }
