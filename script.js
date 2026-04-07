@@ -12,24 +12,30 @@
   function revealOnce(){reveal();document.removeEventListener('click',revealOnce);document.removeEventListener('touchstart',revealOnce);}
   document.addEventListener('click',revealOnce);
   document.addEventListener('touchstart',revealOnce);
-  // Hamburger menu
-  document.querySelectorAll('.menu-toggle').forEach(function(btn){
-    var dd=btn.nextElementSibling;
-    btn.addEventListener('click',function(ev){
+  // Hamburger / title-toggle menu
+  document.querySelectorAll('.menu-wrap').forEach(function(wrap){
+    var dd=wrap.querySelector('.menu-dropdown');
+    if(!dd)return;
+    var burger=wrap.querySelector('.menu-toggle');
+    var titleBtn=wrap.querySelector('.title-toggle');
+    function toggle(ev){
       ev.stopPropagation();
       var open=dd.classList.toggle('open');
-      btn.setAttribute('aria-expanded',open);
-    });
+      if(burger)burger.setAttribute('aria-expanded',open);
+    }
+    if(burger)burger.addEventListener('click',toggle);
+    if(titleBtn)titleBtn.addEventListener('click',toggle);
     dd.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click',function(){dd.classList.remove('open');btn.setAttribute('aria-expanded','false');});
+      a.addEventListener('click',function(){dd.classList.remove('open');if(burger)burger.setAttribute('aria-expanded','false');});
     });
   });
   document.addEventListener('click',function(ev){
     document.querySelectorAll('.menu-dropdown.open').forEach(function(dd){
-      if(!dd.contains(ev.target)&&!dd.previousElementSibling.contains(ev.target)){
-        dd.classList.remove('open');
-        dd.previousElementSibling.setAttribute('aria-expanded','false');
-      }
+      var wrap=dd.closest('.menu-wrap');
+      if(!wrap||wrap.contains(ev.target))return;
+      dd.classList.remove('open');
+      var b=wrap.querySelector('.menu-toggle');
+      if(b)b.setAttribute('aria-expanded','false');
     });
   });
   // Footer copy buttons
@@ -162,6 +168,37 @@
     var txt=el.querySelector('.left span');
     if(txt) el.style.setProperty('--glow',titleToGlow(txt.textContent));
   });
+
+  // Topbar glow: pick up --glow from the entry behind the navbar
+  (function(){
+    var topbar=document.querySelector('.topbar');
+    if(!topbar)return;
+    var glow=document.createElement('div');
+    glow.className='topbar-glow';
+    topbar.appendChild(glow);
+    var lastColor=null;
+    function update(){
+      var barBottom=topbar.getBoundingClientRect().bottom;
+      var hit=null;
+      var els=document.querySelectorAll('[style*="--glow"]');
+      for(var i=0;i<els.length;i++){
+        var r=els[i].getBoundingClientRect();
+        if(r.top<barBottom&&r.bottom>0){hit=els[i];break;}
+      }
+      var color=hit?getComputedStyle(hit).getPropertyValue('--glow').trim():null;
+      if(color!==lastColor){
+        lastColor=color;
+        if(color){
+          glow.style.background='rgba('+color+',0.12)';
+          glow.style.opacity='1';
+        }else{
+          glow.style.opacity='0';
+        }
+      }
+      requestAnimationFrame(update);
+    }
+    update();
+  })();
 
   // Cursor halo: follows mouse over glow zones, tinted slightly darker
   var halo=document.createElement('div');

@@ -17,7 +17,7 @@
   --black: #1a1d1a;
   --dark: var(--black);
   --mid: var(--black);
-  --light: #959a93;
+  --light: #727872;
   --subtle: #c8ccc6;
   --border: #e5e8e3;
   --bg: #fdfefd;
@@ -69,6 +69,31 @@ body.fonts-loaded {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-top: 1.5rem;
+  padding-bottom: 0.75rem;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+  background: var(--bg);
+}
+
+.topbar-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(40px);
+  opacity: 0;
+  transition: opacity 0.6s ease, background 0.6s ease;
+}
+
+.header-title {
+  pointer-events: none;
 }
 
 /* Language toggle — segmented control */
@@ -100,7 +125,7 @@ body.fonts-loaded {
 
 /* Hamburger menu */
 .menu-wrap {
-  position: relative;
+  position: static;
 }
 
 .menu-toggle {
@@ -115,6 +140,18 @@ body.fonts-loaded {
   cursor: pointer;
 }
 
+/* Title-toggle: on desktop shows title centered, no chevron, no click */
+.title-toggle {
+  all: unset;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.title-toggle .icon-chevron { display: none; }
+
 .menu-toggle:hover {
   color: var(--dark);
   background: var(--border);
@@ -124,7 +161,7 @@ body.fonts-loaded {
   display: none;
   position: absolute;
   top: calc(100% + 0.3rem);
-  right: 0;
+  left: 0;
   min-width: 10rem;
   padding: 0.25rem;
   background: var(--white);
@@ -263,6 +300,7 @@ h1, .footer-contact h2 {
   font-weight: 300;
   color: var(--light);
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 /* Shared inline images: avatar, logos */
@@ -303,10 +341,12 @@ h1, .footer-contact h2 {
 }
 
 .section-title {
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--dark);
   margin-bottom: 1.25rem;
   font-variation-settings: 'GEOM' 0;
+  letter-spacing: -0.01em;
 }
 
 /* Shared row grid: left / mid / right */
@@ -411,6 +451,12 @@ section { margin-bottom: 3rem; }
 
 .entry p {
   color: var(--mid);
+}
+
+.entry p,
+.article-body p,
+.article-subtitle {
+  max-width: 620px;
 }
 .short-text { display: none; }
 
@@ -961,13 +1007,47 @@ footer {
   html { font-size: 20px; }
   .container { max-width: 100%; padding: 3rem 2rem 2rem; }
   .intro { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
+
+  /* Hide hamburger, show title+chevron as menu trigger */
+  .menu-toggle { display: none; }
+  .menu-wrap { position: relative; flex: 1; min-width: 0; }
+  .title-toggle {
+    position: static;
+    transform: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    flex: 1;
+    min-width: 0;
+    cursor: pointer;
+    pointer-events: auto;
+    color: var(--light);
+  }
+  .title-toggle .icon-chevron { display: block; flex-shrink: 0; }
+  .header-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  /* Lang toggle: single button for the other language */
+  .lang-toggle { background: none; padding: 0; }
+  .lang-toggle a.active { display: none; }
+  .lang-toggle a {
+    color: var(--light);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+  }
+  .lang-toggle a:hover { color: var(--dark); border-color: var(--subtle); }
 }
 
 /* Responsive — large mobile */
 @media (max-width: 600px) {
   html { font-size: 19.7px; }
   .container { padding: 2.5rem 1.5rem 2rem; }
-  .header-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1; }
 
   .row {
     grid-template-columns: 1fr auto;
