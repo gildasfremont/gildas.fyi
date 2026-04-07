@@ -163,6 +163,37 @@
     if(txt) el.style.setProperty('--glow',titleToGlow(txt.textContent));
   });
 
+  // Topbar glow: pick up --glow from the entry behind the navbar
+  (function(){
+    var topbar=document.querySelector('.topbar');
+    if(!topbar)return;
+    var glow=document.createElement('div');
+    glow.className='topbar-glow';
+    topbar.appendChild(glow);
+    var lastColor=null;
+    function update(){
+      var barBottom=topbar.getBoundingClientRect().bottom;
+      var hit=null;
+      var els=document.querySelectorAll('[style*="--glow"]');
+      for(var i=0;i<els.length;i++){
+        var r=els[i].getBoundingClientRect();
+        if(r.top<barBottom&&r.bottom>0){hit=els[i];break;}
+      }
+      var color=hit?getComputedStyle(hit).getPropertyValue('--glow').trim():null;
+      if(color!==lastColor){
+        lastColor=color;
+        if(color){
+          glow.style.background='rgba('+color+',0.12)';
+          glow.style.opacity='1';
+        }else{
+          glow.style.opacity='0';
+        }
+      }
+      requestAnimationFrame(update);
+    }
+    update();
+  })();
+
   // Cursor halo: follows mouse over glow zones, tinted slightly darker
   var halo=document.createElement('div');
   halo.style.cssText='position:fixed;width:120px;height:120px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.3s ease;filter:blur(40px);transform:translate(-50%,-50%);';
