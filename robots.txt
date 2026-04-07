@@ -2,3 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://gildas.fyi/sitemap.xml
+
+# LLM-readable summary
+# See https://llmstxt.org
+# llms.txt: https://gildas.fyi/llms.txt

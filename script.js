@@ -78,20 +78,29 @@
       });
     }
   });
-  // Fit intro: binary search for max font-size that keeps exactly 3 lines
+  // Fit intro: binary search for max font-size where no line overflows
   (function fitIntro(){
     var el=document.querySelector('.intro');
     if(!el)return;
-    var nLines=(el.querySelector('strong')||el).innerHTML.split(/<br\s*\/?>/i).length;
+    var lines=el.querySelectorAll('.intro-line');
+    if(!lines.length)return;
     var tid;
+    function overflows(size){
+      el.style.fontSize=size+'px';
+      var cs=getComputedStyle(el);
+      var w=el.clientWidth-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0);
+      for(var i=0;i<lines.length;i++){
+        var range=document.createRange();
+        range.selectNodeContents(lines[i]);
+        if(range.getBoundingClientRect().width>w+1)return true;
+      }
+      return false;
+    }
     function fit(){
-      el.style.fontSize='';
-      var padR=parseFloat(getComputedStyle(el).paddingRight)||0;
       var lo=8,hi=150;
       while(hi-lo>0.5){
         var mid=(lo+hi)/2;
-        el.style.fontSize=mid+'px';
-        if(el.scrollHeight>mid*1.05*(nLines+0.5)||el.scrollWidth>el.clientWidth+1){hi=mid;}else{lo=mid;}
+        if(overflows(mid)){hi=mid;}else{lo=mid;}
       }
       el.style.fontSize=lo+'px';
     }
@@ -115,7 +124,7 @@
     if(hue<60){r=c;g=x;b=0;}else if(hue<120){r=x;g=c;b=0;}else if(hue<180){r=0;g=c;b=x;}
     else if(hue<240){r=0;g=x;b=c;}else if(hue<300){r=x;g=0;b=c;}else{r=c;g=0;b=x;}
     var rgb=Math.round((r+m)*255)+','+Math.round((g+m)*255)+','+Math.round((b+m)*255);
-    aHalo.style.cssText='position:fixed;width:120px;height:120px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.3s ease;filter:blur(40px);transform:translate(-50%,-50%);background:rgba('+rgb+',0.12);';
+    aHalo.style.cssText='position:fixed;width:120px;height:120px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.3s ease;filter:blur(40px);transform:translate(-50%,-50%);background:rgba('+rgb+',0.16);';
     document.body.appendChild(aHalo);
     var aRaf=null;
     document.addEventListener('mousemove',function(e){
@@ -177,7 +186,7 @@
         var glow=getComputedStyle(el).getPropertyValue('--glow').trim();
         if(glow!==currentGlow){
           currentGlow=glow;
-          halo.style.background='rgba('+darken(glow)+',0.1)';
+          halo.style.background='rgba('+darken(glow)+',0.14)';
         }
         halo.style.opacity='1';
       }else{

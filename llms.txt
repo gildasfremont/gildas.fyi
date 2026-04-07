@@ -1,0 +1,42 @@
+# Gildas Frémont — Direction produit à la demande
+
+## Qui
+Gildas Frémont est un directeur produit freelance basé en France.
+
+## Ce qu'il fait
+Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équipe en place. Ses interventions couvrent : audit produit, design system, création produit, simplification de parcours complexes, construction de SI, PLG, et direction produit opérationnelle.
+
+## Missions freelance (27 missions en 3 ans)
+- Lucca (depuis 2023) — Éditeur RH, 13 modules, 7 800 clients. Design system, création produit, PLG, simplification de parcours complexes. Plus de 200 jours d'intervention.
+- Synaxe — Pivot d'une surcouche capteurs vers un outil de gestion et conformité pour matériaux dangereux. Livré maquettes et specs. Six mois.
+- Guinet-Derriaz 1912 — Groupe industriel du marbre, 14 carrières, aucun SI. Construction from scratch, budget 100 k€. Un an.
+- UBAQ — Audit UX complet de la plateforme NTU : entretiens, cartographie des problèmes, diagnostic des modèles mentaux. Livré maquettes de correction et roadmap revue.
+
+## Parcours salarié
+- Lucca (employé nº 10, 2011–2014) — Premier UX designer. Création du pôle Design. Onboarding passé de 3 jours à 45 minutes. Levée de 100 M€ en 2022.
+- Ornikar (employé nº 8, 2014–2016) — Premier product manager, marché réglementé du permis en ligne. Développement de l'équipe produit, parcours élèves et enseignants, inscriptions aux épreuves dans 96 services départementaux, montée du support. De zéro à 15 000 utilisateurs payants en 18 mois. Depuis, plus d'un million d'inscrits, leader français. Trophée de design stratégique (2015). $145 M levés de 2018 à 2021.
+- monbanquet.fr (directeur produit, 2017–2019) — Traiteur en ligne. Outil commercial : devis sur-mesure en 30 min vs. plusieurs jours. Funnel d'acquisition +50 %. Racheté par B2B Food Group (2020).
+- zoneadsl.com (directeur produit, 2019–2020) — 1,2 M visiteurs/mois. Refonte des parcours d'acquisition et du CMS. Architecture d'information encore utilisée aujourd'hui. Racheté par hipto (2026).
+
+## Articles
+- L'impersonation : un pattern qui structure un logiciel entier — https://gildas.fyi/impersonation-pattern
+- Anatomie d'un audit produit : méthode et raisonnement — https://gildas.fyi/audit-ubaq-methode
+- Le paradoxe de Solow appliqué à l'IA — https://gildas.fyi/paradoxe-solow-ia
+- Parti pris logiciel — https://gildas.fyi/parti-pris-logiciel
+- Unsolicited redesign Luko — https://gildas.fyi/unsolicited-redesign-luko
+- Étude de cas Luko — https://gildas.fyi/etude-de-cas-luko
+- Gmail et les états binaires — https://gildas.fyi/gmail-etats-binaires
+- De 'Think Different' à 'Write Smarter' — https://gildas.fyi/think-different-write-smarter
+- Vous n'avez pas besoin d'un Product Manager — https://gildas.fyi/vous-navez-pas-besoin-dun-pm
+
+## Formation
+- Le Wagon — Bootcamp développeur full-stack (Batch 30)
+- Strate, Paris — Master design industriel & interaction
+- Grenoble EM — Master management de l'innovation
+- Saint-Jean de Douai — Classes préparatoires ECS
+
+## Contact
+- Site : https://gildas.fyi
+- LinkedIn : https://linkedin.com/in/gildasfremont
+- X : https://x.com/legildas
+- Prendre rendez-vous : https://cal.com/gildas/15min
