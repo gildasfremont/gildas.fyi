@@ -69,6 +69,14 @@ body.fonts-loaded {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 3rem;
+  position: relative;
+}
+
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 /* Language toggle — segmented control */
@@ -263,6 +271,7 @@ h1, .footer-contact h2 {
   font-weight: 300;
   color: var(--light);
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 /* Shared inline images: avatar, logos */
@@ -967,7 +976,18 @@ footer {
 @media (max-width: 600px) {
   html { font-size: 19.7px; }
   .container { padding: 2.5rem 1.5rem 2rem; }
-  .header-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1; }
+  .header-title { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+
+  /* Lang toggle: single button for the other language */
+  .lang-toggle { background: none; padding: 0; }
+  .lang-toggle a.active { display: none; }
+  .lang-toggle a {
+    color: var(--light);
+    background: var(--border);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+  }
+  .lang-toggle a:hover { color: var(--dark); }
 
   .row {
     grid-template-columns: 1fr auto;
