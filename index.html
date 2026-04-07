@@ -54,14 +54,13 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
 <div class="container">
 
   <div class="topbar">
-    <nav class="lang-toggle">
-      <a href="en.html">EN</a>
-      <a href="index.html" class="active">FR</a>
-    </nav>
-    <span class="header-title">Direction produit à la demande</span>
     <div class="menu-wrap">
       <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg class="icon-burger" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <button class="title-toggle">
+        <span class="header-title">Direction produit à la demande</span>
+        <svg class="icon-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <nav class="menu-dropdown">
         <a href="#missions">Missions</a>
@@ -71,6 +70,10 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
         <a href="#contact">Contact</a>
       </nav>
     </div>
+    <nav class="lang-toggle">
+      <a href="en.html">EN</a>
+      <a href="index.html" class="active">FR</a>
+    </nav>
   </div>
 
   <main>
@@ -169,7 +172,7 @@ if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts
       </div>
       <div class="entry-role">Employé nº&nbsp;8, 2014 à 2016</div>
       <p>
-        <span class="long-text">Premier product manager, sur un marché réglementé où il n'existait encore ni plateforme, ni cadre juridique pour passer le permis en ligne. Plusieurs startups qui attaquent le même marché. J'ai développé l'équipe produit, conçu les parcours élèves et enseignants, la réservation d'heures, le planning, la gestion des inscriptions aux épreuves dans les&nbsp;96&nbsp;services départementaux, monté l'équipe support en interne, et poussé une priorisation par réduction de friction plutôt que par acquisition. En dix-huit mois nous sommes passés de zéro à&nbsp;15&nbsp;000&nbsp;utilisateurs payants. La plateforme a depuis dépassé le million d'inscrits et fait d'Ornikar le leader français de la formation à la conduite.</span>
+        <span class="long-text">Premier product manager, sur un marché réglementé où il n'existait encore ni plateforme, ni cadre juridique pour passer le permis en ligne. J'ai développé l'équipe produit, conçu les parcours élèves et enseignants, la gestion des inscriptions aux épreuves dans les&nbsp;96&nbsp;services départementaux, monté l'équipe support en interne, et poussé une priorisation par réduction de friction plutôt que par acquisition. Nous sommes passés de zéro à&nbsp;15&nbsp;000&nbsp;utilisateurs payants. La plateforme a depuis dépassé le million d'inscrits.</span>
         <span class="short-text">Marché réglementé, rien n'existait encore. Développement de l'équipe produit, conception des parcours élèves et enseignants, montée du support. De zéro à&nbsp;15&nbsp;000&nbsp;utilisateurs payants en&nbsp;18&nbsp;mois. Depuis, plus d'un million d'inscrits.</span>
       </p>
       <div class="milestone-tags">
