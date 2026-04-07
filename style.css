@@ -998,9 +998,23 @@ footer {
 @media (max-width: 600px) {
   html { font-size: 19.7px; }
   .container { padding: 2.5rem 1.5rem 2rem; }
-  .header-title { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  /* Title left-aligned with chevron inline */
+  .header-title {
+    position: static;
+    transform: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    order: -1;
+  }
 
-  /* Menu: chevron instead of hamburger */
+  /* Menu: inline chevron next to title */
+  .menu-wrap { order: 0; }
+  .menu-toggle {
+    width: auto;
+    height: auto;
+    padding: 0;
+  }
   .menu-toggle .icon-burger { display: none; }
   .menu-toggle .icon-chevron { display: block; }
 
