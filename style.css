@@ -17,7 +17,7 @@
   --black: #1a1d1a;
   --dark: var(--black);
   --mid: var(--black);
-  --light: #959a93;
+  --light: #727872;
   --subtle: #c8ccc6;
   --border: #e5e8e3;
   --bg: #fdfefd;
@@ -312,10 +312,12 @@ h1, .footer-contact h2 {
 }
 
 .section-title {
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--dark);
   margin-bottom: 1.25rem;
   font-variation-settings: 'GEOM' 0;
+  letter-spacing: -0.01em;
 }
 
 /* Shared row grid: left / mid / right */
@@ -420,6 +422,12 @@ section { margin-bottom: 3rem; }
 
 .entry p {
   color: var(--mid);
+}
+
+.entry p,
+.article-body p,
+.article-subtitle {
+  max-width: 620px;
 }
 .short-text { display: none; }
 
