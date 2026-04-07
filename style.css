@@ -143,7 +143,13 @@ body.fonts-loaded {
   cursor: pointer;
 }
 
-.menu-toggle .icon-chevron { display: none; }
+/* Title-toggle: hidden on desktop, visible on mobile */
+.title-toggle {
+  all: unset;
+  display: none;
+}
+
+.title-toggle .icon-chevron { display: none; }
 
 .menu-toggle:hover {
   color: var(--dark);
@@ -993,29 +999,28 @@ footer {
   .container { max-width: 100%; padding: 3rem 2rem 2rem; }
   .intro { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
 
-  /* Title + chevron as one clickable unit */
-  .menu-toggle {
-    width: auto;
-    height: auto;
-    padding: 0;
+  /* Hide hamburger, show title+chevron as menu trigger */
+  .menu-wrap { display: none; }
+  .menu-dropdown { left: 0; right: auto; }
+  .title-toggle {
+    display: inline-flex;
+    align-items: center;
     gap: 0.2rem;
-    border-radius: 0;
     flex: 1;
     min-width: 0;
-    justify-content: flex-start;
+    cursor: pointer;
+    color: var(--light);
   }
-  .menu-toggle:hover { background: none; }
-  .menu-toggle .icon-burger { display: none; }
-  .menu-toggle .icon-chevron { display: block; flex-shrink: 0; }
+  .title-toggle .icon-chevron { display: block; flex-shrink: 0; }
   .header-title {
     position: static;
     transform: none;
     pointer-events: auto;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
     min-width: 0;
   }
-  .menu-wrap { flex: 1; min-width: 0; }
 
   /* Lang toggle: single button for the other language */
   .lang-toggle { background: none; padding: 0; }
