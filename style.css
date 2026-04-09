@@ -690,7 +690,10 @@ span.milestone-tag {
 
 /* Article pages */
 .article-page .lang-toggle {
+  margin-left: 0;
   margin-bottom: 0.75rem;
+  background: none;
+  padding: 0;
 }
 
 .article-page .lang-toggle a {
