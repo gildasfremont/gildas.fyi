@@ -92,10 +92,6 @@ body.fonts-loaded {
   transition: opacity 0.6s ease, background 0.6s ease;
 }
 
-.header-title {
-  pointer-events: none;
-}
-
 /* Language toggle — segmented control */
 .lang-toggle {
   display: flex;
@@ -143,11 +139,11 @@ body.fonts-loaded {
 /* Title-toggle: on desktop shows title centered, no chevron, no click */
 .title-toggle {
   all: unset;
+  pointer-events: none;
+  white-space: nowrap;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  pointer-events: none;
-  white-space: nowrap;
 }
 
 .title-toggle .icon-chevron { display: none; }
@@ -160,8 +156,8 @@ body.fonts-loaded {
 .menu-dropdown {
   display: none;
   position: absolute;
-  top: calc(100% + 0.3rem);
-  left: 0;
+  top: 100%;
+  left: calc(50vw - 50%);
   min-width: 10rem;
   padding: 0.25rem;
   background: var(--white);
@@ -1005,12 +1001,13 @@ footer {
 /* Responsive — tablet */
 @media (max-width: 860px) {
   html { font-size: 20px; }
-  .container { max-width: 100%; padding: 3rem 2rem 2rem; }
+  .container { max-width: 100%; padding: 0 2rem 2rem; }
   .intro { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
 
   /* Hide hamburger, show title+chevron as menu trigger */
   .menu-toggle { display: none; }
   .menu-wrap { position: relative; flex: 1; min-width: 0; }
+  .menu-dropdown { left: 0; }
   .title-toggle {
     position: static;
     transform: none;
@@ -1047,7 +1044,7 @@ footer {
 /* Responsive — large mobile */
 @media (max-width: 600px) {
   html { font-size: 19.7px; }
-  .container { padding: 2.5rem 1.5rem 2rem; }
+  .container { padding: 0 1.5rem 2rem; }
 
   .row {
     grid-template-columns: 1fr auto;
@@ -1066,7 +1063,7 @@ footer {
 /* Responsive — small mobile */
 @media (max-width: 400px) {
   html { font-size: 19.7px; }
-  .container { padding: 2rem 1.25rem 1.5rem; }
+  .container { padding: 0 1.25rem 1.5rem; }
 
   .row {
     grid-template-columns: 1fr;
