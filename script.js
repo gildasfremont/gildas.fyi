@@ -110,8 +110,16 @@
       }
       el.style.fontSize=lo+'px';
     }
-    fit();
-    el.style.opacity='1';
+    function fitAndShow(){
+      fit();
+      el.style.opacity='1';
+    }
+    // Wait for fonts then fit; refit on resize
+    if(document.fonts&&document.fonts.ready){
+      document.fonts.ready.then(fitAndShow);
+    }else{
+      fitAndShow();
+    }
     window.addEventListener('resize',function(){clearTimeout(tid);tid=setTimeout(fit,80);});
   })();
   // Clickable article entries
