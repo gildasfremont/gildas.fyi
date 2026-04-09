@@ -520,30 +520,30 @@ section { margin-bottom: 3rem; }
 /* Entry glow — tinted by logo color via --glow (R,G,B)
    Feature flag: add class "glow-enabled" on <html> to activate.
    Remove the class to disable all glow effects (halos + cursor). */
-.glow-enabled .entry[style*="--glow"],
+.glow-enabled .entry[style*="--glow"] .entry-header,
 .glow-enabled .edu-row[style*="--glow"] {
   position: relative;
   isolation: isolate;
 }
 
-.glow-enabled .entry[style*="--glow"]::before,
+.glow-enabled .entry[style*="--glow"] .entry-header::before,
 .glow-enabled .edu-row[style*="--glow"]::before {
   content: '';
   position: absolute;
-  inset: -1rem -2rem;
+  inset: -0.5rem -1.5rem;
   background: rgba(var(--glow), 0.065);
   border-radius: 50%;
   z-index: -1;
   pointer-events: none;
-  filter: blur(50px);
+  filter: blur(30px);
   transform: scale(1);
   transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1), filter 0.9s ease;
 }
 
-.glow-enabled .entry[style*="--glow"]:hover::before,
+.glow-enabled .entry[style*="--glow"]:hover .entry-header::before,
 .glow-enabled .edu-row[style*="--glow"]:hover::before {
   transform: scale(1.04);
-  filter: blur(55px);
+  filter: blur(35px);
 }
 
 /* Sector tags */
