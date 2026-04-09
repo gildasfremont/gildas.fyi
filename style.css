@@ -67,17 +67,12 @@ body.fonts-loaded {
 .topbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.5rem;
   margin-bottom: 3rem;
   position: sticky;
   top: 0;
   z-index: 50;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding-left: calc(50vw - 50%);
-  padding-right: calc(50vw - 50%);
+  padding: 0.75rem 0;
   background: var(--bg);
 }
 
@@ -92,15 +87,95 @@ body.fonts-loaded {
   transition: opacity 0.6s ease, background 0.6s ease;
 }
 
+/* Menu wrapper — holds burger, title-toggle and dropdown */
+.menu-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Hamburger button */
+.menu-toggle {
+  appearance: none;
+  border: none;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  border-radius: 6px;
+  color: var(--light);
+  cursor: pointer;
+}
+
+.menu-toggle:hover {
+  color: var(--dark);
+  background: var(--border);
+}
+
+/* Title + chevron toggle */
+.title-toggle {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  display: none; /* hidden on desktop */
+}
+
+.title-toggle .icon-chevron { display: none; }
+
+/* Desktop: title centered in the topbar via absolute */
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  font-weight: 300;
+  color: var(--light);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+/* Dropdown menu */
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  left: 0;
+  min-width: 10rem;
+  padding: 0.25rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+  z-index: 100;
+  flex-direction: column;
+}
+
+.menu-dropdown.open { display: flex; }
+
+.menu-dropdown a {
+  display: block;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.65rem;
+  color: var(--dark);
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.menu-dropdown a:hover { background: var(--border); }
+
 /* Language toggle — segmented control */
 .lang-toggle {
   display: flex;
+  margin-left: auto;
   background: var(--border);
   border-radius: 6px;
   padding: 2px;
-  width: fit-content;
 }
-
 
 .lang-toggle a {
   display: block;
@@ -118,72 +193,6 @@ body.fonts-loaded {
 }
 
 .lang-toggle a:hover:not(.active) { color: var(--mid); }
-
-/* Hamburger menu */
-.menu-wrap {
-  position: static;
-}
-
-.menu-toggle {
-  all: unset;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.6rem;
-  height: 1.6rem;
-  border-radius: 6px;
-  color: var(--light);
-  cursor: pointer;
-}
-
-/* Title-toggle: on desktop shows title centered, no chevron, no click */
-.title-toggle {
-  all: unset;
-  pointer-events: none;
-  white-space: nowrap;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.title-toggle .icon-chevron { display: none; }
-
-.menu-toggle:hover {
-  color: var(--dark);
-  background: var(--border);
-}
-
-.menu-dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: calc(50vw - 50%);
-  min-width: 10rem;
-  padding: 0.25rem;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
-  z-index: 100;
-  flex-direction: column;
-}
-
-.menu-dropdown.open {
-  display: flex;
-}
-
-.menu-dropdown a {
-  display: block;
-  padding: 0.35rem 0.6rem;
-  font-size: 0.65rem;
-  color: var(--dark);
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.menu-dropdown a:hover {
-  background: var(--border);
-}
 
 /* Header name + toggle */
 a.header-name {
@@ -292,12 +301,7 @@ h1, .footer-contact h2 {
   gap: 0.25em;
 }
 
-.header-title {
-  font-weight: 300;
-  color: var(--light);
-  letter-spacing: 0;
-  white-space: nowrap;
-}
+
 
 /* Shared inline images: avatar, logos */
 .avatar,
@@ -1004,27 +1008,25 @@ footer {
   .container { max-width: 100%; padding: 0 2rem 2rem; }
   .intro { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
 
-  /* Hide hamburger, show title+chevron as menu trigger */
+  /* Navbar: title+chevron replaces hamburger */
   .menu-toggle { display: none; }
-  .menu-wrap { position: relative; flex: 1; min-width: 0; }
-  .menu-dropdown { left: 0; }
+  .menu-wrap { flex: 1; min-width: 0; }
   .title-toggle {
-    position: static;
-    transform: none;
     display: inline-flex;
     align-items: center;
     gap: 0.2rem;
-    flex: 1;
+    width: 100%;
     min-width: 0;
     cursor: pointer;
-    pointer-events: auto;
     color: var(--light);
   }
   .title-toggle .icon-chevron { display: block; flex-shrink: 0; }
   .header-title {
+    position: static;
+    transform: none;
+    pointer-events: auto;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
     min-width: 0;
   }
 
@@ -1032,13 +1034,10 @@ footer {
   .lang-toggle { background: none; padding: 0; }
   .lang-toggle a.active { display: none; }
   .lang-toggle a {
-    color: var(--light);
-    background: none;
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 0.1rem 0.4rem;
   }
-  .lang-toggle a:hover { color: var(--dark); border-color: var(--subtle); }
+  .lang-toggle a:hover { border-color: var(--subtle); }
 }
 
 /* Responsive — large mobile */
