@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gmail Has Two Things to Teach Us — Gildas Frémont</title>
+  <meta name="description" content="Perfection in UI is measured by what can no longer be removed. On binary states, cognitive load, and list design.">
+  <link rel="canonical" href="https://gildas.fyi/gmail-etats-binaires-en">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Gmail Has Two Things to Teach Us — Gildas Frémont">
+  <meta property="og:description" content="Perfection in UI is measured by what can no longer be removed. On binary states and list design.">
+  <meta property="og:url" content="https://gildas.fyi/gmail-etats-binaires-en">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="index.html" onclick="if(history.length>1){history.back();return false;}">← Back</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>Gmail Has Two Things to Teach Us</h1>
+      <p class="article-meta">Published on <a href="https://www.linkedin.com/feed/update/urn:li:activity:7268200889633406976/" target="_blank" rel="noopener">LinkedIn</a>, November 2024</p>
+    </header>
+
+    <div class="article-body">
+      <p>Perfection in UI is measured by what can no longer be removed or added. Every superfluous element increases the user's mental load, and with it the risks of confusion, saturation, and error.</p>
+
+      <p>In a detail view, we can take the time to absorb complex information, to understand nuanced states. But in a list, every additional state is a cognitive effort multiplied by the number of items to process. This is the type of view where the "binary states" pattern deploys its full strength.</p>
+
+      <p>Context is what gives meaning to an interface. It is the cognitive environment, the situation the user understands a priori when using a feature. When you open a task list, you expect to see things to do. When you check your inbox, you look for messages that require your attention. These natural expectations define the normal state of things, the one that does not need to be signaled.</p>
+
+      <p>This understanding of context allows us to identify the default state, the one that context makes us understand. The completed task deserves a signal, a simple checkmark that modifies this default state. This economy of means allows our brain to scan both the overall progress and that of the individual elements that compose it.</p>
+
+      <p>The strength of binary states does not lie solely in their ability to make one state implicit. Their real power comes from their cognitive simplicity: our brain does not have to classify, just detect the presence or absence of a marker. This simplicity allows stacking multiple binary states without creating confusion.</p>
+
+      <p>We detect exceptions faster than rules. By marking only what departs from the ordinary, we create interfaces where important information emerges on its own, without conscious effort from the user.</p>
+
+      <p>This economy of means represents the essence of interface design. Yet we often see the opposite: interfaces that attempt to expose all their complexity. Every displayed pixel must carry an intention, a meaning. The challenge is not to reduce pixels, but to increase the ratio between displayed pixels and their signifying power. The most powerful interfaces are those that give the most with less.</p>
+
+      <p>The next time you design a list interface, do not ask yourself how to represent all possible item states with status columns, dropdowns that expose the entire workflow, or tables with every attribute.</p>
+
+      <p>Ask yourself how to break down your complex states into simple pairs, then which distinct visual signifier you can use for each. Context can sometimes carry the default state -- that is the ideal -- but the essential thing is to maintain this binary simplicity that allows the brain to scan information effortlessly.</p>
+
+      <figure class="article-figure">
+        <img src="img/gmail-inbox.png" alt="Gmail inbox showing stacked binary states" loading="lazy">
+        <figcaption>
+          <strong>In Gmail, each dimension of an email is reduced to an on/off pair with its own visual signifier:</strong>
+          <ul>
+            <li>read/unread: bold/normal + background</li>
+            <li>starred/standard: filled star/empty star</li>
+            <li>important/normal: yellow chevron/empty</li>
+            <li>selected/not: checked box/empty box</li>
+          </ul>
+          <br>
+          <strong>The ability to stack these states without creating cognitive confusion:</strong>
+          <ul>
+            <li>Each dimension uses its own distinct visual signifier</li>
+            <li>Our brain can scan each dimension independently</li>
+            <li>States can be combined (an email can be both unread AND important)</li>
+            <li>Visual scanning remains efficient despite the density of information</li>
+          </ul>
+          <br>
+          What you do not see is also what comes from navigation (spam/not spam, archived, etc.), which is a form of presenting a binary state and "factors out" a state without exposing it in the item list.
+        </figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

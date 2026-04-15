@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Bias of Software — Gildas Frémont</title>
+  <meta name="description" content="Software without an opinion offers more choices. Software with a point of view offers fewer decisions to make. These are not the same problem.">
+  <link rel="canonical" href="https://gildas.fyi/parti-pris-logiciel-en">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Bias of Software — Gildas Frémont">
+  <meta property="og:description" content="Software without an opinion offers more choices. Software with a point of view offers fewer decisions to make. These are not the same problem.">
+  <meta property="og:url" content="https://gildas.fyi/parti-pris-logiciel-en">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="index.html" onclick="if(history.length>1){history.back();return false;}">← Back</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>The Bias of Software</h1>
+      <p class="article-meta">March 2026</p>
+    </header>
+
+    <div class="article-body">
+      <p>There are two ways to design software, and the choice between them is often made without anyone articulating it. The first consists in not taking a position: you expose options, you let the user configure, you build a tool that adapts to however each person wants to work. The second consists in deciding for them, in embodying a way of doing things, even if it means excluding others. The first approach produces software without a point of view. The second produces software with an opinion.</p>
+
+      <h2>The hidden cost of flexibility</h2>
+
+      <p>Software without an opinion seems generous. It offers more choices, more customization, more latitude. It promises to adapt to how the user works rather than imposing its own way. In practice, this generosity has a price that is paid three times over.</p>
+
+      <p>It is paid first at build time. Offering flexibility means handling combinations of scenarios that grow combinatorially with the number of options. A form with three display modes, two validation logics, and role-based permission settings does not produce six test cases but a configuration space whose edges are difficult to map. The software becomes harder to build not because each path is complex, but because the interaction between paths is.</p>
+
+      <p>It is paid next at setup. Configurable software requires configuration. Someone must decide how to set it up, which means understanding the available options, anticipating their consequences, and often calling in an integrator or a consultant. The time saved through flexibility by the designer is transferred as decision burden to the client.</p>
+
+      <p>It is paid finally at use. Every visible option in the interface is a question asked of the user, and every question consumes attention. Software that takes no position permanently delegates the decision to the person using it, including when that person has neither the context nor the desire to decide.</p>
+
+      <h2>Opinion as an act of design</h2>
+
+      <p>Opinionated software works the opposite way. It embeds a philosophy about the right way to handle a problem, and it enforces it. It does not ask the user how they want to organize their data, it proposes an organization. It does not present five possible workflows, it embodies one. The choices left to make are those that belong to the user, not those that belong to the tool.</p>
+
+      <p>At Lucca, this approach takes the form of the workflow. When a leave management module is designed, it does not expose a configurable rules engine into which each company would plug its own logic. It encodes a sequence: the employee submits a request, the manager approves, the balance updates, payroll is informed. The steps, roles, and transitions are decided by the product. What the client configures is the content of the rules (how many days, which type of leave, which calendar), not the structure of the process.</p>
+
+      <p>This distinction between what and how is the heart of the matter. Software without a point of view lets the user define the how: the workflow structure, the screen sequence, the validation logic. Opinionated software fixes the how and leaves open only the what: business data, thresholds, content specific to each organization.</p>
+
+      <h2>What it costs to decide</h2>
+
+      <p>Taking a stand in software is harder than not taking one, contrary to what one might think. Not taking a position means building a framework, a set of generic capabilities that the client will assemble. It is engineering work, sometimes sophisticated, but it does not require understanding the business in depth. You build a space of possibilities.</p>
+
+      <p>Taking a position is something else. It requires knowing how the work should unfold, which means having observed enough clients, having understood the regulatory constraints, having identified what distinguishes edge cases from structural ones. The workflow encoded in the software is a bet on the right way of doing things, and that bet must be correct for the majority of users. If it is wrong, you do not have flexible software that adapts, you have rigid software that blocks.</p>
+
+      <p>This is why opinionated software ages differently. When it is right, it is perceived as simple, fluid, obvious. When it is wrong, it is perceived as constraining, closed, ill-suited. There is no comfortable middle ground. The software's opinion is either an accelerator or a wall, rarely a minor inconvenience.</p>
+
+      <h2>The real trade-off</h2>
+
+      <p>The choice between software with or without a point of view is not an aesthetic or philosophical choice. It is a trade-off on the allocation of complexity. The complexity of the business domain does not disappear, it shifts. Software without an opinion pushes it toward the end user in the form of configuration and decisions to make. Opinionated software absorbs it into the design, in the form of user research, design choices, and opinion debt to maintain over time.</p>
+
+      <p>In B2B, where software is used by people who did not choose to use it and who have better things to do than configure it, the second option is almost always the right one. The designer's job is not to offer possibilities, it is to eliminate decisions. Every decision the software makes on behalf of the user is a decision the user does not have to make, and therefore one less moment of friction in their day.</p>
+
+      <p>The problem is that it requires being right. And being right requires understanding the business better than most clients understand it themselves, which is the part of product work that can be neither automated nor shortened.</p>
+    </div>
+  </article>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

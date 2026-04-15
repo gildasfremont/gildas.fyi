@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Don't Need a Product Manager — Gildas Frémont</title>
+  <meta name="description" content="This is not a provocation, it is an observation. On the PM role, the IT vs product model, and Shape Up.">
+  <link rel="canonical" href="https://gildas.fyi/vous-navez-pas-besoin-dun-pm-en">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="You Don't Need a Product Manager — Gildas Frémont">
+  <meta property="og:description" content="This is not a provocation, it is an observation. On the PM role, the IT vs product model, and Shape Up.">
+  <meta property="og:url" content="https://gildas.fyi/vous-navez-pas-besoin-dun-pm-en">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="index.html" onclick="if(history.length>1){history.back();return false;}">← Back</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>You Don't Need a Product Manager</h1>
+      <p class="article-meta">September 2024</p>
+    </header>
+
+    <div class="article-body">
+      <p>This is not a provocation, it is an observation. In the majority of teams I have worked with over the past fifteen years, the Product Manager was either the person who made everything work, or the one who slowed everything down. There was rarely any middle ground. And when I started asking myself why, the answer did not lie with the people, it lay with what they were being asked to do.</p>
+
+      <p>The standard model looks roughly like this: the business has a problem, a PM translates it into specifications, designers produce mockups, developers write code. It is a pipeline. Each stage depends on the previous one. And at the center of this pipeline sits the PM, who is supposed to understand the customer, negotiate priorities with stakeholders, write specs detailed enough to leave no ambiguity, and still find time to think about strategy. These are four different jobs. Most people do one or two well. Almost no one does all four.</p>
+
+      <p>The result is predictable. In many organizations, the PM becomes a bottleneck not because they are incompetent, but because the role is overloaded by design. They spend their days in alignment meetings, translating between groups that could talk to each other if someone had thought to set that up. They write documents that attempt to remove all ambiguity from problems that are ambiguous by nature, then wonder why the team builds something that matches the spec on paper but misses the point entirely.</p>
+
+      <p>Here is what I have come to believe: no PM is better than a bad PM. A bad PM -- meaning not a bad person but someone trapped in a bad role definition -- does active harm. They insert themselves between the team and the problem. They make decisions that the team would make better, because the team is closer to the material. They create a dependency where none needs to exist.</p>
+
+      <h2>The IT model versus the product model</h2>
+
+      <p>Most companies that think they are doing product are doing IT with different vocabulary. The test is simple: look at what flows down from management to the team. If it is solutions, you are in IT mode, regardless of what is printed on the business cards. In IT mode, you need a PM, or at least a project manager, because someone has to coordinate the execution of solutions that have already been decided. It is logistics work, and there is nothing wrong with that, but let us call things by their name.</p>
+
+      <p>The product model is of a different nature. In a product model, what arrives at the team is a problem. Not a solution, not a feature request disguised as a user story, but a real problem that a real customer encounters, formulated well enough that the team can verify whether they have solved it. The difference seems subtle but it changes everything downstream.</p>
+
+      <p>When you give a problem to a team instead of a solution, several things happen. First, the people closest to the implementation space -- designers and developers -- begin generating solutions. Second, the range of possible solutions widens, because you have not pre-filtered it through the imagination of a single person. Third, and this is the part most managers find uncomfortable, the team takes ownership of the outcome.</p>
+
+      <h2>Designers who know the customers</h2>
+
+      <p>There is a persistent organizational fiction that designers need PMs to know what customers want. This fiction survives because in most companies, designers are kept at a distance from real customers. They receive secondhand information, filtered through PMs or through survey data that someone thought to share.</p>
+
+      <p>But this is a self-reinforcing constraint, not a law of nature. When designers spend time with customers, when they watch them work, listen to their complaints, understand the context in which they use the product, they develop an intuition for what matters that no amount of specifications can replace. A designer who has watched twenty customers stumble over the same flow does not need a PM to write them a user story. They have already internalized the problem, and they have been sketching solutions in their notebook for weeks.</p>
+
+      <h2>Developers manage themselves</h2>
+
+      <p>The other half of the equation is technical autonomy. The IT model assumes that developers are execution resources: they receive specs and produce code. This assumption creates a need for ever more detailed specs, because if the developer's job is to implement what is described, then any gap in the description becomes a defect.</p>
+
+      <p>In my experience, developers who understand the problem they are solving make better implementation decisions than any specification could prescribe. They know things about the system that no PM document captures: where the technical debt lies, which abstractions are fragile, where a small change in approach could save weeks of work. When you hand them the problem, they bring this knowledge to bear on the solution. When you hand them a spec, they park this knowledge and follow the instructions.</p>
+
+      <p>This does not mean there is no structure. Quite the opposite. A team without a PM needs more methodological rigor, not less, because there is no one whose job it is to impose order through force of personality. The methodology becomes the structure.</p>
+
+      <h2>A framework that replaces the coordinator</h2>
+
+      <p>The approach I use draws on Shape Up, Ryan Singer's work at Basecamp, adapted to the contexts in which I have operated. It has four steps, and the order matters.</p>
+
+      <p>The first step is to find a solution. This seems backward, but the logic is deliberate. You start from the problem, yes. But the first real work the team does is to explore whether a viable solution exists within realistic constraints. It is a short, focused investigation: can we solve this, roughly how, and what would the hard parts be?</p>
+
+      <p>The second step is to frame. Framing means describing the solution at the right level of abstraction, concrete enough that everyone understands what is being built, abstract enough that the team retains room to maneuver during implementation. Good framing involves fat-marker sketches rather than pixel-perfect mockups. Framing is what a PM spec tries to be but rarely succeeds at, because a spec tries to be exhaustive where framing tries to be clear.</p>
+
+      <p>The third step is to define the appetite. Appetite is not an estimate. An estimate answers "how long will it take?", appetite answers "how long is it worth?" The distinction matters. An estimate is a prediction about the future. Appetite is a business decision about investment. If the answer is two weeks and the team's best estimate is four, you do not negotiate the estimate, you reduce the scope or you kill the project.</p>
+
+      <p>The fourth step is to slice. Slicing happens after the appetite is set, and it is done by the team that will do the work. This is where you break the framed solution into pieces that can be completed one by one, where you identify the unknowns that need to be resolved first, and where you make the thousand small decisions that specs try to make in advance but cannot.</p>
+
+      <h2>What it looks like in practice</h2>
+
+      <p>In practice, operating this way means the person who would have been a PM becomes something closer to a product strategist or a PO, someone who maintains the list of problems worth solving, who ensures the team has access to customers, and who participates in appetite decisions. They do not write specs. They do not manage the team's daily work. They do not sit between the problem and the people solving it.</p>
+
+      <p>The first two weeks are always uncomfortable. Designers wonder who is going to tell them what to design. Developers ask where the tickets are. Stakeholders worry because no one is producing the tracking reports they are accustomed to. It passes. Once the team solves its first real problem end to end, without being told how, something shifts. They stop asking for permission and start asking for clarity.</p>
+
+      <p>The title of this piece is deliberately reductive. Some teams need a PM, and some PMs are extraordinary -- the kind who elevate everyone around them because they understand their role as that of a connector rather than a controller. But the reflex of hiring a PM every time a team struggles deserves to be questioned. Often the team does not need one more person. It needs a better method, more direct access to customers, and the trust to solve problems in its own way.</p>
+    </div>
+  </article>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
