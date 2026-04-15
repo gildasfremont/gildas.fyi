@@ -12,6 +12,7 @@
     { "source": "/vous-navez-pas-besoin-dun-pm", "destination": "/articles/vous-navez-pas-besoin-dun-pm" },
     { "source": "/impersonation-pattern", "destination": "/articles/impersonation-pattern" },
     { "source": "/parti-pris-logiciel", "destination": "/articles/parti-pris-logiciel" },
-    { "source": "/audit-ubaq-methode", "destination": "/articles/audit-ubaq-methode" }
+    { "source": "/audit-ubaq-methode", "destination": "/articles/audit-ubaq-methode" },
+    { "source": "/rapport-si-essec", "destination": "/articles/rapport-si-essec" }
   ]
 }
