@@ -130,28 +130,6 @@
       if(a) a.click();
     });
   });
-  // Article-page cursor halo: random bright color, mouse only (no background)
-  if(document.querySelector('.article-page')){
-    var aHalo=document.createElement('div');
-    var hue=Math.random()*360;
-    var r,g,b,c=0.5*(1-Math.abs(2*0.55-1)),x=c*(1-Math.abs((hue/60)%2-1)),m=0.55-c/2;
-    if(hue<60){r=c;g=x;b=0;}else if(hue<120){r=x;g=c;b=0;}else if(hue<180){r=0;g=c;b=x;}
-    else if(hue<240){r=0;g=x;b=c;}else if(hue<300){r=x;g=0;b=c;}else{r=c;g=0;b=x;}
-    var rgb=Math.round((r+m)*255)+','+Math.round((g+m)*255)+','+Math.round((b+m)*255);
-    aHalo.style.cssText='position:fixed;width:60px;height:60px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.3s ease;filter:blur(20px);transform:translate(-50%,-50%);background:rgba('+rgb+',0.16);';
-    document.body.appendChild(aHalo);
-    var aRaf=null;
-    document.addEventListener('mousemove',function(e){
-      if(aRaf)return;
-      aRaf=requestAnimationFrame(function(){
-        aRaf=null;
-        aHalo.style.left=e.clientX+'px';
-        aHalo.style.top=e.clientY+'px';
-        aHalo.style.opacity='1';
-      });
-    });
-    document.addEventListener('mouseleave',function(){aHalo.style.opacity='0';});
-  }
 
   // Glow feature flag: everything below only runs if <html> has .glow-enabled
   if(!document.documentElement.classList.contains('glow-enabled')) return;
@@ -208,38 +186,4 @@
     update();
   })();
 
-  // Cursor halo: follows mouse over glow zones, tinted slightly darker
-  var halo=document.createElement('div');
-  halo.style.cssText='position:fixed;width:60px;height:60px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.3s ease;filter:blur(20px);transform:translate(-50%,-50%);';
-  document.body.appendChild(halo);
-  var currentGlow=null;
-  var raf=null;
-
-  function darken(rgb){
-    var parts=rgb.split(',').map(function(v){return Math.max(0,Math.round(parseInt(v.trim())*0.7));});
-    return parts.join(',');
-  }
-
-  document.addEventListener('mousemove',function(e){
-    if(raf) return;
-    raf=requestAnimationFrame(function(){
-      raf=null;
-      halo.style.left=e.clientX+'px';
-      halo.style.top=e.clientY+'px';
-      var el=e.target.closest('[style*="--glow"]');
-      if(el){
-        var glow=getComputedStyle(el).getPropertyValue('--glow').trim();
-        if(glow!==currentGlow){
-          currentGlow=glow;
-          halo.style.background='rgba('+darken(glow)+',0.14)';
-        }
-        halo.style.opacity='1';
-      }else{
-        if(currentGlow!==null){
-          currentGlow=null;
-          halo.style.opacity='0';
-        }
-      }
-    });
-  });
 })();
