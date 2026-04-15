@@ -13,11 +13,11 @@
   document.addEventListener('click',revealOnce);
   document.addEventListener('touchstart',revealOnce);
   // Hamburger / title-toggle menu
-  document.querySelectorAll('.menu-wrap').forEach(function(wrap){
-    var dd=wrap.querySelector('.menu-dropdown');
+  document.querySelectorAll('.topbar').forEach(function(topbar){
+    var dd=topbar.querySelector('.menu-dropdown');
     if(!dd)return;
-    var burger=wrap.querySelector('.menu-toggle');
-    var titleBtn=wrap.querySelector('.title-toggle');
+    var burger=topbar.querySelector('.menu-toggle');
+    var titleBtn=topbar.querySelector('.title-toggle');
     function toggle(ev){
       ev.stopPropagation();
       var open=dd.classList.toggle('open');
@@ -31,34 +31,13 @@
   });
   document.addEventListener('click',function(ev){
     document.querySelectorAll('.menu-dropdown.open').forEach(function(dd){
-      var wrap=dd.closest('.menu-wrap');
-      if(!wrap||wrap.contains(ev.target))return;
+      var topbar=dd.closest('.topbar');
+      if(!topbar||topbar.contains(ev.target))return;
       dd.classList.remove('open');
-      var b=wrap.querySelector('.menu-toggle');
+      var b=topbar.querySelector('.menu-toggle');
       if(b)b.setAttribute('aria-expanded','false');
     });
   });
-  // Center title-toggle in topbar on desktop
-  (function(){
-    var tt=document.querySelector('.title-toggle');
-    var topbar=document.querySelector('.topbar');
-    if(!tt||!topbar)return;
-    function center(){
-      if(window.innerWidth>860){
-        var tb=topbar.getBoundingClientRect();
-        var tw=tt.offsetWidth;
-        tt.style.position='absolute';
-        tt.style.left=(tb.width/2-tw/2)+'px';
-        tt.style.top='';
-        tt.style.transform='';
-      }else{
-        tt.style.position='';
-        tt.style.left='';
-      }
-    }
-    center();
-    window.addEventListener('resize',center);
-  })();
   // Footer copy buttons
   document.querySelectorAll('.copy-btn').forEach(function(btn){
     btn.addEventListener('click',function(ev){

@@ -136,10 +136,27 @@ body.fonts-loaded {
   cursor: pointer;
 }
 
-/* Title-toggle: on desktop shows title centered via JS, no chevron, no click */
-.title-toggle {
-  all: unset;
+/* Desktop title — centered in topbar */
+.topbar > .header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   pointer-events: none;
+  font-weight: 300;
+  color: var(--light);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+/* Title-toggle: hidden on desktop, visible on mobile */
+.title-toggle {
+  display: none;
+}
+
+.title-toggle .header-title {
+  font-weight: 300;
+  color: var(--light);
+  letter-spacing: 0;
   white-space: nowrap;
 }
 
@@ -296,13 +313,6 @@ h1, .footer-contact h2 {
   display: inline-flex;
   align-items: center;
   gap: 0.25em;
-}
-
-.header-title {
-  font-weight: 300;
-  color: var(--light);
-  letter-spacing: 0;
-  white-space: nowrap;
 }
 
 /* Shared inline images: avatar, logos */
@@ -1011,27 +1021,27 @@ footer {
   .container { max-width: 100%; padding: 0 2rem 2rem; }
   .intro { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
 
-  /* Hide hamburger, show title+chevron as menu trigger */
+  /* Hide hamburger + desktop title, show title+chevron */
   .menu-toggle { display: none; }
-  .menu-wrap { position: relative; flex: 1; min-width: 0; }
-  .menu-dropdown { left: 0; }
+  .topbar > .header-title { display: none; }
   .title-toggle {
-    position: static;
-    transform: none;
     display: inline-flex;
     align-items: center;
     gap: 0.2rem;
     flex: 1;
     min-width: 0;
     cursor: pointer;
-    pointer-events: auto;
     color: var(--light);
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+    font: inherit;
   }
   .title-toggle .icon-chevron { display: block; flex-shrink: 0; }
-  .header-title {
+  .title-toggle .header-title {
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
     min-width: 0;
   }
 
