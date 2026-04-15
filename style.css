@@ -121,7 +121,7 @@ body.fonts-loaded {
 
 /* Hamburger menu */
 .menu-wrap {
-  position: static;
+  position: relative;
 }
 
 .menu-toggle {
@@ -141,9 +141,11 @@ body.fonts-loaded {
   all: unset;
   pointer-events: none;
   white-space: nowrap;
-  position: absolute;
+  position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  top: 0.75rem;
+  z-index: 51;
 }
 
 .title-toggle .icon-chevron { display: none; }
@@ -156,8 +158,8 @@ body.fonts-loaded {
 .menu-dropdown {
   display: none;
   position: absolute;
-  top: 100%;
-  left: calc(50vw - 50%);
+  top: calc(100% + 0.3rem);
+  left: 0;
   min-width: 10rem;
   padding: 0.25rem;
   background: var(--white);
