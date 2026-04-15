@@ -138,7 +138,7 @@
     if(hue<60){r=c;g=x;b=0;}else if(hue<120){r=x;g=c;b=0;}else if(hue<180){r=0;g=c;b=x;}
     else if(hue<240){r=0;g=x;b=c;}else if(hue<300){r=x;g=0;b=c;}else{r=c;g=0;b=x;}
     var rgb=Math.round((r+m)*255)+','+Math.round((g+m)*255)+','+Math.round((b+m)*255);
-    aHalo.style.cssText='position:fixed;width:120px;height:120px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.3s ease;filter:blur(40px);transform:translate(-50%,-50%);background:rgba('+rgb+',0.16);';
+    aHalo.style.cssText='position:fixed;width:60px;height:60px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.3s ease;filter:blur(20px);transform:translate(-50%,-50%);background:rgba('+rgb+',0.16);';
     document.body.appendChild(aHalo);
     var aRaf=null;
     document.addEventListener('mousemove',function(e){
@@ -210,7 +210,7 @@
 
   // Cursor halo: follows mouse over glow zones, tinted slightly darker
   var halo=document.createElement('div');
-  halo.style.cssText='position:fixed;width:120px;height:120px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.3s ease;filter:blur(40px);transform:translate(-50%,-50%);';
+  halo.style.cssText='position:fixed;width:60px;height:60px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.3s ease;filter:blur(20px);transform:translate(-50%,-50%);';
   document.body.appendChild(halo);
   var currentGlow=null;
   var raf=null;
