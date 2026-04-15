@@ -554,8 +554,8 @@ section { margin-bottom: 3rem; }
 
 .glow-enabled .entry[style*="--glow"]:hover .entry-header .left::before,
 .glow-enabled .edu-row[style*="--glow"]:hover .left::before {
-  transform: scale(1.04);
-  filter: blur(35px);
+  transform: scale(0.52);
+  filter: blur(15px);
 }
 
 /* Sector tags */
