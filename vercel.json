@@ -13,6 +13,20 @@
     { "source": "/impersonation-pattern", "destination": "/articles/impersonation-pattern" },
     { "source": "/parti-pris-logiciel", "destination": "/articles/parti-pris-logiciel" },
     { "source": "/audit-ubaq-methode", "destination": "/articles/audit-ubaq-methode" },
-    { "source": "/rapport-si-essec", "destination": "/articles/rapport-si-essec" }
+    { "source": "/rapport-si-essec", "destination": "/articles/rapport-si-essec" },
+    { "source": "/conformite-fonctionnalite", "destination": "/articles/conformite-fonctionnalite" },
+    { "source": "/conformite-fonctionnalite-en", "destination": "/articles/conformite-fonctionnalite-en" },
+    { "source": "/vitesse-vision", "destination": "/articles/vitesse-vision" },
+    { "source": "/vitesse-vision-en", "destination": "/articles/vitesse-vision-en" },
+    { "source": "/parti-pris-logiciel-en", "destination": "/articles/parti-pris-logiciel-en" },
+    { "source": "/unsolicited-redesign-luko-en", "destination": "/articles/unsolicited-redesign-luko-en" },
+    { "source": "/etude-de-cas-luko-en", "destination": "/articles/etude-de-cas-luko-en" },
+    { "source": "/audit-ubaq-methode-en", "destination": "/articles/audit-ubaq-methode-en" },
+    { "source": "/paradoxe-solow-ia-en", "destination": "/articles/paradoxe-solow-ia-en" },
+    { "source": "/impersonation-pattern-en", "destination": "/articles/impersonation-pattern-en" },
+    { "source": "/gmail-etats-binaires-en", "destination": "/articles/gmail-etats-binaires-en" },
+    { "source": "/think-different-write-smarter-en", "destination": "/articles/think-different-write-smarter-en" },
+    { "source": "/vous-navez-pas-besoin-dun-pm-en", "destination": "/articles/vous-navez-pas-besoin-dun-pm-en" },
+    { "source": "/rapport-si-essec-en", "destination": "/articles/rapport-si-essec-en" }
   ]
 }
