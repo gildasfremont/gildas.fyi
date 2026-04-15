@@ -38,6 +38,27 @@
       if(b)b.setAttribute('aria-expanded','false');
     });
   });
+  // Center title-toggle in topbar on desktop
+  (function(){
+    var tt=document.querySelector('.title-toggle');
+    var topbar=document.querySelector('.topbar');
+    if(!tt||!topbar)return;
+    function center(){
+      if(window.innerWidth>860){
+        var tb=topbar.getBoundingClientRect();
+        var tw=tt.offsetWidth;
+        tt.style.position='absolute';
+        tt.style.left=(tb.width/2-tw/2)+'px';
+        tt.style.top='';
+        tt.style.transform='';
+      }else{
+        tt.style.position='';
+        tt.style.left='';
+      }
+    }
+    center();
+    window.addEventListener('resize',center);
+  })();
   // Footer copy buttons
   document.querySelectorAll('.copy-btn').forEach(function(btn){
     btn.addEventListener('click',function(ev){

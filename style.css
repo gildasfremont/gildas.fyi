@@ -136,16 +136,11 @@ body.fonts-loaded {
   cursor: pointer;
 }
 
-/* Title-toggle: on desktop shows title centered, no chevron, no click */
+/* Title-toggle: on desktop shows title centered via JS, no chevron, no click */
 .title-toggle {
   all: unset;
   pointer-events: none;
   white-space: nowrap;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0.75rem;
-  z-index: 51;
 }
 
 .title-toggle .icon-chevron { display: none; }
@@ -156,7 +151,6 @@ body.fonts-loaded {
 }
 
 .menu-dropdown {
-  display: none;
   position: absolute;
   top: calc(100% + 0.3rem);
   left: 0;
@@ -168,10 +162,19 @@ body.fonts-loaded {
   box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
   z-index: 100;
   flex-direction: column;
+  /* hidden by default */
+  display: flex;
+  opacity: 0;
+  scale: 0.96;
+  pointer-events: none;
+  transform-origin: top left;
+  transition: opacity 0.15s ease, scale 0.15s ease;
 }
 
 .menu-dropdown.open {
-  display: flex;
+  opacity: 1;
+  scale: 1;
+  pointer-events: auto;
 }
 
 .menu-dropdown a {
@@ -181,6 +184,7 @@ body.fonts-loaded {
   color: var(--dark);
   text-decoration: none;
   border-radius: 5px;
+  transition: background 0.1s ease;
 }
 
 .menu-dropdown a:hover {
