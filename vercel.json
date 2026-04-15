@@ -27,6 +27,8 @@
     { "source": "/gmail-etats-binaires-en", "destination": "/articles/gmail-etats-binaires-en" },
     { "source": "/think-different-write-smarter-en", "destination": "/articles/think-different-write-smarter-en" },
     { "source": "/vous-navez-pas-besoin-dun-pm-en", "destination": "/articles/vous-navez-pas-besoin-dun-pm-en" },
-    { "source": "/rapport-si-essec-en", "destination": "/articles/rapport-si-essec-en" }
+    { "source": "/rapport-si-essec-en", "destination": "/articles/rapport-si-essec-en" },
+    { "source": "/articles", "destination": "/articles/index" },
+    { "source": "/articles-en", "destination": "/articles/index-en" }
   ]
 }
