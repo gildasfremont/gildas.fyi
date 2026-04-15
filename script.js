@@ -130,6 +130,12 @@
       if(a) a.click();
     });
   });
+  // Embed skeletons: hide when twitter widget loads
+  if(window.twttr&&twttr.ready){
+    twttr.ready(function(){document.querySelectorAll('.embed-skeleton').forEach(function(s){s.classList.add('loaded');});});
+  }else{
+    window.addEventListener('load',function(){document.querySelectorAll('.embed-skeleton').forEach(function(s){s.classList.add('loaded');});});
+  }
 
   // Glow feature flag: everything below only runs if <html> has .glow-enabled
   if(!document.documentElement.classList.contains('glow-enabled')) return;

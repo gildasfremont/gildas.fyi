@@ -802,6 +802,34 @@ span.milestone-tag {
   font-style: italic;
 }
 
+/* Embed skeleton — shown while external widget loads */
+.embed-skeleton {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  min-height: 120px;
+  background: linear-gradient(90deg, var(--bg) 25%, var(--border) 50%, var(--bg) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease infinite;
+}
+
+.embed-skeleton .skeleton-line {
+  height: 0.7rem;
+  border-radius: 3px;
+  background: var(--border);
+  margin-bottom: 0.5rem;
+}
+
+.embed-skeleton .skeleton-line:last-child { width: 40%; margin-bottom: 0; }
+
+.embed-skeleton.loaded { display: none; }
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 .article-figure {
   margin: 1.5rem 0;
   border: 1px solid var(--border);
