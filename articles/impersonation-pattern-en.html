@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impersonation: anatomy of a pattern that structures an entire software product — Gildas Frémont</title>
+  <meta name="description" content="A cross-cutting mechanism that constrains navigation, naming, permissions and traceability. Pattern in the sense of Christopher Alexander.">
+  <link rel="canonical" href="https://gildas.fyi/impersonation-pattern-en">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Impersonation: anatomy of a pattern that structures an entire software product — Gildas Frémont">
+  <meta property="og:description" content="A cross-cutting mechanism that constrains navigation, naming, permissions and traceability.">
+  <meta property="og:url" content="https://gildas.fyi/impersonation-pattern-en">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="index.html" onclick="if(history.length>1){history.back();return false;}">&larr; Back</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>Impersonation: anatomy of a pattern that structures an entire software product</h1>
+      <p class="article-meta">March 2025</p>
+    </header>
+
+    <div class="article-body">
+      <h2>Impersonation</h2>
+
+      <p>The term comes from the English to impersonate: to assume someone else's identity. In computing, the word took on a precise technical meaning in the 1990s, first at Microsoft with Windows NT. When a system process needed to perform an operation with the rights of a given user, it "impersonated" that user, meaning it temporarily borrowed their security context without actually becoming them. The mechanism was used for debugging, administration, and permission testing. The fundamental idea is one of temporary and traceable delegation: you act within someone else's context, but the action remains attributed to the one who initiated it.</p>
+
+      <p>At Lucca, a SaaS HR software company, the concept was transposed from system infrastructure to the user interface. When an administrator or a manager needs to intervene in a team member's view (enter their leave, check their balances, adjust a setting), they "impersonate" that team member. They see their screen, with their data, in their context, but every action they perform remains traced under their own identity. It is this transposition, from system mechanism to interface pattern, that makes the concept so interesting for software design.</p>
+
+      <h2>What impersonation solves</h2>
+
+      <p>In B2E software (the kind deployed for a company's employees, not for external customers), there is a category of features that could be called structural. They are not features in the usual sense, with a neat functional scope and an associated Jira ticket. They are cross-cutting mechanisms that, once in place, constrain the shape of everything that comes after: navigation, view naming, the permissions model, action traceability. Impersonation is one of them.</p>
+
+      <p>An HR software product like those built by Lucca presents each employee with a view of their own: their leave, their expense reports, their performance reviews. It is their view, with their data. Except that in the reality of a company, this personal view must regularly be consulted or modified by someone else -- a manager who approves, a secretary who enters leave for an absent executive, an administrator diagnosing a configuration issue.</p>
+
+      <p>The naive question would be: we create a separate admin view, right? That is what most software does. And that is where the trouble begins. Because a separate admin view is a view that must duplicate part of the information from the employee view, with its own display rules, its own forms, its own edge cases. You end up maintaining two representations of the same data model, which mechanically diverge over time.</p>
+
+      <p>In practice, in the interface, it takes the form of an employee selector integrated into the main view. When a manager selects a team member, the interface reformats to display what that employee sees, with their data, their context. Actions performed in this mode are attributed to the impersonator, not the impersonated, which preserves the audit trail. There is only one view to maintain.</p>
+
+      <h2>The creative constraint</h2>
+
+      <p>What makes impersonation interesting from a design perspective is not the mechanism itself (a dropdown and a context switch -- technically trivial). It is the set of constraints it imposes on the rest of the software, which ultimately improve its coherence.</p>
+
+      <p>Take view naming. If an employee's main view can be consulted by someone else through impersonation, you can no longer name that view "My leave" or "My schedule." The possessive pronoun no longer works once a manager accesses it on behalf of a team member. You are forced to find neutral names that describe the resource or the operation rather than the ownership relationship: "Requests," "Schedule," "Account." It is a constraint, but it produces a clearer and more consistent nomenclature, including for the primary user.</p>
+
+      <p>Same logic for navigation. If impersonation exists, navigation must reflect the software's workflow rather than user roles. You cannot organize the menu as "employee view / manager view / admin view" because impersonation is precisely what breaks that boundary. The menu must represent the steps of the business process, and permissions determine what is visible or not -- not the menu structure itself.</p>
+
+      <p>The distinction between the author of an action and the owner of a resource becomes explicit. When a secretary enters leave for an executive, the absence belongs to the executive but the entry action is attributed to the secretary. This separation, which seems obvious once stated, is rarely modeled properly in software that lacks impersonation.</p>
+
+      <h2>A pattern that fades</h2>
+
+      <p>The paradox of this type of pattern is that it is difficult to transmit. It cannot be taught through a design system component, it cannot be documented in a standard functional spec. It is an architectural principle that must be understood by product managers at design time, well before a designer opens Figma. If no one actively carries it, it dilutes.</p>
+
+      <p>What led me to formalize this pattern in the context-problem-forces-solution-consequences form is precisely this observation: at Lucca, impersonation had structured the first generation of products but the knowledge had been lost. Teams used the word without understanding its architectural implications. The goal of formalization is not to freeze a mechanism but to make explicit the forces at play so that design decisions remain coherent as teams grow and institutional memory dissolves.</p>
+
+      <h2>What can be drawn from it beyond Lucca</h2>
+
+      <p>Impersonation is not specific to HR software. Any B2B or B2E software in which multiple role levels interact with the same data faces the same question: do we duplicate views by role, or do we build a context-switching mechanism? The answer depends on the complexity of the permissions model and the number of views involved, but the natural slope -- duplicating -- is almost always the wrong one.</p>
+
+      <p>The more general point is that in every software product there are design choices that do not look like features but that determine the shape of every feature to come. Identifying them, naming them, formalizing them as patterns in the sense of Christopher Alexander is probably the most cost-effective design work one can do on a mature product. And it is also the work that gets done the least, because it produces no visible deliverable and requires understanding the software in its entirety rather than feature by feature.</p>
+    </div>
+  </article>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

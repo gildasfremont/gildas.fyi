@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case study: Luko redesign with Claude — Gildas Frémont</title>
+  <meta name="description" content="How I contacted the Luko team, audited the My Account space and rebuilt a React prototype with Claude in a single session.">
+  <link rel="canonical" href="https://gildas.fyi/etude-de-cas-luko-en">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Case study: Luko redesign with Claude — Gildas Frémont">
+  <meta property="og:description" content="Contact the team, understand the context, audit, prototype. Anatomy of an unsolicited redesign that does not stay in a vacuum.">
+  <meta property="og:url" content="https://gildas.fyi/etude-de-cas-luko-en">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="unsolicited-redesign-luko-en.html" onclick="if(history.length>1){history.back();return false;}">&larr; Original article</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>Case study: Luko redesign with Claude</h1>
+      <p class="article-page-subtitle">Contact the team, audit, prototype, send</p>
+      <p class="article-meta">March 2026</p>
+    </header>
+
+    <div class="article-body">
+
+      <h2>Context</h2>
+
+      <p>I needed a liability insurance certificate. At Luko by Allianz Direct, obtaining this document requires navigating into the contract, finding the right accordion, understanding a certificate type selection, then generating. The interface does not understand why the user is there. When someone opens their insurance client area, they want two things: access their documents or file a claim. Everything else is noise.</p>
+
+      <p>I reached out to someone on the inside, a Luko alumnus. He confirmed what the interface hinted at: after the acquisition, the team had shifted a lot, and product decisions were hard to push through.</p>
+
+      <h2>Audit</h2>
+
+      <p>The My Account space does not know what it is. It wavers between a management tool and an acquisition channel. In product management, this is a positioning problem: when a product tries to serve two contradictory jobs-to-be-done, it fails at both.</p>
+
+      <p>On trust: the chat switches to English when the site crashes. Loading times are visible on nearly empty pages. When you refresh you get a 503 that does not recover, with the page in raw text, cookie banner included. In UX, perceived performance is a signal of reliability. When the interface is slow or unstable, the user projects that fragility onto the service itself.</p>
+
+      <p>On hierarchy: documents are scattered across three locations. Home blocks are written like marketing pages. The newsletter prompt is more visible than the contracts access. The Allianz Travel banner appears even inside the certificate form. The user's mental model ("I manage my insurance") does not match the information architecture presented ("here are our offers").</p>
+
+      <figure class="article-figure">
+        <img src="img/luko-original.jpg" alt="Luko by Allianz Direct My Account homepage" loading="lazy">
+        <figcaption>
+          <strong>The My Account space as it exists today.</strong> Allianz Travel banner at the top, newsletter prompt before the contracts, documents scattered across three blocks written like marketing pages.
+        </figcaption>
+      </figure>
+
+      <h2>Prototype</h2>
+
+      <p>Based on this audit, I opened a session with <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>. The tool navigated the app, explored the flows and formalized the audit. The site went down with a 503 during the exploration.</p>
+
+      <p>Guiding principle: the client area serves the two reasons why a policyholder logs in. Get a document, or file a claim. Everything that does not serve these two goals is removed. This is a standard product prioritization exercise: identify the critical paths and eliminate the noise that dilutes them.</p>
+
+      <p>Three rounds of iteration, each guided by a different design principle.</p>
+
+      <p>Progressive disclosure: the claims declaration starts from the home with property selection. The user first sees their contracts, then accesses the actions in context. No more navigating inside a contract to find a buried funnel.</p>
+
+      <p>Wording as UI: the framing "add a contract" becomes "get insured." The first describes a system action, the second describes the user's intent. The actual catalog (home, travel, auto via Eurofil) replaces a generic button that promises nothing.</p>
+
+      <p>Proximity principle: the Documents tab disappears. Documents belong to the context of each contract, not to a separate silo. The profile is under the avatar, not in a tab. Navigation goes from three tabs to zero: everything is accessible from the home because everything is in the right place.</p>
+
+      <figure class="article-figure">
+        <img src="img/luko-redesign.jpg" alt="Luko redesign prototype" loading="lazy">
+        <figcaption>
+          <strong>The prototype after three iterations.</strong> Certificates and claims declaration in the foreground. Contracts as cards with address and price. Insurance catalog instead of fake "add a contract" buttons.
+        </figcaption>
+      </figure>
+
+      <div class="article-body-cta">
+        <a href="https://dist-neon-delta-32.vercel.app/" target="_blank" rel="noopener">See the redesign &rarr;</a>
+      </div>
+
+      <h2>The flows</h2>
+
+      <p>The prototype does not stop at the home. Two critical flows were rebuilt end to end, because that is where the current interface loses the most time and trust.</p>
+
+      <p>The claims declaration now starts from the home in one click. The user selects the property concerned, then a five-step wizard (property, type, details, photos, confirmation) guides them without ever sending them back to a contract or an accordion. In the current interface, filing a claim requires first finding the right contract, then navigating its submenus -- a flow that assumes the user thinks in terms of contract numbers, not in terms of a problem to solve.</p>
+
+      <figure class="article-figure">
+        <img src="img/luko-flow-sinistre.svg" alt="Claims declaration flow comparison: existing (contract then find the link) vs redesign (home then 5-step wizard)" loading="lazy">
+        <figcaption>
+          <strong>Claims declaration: existing vs redesign.</strong> The current flow starts from the contract and requires finding a buried link. The redesign starts from the problem and guides with a wizard.
+        </figcaption>
+      </figure>
+
+      <figure class="article-figure">
+        <img src="img/luko-sinistre.jpg" alt="Claims declaration flow: step 1 Property with selection among insured addresses, 5-step stepper" loading="lazy">
+        <figcaption>
+          <strong>Claims declaration, step 1.</strong> The user selects the property concerned. The wizard displays the five remaining steps. No hidden funnel inside a contract.
+        </figcaption>
+      </figure>
+
+      <p>Certificate generation follows the same logic. From the home, the user clicks, selects the contract, then immediately sees the four available certificate types (liability, school insurance, venue rental, vacation rental) with their use case indicated as a subtitle. One click generates the PDF. In the current interface, this same flow requires five interactions and an accordion.</p>
+
+      <figure class="article-figure">
+        <img src="img/luko-flow-attestation.svg" alt="Certificate flow comparison: existing (5 interactions, hidden accordion) vs redesign (3 interactions, direct download)" loading="lazy">
+        <figcaption>
+          <strong>Certificate generation: existing vs redesign.</strong> Five interactions with scroll and accordion versus three interactions with direct download.
+        </figcaption>
+      </figure>
+
+      <figure class="article-figure">
+        <img src="img/luko-attestation.jpg" alt="Certificate generation: four types displayed as cards with download icon and usage description" loading="lazy">
+        <figcaption>
+          <strong>Certificate generation after contract selection.</strong> All four types are visible at once with their usage context. One click downloads the PDF.
+        </figcaption>
+      </figure>
+
+      <h2>The contract view</h2>
+
+      <p>Each contract has its own page. At the top, the address, status, dates, annual price. Below, the claims declaration contextualized to that property. Then the certificates available for that specific contract -- not in a separate Documents tab, but where the user looks for them. Documents (specific terms, payment schedule, general terms) are grouped under the contract they belong to, with their date. The Guarantees, Insured party(ies) and Payment accordions complete the page without cluttering the default view.</p>
+
+      <p>The principle is co-location: each piece of information lives in the context that gives it meaning. The original scatters these elements between the home, a Documents tab and contract sub-pages. The redesign gathers them in a single hierarchical location.</p>
+
+      <figure class="article-figure">
+        <img src="img/luko-architecture.svg" alt="Information architecture: existing with data scattered between Home, Documents tab and contract sub-page vs redesign with everything grouped under the contract view" loading="lazy">
+        <figcaption>
+          <strong>Information architecture: scatter vs co-location.</strong> The existing version spreads data across three screens. The redesign groups everything under the contract.
+        </figcaption>
+      </figure>
+
+      <figure class="article-figure">
+        <img src="img/luko-detail-contrat.jpg" alt="Contract detail view: header with address and status, certificate cards, document list, guarantees and payment accordions" loading="lazy">
+        <figcaption>
+          <strong>Contract detail view for 8 Rue des Lilas.</strong> Certificates, documents, guarantees and payment grouped on a single page. Documents belong to the contract, not to a separate tab.
+        </figcaption>
+      </figure>
+
+    </div>
+  </article>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

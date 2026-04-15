@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anatomy of a product audit — Gildas Frémont</title>
+  <meta name="description" content="How a UX audit of five interviews reveals organizational dysfunctions. Method and reasoning through the UBAQ case.">
+  <link rel="canonical" href="https://gildas.fyi/audit-ubaq-methode-en">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Anatomy of a product audit — Gildas Frémont">
+  <meta property="og:description" content="What you find when you look for the causes of the causes. Method and reasoning through a real case.">
+  <meta property="og:url" content="https://gildas.fyi/audit-ubaq-methode-en">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-loaded')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},500);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+</script>
+
+<div class="container article-page">
+
+  <nav class="lang-toggle">
+    <a href="index.html" onclick="if(history.length>1){history.back();return false;}">&larr; Back</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <h1>Anatomy of a product audit</h1>
+      <p class="article-page-subtitle">What you find when you look for the causes of the causes</p>
+      <p class="article-meta">June 2025 · engagement via Grandwork for UBAQ</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>UBAQ develops SaaS regulatory compliance solutions for the healthcare industry. NTU (NAYACT Transparency by UBAQ) manages the transparency of ties of interest between laboratories and healthcare professionals, within the framework of the law governing benefits. The team sensed that something was off in the interface but could not pinpoint exactly what, nor why successive fixes were not improving anything. They commissioned a UX audit through Grandwork. The brief fit in one sentence: understand what is wrong and say what to do.</p>
+
+      <h2>The setup</h2>
+
+      <p>Five interviews with different profiles within the team, complemented by a direct analysis of the application in staging. No end-user testing, no analytics data, no heatmaps. This is a deliberate choice: on a niche B2B product with few active users, quantitative signals are too noisy to be actionable. Internal interviews, on the other hand, allow you to cross-reference the perception of the tool with the constraints of those who build it, which is precisely the usual blind spot.</p>
+
+      <p>The diagnosis does not address business decisions or functional coverage. It addresses what prevents the tool from working as its users expect, and the reasons why that persists.</p>
+
+      <h2>First level: interface problems</h2>
+
+      <p>The application analysis reveals five categories of dysfunctions that, taken individually, look like standard design mistakes but together point to a deeper pattern.</p>
+
+      <p>The central data model is confusing. The "manifestation" object groups under the same label events, donations and contracts -- three concepts that users clearly distinguish. Sales teams think in terms of expenses and clients, not manifestations. The desire to simplify the technical model came at the expense of the mental model of those who use the tool daily. This is a textbook case of what Don Norman calls the gulf of evaluation: the gap between the system's representation and the user's representation.</p>
+
+      <p>The kanban, meant to provide visibility on progress, delivers none of the expected benefits of the pattern. No drag and drop, non-linear stages, slow rendering, and cards that accumulate information relevant at certain stages but parasitic at others. The pattern promises a flow model; what is delivered is a tabular view in disguise.</p>
+
+      <p>Navigation changes depending on context. The menu for a manifestation appears in the main menu and changes based on the state of that manifestation. A dynamic navigation menu whose options vary according to the state of a business object is a major red flag in ergonomics: navigation must remain the user's stable reference point, not yet another reactive surface.</p>
+
+      <p>Forms mix four types of information on a single screen, relationships between objects are not visible, and two distinct business flows -- managing contracts and managing expenses -- coexist in the same interface without the user being able to handle them separately. The interface is dense without being efficient: the density comes from a refusal to choose, not from a mastered hierarchy.</p>
+
+      <h2>Second level: organizational causes</h2>
+
+      <p>Each of these problems could be fixed in isolation. But the interesting question is not "how to fix the kanban" -- it is "why is the kanban in this state when the team knows it is dysfunctional." The interviews make it possible to trace back to the mechanisms that produce these symptoms.</p>
+
+      <p>Urgency dominates planning. When every client request generates a one-off solution that piles on top of the existing codebase, kanban cards end up accumulating disparate fields, navigation adapts on a case-by-case basis, forms absorb new sections without refactoring. This is not a technical competence problem -- it is a time allocation problem.</p>
+
+      <p>The team operates as a feature factory: every client request becomes a feature to develop without questioning its real value or its impact on overall coherence. Roadmap choices are driven by the migration of clients from the legacy solution -- a form of churn management on a case-by-case basis that sacrifices tomorrow's clients for the sake of immediate retention. There is no prioritization framework based on business value, feasibility and user viability.</p>
+
+      <p>The absence of structured UX and PM competencies within the team explains why each new feature lands wherever it is simplest to implement rather than wherever it would make the most sense for the user. This deficit produces a vicious cycle: today's quick fixes become tomorrow's conceptual debt, debt increases pressure, pressure pushes toward even more expedient solutions. The mechanism is not linear but exponential, because each incoherent feature creates its own branch of complexity.</p>
+
+      <h2>What the diagnosis changes in the recommendations</h2>
+
+      <p>An audit that stops at interface problems produces a list of corrections. Useful, but fragile: if the conditions that generated the problems persist, the same dysfunctions reappear in other forms within a few months. The real deliverable of a two-level audit is a diagnosis that allows the client to choose how deep they want to intervene.</p>
+
+      <p>The recommendations therefore cover three registers. The interface register, first: separate the data model into objects that correspond to business concepts, replace the kanban with a view suited to actual flows, stabilize navigation, unbundle forms. The competencies register, next: bring UX and PM expertise into the team, whether through hiring, external support or internal upskilling. The process register, finally: establish a prioritization framework, exit reactive mode, ring-fence time for coherence.</p>
+
+      <p>The delicate point is that these three registers are not independent. Fixing the interface without changing the way of working is like repainting a wall whose foundations are shifting. Upskilling without a prioritization framework means better diagnosing problems you do not have time to address. The audit makes these dependencies explicit so that the decision is made with full knowledge of the facts.</p>
+
+      <h2>What this exercise shows about the method</h2>
+
+      <p>The standard reflex when facing a failing interface is to propose a redesign. The reflex I advocate is to first understand why the interface is in that state before deciding what to do about it. Five interviews and an application analysis are enough to establish this dual diagnosis, provided the interviews are not treated as a wish-list collection but as investigative material about the mechanisms at play.</p>
+
+      <p>In the case of UBAQ, the recommendations initiated the navigation overhaul, and the engagement continued into execution with the product team, which had no UX profile in-house. The follow-up showed that the organizational diagnosis was the most useful lever: the team was able to make different trade-offs because it had a framework to name what was stuck beyond the interface.</p>
+
+    </div>
+  </article>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
