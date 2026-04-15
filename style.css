@@ -734,6 +734,7 @@ span.milestone-tag {
 .article-body p {
   color: var(--mid);
   margin-bottom: 1rem;
+  font-size: 16px;
 }
 
 .article-body a {
