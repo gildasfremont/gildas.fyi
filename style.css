@@ -81,6 +81,17 @@ body.fonts-loaded {
   background: var(--bg);
 }
 
+.topbar::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: linear-gradient(to bottom, var(--bg), transparent);
+  pointer-events: none;
+}
+
 .topbar-glow {
   position: absolute;
   inset: 0;
