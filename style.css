@@ -1161,6 +1161,8 @@ footer {
   /* Hide hamburger + desktop title, show title+chevron */
   .menu-toggle { display: none; }
   .topbar > .header-title { display: none; }
+  .menu-wrap { position: static; }
+  .menu-dropdown { top: 100%; left: calc(50vw - 50%); }
   .title-toggle {
     display: inline-flex;
     align-items: center;
