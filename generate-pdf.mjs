@@ -6,7 +6,7 @@ const pages = [
   { url: 'en.html', output: 'resume-gildas-fremont.pdf', format: 'Letter' },
 ];
 
-const browser = await puppeteer.launch({ headless: true });
+const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
 
 for (const { url, output, format } of pages) {
   const page = await browser.newPage();
@@ -15,8 +15,8 @@ for (const { url, output, format } of pages) {
   // Activate print styles before measuring/rendering
   await page.emulateMediaType('print');
 
-  // Click page to trigger anti-spam email reveal
-  await page.click('body');
+  // Click email link to trigger anti-spam reveal
+  await page.click('.contact-email');
 
   await page.pdf({
     path: output,
