@@ -152,8 +152,8 @@ body.fonts-instant {
   display: inline-block;
   animation: lang-dot-pulse 1s ease-in-out infinite;
 }
-.lang-dots span:nth-child(2) { animation-delay: 0.15s; }
-.lang-dots span:nth-child(3) { animation-delay: 0.3s; }
+.lang-dots span:nth-child(2) { animation-delay: 0.05s; }
+.lang-dots span:nth-child(3) { animation-delay: 0.1s; }
 
 @keyframes lang-dot-pulse {
   0%, 60%, 100% { opacity: 0.2; transform: translateY(0); }
