@@ -1270,6 +1270,8 @@ footer {
   footer h2 { margin-bottom: 0.2rem; }
   footer .header-name { font-size: 0.85rem; }
   footer .header-title { display: inline; font-size: 0.85rem; }
+  .footer-links { flex-direction: row; flex-wrap: wrap; gap: 0 0.75rem; }
+  .footer-link-row { display: inline-flex; }
   .footer-cols { display: flex; flex-wrap: wrap; gap: 0 0.75rem; }
   .footer-col { flex-direction: row; gap: 0.5rem; }
 
