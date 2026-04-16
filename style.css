@@ -476,7 +476,7 @@ h1, .footer-contact h2 {
 /* Claude badge — sits off-axis on the intro */
 .claude-badge {
   position: absolute;
-  right: 0;
+  right: 8%;
   bottom: -0.6em;
   display: inline-flex;
   align-items: center;
@@ -1188,6 +1188,7 @@ footer {
 @media (max-width: 600px) {
   html { font-size: 19.7px; }
   .container { padding: 0 1.5rem 2rem; }
+  .claude-badge { right: 0; }
 
   .row {
     grid-template-columns: 1fr auto;
