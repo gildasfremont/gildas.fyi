@@ -78,23 +78,32 @@ body.fonts-loaded {
   margin-right: calc(-50vw + 50%);
   padding-left: calc(50vw - 50%);
   padding-right: calc(50vw - 50%);
-  background: var(--bg);
+  background: rgba(253,254,253,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.topbar::after {
-  content: '';
+.topbar-fade {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40px;
+  transform: translateY(100%);
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar-fade-step {
+  height: 4px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  -webkit-mask-image: linear-gradient(to top, transparent, black);
-  mask-image: linear-gradient(to top, transparent, black);
-  transform: translateY(100%);
 }
+
+.topbar-fade-step:nth-child(1) { opacity: 0.6; }
+.topbar-fade-step:nth-child(2) { opacity: 0.4; }
+.topbar-fade-step:nth-child(3) { opacity: 0.2; }
+.topbar-fade-step:nth-child(4) { opacity: 0.1; }
 
 .topbar-glow {
   position: absolute;
