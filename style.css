@@ -187,13 +187,14 @@ body.fonts-loaded {
   scale: 0.96;
   pointer-events: none;
   transform-origin: top left;
-  transition: opacity 0.15s ease, scale 0.15s ease;
+  transition: opacity 0.05s ease, scale 0.05s ease;
 }
 
 .menu-dropdown.open {
   opacity: 1;
   scale: 1;
   pointer-events: auto;
+  transition: opacity 0.15s ease, scale 0.15s ease;
 }
 
 .menu-dropdown a {
