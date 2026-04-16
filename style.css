@@ -416,7 +416,7 @@ h1, .footer-contact h2 {
 }
 
 .intro strong {
-  font-weight: 700;
+  font-weight: 500;
   font-variation-settings: 'GEOM' 0;
 }
 
@@ -453,21 +453,21 @@ h1, .footer-contact h2 {
   bottom: -0.2em;
   display: inline-flex;
   align-items: center;
-  gap: 0.3em;
+  gap: 0.25em;
   font-size: 0.9rem;
-  font-weight: 400;
-  color: var(--light);
+  font-weight: 600;
+  color: var(--mid);
   letter-spacing: 0;
   line-height: 1;
   transform: rotate(-3deg);
   pointer-events: none;
   white-space: nowrap;
+  font-variation-settings: 'GEOM' 0;
 }
 
 .claude-badge-logo {
-  width: 1em;
-  height: 1em;
-  opacity: 0.7;
+  width: 0.85em;
+  height: 0.85em;
 }
 
 /* Sections */
