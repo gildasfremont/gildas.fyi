@@ -481,7 +481,7 @@ h1, .footer-contact h2 {
   display: inline-flex;
   align-items: center;
   gap: 0.3em;
-  font-size: 1.2rem;
+  font-size: 0.28em;
   font-weight: 600;
   color: var(--dark);
   letter-spacing: 0;
@@ -1170,7 +1170,6 @@ footer {
   .menu-rdv { display: block; }
 
   /* Hide Claude badge on mobile */
-  .claude-badge { display: none; }
 
   /* Lang toggle: single button for the other language */
   .lang-toggle { background: none; padding: 0; }
