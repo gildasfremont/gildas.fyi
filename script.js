@@ -8,7 +8,7 @@
       a.innerHTML='<span class="lang-dots"><span>.</span><span>.</span><span>.</span></span>';
     });
   });
-  // Anti-spam: reveal email on first interaction
+  // Anti-spam: reveal email only when clicking on email link or contact section
   var revealed=false;
   function reveal(){
     if(revealed)return;
@@ -18,9 +18,9 @@
       if(e){var addr=e.dataset.u+'@'+e.dataset.d;e.href='mailto:'+addr;e.textContent=addr;}
     });
   }
-  function revealOnce(){reveal();document.removeEventListener('click',revealOnce);document.removeEventListener('touchstart',revealOnce);}
-  document.addEventListener('click',revealOnce);
-  document.addEventListener('touchstart',revealOnce);
+  document.querySelectorAll('.contact-email').forEach(function(el){
+    el.addEventListener('click',function(ev){if(!revealed){ev.preventDefault();reveal();}});
+  });
   // Hamburger / title-toggle menu
   document.querySelectorAll('.topbar').forEach(function(topbar){
     var dd=topbar.querySelector('.menu-dropdown');
