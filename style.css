@@ -449,25 +449,29 @@ h1, .footer-contact h2 {
 /* Claude badge — sits off-axis on the intro */
 .claude-badge {
   position: absolute;
-  right: 5%;
-  bottom: -0.2em;
+  right: 12%;
+  bottom: 0.15em;
   display: inline-flex;
   align-items: center;
-  gap: 0.25em;
-  font-size: 0.9rem;
+  gap: 0.3em;
+  font-size: 1.2rem;
   font-weight: 600;
-  color: var(--mid);
+  color: var(--dark);
   letter-spacing: 0;
   line-height: 1;
   transform: rotate(-3deg);
   pointer-events: none;
   white-space: nowrap;
   font-variation-settings: 'GEOM' 0;
+  background: rgba(253,254,253,0.85);
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+  border: 1px solid var(--border);
 }
 
 .claude-badge-logo {
-  width: 0.85em;
-  height: 0.85em;
+  width: 0.9em;
+  height: 0.9em;
 }
 
 /* Sections */
