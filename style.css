@@ -78,18 +78,9 @@ body.fonts-loaded {
   margin-right: calc(-50vw + 50%);
   padding-left: calc(50vw - 50%);
   padding-right: calc(50vw - 50%);
-  background: var(--bg);
-}
-
-.topbar::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 0;
-  right: 0;
-  height: 12px;
-  background: linear-gradient(to bottom, var(--bg), transparent);
-  pointer-events: none;
+  background: rgba(253,254,253,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .topbar-glow {
