@@ -32,10 +32,14 @@
   document.addEventListener('click',function(ev){
     document.querySelectorAll('.menu-dropdown.open').forEach(function(dd){
       var topbar=dd.closest('.topbar');
-      if(!topbar||topbar.contains(ev.target))return;
+      if(!topbar)return;
+      var burger=topbar.querySelector('.menu-toggle');
+      var titleBtn=topbar.querySelector('.title-toggle');
+      if(dd.contains(ev.target))return;
+      if(burger&&burger.contains(ev.target))return;
+      if(titleBtn&&titleBtn.contains(ev.target))return;
       dd.classList.remove('open');
-      var b=topbar.querySelector('.menu-toggle');
-      if(b)b.setAttribute('aria-expanded','false');
+      if(burger)burger.setAttribute('aria-expanded','false');
     });
   });
   // Footer copy buttons
