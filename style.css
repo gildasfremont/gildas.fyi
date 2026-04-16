@@ -161,9 +161,10 @@ body.fonts-instant {
   100% { opacity: 1; transform: translateY(-2px); }
 }
 
-/* Hamburger menu */
+/* Hamburger menu — hidden on desktop */
 .menu-wrap {
   position: relative;
+  display: none;
 }
 
 .menu-toggle {
@@ -1155,9 +1156,12 @@ footer {
   .container { max-width: 100%; padding: 0 2rem 2rem; }
   .intro { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
 
-  /* Hide hamburger + desktop title, show title+chevron */
+  /* Mobile: show menu-wrap with title-toggle, hide desktop title + nav-rdv */
+  .menu-wrap { display: block; }
   .menu-toggle { display: none; }
   .topbar > .header-title { display: none; }
+  .nav-rdv { display: none; }
+  .menu-rdv { display: block; }
   .menu-wrap { position: static; }
   .menu-dropdown { top: 100%; left: calc(50vw - 50%); }
   .title-toggle {
@@ -1180,10 +1184,6 @@ footer {
     text-overflow: ellipsis;
     min-width: 0;
   }
-
-  /* RDV: hide nav link, show in menu */
-  .nav-rdv { display: none; }
-  .menu-rdv { display: block; }
 
   /* Hide Claude badge on mobile */
 
