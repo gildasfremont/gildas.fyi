@@ -1243,7 +1243,10 @@ footer {
   .milestone-tag svg,
   .section-articles,
   .entry::before,
+  .entry-header .left::before,
   .edu-row::before,
+  .edu-row .left::before,
+  .topbar-fade,
   .article-entry::before,
   .clamp-toggle,
   .entry-link,
@@ -1282,11 +1285,11 @@ footer {
   :lang(en) .avatar-wrap { display: none; }
 
   /* Sections */
-  section { margin-bottom: 1.6rem; }
-  .section-title { margin-bottom: 0.35rem; font-size: 0.67rem; font-weight: 700; border: none; }
+  section { margin-bottom: 1.3rem; }
+  .section-title { margin-bottom: 0.25rem; font-size: 0.67rem; font-weight: 700; border: none; }
 
   /* Entries: company + role on same line */
-  .entry { margin-bottom: 0.55rem; }
+  .entry { margin-bottom: 0.4rem; }
   .entry-header { margin-bottom: 0; display: inline-flex; align-items: center; }
   .entry-header .left { display: inline-flex; align-items: center; }
   .entry-role { display: inline; margin-bottom: 0; margin-left: 0.3rem; font-size: 0.52rem; }
@@ -1295,14 +1298,17 @@ footer {
   .entry .short-text { display: block; }
 
   /* Education */
-  .edu-row { margin-bottom: 0.4rem; }
+  .edu-row { margin-bottom: 0.3rem; }
 
   /* Tools */
-  .tools { margin-top: 0.25rem; }
+  .tools { margin-top: 0.2rem; }
 
   /* Milestones */
-  .milestone-tags { margin: 0.1rem 0; gap: 0.08rem; }
+  .milestone-tags { margin: 0.08rem 0; gap: 0.06rem; }
   .milestone-tag { font-size: 0.46rem; padding: 0.02rem 0.2rem; }
-  .sector-tags { margin: 0.1rem 0; gap: 0.1rem; }
+  .sector-tags { margin: 0.08rem 0; gap: 0.08rem; }
   .sector-tag { font-size: 0.46rem; padding: 0.02rem 0.2rem; }
+
+  /* Footer as header */
+  footer { display: block; order: -1; margin: 0 0 0.5rem; padding-bottom: 0; border: none; font-size: 0.65rem; }
 }
