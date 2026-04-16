@@ -5,7 +5,7 @@
       var w=a.offsetWidth;
       a.style.width=w+'px';
       a.style.textAlign='center';
-      a.textContent='...';
+      a.innerHTML='<span class="lang-dots"><span>.</span><span>.</span><span>.</span></span>';
     });
   });
   // Anti-spam: reveal email on first interaction
