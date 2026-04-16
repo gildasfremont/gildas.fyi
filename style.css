@@ -449,8 +449,8 @@ h1, .footer-contact h2 {
 /* Claude badge — sits off-axis on the intro */
 .claude-badge {
   position: absolute;
-  right: 12%;
-  bottom: 0.15em;
+  right: 2%;
+  bottom: 0.05em;
   display: inline-flex;
   align-items: center;
   gap: 0.3em;
