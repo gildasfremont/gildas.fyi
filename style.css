@@ -486,6 +486,7 @@ h1, .footer-contact h2 {
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
   margin-left: auto;
+  margin-right: 0.5rem;
 }
 
 .nav-rdv:hover {
