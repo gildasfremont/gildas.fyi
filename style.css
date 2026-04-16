@@ -78,12 +78,22 @@ body.fonts-loaded {
   margin-right: calc(-50vw + 50%);
   padding-left: calc(50vw - 50%);
   padding-right: calc(50vw - 50%);
-  background: transparent;
-  padding-bottom: 2rem;
-  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: var(--bg);
+}
+
+.topbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  -webkit-mask-image: linear-gradient(to top, transparent, black);
+  mask-image: linear-gradient(to top, transparent, black);
+  transform: translateY(100%);
 }
 
 .topbar-glow {
