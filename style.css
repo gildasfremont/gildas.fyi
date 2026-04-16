@@ -298,7 +298,7 @@ a.header-name {
 }
 
 /* Header */
-header { margin-bottom: 2rem; text-align: center; }
+header { margin-bottom: 3rem; text-align: center; }
 .article-page header { text-align: left; }
 
 .header-name .avatar {
