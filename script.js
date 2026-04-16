@@ -2,8 +2,10 @@
   // Lang toggle: instant feedback on click
   document.querySelectorAll('.lang-toggle a:not(.active)').forEach(function(a){
     a.addEventListener('click',function(){
-      var toggle=a.closest('.lang-toggle');
-      if(toggle) toggle.textContent='...';
+      var w=a.offsetWidth;
+      a.style.width=w+'px';
+      a.style.textAlign='center';
+      a.textContent='...';
     });
   });
   // Anti-spam: reveal email on first interaction
