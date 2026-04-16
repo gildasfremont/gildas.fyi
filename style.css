@@ -42,10 +42,14 @@ body {
   min-height: 100vh;
   font-variation-settings: 'GEOM' 50;
   opacity: 0;
-  transition: opacity 0.35s ease;
 }
 
 body.fonts-loaded {
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+body.fonts-instant {
   opacity: 1;
 }
 
