@@ -123,6 +123,7 @@ body.fonts-instant {
 /* Language toggle — segmented control */
 .lang-toggle {
   display: flex;
+  margin-left: auto;
   background: var(--border);
   border-radius: 6px;
   padding: 2px;
@@ -527,7 +528,6 @@ h1, .footer-contact h2 {
   border: 1px solid var(--border);
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
-  margin-left: auto;
   margin-right: 0.5rem;
   background: var(--white);
 }
