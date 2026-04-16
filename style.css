@@ -474,6 +474,38 @@ h1, .footer-contact h2 {
   height: 0.9em;
 }
 
+/* Nav RDV link — hidden on small screens, shown in menu instead */
+.nav-rdv {
+  font-size: 0.55rem;
+  color: var(--light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--border);
+  white-space: nowrap;
+}
+
+.nav-rdv:hover {
+  color: var(--dark);
+  text-decoration-color: var(--subtle);
+}
+
+.menu-rdv { display: none; }
+
+/* Intro avatar — sits on the "Je" */
+.intro-avatar {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.15em;
+}
+
+.intro-avatar .avatar {
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: baseline;
+}
+
 /* Sections */
 section { margin-bottom: 3rem; }
 
@@ -1101,6 +1133,10 @@ footer {
     text-overflow: ellipsis;
     min-width: 0;
   }
+
+  /* RDV: hide nav link, show in menu */
+  .nav-rdv { display: none; }
+  .menu-rdv { display: block; }
 
   /* Lang toggle: single button for the other language */
   .lang-toggle { background: none; padding: 0; }
