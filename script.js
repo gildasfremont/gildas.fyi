@@ -1,4 +1,11 @@
 (function(){
+  // Lang toggle: instant feedback on click
+  document.querySelectorAll('.lang-toggle a:not(.active)').forEach(function(a){
+    a.addEventListener('click',function(){
+      var toggle=a.closest('.lang-toggle');
+      if(toggle) toggle.textContent='...';
+    });
+  });
   // Anti-spam: reveal email on first interaction
   var revealed=false;
   function reveal(){
