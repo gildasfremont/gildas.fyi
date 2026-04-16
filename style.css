@@ -398,6 +398,7 @@ h1, .footer-contact h2 {
 
 /* Intro — breaks out of container to the right */
 .intro {
+  position: relative;
   color: var(--dark);
   margin-bottom: 1.5rem;
   font-size: 1rem;
@@ -443,6 +444,30 @@ h1, .footer-contact h2 {
   display: block;
   white-space: nowrap;
   overflow: visible;
+}
+
+/* Claude badge — sits off-axis on the intro */
+.claude-badge {
+  position: absolute;
+  right: 5%;
+  bottom: -0.2em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--light);
+  letter-spacing: 0;
+  line-height: 1;
+  transform: rotate(-3deg);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.claude-badge-logo {
+  width: 1em;
+  height: 1em;
+  opacity: 0.7;
 }
 
 /* Sections */
