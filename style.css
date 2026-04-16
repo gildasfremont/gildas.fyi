@@ -178,11 +178,8 @@ body.fonts-instant {
   cursor: pointer;
 }
 
-/* Desktop title — centered in topbar */
+/* Desktop title — next to hamburger */
 .topbar > .header-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   pointer-events: none;
   font-weight: 500;
   color: var(--dark);
