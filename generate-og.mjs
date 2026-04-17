@@ -83,7 +83,7 @@ const html = `<!DOCTYPE html>
   <div class="halo halo-orange"></div>
   <div class="halo halo-green"></div>
   <div class="halo halo-violet"></div>
-  <div class="tagline">Je trouve le vrai problème, conçois la bonne solution et la livre avec votre équipe.</div>
+  <div class="tagline">La bonne solution au bon problème, livrée très vite.</div>
   <div class="bottom">
     <img class="avatar" src="data:image/jpeg;base64,${avatarB64}">
     <span class="name">Gildas Frémont</span>
@@ -91,7 +91,7 @@ const html = `<!DOCTYPE html>
 </body>
 </html>`;
 
-const browser = await puppeteer.launch();
+const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
 const page = await browser.newPage();
 await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 2 });
 await page.setContent(html, { waitUntil: 'networkidle0' });
