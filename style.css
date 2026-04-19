@@ -1169,7 +1169,7 @@ footer {
   .nav-rdv { display: none; }
   .menu-rdv { display: block; }
   .menu-wrap { position: static; }
-  .menu-dropdown { top: 100%; left: calc(50vw - 50%); }
+  .menu-dropdown { top: 100%; left: 50%; transform: translateX(-50%); }
   .title-toggle {
     display: inline-flex;
     align-items: center;
