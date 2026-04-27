@@ -558,12 +558,14 @@ h1, .footer-contact h2 {
   vertical-align: baseline;
 }
 
-/* Intro bio — short paragraph between title and articles */
+/* Intro bio — same style as section titles */
 .intro-bio {
-  color: var(--light);
-  font-weight: 300;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  font-variation-settings: 'GEOM' 0;
+  letter-spacing: -0.01em;
   text-align: center;
-  max-width: 520px;
   margin: 0 auto 3rem;
 }
 
