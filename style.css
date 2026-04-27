@@ -561,7 +561,7 @@ h1, .footer-contact h2 {
 /* Intro bio — same style as section titles */
 .intro-bio {
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--dark);
   font-variation-settings: 'GEOM' 0;
   letter-spacing: -0.01em;
