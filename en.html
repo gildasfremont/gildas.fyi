@@ -50,7 +50,7 @@
 </head>
 <body>
 <script>
-if(document.fonts.check('1em "Cal Sans UI"')){document.body.classList.add('fonts-instant')}else{var t=setTimeout(function(){document.body.classList.add('fonts-loaded')},200);document.fonts.ready.then(function(){clearTimeout(t);document.body.classList.add('fonts-loaded')})}
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
 </script>
 
 <div class="container">
