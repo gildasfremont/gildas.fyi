@@ -488,32 +488,27 @@ h1, .footer-contact h2 {
   overflow: visible;
 }
 
-/* Claude badge — sits off-axis on the intro */
-.claude-badge {
-  position: absolute;
-  right: 8%;
-  bottom: -0.6em;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3em;
-  font-size: 0.28em;
-  font-weight: 600;
-  color: var(--dark);
-  letter-spacing: 0;
-  line-height: 1;
-  transform: rotate(-3deg);
-  pointer-events: none;
-  white-space: nowrap;
-  font-variation-settings: 'GEOM' 0;
-  background: rgba(253,254,253,0.85);
-  padding: 0.25em 0.5em;
-  border-radius: 6px;
-  border: 1px solid var(--border);
+/* Claude logo — closes the baseline in place of the final period.
+   Sized so that, after the aside's 0.85em scaling, it lands at the same
+   absolute size as the opening avatar — the two become a bookend. */
+.intro-logo {
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -0.18em;
+  margin-left: 0.18em;
 }
 
-.claude-badge-logo {
-  width: 0.9em;
-  height: 0.9em;
+/* Parenthetical aside — recedes via grey and a soft step down (not a
+   cliff), no accent halo. A little breath above sets it apart. */
+.intro-aside {
+  font-size: 0.85em;
+  color: var(--light);
+  margin-top: 0.18em;
+  letter-spacing: -0.015em;
+}
+
+.intro-aside em::before {
+  display: none;
 }
 
 /* Nav RDV link — hidden on small screens, shown in menu instead */
@@ -551,8 +546,8 @@ h1, .footer-contact h2 {
 }
 
 .intro-avatar .avatar {
-  width: 0.75em;
-  height: 0.75em;
+  width: 0.92em;
+  height: 0.92em;
   border-radius: 50%;
   object-fit: cover;
   vertical-align: baseline;
@@ -1232,7 +1227,6 @@ footer {
 @media (max-width: 600px) {
   html { font-size: 19.7px; }
   .container { padding: 0 1.5rem 2rem; }
-  .claude-badge { right: 0; }
 
   .row {
     grid-template-columns: 1fr auto;
