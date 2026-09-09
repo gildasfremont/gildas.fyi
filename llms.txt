@@ -6,11 +6,11 @@ Gildas Frémont est product manager senior, basé à Paris. Il cherche un poste 
 ## Ce qu'il fait
 Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équipe en place. Son travail couvre : audit produit, design system, création produit, simplification de parcours complexes, construction de SI, PLG, et direction produit opérationnelle.
 
-## Pourquoi le salariat maintenant
-Quatre ans d'indépendance sur des contextes sans rapport entre eux (SaaS RH, industrie, assurance, télécom) lui ont donné le réflexe d'entrer dans un produit inconnu et d'être utile en quelques jours. Une mission s'arrête au moment où les décisions commencent à produire leurs effets. Il cherche la suite : un seul produit, une équipe, dans la durée.
+## La suite
+Quatre ans d'indépendance sur des contextes sans rapport entre eux (SaaS RH, industrie, assurance, télécom) apprennent à entrer dans un produit inconnu et à être utile en quelques jours. Une mission s'arrête au moment où les décisions commencent à produire leurs effets. Ce qui l'intéresse maintenant : un seul produit, une équipe, et le temps de voir ce que ça donne.
 
-## Ce qu'il fait avec l'IA
-Son site, ses automatisations et une bonne partie de sa production quotidienne sont construits avec Claude Code. Il a formé des non-techniciens à ces outils. Il n'a pas embarqué de LLM en production dans le produit d'un client à ce jour.
+## IA
+Son site, ses automatisations et une bonne partie de sa production sont construits avec Claude Code. Il a formé des non-techniciens à ces outils. Pas encore de LLM en production chez un client.
 
 ## Missions en indépendant (27 missions en 3 ans)
 - Lucca (depuis 2023) — Éditeur RH, 13 modules, 7 800 clients. Design system, création produit, PLG, simplification de parcours complexes. Plus de 200 jours d'intervention.

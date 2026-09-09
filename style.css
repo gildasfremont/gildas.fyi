@@ -1307,8 +1307,8 @@ footer {
   section { margin-bottom: 1.3rem; }
   .section-title { margin-bottom: 0.25rem; font-size: 0.67rem; font-weight: 700; border: none; }
 
-  /* Entries: company + role on same line */
-  .entry { margin-bottom: 0.4rem; }
+  /* Entries: company + role on same line, never split across pages */
+  .entry { margin-bottom: 0.4rem; break-inside: avoid; }
   .entry-header { margin-bottom: 0; display: inline-flex; align-items: center; }
   .entry-header .left { display: inline-flex; align-items: center; }
   .entry-role { display: inline; margin-bottom: 0; margin-left: 0.3rem; font-size: 0.52rem; }
