@@ -68,7 +68,7 @@
   });
   // Text clamping: truncate entry paragraphs, expand on click anywhere in entry
   document.querySelectorAll('.entry > p:first-of-type').forEach(function(p){
-    if(p.closest('.section-salarie'))return;
+    if(p.closest('.section-salarie')||p.closest('.section-prose'))return;
     var lineH=parseFloat(getComputedStyle(p).lineHeight);
     if(p.scrollHeight>lineH*2.5){
       p.classList.add('clamped');
