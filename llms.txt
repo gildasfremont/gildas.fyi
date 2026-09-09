@@ -1,12 +1,18 @@
-# Gildas Frémont — Direction produit à la demande
+# Gildas Frémont — Product Manager senior, B2B SaaS et IA
 
 ## Qui
-Gildas Frémont est un directeur produit freelance basé en France.
+Gildas Frémont est product manager senior, basé à Paris. Il cherche un poste en CDI, disponible immédiatement, à Paris ou ailleurs en France, sur du B2B SaaS avec une dimension IA. Poste de contributeur individuel (senior ou staff), pas de management d'équipe produit.
 
 ## Ce qu'il fait
-Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équipe en place. Ses interventions couvrent : audit produit, design system, création produit, simplification de parcours complexes, construction de SI, PLG, et direction produit opérationnelle.
+Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équipe en place. Son travail couvre : audit produit, design system, création produit, simplification de parcours complexes, construction de SI, PLG, et direction produit opérationnelle.
 
-## Missions freelance (27 missions en 3 ans)
+## Pourquoi le salariat maintenant
+Quatre ans d'indépendance sur des contextes sans rapport entre eux (SaaS RH, industrie, assurance, télécom) lui ont donné le réflexe d'entrer dans un produit inconnu et d'être utile en quelques jours. Une mission s'arrête au moment où les décisions commencent à produire leurs effets. Il cherche la suite : un seul produit, une équipe, dans la durée.
+
+## Ce qu'il fait avec l'IA
+Son site, ses automatisations et une bonne partie de sa production quotidienne sont construits avec Claude Code. Il a formé des non-techniciens à ces outils. Il n'a pas embarqué de LLM en production dans le produit d'un client à ce jour.
+
+## Missions en indépendant (27 missions en 3 ans)
 - Lucca (depuis 2023) — Éditeur RH, 13 modules, 7 800 clients. Design system, création produit, PLG, simplification de parcours complexes. Plus de 200 jours d'intervention.
 - Synaxe — Pivot d'une surcouche capteurs vers un outil de gestion et conformité pour matériaux dangereux. Livré maquettes et specs. Six mois.
 - Guinet-Derriaz 1912 — Groupe industriel du marbre, 14 carrières, aucun SI. Construction from scratch, budget 100 k€. Un an.
@@ -39,4 +45,5 @@ Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équi
 - Site : https://gildas.fyi
 - LinkedIn : https://linkedin.com/in/gildasfremont
 - X : https://x.com/legildas
-- Prendre rendez-vous : https://cal.com/gildas/15min
+- Discuter d'un poste : https://cal.com/gildas/15min
+- CV (pdf) : https://gildas.fyi/cv-gildas-fremont.pdf
