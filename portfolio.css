@@ -1,8 +1,8 @@
 /* ------------------------------------------------
    Portfolio — product cases
    Page-specific styles on top of style.css.
-   Same font, same palette; adds tables, schematic
-   diagrams, a table of contents and print rules.
+   Same font, same palette; adds tables, TL;DR blocks,
+   a table of contents and print rules.
    ------------------------------------------------ */
 
 .portfolio.article-page { padding-top: 0; }
@@ -277,82 +277,30 @@
   padding-right: 0;
 }
 
-/* Schematic diagrams: boxes and arrows */
-.portfolio .diag {
+/* TL;DR: the case in four sentences, before the story */
+.portfolio .tldr {
   display: flex;
-  gap: 0.5rem;
-  align-items: stretch;
-  flex-wrap: wrap;
-  margin: 0.75rem 0 0.5rem;
-}
-
-.portfolio .diag .b {
-  flex: 1 1 0;
-  min-width: 8.5rem;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 1.25rem 0 0.5rem;
+  padding: 0.7rem 0.9rem;
   border: 1px solid var(--border);
   border-radius: 6px;
   background: var(--white);
-  padding: 0.55rem 0.7rem;
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--mid);
+  max-width: 660px;
 }
 
-.portfolio .diag .b b {
-  display: block;
+.portfolio .tldr-label {
+  font-size: 0.55rem;
   font-weight: 500;
-  color: var(--black);
-  font-variation-settings: 'GEOM' 0;
-  margin-bottom: 0.15rem;
-}
-
-.portfolio .diag .b.wide { flex: 2 1 0; }
-.portfolio .diag .b.fit { flex: 0 1 auto; }
-.portfolio .diag .b.center { align-self: center; }
-
-.portfolio .diag .arrow {
-  align-self: center;
-  color: var(--subtle);
-  flex: 0 0 auto;
-  font-size: 18px;
-}
-
-.portfolio .diag.col { flex-direction: column; }
-.portfolio .diag .row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.portfolio .diag .base { flex: 1 1 100%; }
-
-.portfolio .grid20 {
-  display: grid;
-  grid-template-columns: repeat(5, 0.9rem);
-  gap: 3px;
-  align-content: center;
-  flex: 0 0 auto;
-}
-
-.portfolio .grid20 i {
-  display: block;
-  width: 0.9rem;
-  height: 0.6rem;
-  border-radius: 2px;
-  background: var(--border);
-}
-
-.portfolio .stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  justify-content: center;
-  flex: 1 1 0;
-}
-
-.portfolio .stack .b { flex: 0 0 auto; min-width: 0; }
-
-.portfolio .dlab {
+  letter-spacing: 0.04em;
   color: var(--light);
-  font-weight: 300;
-  font-size: 14px;
-  margin: 0.25rem 0 1.25rem;
-  max-width: 620px;
+  font-variation-settings: 'GEOM' 0;
+}
+
+.portfolio .article-body .tldr p {
+  margin: 0;
+  color: var(--dark);
 }
 
 /* Figures: reuse .article-figure from style.css */
@@ -373,10 +321,6 @@
 }
 
 @media (max-width: 600px) {
-  .portfolio .diag .arrow { display: none; }
-  .portfolio .diag .b { min-width: 100%; }
-  .portfolio .diag .stack { width: 100%; }
-  .portfolio .grid20 { margin-bottom: 0.3rem; }
   .portfolio th:first-child,
   .portfolio td:first-child { width: auto; }
 }
@@ -398,10 +342,9 @@
   .portfolio .case-role { font-size: 0.55rem; }
   .portfolio .case h3 { break-after: avoid; font-size: 0.7rem; margin-top: 0.9rem; }
   .portfolio table { font-size: 10px; }
-  .portfolio .diag .b { font-size: 9.5px; }
-  .portfolio .dlab { font-size: 9.5px; }
+  .portfolio .tldr { break-inside: avoid; }
+  .portfolio .article-body .tldr p { font-size: 10.5px; }
   .portfolio .tablewrap,
-  .portfolio .diag,
   .portfolio .article-figure { break-inside: avoid; }
   .portfolio .article-figure { border-color: var(--border); }
   .portfolio .article-figure figcaption { font-size: 9.5px; }

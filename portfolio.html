@@ -89,7 +89,7 @@
 
       <p>The cases are ordered by what I think is most useful to a hiring manager, not by date. Each has a different shape because the work did: a sequencing problem reads as a sequence, an audit as a diagnosis, a repositioning as a before and after. Where a decision had a credible alternative, it is named, with the reason for rejecting it.</p>
 
-      <p>Two things are missing on purpose. No client screenshots: the work is under confidentiality and the mechanisms matter more than the pixels, so the diagrams are schematic redrawings; the exception is the last section, a redesign done on my own account. And no process diagrams: the method is described where it was itself a decision, as at UBAQ, and left out where it was not.</p>
+      <p>Two things are missing on purpose. No client screenshots: the work is under confidentiality and the mechanisms matter more than the pixels; the exception is the last section, a redesign done on my own account. And no process diagrams: the method is described where it was itself a decision, as at UBAQ, and left out where it was not.</p>
 
       <p>On AI, since it is a fair question in 2026: for eighteen months my own tooling has been built with Claude Code and Cowork, automations and agents that prepare work I then review, including the site this is drawn from and the Luko prototype at the end. I have not yet shipped a model inside a client's product, and I would rather say that than imply it.</p>
 
@@ -119,6 +119,7 @@
             <a href="https://techcrunch.com/2021/04/21/ornikar-raises-120m-as-its-driving-school-marketplace-goes-up-a-gear-with-car-insurance/" target="_blank" rel="noopener" class="milestone-tag">$145M&nbsp;raised 2018–2021<svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M3.5 2.5H9.5V8.5M9 3L3 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </header>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Growth looked like an acquisition problem and was a registration problem: ninety-six administrations, each with its own unwritten rules, and a population about whom nothing can be assumed. We did the registrations by hand to learn the rules, automated them once they were stable, then cut the friction on the user side. Zero to 15,000 paying users in eighteen months.</p></div>
 
         <h3>The situation</h3>
         <p>Learning to drive in France went through driving schools. Ornikar sold lessons without one, with neither a platform nor a legal framework for doing it online. I was the first product manager and built the team from there. From the outside the growth question looked like an acquisition question. It was not.</p>
@@ -137,14 +138,8 @@
         </table></div>
 
         <h3>Three moves, in this order</h3>
-        <div class="diag">
-          <div class="b"><b>1. By hand</b>A support team built in house does the registrations manually, one département at a time. The purpose is to learn the real rules by performing them.</div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="b"><b>2. Automate</b>Once a département's rules are stable in practice, encode them. Automating first would have encoded guesses.</div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="b"><b>3. Remove friction</b>Back to the user side: forms, documents, messages. Cut whatever the automated path no longer needs from the user.</div>
-        </div>
-        <p class="dlab">The order is the point. Each phase produced the knowledge the next one needed, and none of them could have been skipped.</p>
+        <p>First by hand: a support team built in house did the registrations manually, one département at a time, and the purpose was to learn the real rules by performing them. Then automate: once a département's rules were stable in practice, we encoded them; automating first would have encoded guesses. Then back to the user side, forms, documents, messages, cutting whatever the automated path no longer needed from the user.</p>
+        <p>The order is the point. Each phase produced the knowledge the next one needed, and none of them could have been skipped.</p>
 
         <h3>What it produced</h3>
         <ul>
@@ -166,35 +161,20 @@
             <span class="milestone-tag">Salary review: now the sales demo feature</span>
           </div>
         </header>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Thirteen modules that share one employee record, so no fix is local. Two examples. A salary review tool cut from twenty candidate views to the three that cover the review as it is actually run, now the version sales demo. And impersonation, the mechanism that lets a manager act in an employee's view, written up as a pattern so that its consequences on naming, navigation and permissions stop being rediscovered.</p></div>
 
         <h3>The setting</h3>
         <p>Lucca's thirteen modules share an employee record, a permission model and a validation chain. A design decision taken in one of them surfaces in all the others, so there is no such thing as a local fix. I work directly with the head of each business suite, on the design system, on new product work, on product-led growth, and on the slow job of taking apart flows and administration tools that carry twenty years of accumulated decisions.</p>
 
         <h3>Salary review: twenty views to three</h3>
         <p>The salary review tool had twenty candidate views, each one answering a real request from a real customer. That is the difficulty: none of them was wrong. Shipping all twenty would have produced a tool nobody could learn, and picking by popularity would have produced the same tool with a longer delay.</p>
-        <div class="diag">
-          <div class="grid20" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="stack"><div class="b"><b>View 1</b></div><div class="b"><b>View 2</b></div><div class="b"><b>View 3</b></div></div>
-        </div>
-        <p class="dlab">Twenty views, each justified by a request. Three that cover the review as it is actually run.</p>
+        <p>Three survived: the ones that cover the review as it is actually run, rather than as each customer described it.</p>
         <!-- To complete: name the three views that survived and the rule that was used to cut, in one sentence each. This is the decision the reader wants to inspect. -->
         <p>That three-view version is the one sales demo today. A design decision became the commercial argument, which is the outcome I aim for on mature products: not a feature that ships, a version that sells.</p>
 
         <h3>Impersonation: the constraint worth writing down</h3>
         <p>In HR software a person's view, their leave, their expenses, their reviews, must routinely be opened by someone else: a manager approving, an assistant entering an absent director's leave, an administrator diagnosing a setting. The naive answer is a separate admin screen. Most software does that, and then maintains two representations of the same data that drift apart on their own.</p>
-        <div class="diag col">
-          <div class="row">
-            <div class="b"><b>Manager</b>Signed in as herself. Picks an employee.</div>
-            <div class="arrow" aria-hidden="true">→</div>
-            <div class="b wide"><b>The employee's own view</b>Requests, Planning, Account. Same screen, their data.</div>
-          </div>
-          <div class="row">
-            <div class="b base"><b>Audit trail</b>Done by Manager, for Employee. No separate admin screen to build, name or keep in sync.</div>
-          </div>
-        </div>
-        <p class="dlab">Impersonation keeps one view.</p>
-        <p>The manager picks an employee, the screen becomes that employee's screen with their data, and every action is logged as the manager's. The mechanism is dull. What it forces is not: views can no longer be called "My requests" because someone else may be looking at them, so they get resource names. Navigation can no longer be organised by role, because impersonation erases that boundary, so it follows the workflow and permissions decide visibility. The author of an action and the owner of a record become two different things, modelled as such.</p>
+        <p>Impersonation keeps one view. The manager picks an employee, the screen becomes that employee's screen with their data, and every action is logged as the manager's. The mechanism is dull. What it forces is not: views can no longer be called "My requests" because someone else may be looking at them, so they get resource names. Navigation can no longer be organised by role, because impersonation erases that boundary, so it follows the workflow and permissions decide visibility. The author of an action and the owner of a record become two different things, modelled as such.</p>
         <p>This had structured Lucca's first generation of products, and the knowledge had evaporated as the teams grew: people used the word without the consequences. I wrote it up as a pattern, context, problem, forces, solution, consequences, so that the next teams inherit the constraint rather than rediscover it. The full text is in <a href="/impersonation-pattern-en">Impersonation: anatomy of a pattern</a>.</p>
       </section>
 
@@ -209,6 +189,7 @@
             <span class="milestone-tag">Navigation rewrite started</span>
           </div>
         </header>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>A product team that could feel the interface working against them and had watched fixes fail to hold. Five interviews and a walkthrough, no user testing. The interface problems were symptoms: the cause was a company with no product expertise, a roadmap driven by migrations, and quick fixes that fed the next ones. Recommendations on three registers, interface, skills and process, so that repainting is not the only outcome.</p></div>
 
         <h3>The brief</h3>
         <p>UBAQ sells compliance software to the healthcare sector. The product team could feel the interface working against them, could not say where, and had watched several fixes fail to hold. There was no UX profile in the company and the team lived in permanent firefighting.</p>
@@ -224,18 +205,8 @@
         </table></div>
 
         <h3>Level one: what the interface showed</h3>
-        <div class="diag">
-          <div class="b center"><b>"Manifestation"</b>One object in the model.</div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="stack"><div class="b"><b>Events</b></div><div class="b"><b>Donations</b></div><div class="b"><b>Contracts</b></div></div>
-        </div>
-        <p class="dlab">How the system represented it, and how the sales users think about it: spend and clients.</p>
-        <ul>
-          <li>One object bundling three concepts the users keep separate: Norman's gulf of evaluation, in a form you can point at.</li>
-          <li>A kanban with no drag and drop and non-linear stages: a table in disguise, promising a flow it does not show.</li>
-          <li>A menu whose entries changed with the state of business objects.</li>
-          <li>Forms holding four kinds of information with no hierarchy, two business flows on one screen. Density from refusing to choose.</li>
-        </ul>
+        <p>The clearest example is an object the system calls a "manifestation". For the model it is one thing; for the sales users it is three, events, donations and contracts, and underneath those they think in spend and clients. One object bundling three concepts the users keep separate: Norman's gulf of evaluation, in a form you can point at.</p>
+        <p>The rest of the list is of the same kind. A kanban with no drag and drop and non-linear stages, a table in disguise promising a flow it does not show. A menu whose entries changed with the state of business objects. Forms holding four kinds of information with no hierarchy, two business flows on one screen: density from refusing to choose.</p>
 
         <h3>Level two: why they persisted</h3>
         <p>Every one of those could have been fixed on its own; the useful question was why they had not been. Client requests became features without a value question. The roadmap was driven by migrating customers off the previous product, one churn risk at a time. With no UX or product expertise in the room, features landed where they were cheap to build. Each quick fix added complexity, which raised the pressure, which produced quicker fixes.</p>
@@ -264,16 +235,14 @@
             <span class="milestone-tag">14&nbsp;quarries, one shared catalogue</span>
           </div>
         </header>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Fourteen quarries, ten million euros in revenue and no information system, on a hundred thousand euros and two days a week. I started with the product catalogue rather than the tools people asked for, because every tool would otherwise have sat on four incompatible versions of it. Teams that worked in silos now work off the same data.</p></div>
 
         <h3>Starting point</h3>
         <p>An industrial group in marble: fourteen quarries, around ten million euros in revenue, customers abroad, and no information system. Each team kept its own files and its own version of the catalogue; sales quoted from one, operations worked from another, and no question crossing two teams had a single answer.</p>
 
         <h3>The sequencing decision: catalogue first</h3>
         <p>With that budget and two days a week, the order of work is the strategy. The temptation is to start with what people ask for: tools for sales, tools for the quarries. I started with the catalogue, because every tool would have sat on four incompatible versions of it, and the first disagreement between two tools would have sent everyone back to spreadsheets.</p>
-        <div class="diag col">
-          <div class="row"><div class="b"><b>Tools for sales</b></div><div class="b"><b>Tools for operations</b></div></div>
-          <div class="row"><div class="b base"><b>Shared database, built on one formalised product catalogue</b>Built first, before anyone saw a tool. The least visible piece and the one everything depends on.</div></div>
-        </div>
+        <p>So the shared database, built on one formalised catalogue, came first, before anyone saw a tool: the least visible piece and the one everything depends on. The tools for sales and for operations came on top of it.</p>
 
         <h3>Result</h3>
         <p>Teams that had worked in silos now work off the same data. At that budget, most of the work is deciding what not to build.</p>
@@ -291,6 +260,7 @@
             <span class="milestone-tag">Mockups and specs delivered</span>
           </div>
         </header>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>DUNE was sold as a sensor overlay for cement trucks. The interviews with operators showed that their difficulty was not measuring what they did but proving it to the regulator afterwards. Repositioned as a management and compliance tool, with the mockups and specifications the team needed to build it, in six months.</p></div>
 
         <h3>What was on the table</h3>
         <p>DUNE was positioned as a software layer on top of sensors fitted to cement trucks. The pitch was measurement: know what the truck carries and where it is. The interviews with operators pointed elsewhere. They move dangerous materials inside a regulatory framework that was not written for what happens on a site, and their daily difficulty is not measuring what they did. It is proving it afterwards.</p>
@@ -322,19 +292,13 @@
             <a href="https://www.frenchweb.fr/foodtech-monbanquet-rachete-par-lallemand-b2b-food/392986" target="_blank" rel="noopener" class="milestone-tag">Acquired by B2B Food Group (2020)<svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M3.5 2.5H9.5V8.5M9 3L3 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </header>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Every order is a bespoke quote that has to hold the margin under constraints that are not deterministic: picking, deliveries, kitchen load. I designed a generator with those constraints inside it, so a salesperson never sees a menu the operation cannot deliver. A personalised menu in thirty minutes where competitors took days, an acquisition funnel up by half, and a CEO who calls it what saved the company.</p></div>
 
         <h3>The problem in one sentence</h3>
         <p>Every order is a bespoke quote, and the quote has to hold the margin while respecting constraints that are not deterministic: picking, deliveries, and how loaded each kitchen is on that date. A price that is right on paper can be impossible to honour, and the salesperson writing it has no way of knowing which.</p>
 
         <h3>The tool</h3>
-        <div class="diag">
-          <div class="stack fit"><div class="b">Margin</div><div class="b">Picking</div><div class="b">Deliveries</div><div class="b">Kitchen load that day</div></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="b center"><b>Quote generator</b>Constraints inside the generation, not checked afterwards.</div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="b center"><b>Personalised menu in thirty minutes</b></div>
-        </div>
-        <p class="dlab">The constraints went inside the generation rather than being checked afterwards, so the salesperson never sees a menu the operation cannot deliver. Competitors took several days to produce the same quote.</p>
+        <p>A quote generator that takes the margin, the picking, the deliveries and the kitchen load on that date as inputs to the generation itself, rather than as checks afterwards, so the salesperson never sees a menu the operation cannot deliver. A personalised menu comes out in thirty minutes. Competitors took several days to produce the same quote.</p>
 
         <h3>What it produced</h3>
         <ul>
@@ -356,6 +320,7 @@
             <span class="milestone-tag">Certificate: five interactions to three</span>
           </div>
         </header>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>A redesign of an insurance customer area done on my own account, so the only case here with screens. A policyholder logs in to get a document or to report a claim, and everything that did not serve those two was removed. Two flows rebuilt end to end: a claim reported from the home page in five steps, and a certificate in three interactions instead of five. Prototype live, built with Claude in a few hours.</p></div>
 
         <h3>Why this one is here</h3>
         <p>Unsolicited redesigns were a Dribbble fashion ten years ago and were rightly criticised: designing on a napkin without the product's real constraints is too easy. I include this one anyway, for two reasons. It is the only work on this page whose screens I own. And it shows what I do when nobody is paying me to do it, which is a fair signal of how I think.</p>
@@ -378,10 +343,6 @@
         <h3>Reporting a claim: from the contract to the problem</h3>
         <p>Today, reporting a claim means finding the right contract first, then a link buried in its sub-menus, which presumes the user thinks in contract numbers rather than in the problem they have. The redesign starts from the problem, on the home page, and a five-step wizard (property, type, details, photos, confirmation) never sends the user back to a contract.</p>
         <figure class="article-figure">
-          <img src="img/luko-flow-sinistre.svg" alt="Claim flow, existing versus redesign: the existing path goes home, open the contract, find the link, then the form; the redesign starts from the home page with a five-step wizard" width="720" height="300" loading="lazy">
-          <figcaption>Claim flow, existing versus redesign.</figcaption>
-        </figure>
-        <figure class="article-figure">
           <img src="img/luko-sinistre.jpg" alt="Claim wizard, step one: the user picks the property, the stepper shows the remaining steps" width="1440" height="900" loading="lazy">
           <figcaption>Claim, step one: the user picks the property. The stepper shows what is left.</figcaption>
         </figure>
@@ -389,20 +350,12 @@
         <h3>Getting a certificate: five interactions to three</h3>
         <p>From the home page the user clicks, picks the contract, and sees the four certificate types at once (liability, school, venue hire, holiday rental) with their use case as a subtitle. One click downloads the PDF. The current path takes five interactions, a scroll and an accordion.</p>
         <figure class="article-figure">
-          <img src="img/luko-flow-attestation.svg" alt="Certificate flow, existing versus redesign: five interactions with a hidden accordion against three interactions and a direct download" width="720" height="340" loading="lazy">
-          <figcaption>Certificate flow, existing versus redesign.</figcaption>
-        </figure>
-        <figure class="article-figure">
           <img src="img/luko-attestation.jpg" alt="Certificate types after choosing the contract, each shown as a card with its use case and a download icon" width="1440" height="900" loading="lazy">
           <figcaption>Certificate types after choosing the contract, each with its use case. One click downloads.</figcaption>
         </figure>
 
         <h3>The contract view: co-location</h3>
         <p>Each contract gets its own page: address, status, dates and yearly price at the top, then the claim for that property, then the certificates for that contract, then its documents with their dates, then guarantees, insured persons and payment as accordions. The original scatters these across the home page, a Documents tab and the contract sub-pages. The redesign puts each piece of information in the context that gives it meaning.</p>
-        <figure class="article-figure">
-          <img src="img/luko-architecture.svg" alt="Information architecture, dispersion versus co-location: the existing area spreads contract data between the home page, a Documents tab and contract sub-pages; the redesign groups everything under the contract view" width="720" height="320" loading="lazy">
-          <figcaption>Information architecture, dispersion versus co-location.</figcaption>
-        </figure>
         <figure class="article-figure">
           <img src="img/luko-detail-contrat.jpg" alt="Contract view: address and status at the top, certificate cards, document list, guarantees and payment as accordions" width="1440" height="1920" loading="lazy">
           <figcaption>Contract view. Certificates, documents, guarantees and payment on one page, under the contract they belong to.</figcaption>
