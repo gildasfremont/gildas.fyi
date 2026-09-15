@@ -1,8 +1,8 @@
 /* ------------------------------------------------
    Portfolio — product cases
    Page-specific styles on top of style.css.
-   Same font, same palette; adds tables, TL;DR blocks,
-   a table of contents and print rules.
+   Same font, same palette; adds tables, TL;DR blocks
+   and print rules.
    ------------------------------------------------ */
 
 .portfolio.article-page { padding-top: 0; }
@@ -64,64 +64,18 @@
   font-size: inherit;
 }
 
-/* Lead: the opening paragraph, slightly larger */
-.portfolio .article-body p.lead {
-  font-size: 17px;
-  color: var(--dark);
-  margin-bottom: 1.25rem;
-}
-
-/* Table of contents */
-.portfolio .toc {
-  margin: 2rem 0 3rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-}
-
-.portfolio .toc-title {
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--light);
-  font-variation-settings: 'GEOM' 0;
-  margin-bottom: 0.35rem;
-}
-
-.portfolio .toc ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.portfolio .toc li {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 0.5rem;
-  align-items: baseline;
-  padding: 0.15rem 0;
-}
-
-.portfolio .toc a {
-  color: var(--dark);
-  font-weight: 500;
-  font-variation-settings: 'GEOM' 0;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.portfolio .toc a:hover { text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--subtle); }
-
-.portfolio .toc span {
-  color: var(--light);
-  font-weight: 300;
-}
-
 /* Cases */
 .portfolio .case {
   margin-top: 3rem;
   padding-top: 2.25rem;
   border-top: 1px solid var(--border);
   scroll-margin-top: 3.25rem;
+}
+
+.portfolio .case-first {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }
 
 /* Case header: logo + name, one-line thesis, role line, outcome chips */
@@ -330,11 +284,9 @@
   .portfolio { display: block; font-size: 0.65rem; }
   .portfolio .article-page-header,
   .portfolio header { display: block; }
-  .portfolio .lang-toggle,
-  .portfolio .toc { display: none; }
+  .portfolio .lang-toggle { display: none; }
   .portfolio footer { display: block; margin-top: 1.5rem; }
   .portfolio .article-body { font-size: 11px; }
-  .portfolio .article-body p.lead { font-size: 11.5px; }
   .portfolio .case { margin-top: 1.5rem; padding-top: 0; border-top: 0; break-inside: auto; break-before: page; }
   .portfolio .case-title { break-after: avoid; font-size: 0.9rem; }
   .portfolio .case-title::before, .portfolio .mini-name::before { display: none !important; }
