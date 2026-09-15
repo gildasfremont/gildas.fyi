@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="glow-enabled">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,15 +32,55 @@
 
 <div class="container article-page portfolio">
 
-  <nav class="lang-toggle">
-    <a href="/en">← gildas.fyi</a>
-  </nav>
+  <div class="topbar">
+    <div class="menu-wrap">
+      <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+        <svg class="icon-burger" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <nav class="menu-dropdown">
+        <a href="#ornikar">Ornikar</a>
+        <a href="#lucca">Lucca</a>
+        <a href="#ubaq">UBAQ</a>
+        <a href="#guinet">Guinet-Derriaz</a>
+        <a href="#synaxe">Synaxe</a>
+        <a href="#monbanquet">monbanquet.fr</a>
+        <a href="#luko">Luko</a>
+        <a href="#elsewhere">Before, and elsewhere</a>
+        <a href="/en" class="menu-home">← gildas.fyi</a>
+        <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="menu-rdv">Book a call</a>
+      </nav>
+    </div>
+    <a href="/en" class="header-title">Gildas Frémont</a>
+    <button class="title-toggle">
+      <span class="header-title">Gildas Frémont</span>
+      <svg class="icon-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <nav class="case-nav" aria-label="Cases">
+      <a href="#ornikar">Ornikar</a>
+      <a href="#lucca">Lucca</a>
+      <a href="#ubaq">UBAQ</a>
+      <a href="#guinet">Guinet</a>
+      <a href="#synaxe">Synaxe</a>
+      <a href="#monbanquet">monbanquet</a>
+      <a href="#luko">Luko</a>
+      <a href="#elsewhere">Before</a>
+    </nav>
+    <div class="nav-right">
+      <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="nav-rdv">Book a call</a>
+    </div>
+    <div class="topbar-fade">
+      <div class="topbar-fade-step"></div>
+      <div class="topbar-fade-step"></div>
+      <div class="topbar-fade-step"></div>
+      <div class="topbar-fade-step"></div>
+    </div>
+  </div>
 
   <article>
     <header class="article-page-header">
-      <h1>Gildas Frémont</h1>
-      <p class="article-page-subtitle">Six product cases and a side project, 2014 to 2026</p>
-      <p class="article-meta">Product manager, individual contributor. Paris.</p>
+      <h1>Six product cases and a side project</h1>
+      <p class="article-page-subtitle">Gildas Frémont, product manager, individual contributor. Paris.</p>
+      <p class="article-meta">2014 to 2026</p>
     </header>
 
     <div class="article-body">
@@ -68,9 +108,17 @@
       </nav>
 
       <!-- ============================ ORNIKAR ============================ -->
-      <section class="case" id="ornikar">
-        <h2>Ornikar</h2>
-        <p class="case-meta">First product manager, employee number eight, 2014 to 2016. Regulated B2C marketplace. Zero to 15,000 paying users in eighteen months.</p>
+      <section class="case" id="ornikar" data-nav="Ornikar" style="--glow: 92,60,90">
+        <header class="case-header">
+          <h2 class="case-title"><img src="img/ornikar.png" alt="" class="entry-logo">Ornikar</h2>
+          <p class="case-deck">Getting 15,000 people through 96 administrations</p>
+          <p class="case-role">First product manager, employee nº&nbsp;8 · 2014–2016 · Regulated B2C marketplace</p>
+          <div class="milestone-tags">
+            <span class="milestone-tag">Zero to 15,000 paying users in 18&nbsp;months</span>
+            <span class="milestone-tag">Strategic Design Award (2015)</span>
+            <a href="https://techcrunch.com/2021/04/21/ornikar-raises-120m-as-its-driving-school-marketplace-goes-up-a-gear-with-car-insurance/" target="_blank" rel="noopener" class="milestone-tag">$145M&nbsp;raised 2018–2021<svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M3.5 2.5H9.5V8.5M9 3L3 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </header>
 
         <h3>The situation</h3>
         <p>Learning to drive in France went through driving schools. Ornikar sold lessons without one, with neither a platform nor a legal framework for doing it online. I was the first product manager and built the team from there. From the outside the growth question looked like an acquisition question. It was not.</p>
@@ -108,9 +156,16 @@
       </section>
 
       <!-- ============================ LUCCA ============================ -->
-      <section class="case" id="lucca">
-        <h2>Lucca</h2>
-        <p class="case-meta">Fractional product director, since 2023, more than 200 days. HR software, thirteen modules, 7,800 customers.</p>
+      <section class="case" id="lucca" data-nav="Lucca" style="--glow: 242,123,63">
+        <header class="case-header">
+          <h2 class="case-title"><img src="img/lucca.png" alt="" class="entry-logo">Lucca</h2>
+          <p class="case-deck">Twenty views to three, and the pattern underneath</p>
+          <p class="case-role">Fractional product director · since 2023 · HR software, 13&nbsp;modules, 7,800&nbsp;customers</p>
+          <div class="milestone-tags">
+            <span class="milestone-tag">200+&nbsp;days</span>
+            <span class="milestone-tag">Salary review: now the sales demo feature</span>
+          </div>
+        </header>
 
         <h3>The setting</h3>
         <p>Lucca's thirteen modules share an employee record, a permission model and a validation chain. A design decision taken in one of them surfaces in all the others, so there is no such thing as a local fix. I work directly with the head of each business suite, on the design system, on new product work, on product-led growth, and on the slow job of taking apart flows and administration tools that carry twenty years of accumulated decisions.</p>
@@ -144,9 +199,16 @@
       </section>
 
       <!-- ============================ UBAQ ============================ -->
-      <section class="case" id="ubaq">
-        <h2>UBAQ</h2>
-        <p class="case-meta">Product audit, then ongoing support to the product team. NTU platform: transparency of financial ties between laboratories and healthcare professionals.</p>
+      <section class="case" id="ubaq" data-nav="UBAQ" style="--glow: 68,102,255">
+        <header class="case-header">
+          <h2 class="case-title"><img src="img/ubaq.png" alt="" class="entry-logo">UBAQ</h2>
+          <p class="case-deck">An audit that found the organisation behind the interface</p>
+          <p class="case-role">Product audit, then ongoing support · NTU platform, healthcare compliance</p>
+          <div class="milestone-tags">
+            <span class="milestone-tag">Five interviews, one walkthrough</span>
+            <span class="milestone-tag">Navigation rewrite started</span>
+          </div>
+        </header>
 
         <h3>The brief</h3>
         <p>UBAQ sells compliance software to the healthcare sector. The product team could feel the interface working against them, could not say where, and had watched several fixes fail to hold. There was no UX profile in the company and the team lived in permanent firefighting.</p>
@@ -193,9 +255,15 @@
       </section>
 
       <!-- ============================ GUINET-DERRIAZ ============================ -->
-      <section class="case" id="guinet">
-        <h2>Guinet-Derriaz 1912</h2>
-        <p class="case-meta">Information system built from scratch. One year at two days a week. Budget: one hundred thousand euros.</p>
+      <section class="case" id="guinet" data-nav="Guinet-Derriaz" style="--glow: 120,110,95">
+        <header class="case-header">
+          <h2 class="case-title"><img src="img/guinet.png" alt="" class="entry-logo">Guinet-Derriaz 1912</h2>
+          <p class="case-deck">An information system for a group that had none</p>
+          <p class="case-role">Information system from scratch · one year at two days a week · €100k budget</p>
+          <div class="milestone-tags">
+            <span class="milestone-tag">14&nbsp;quarries, one shared catalogue</span>
+          </div>
+        </header>
 
         <h3>Starting point</h3>
         <p>An industrial group in marble: fourteen quarries, around ten million euros in revenue, customers abroad, and no information system. Each team kept its own files and its own version of the catalogue; sales quoted from one, operations worked from another, and no question crossing two teams had a single answer.</p>
@@ -213,9 +281,16 @@
       </section>
 
       <!-- ============================ SYNAXE ============================ -->
-      <section class="case" id="synaxe">
-        <h2>Synaxe</h2>
-        <p class="case-meta">Fractional CPO, six months. DUNE platform: industrial operators handling dangerous materials.</p>
+      <section class="case" id="synaxe" data-nav="Synaxe" style="--glow: 30,30,120">
+        <header class="case-header">
+          <h2 class="case-title"><img src="img/synaxe.png" alt="" class="entry-logo">Synaxe</h2>
+          <p class="case-deck">A sensor product that was a compliance product</p>
+          <p class="case-role">Fractional CPO · six months · DUNE platform, dangerous-material operations</p>
+          <div class="milestone-tags">
+            <span class="milestone-tag">Repositioned from sensors to compliance</span>
+            <span class="milestone-tag">Mockups and specs delivered</span>
+          </div>
+        </header>
 
         <h3>What was on the table</h3>
         <p>DUNE was positioned as a software layer on top of sensors fitted to cement trucks. The pitch was measurement: know what the truck carries and where it is. The interviews with operators pointed elsewhere. They move dangerous materials inside a regulatory framework that was not written for what happens on a site, and their daily difficulty is not measuring what they did. It is proving it afterwards.</p>
@@ -236,9 +311,17 @@
       </section>
 
       <!-- ============================ MONBANQUET ============================ -->
-      <section class="case" id="monbanquet">
-        <h2>monbanquet.fr</h2>
-        <p class="case-meta">Head of product, 2017 to 2019. Online caterer working with independent artisans. Acquired by B2B Food Group in 2020.</p>
+      <section class="case" id="monbanquet" data-nav="monbanquet.fr" style="--glow: 195,155,100">
+        <header class="case-header">
+          <h2 class="case-title"><img src="img/monbanquet.png" alt="" class="entry-logo">monbanquet.fr</h2>
+          <p class="case-deck">A bespoke quote in thirty minutes</p>
+          <p class="case-role">Head of product · 2017–2019 · Online caterer working with independent artisans</p>
+          <div class="milestone-tags">
+            <span class="milestone-tag">Quote in 30&nbsp;min vs. days</span>
+            <span class="milestone-tag">Acquisition funnel +50%</span>
+            <a href="https://www.frenchweb.fr/foodtech-monbanquet-rachete-par-lallemand-b2b-food/392986" target="_blank" rel="noopener" class="milestone-tag">Acquired by B2B Food Group (2020)<svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M3.5 2.5H9.5V8.5M9 3L3 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </header>
 
         <h3>The problem in one sentence</h3>
         <p>Every order is a bespoke quote, and the quote has to hold the margin while respecting constraints that are not deterministic: picking, deliveries, and how loaded each kitchen is on that date. A price that is right on paper can be impossible to honour, and the salesperson writing it has no way of knowing which.</p>
@@ -262,9 +345,17 @@
       </section>
 
       <!-- ============================ LUKO ============================ -->
-      <section class="case" id="luko">
-        <h2>Aside: an unsolicited redesign of Luko by Allianz Direct</h2>
-        <p class="case-meta">Side project, March 2026. Insurance customer area. Audit, prototype and two end-to-end flows, built with Claude in a few hours.</p>
+      <section class="case" id="luko" data-nav="Luko" style="--glow: 45,90,230">
+        <header class="case-header">
+          <h2 class="case-title">Luko by Allianz Direct</h2>
+          <p class="case-deck">An unsolicited redesign, with the screens</p>
+          <p class="case-role">Side project · March 2026 · Insurance customer area · Built with Claude in a few hours</p>
+          <div class="milestone-tags">
+            <a href="https://dist-neon-delta-32.vercel.app/" target="_blank" rel="noopener" class="milestone-tag">Prototype live<svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M3.5 2.5H9.5V8.5M9 3L3 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <span class="milestone-tag">Claim: five steps from the home page</span>
+            <span class="milestone-tag">Certificate: five interactions to three</span>
+          </div>
+        </header>
 
         <h3>Why this one is here</h3>
         <p>Unsolicited redesigns were a Dribbble fashion ten years ago and were rightly criticised: designing on a napkin without the product's real constraints is too easy. I include this one anyway, for two reasons. It is the only work on this page whose screens I own. And it shows what I do when nobody is paying me to do it, which is a fair signal of how I think.</p>
@@ -320,12 +411,26 @@
       </section>
 
       <!-- ============================ ELSEWHERE ============================ -->
-      <section class="case" id="elsewhere">
-        <h2>Before, and elsewhere</h2>
+      <section class="case" id="elsewhere" data-nav="Before, and elsewhere">
+        <header class="case-header">
+          <h2 class="case-title">Before, and elsewhere</h2>
+        </header>
 
         <h3>Two earlier roles, briefly</h3>
-        <p>Lucca, 2011 to 2014, employee number ten and first UX designer. I created the design function and reworked the early modules so they held together as one suite. Onboarding a new customer went from three days of implementation to forty-five minutes. Lucca raised a hundred million euros from One Peak in 2022.</p>
-        <p>zoneadsl.com, 2019 to 2020, head of product. A broadband comparison site with 1.2 million visitors a month on a monolith. I rebuilt the acquisition funnels and the CMS and helped move the organisation to a product model. The information architecture is still the one in use. Acquired by hipto in 2026.</p>
+        <div class="mini-entry" style="--glow: 242,123,63">
+          <div class="mini-head"><span class="mini-name"><img src="img/lucca.png" alt="" class="entry-logo"><span class="entry-company">Lucca</span></span><span class="entry-role">Employee nº&nbsp;10, 2011–2014</span></div>
+          <p>First UX designer. I created the design function and reworked the early modules so they held together as one suite. Onboarding a new customer went from three days of implementation to forty-five minutes.</p>
+          <div class="milestone-tags">
+            <a href="https://www.maddyness.com/2025/02/18/lucca-vieille-dame-de-la-tech-en-pleine-croissance/" target="_blank" rel="noopener" class="milestone-tag">Raised&nbsp;€100M · One Peak (2022)<svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M3.5 2.5H9.5V8.5M9 3L3 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+        <div class="mini-entry" style="--glow: 239,98,108">
+          <div class="mini-head"><span class="mini-name"><img src="img/zoneadsl.svg" alt="" class="entry-logo"><span class="entry-company">zoneadsl.com</span></span><span class="entry-role">Head of product, 2019–2020</span></div>
+          <p>A broadband comparison site with 1.2 million visitors a month on a monolith. I rebuilt the acquisition funnels and the CMS and helped move the organisation to a product model. The information architecture is still the one in use.</p>
+          <div class="milestone-tags">
+            <a href="https://hipto.com/blog/presse/hipto-acquiert-zone-adsl-fibre/" target="_blank" rel="noopener" class="milestone-tag">Acquired by hipto (2026)<svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M3.5 2.5H9.5V8.5M9 3L3 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
 
         <h3>Education</h3>
         <ul>
@@ -376,6 +481,31 @@
 </div>
 
 <script src="script.js"></script>
+<script>
+(function(){
+  var cases=[].slice.call(document.querySelectorAll('.case[data-nav]'));
+  var links=[].slice.call(document.querySelectorAll('.case-nav a, .menu-dropdown a[href^="#"]'));
+  var label=document.querySelector('.title-toggle .header-title');
+  var home=label?label.textContent:'';
+  var bar=document.querySelector('.topbar');
+  var current, raf;
+  function update(){
+    raf=null;
+    var line=(bar?bar.getBoundingClientRect().bottom:0)+24;
+    var hit=null;
+    for(var i=0;i<cases.length;i++){ if(cases[i].getBoundingClientRect().top<=line) hit=cases[i]; }
+    if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-2) hit=cases[cases.length-1];
+    if(hit===current) return;
+    current=hit;
+    var id=hit?'#'+hit.id:'';
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')===id); });
+    if(label) label.textContent=hit?hit.getAttribute('data-nav'):home;
+  }
+  window.addEventListener('scroll',function(){ if(!raf) raf=requestAnimationFrame(update); },{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
+</script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

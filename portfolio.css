@@ -5,6 +5,50 @@
    diagrams, a table of contents and print rules.
    ------------------------------------------------ */
 
+.portfolio.article-page { padding-top: 0; }
+
+/* Sticky top bar: reuses .topbar from style.css, sized like the home page */
+.portfolio .topbar { font-size: 0.8125rem; }
+
+.portfolio .topbar > a.header-title {
+  pointer-events: auto;
+  text-decoration: none;
+}
+
+.portfolio .topbar > a.header-title:hover { color: var(--light); }
+
+/* Desktop: the cases as a row of links, current one highlighted */
+.portfolio .case-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.05rem;
+  margin-left: 0.9rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.portfolio .case-nav a {
+  font-size: 0.55rem;
+  color: var(--light);
+  text-decoration: none;
+  padding: 0.12rem 0.32rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-variation-settings: 'GEOM' 0;
+  transition: color 0.15s, background 0.15s;
+}
+
+.portfolio .case-nav a:hover { color: var(--dark); background: var(--border); }
+
+.portfolio .case-nav a.active {
+  color: var(--dark);
+  font-weight: 500;
+}
+
+/* Mobile dropdown: current case marked, home link set apart */
+.portfolio .menu-dropdown a.active { background: var(--border); }
+.portfolio .menu-dropdown .menu-home { color: var(--light); }
+
 .portfolio .article-body {
   font-size: 16px;
   color: var(--mid);
@@ -74,19 +118,108 @@
 
 /* Cases */
 .portfolio .case {
-  margin-top: 3.5rem;
-  scroll-margin-top: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 3.25rem;
 }
 
-.portfolio .case h2 {
+/* Case header: logo + name, one-line thesis, role line, outcome chips */
+.portfolio .case-header { margin-bottom: 0.25rem; }
+
+.portfolio .case-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--dark);
   font-variation-settings: 'GEOM' 0;
   letter-spacing: -0.01em;
   line-height: 1.25;
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.2rem;
+  position: relative;
+  isolation: isolate;
 }
+
+.portfolio .case-title .entry-logo { height: 0.72em; }
+
+.glow-enabled .portfolio .case[style*="--glow"] .case-title::before {
+  content: '';
+  position: absolute;
+  inset: -0.5rem -1.5rem;
+  background: rgba(var(--glow), 0.065);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(30px);
+  transform: scale(1);
+  transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1), filter 0.9s ease;
+}
+
+.glow-enabled .portfolio .case[style*="--glow"]:hover .case-title::before {
+  transform: scale(0.52);
+  filter: blur(15px);
+}
+
+.portfolio .case-deck {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--mid);
+  line-height: 1.35;
+  margin: 0 0 0.4rem;
+  max-width: 620px;
+}
+
+.portfolio .case-role {
+  color: var(--light);
+  font-weight: 300;
+  font-size: 0.7rem;
+  margin: 0 0 0.5rem;
+  max-width: 620px;
+}
+
+.portfolio .case-header .milestone-tags { margin: 0; }
+
+/* Mini entries: the earlier roles, laid out like the home page entries */
+.portfolio .mini-entry { margin-bottom: 1.5rem; }
+
+.portfolio .mini-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.portfolio .mini-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  isolation: isolate;
+}
+
+.portfolio .mini-head .entry-company {
+  font-weight: 600;
+  color: var(--black);
+  font-variation-settings: 'GEOM' 0;
+}
+
+.portfolio .mini-head .entry-role { margin: 0; }
+
+.glow-enabled .portfolio .mini-entry[style*="--glow"] .mini-name::before {
+  content: '';
+  position: absolute;
+  inset: -0.5rem -1.5rem;
+  background: rgba(var(--glow), 0.065);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(30px);
+}
+
+.portfolio .mini-entry p { margin-bottom: 0.4rem; }
 
 .portfolio .case h3 {
   font-size: 1rem;
@@ -94,14 +227,6 @@
   color: var(--black);
   font-variation-settings: 'GEOM' 0;
   margin: 1.75rem 0 0.5rem;
-}
-
-.portfolio .case-meta {
-  color: var(--light);
-  font-weight: 300;
-  font-size: 0.75rem;
-  margin-bottom: 1rem;
-  max-width: 620px;
 }
 
 .portfolio .case ul {
@@ -243,6 +368,10 @@
 .portfolio .closing p { margin-bottom: 0.5rem; }
 
 /* Responsive */
+@media (max-width: 860px) {
+  .portfolio .case-nav { display: none; }
+}
+
 @media (max-width: 600px) {
   .portfolio .diag .arrow { display: none; }
   .portfolio .diag .b { min-width: 100%; }
@@ -262,8 +391,11 @@
   .portfolio footer { display: block; margin-top: 1.5rem; }
   .portfolio .article-body { font-size: 11px; }
   .portfolio .article-body p.lead { font-size: 11.5px; }
-  .portfolio .case { margin-top: 1.5rem; break-inside: auto; }
-  .portfolio .case h2 { break-after: avoid; break-before: page; font-size: 0.9rem; }
+  .portfolio .case { margin-top: 1.5rem; padding-top: 0; border-top: 0; break-inside: auto; break-before: page; }
+  .portfolio .case-title { break-after: avoid; font-size: 0.9rem; }
+  .portfolio .case-title::before, .portfolio .mini-name::before { display: none !important; }
+  .portfolio .case-deck { font-size: 0.7rem; }
+  .portfolio .case-role { font-size: 0.55rem; }
   .portfolio .case h3 { break-after: avoid; font-size: 0.7rem; margin-top: 0.9rem; }
   .portfolio table { font-size: 10px; }
   .portfolio .diag .b { font-size: 9.5px; }
