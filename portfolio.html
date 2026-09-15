@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio — Gildas Frémont</title>
-  <meta name="description" content="Six product cases and a side project, 2014 to 2026. Ornikar, Lucca, UBAQ, Guinet-Derriaz, Synaxe, monbanquet.fr and an unsolicited redesign of Luko.">
+  <meta name="description" content="Seven product cases and a side project, 2014 to 2026. Ornikar, Lucca, UBAQ, Guinet-Derriaz, Synaxe, monbanquet.fr and an unsolicited redesign of Luko.">
   <link rel="canonical" href="https://gildas.fyi/portfolio">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Portfolio — Gildas Frémont">
-  <meta property="og:description" content="Six product cases and a side project, 2014 to 2026.">
+  <meta property="og:description" content="Seven product cases and a side project, 2014 to 2026.">
   <meta property="og:url" content="https://gildas.fyi/portfolio">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:image:width" content="1200">
@@ -16,7 +16,7 @@
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Portfolio — Gildas Frémont">
-  <meta name="twitter:description" content="Six product cases and a side project, 2014 to 2026.">
+  <meta name="twitter:description" content="Seven product cases and a side project, 2014 to 2026.">
   <meta name="twitter:image" content="https://gildas.fyi/img/og.png">
   <meta name="theme-color" content="#fafcf9">
   <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -40,6 +40,7 @@
       <nav class="menu-dropdown">
         <a href="#ornikar">Ornikar</a>
         <a href="#lucca">Lucca</a>
+        <a href="#roles">Lucca: admin roles</a>
         <a href="#ubaq">UBAQ</a>
         <a href="#guinet">Guinet-Derriaz</a>
         <a href="#synaxe">Synaxe</a>
@@ -58,6 +59,7 @@
     <nav class="case-nav" aria-label="Cases">
       <a href="#ornikar">Ornikar</a>
       <a href="#lucca">Lucca</a>
+      <a href="#roles">Roles</a>
       <a href="#ubaq">UBAQ</a>
       <a href="#guinet">Guinet</a>
       <a href="#synaxe">Synaxe</a>
@@ -79,7 +81,7 @@
   <article>
     <header class="article-page-header">
       <h1>Portfolio</h1>
-      <p class="article-page-subtitle">Six product cases and a side project, 2014 to 2026</p>
+      <p class="article-page-subtitle">Seven product cases and a side project, 2014 to 2026</p>
     </header>
 
     <div class="article-body">
@@ -154,6 +156,88 @@
         <p>In HR software a person's view, their leave, their expenses, their reviews, must routinely be opened by someone else: a manager approving, an assistant entering an absent director's leave, an administrator diagnosing a setting. The naive answer is a separate admin screen. Most software does that, and then maintains two representations of the same data that drift apart on their own.</p>
         <p>Impersonation keeps one view. The manager picks an employee, the screen becomes that employee's screen with their data, and every action is logged as the manager's. The mechanism is dull. What it forces is not: views can no longer be called "My requests" because someone else may be looking at them, so they get resource names. Navigation can no longer be organised by role, because impersonation erases that boundary, so it follows the workflow and permissions decide visibility. The author of an action and the owner of a record become two different things, modelled as such.</p>
         <p>This had structured Lucca's first generation of products, and the knowledge had evaporated as the teams grew: people used the word without the consequences. I wrote it up as a pattern, context, problem, forces, solution, consequences, so that the next teams inherit the constraint rather than rediscover it. The full text is in <a href="/impersonation-pattern-en">Impersonation: anatomy of a pattern</a>.</p>
+      </section>
+
+      <!-- ============================ LUCCA ROLES ============================ -->
+      <section class="case" id="roles" data-nav="Lucca: admin roles" style="--glow: 242,123,63">
+        <header class="case-header">
+          <h2 class="case-title"><img src="img/lucca.png" alt="" class="entry-logo">Lucca: admin roles</h2>
+          <p class="case-deck">A permission model that leaked into the admin experience</p>
+          <p class="case-role">Product design, framing, functional modelling · 2025, target usage 2026 · With Product, Customer Success and the roles task force</p>
+          <div class="milestone-tags">
+            <span class="milestone-tag">Data model mostly kept</span>
+            <span class="milestone-tag">One primary role for the normal case</span>
+            <span class="milestone-tag">Friction proportional to risk</span>
+          </div>
+        </header>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Lucca's permission model could represent almost any HR access rule, and that flexibility leaked into the admin experience: an administrator had to rebuild the model in their head to configure it. Rather than rebuild the engine, we changed the mental model and the paths through it: one primary role for an employee's normal function, complementary accesses for the exceptions, and friction proportional to risk on sensitive permissions. Common configurations become simple, dangerous ones deliberate, effective access auditable. Most of the data model stays.</p></div>
+
+        <h3>The model</h3>
+        <p>In HR software, access to a piece of information is not a boolean. The same operation can be allowed on yourself, on the people you supervise, on a department, on several legal entities or on the whole company. What a user can do, combined with whom they can do it on, is the effective permission. The objects are few, and the trouble came from how they were exposed rather than from their number.</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Object</th><th>What it is</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Operation</td><td>An elementary action or access defined by an application.</td><td>Read a record, enter a sick leave, configure an export.</td></tr>
+            <tr><td>Scope</td><td>The population the operation is allowed on.</td><td>Self, supervised team, department, legal entities.</td></tr>
+            <tr><td>Permission</td><td>An operation on one or more scopes.</td><td>Read the individual situation of every employee.</td></tr>
+            <tr><td>Primary role</td><td>A user's normal function in the organisation.</td><td>User, manager, administrator.</td></tr>
+            <tr><td>Complementary access</td><td>Extra permissions for a particular need.</td><td>A temporary replacement, a works council member, testing a new application.</td></tr>
+            <tr><td>Entitlement</td><td>The assignment of a role or an access to a user.</td><td>Alice gets the Manager role and an Expenses access.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>Where it broke</h3>
+        <p>Every user had exactly one primary role and any number of secondary roles. The two objects were close functionally and presented the same way, so a technical distinction produced no conceptual one: the administrator had to know when to enrich a primary role, when to create a secondary one, and keep the two coherent. Each new application made it worse. Its permissions were supposed to go into the existing roles when they belonged to people's normal function, and that was tedious enough that single-application secondary roles got created instead, one per user per app, when the doctrine was to have as few objects as possible.</p>
+        <p>Sensitive permissions were not visible enough: a label described an action, not everything it opened access to, so a permission could look right for a business need and expose personal data. Hierarchical, organisational and legal scopes followed different logics and sat in the same screens, so a correct interface produced wrong readings. And the most frequent operational question, why does this person see this data, cost more to answer than the configuration had cost to make, because the answer had to be rebuilt from several roles and the logs could not be read by user or by role.</p>
+        <p>One qualitative signal from Customer Success framed the target: in roughly nine cases out of ten they observed, a user would have needed a single multi-application role. Not an instrumented measure, but enough to design for a one-role happy path.</p>
+
+        <h3>Reframing the problem</h3>
+        <p>The first reading would have been "simplify the roles screen". A cleaner screen on the same mental model reduces visual load and leaves the structural risk intact. The question became: how do you make the common configuration close to trivial, keep the flexibility that enterprise cases need, and add guardrails proportional to risk, without a rewrite of the authorisation engine?</p>
+
+        <h3>The decision: change the mental model, keep the engine</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th></th><th>What we did</th><th>The credible alternative</th></tr></thead>
+          <tbody>
+            <tr><td>Bet</td><td>Keep the technical objects, clarify what each one is for, add one structuring attribute, criticality, and rebuild the paths around the majority case.</td><td>A greenfield redesign: a new taxonomy, distinct security groups, policies, a more explicit attribute-based engine.</td></tr>
+            <tr><td>Why</td><td>The historical model carried real business value. The best simplification was an asymmetry of use and guardrails, not fewer objects.</td><td>Cleaner on paper. Moves the problem to migration, compatibility and transformation cost, on thousands of live instances.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>What changed</h3>
+        <p>The primary role now means one thing: a user's function in the organisation. Permissions do not define the role, the function defines which permissions are needed, and that inversion is what makes a configuration doctrine stable enough to share between Product, Customer Success and customers. All managers share one Manager role; if a handful of them need expense management, nobody creates "Manager with expenses" and "Manager without", they keep Manager and get a complementary access.</p>
+        <p>Secondary roles are renamed complementary accesses, because "secondary" described a position in the data model and "complementary" encodes a rule: this object completes a primary role and corresponds to a particular situation, temporary, exceptional or reserved to a small population. The point is the asymmetry. Instead of two near-equivalent objects, a normal base and an exception layer.</p>
+        <p>Permissions carry a criticality, because reading ordinary team data, reading sensitive personal data, processing business data and changing the instance's configuration do not carry the same risk, and the interface should change behaviour with it rather than hope the administrator remembers.</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Level</th><th>What it covers</th><th>Behaviour</th></tr></thead>
+          <tbody>
+            <tr><td>Default</td><td>Ordinary permissions needed for everyday use.</td><td>Added in one step.</td></tr>
+            <tr><td>Supervision</td><td>Non-sensitive data about one's team.</td><td>Added in one step.</td></tr>
+            <tr><td>Sensitive</td><td>Personal or sensitive data.</td><td>Friction in a non-critical role.</td></tr>
+            <tr><td>Management</td><td>Business data with real consequences.</td><td>Critical roles only.</td></tr>
+            <tr><td>System configuration</td><td>Actions that change how the instance works.</td><td>Friction even in a critical role.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Friction is not treated as a universal defect. On a reversible, low-risk action it slows people down for nothing; on a permission that can expose personal data or grant a destructive right, it is the prevention mechanism. So a role is declared critical or not before anyone is entitled to it, and that property bounds what can be added to it, how mass actions behave and whether it can be changed later. Management permissions cannot go into a non-critical role. Adding users in bulk to a critical role is blocked or limited. And the guardrails follow every path: a CSV import must run the same validations as the equivalent action in the interface, otherwise the screen is safe and the system is not.</p>
+
+        <h3>The lifecycle, not the screen</h3>
+        <p>Installing a new application is where the tensions concentrate: the people who configure and test it need access now, and the company's roles should not carry that access forever. Temporary complementary accesses cover installation and tests, the customer validates permissions and populations, and at go-live whatever belongs to normal use is merged into the primary roles and the temporary accesses are cleaned up, so that deploying a product on a mid-market instance no longer requires a complex intervention in role administration.</p>
+        <p>Investigation is turned around. An entitlements view starts from a person and goes up to the sources of their rights, rather than starting from each role to rebuild one person's situation, and the logs become a product component, readable by user, role, entitlement, permission and change. A diagnostic layer flags users with no access, large populations exposed to sensitive permissions and near-redundant roles, and proposes merges, with one safeguard: if two roles do not cover the same population, merging their permissions raises the rights of some users, so a structural clean-up cannot be treated as deduplication.</p>
+        <p>Migration does not pretend to know the criticality of every historical configuration. Roles with only non-critical permissions, and critical roles with a small population, can be classified; the ambiguous ones stay at "criticality unknown" and are shown as such. The system's uncertainty is exposed rather than replaced by an arbitrary label.</p>
+
+        <h3>Alternatives set aside</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Alternative</th><th>Why not</th></tr></thead>
+          <tbody>
+            <tr><td>Drop the primary / secondary distinction</td><td>Simpler vocabulary, but it removes the one useful piece of information, normal function versus exception, and moves the complexity to whatever object replaces it.</td></tr>
+            <tr><td>Single-application roles everywhere</td><td>Composable for the engine, not for an administrator who wants to assign a person's normal status in one action.</td></tr>
+            <tr><td>A few multi-application roles for everyone</td><td>Fewer objects, until each exception creates a variant and the combinations grow with every particular need.</td></tr>
+            <tr><td>Explanations and tooltips only</td><td>Documentation improves understanding. It prevents neither incoherent paths nor mistakes on sensitive permissions; an invariant of interaction does.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>What this is, and is not</h3>
+        <p>The visible deliverable, admin screens, add flows, an entitlements view, is the last layer. The work sits in four that condition each other: the modelling, role, access, permission, scope, entitlement, criticality; the doctrine, what the normal path is and what stays exceptional; security by interaction, prohibitions, limits and confirmations chosen by risk level; and the lifecycle, installation, tests, go-live, maintenance, audit and migration handled by one system.</p>
+        <p>It is a 2025 vision and doctrine with a 2026 target, not a shipped and measured release, and this page does not claim an uplift. The measures that would verify the direction are known: the share of users with only a primary role, the number of complementary accesses per user, the time and errors to set up a newcomer's access, the temporary accesses still present some days after go-live, the time to answer "why does this user have this right". Two points were still open at the time: the discovery of the diagnostic module, and the exact treatment of roles whose criticality cannot be inferred.</p>
       </section>
 
       <!-- ============================ UBAQ ============================ -->
@@ -435,6 +519,13 @@
   window.addEventListener('scroll',function(){ if(!raf) raf=requestAnimationFrame(update); },{passive:true});
   window.addEventListener('resize',update);
   update();
+  // Tables on phones: carry the column headers onto each cell
+  document.querySelectorAll('.portfolio table').forEach(function(t){
+    var heads=[].map.call(t.querySelectorAll('thead th'),function(th){return th.textContent.trim();});
+    t.querySelectorAll('tbody tr').forEach(function(tr){
+      [].forEach.call(tr.children,function(td,i){ if(heads[i]) td.setAttribute('data-label',heads[i]); });
+    });
+  });
 })();
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
