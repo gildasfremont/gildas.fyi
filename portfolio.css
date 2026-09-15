@@ -1,0 +1,278 @@
+/* ------------------------------------------------
+   Portfolio — product cases
+   Page-specific styles on top of style.css.
+   Same font, same palette; adds tables, schematic
+   diagrams, a table of contents and print rules.
+   ------------------------------------------------ */
+
+.portfolio .article-body {
+  font-size: 16px;
+  color: var(--mid);
+}
+
+.portfolio .article-body > p,
+.portfolio .case > p,
+.portfolio .case li {
+  max-width: 620px;
+}
+
+.portfolio .article-body p {
+  font-size: inherit;
+}
+
+/* Lead: the opening paragraph, slightly larger */
+.portfolio .article-body p.lead {
+  font-size: 17px;
+  color: var(--dark);
+  margin-bottom: 1.25rem;
+}
+
+/* Table of contents */
+.portfolio .toc {
+  margin: 2rem 0 3rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.portfolio .toc-title {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--light);
+  font-variation-settings: 'GEOM' 0;
+  margin-bottom: 0.35rem;
+}
+
+.portfolio .toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio .toc li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.5rem;
+  align-items: baseline;
+  padding: 0.15rem 0;
+}
+
+.portfolio .toc a {
+  color: var(--dark);
+  font-weight: 500;
+  font-variation-settings: 'GEOM' 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.portfolio .toc a:hover { text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--subtle); }
+
+.portfolio .toc span {
+  color: var(--light);
+  font-weight: 300;
+}
+
+/* Cases */
+.portfolio .case {
+  margin-top: 3.5rem;
+  scroll-margin-top: 1.5rem;
+}
+
+.portfolio .case h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  font-variation-settings: 'GEOM' 0;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0 0 0.35rem;
+}
+
+.portfolio .case h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--black);
+  font-variation-settings: 'GEOM' 0;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.portfolio .case-meta {
+  color: var(--light);
+  font-weight: 300;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  max-width: 620px;
+}
+
+.portfolio .case ul {
+  margin: 0 0 1rem 1.1rem;
+}
+
+.portfolio .case li {
+  margin-bottom: 0.3rem;
+}
+
+/* Tables: decision / alternative, before / after */
+.portfolio .tablewrap {
+  overflow-x: auto;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.portfolio table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.portfolio th,
+.portfolio td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.55rem 0.75rem 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.portfolio th {
+  font-weight: 500;
+  color: var(--black);
+  font-variation-settings: 'GEOM' 0;
+}
+
+.portfolio th:first-child,
+.portfolio td:first-child {
+  color: var(--light);
+  font-weight: 300;
+  width: 15%;
+  min-width: 4.5rem;
+}
+
+.portfolio td:last-child,
+.portfolio th:last-child {
+  padding-right: 0;
+}
+
+/* Schematic diagrams: boxes and arrows */
+.portfolio .diag {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.portfolio .diag .b {
+  flex: 1 1 0;
+  min-width: 8.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--white);
+  padding: 0.55rem 0.7rem;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--mid);
+}
+
+.portfolio .diag .b b {
+  display: block;
+  font-weight: 500;
+  color: var(--black);
+  font-variation-settings: 'GEOM' 0;
+  margin-bottom: 0.15rem;
+}
+
+.portfolio .diag .b.wide { flex: 2 1 0; }
+.portfolio .diag .b.fit { flex: 0 1 auto; }
+.portfolio .diag .b.center { align-self: center; }
+
+.portfolio .diag .arrow {
+  align-self: center;
+  color: var(--subtle);
+  flex: 0 0 auto;
+  font-size: 18px;
+}
+
+.portfolio .diag.col { flex-direction: column; }
+.portfolio .diag .row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.portfolio .diag .base { flex: 1 1 100%; }
+
+.portfolio .grid20 {
+  display: grid;
+  grid-template-columns: repeat(5, 0.9rem);
+  gap: 3px;
+  align-content: center;
+  flex: 0 0 auto;
+}
+
+.portfolio .grid20 i {
+  display: block;
+  width: 0.9rem;
+  height: 0.6rem;
+  border-radius: 2px;
+  background: var(--border);
+}
+
+.portfolio .stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  justify-content: center;
+  flex: 1 1 0;
+}
+
+.portfolio .stack .b { flex: 0 0 auto; min-width: 0; }
+
+.portfolio .dlab {
+  color: var(--light);
+  font-weight: 300;
+  font-size: 14px;
+  margin: 0.25rem 0 1.25rem;
+  max-width: 620px;
+}
+
+/* Figures: reuse .article-figure from style.css */
+.portfolio .article-figure { margin: 1.25rem 0 1.5rem; }
+
+/* Closing */
+.portfolio .closing {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.portfolio .closing p { margin-bottom: 0.5rem; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .portfolio .diag .arrow { display: none; }
+  .portfolio .diag .b { min-width: 100%; }
+  .portfolio .diag .stack { width: 100%; }
+  .portfolio .grid20 { margin-bottom: 0.3rem; }
+  .portfolio th:first-child,
+  .portfolio td:first-child { width: auto; }
+}
+
+/* Print: the page is meant to be sent as a PDF */
+@media print {
+  .portfolio { display: block; font-size: 0.65rem; }
+  .portfolio .article-page-header,
+  .portfolio header { display: block; }
+  .portfolio .lang-toggle,
+  .portfolio .toc { display: none; }
+  .portfolio footer { display: block; margin-top: 1.5rem; }
+  .portfolio .article-body { font-size: 11px; }
+  .portfolio .article-body p.lead { font-size: 11.5px; }
+  .portfolio .case { margin-top: 1.5rem; break-inside: auto; }
+  .portfolio .case h2 { break-after: avoid; break-before: page; font-size: 0.9rem; }
+  .portfolio .case h3 { break-after: avoid; font-size: 0.7rem; margin-top: 0.9rem; }
+  .portfolio table { font-size: 10px; }
+  .portfolio .diag .b { font-size: 9.5px; }
+  .portfolio .dlab { font-size: 9.5px; }
+  .portfolio .tablewrap,
+  .portfolio .diag,
+  .portfolio .article-figure { break-inside: avoid; }
+  .portfolio .article-figure { border-color: var(--border); }
+  .portfolio .article-figure figcaption { font-size: 9.5px; }
+  .portfolio .closing { border: none; }
+  .portfolio a { color: inherit; text-decoration: none; }
+}
