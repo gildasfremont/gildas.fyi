@@ -97,6 +97,23 @@
 
 .portfolio .case-title .entry-logo { height: 0.72em; }
 
+/* Kind of outcome: zero to one, feature, pattern, consulting, software, prototype */
+.portfolio .case-kind {
+  display: inline-block;
+  vertical-align: 0.35em;
+  margin-left: 0.5rem;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-size: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--light);
+  font-variation-settings: 'GEOM' 0;
+  white-space: nowrap;
+}
+
 .glow-enabled .portfolio [style*="--glow"] .case-title::before {
   content: '';
   position: absolute;
