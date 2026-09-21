@@ -457,30 +457,6 @@ html:has(.portfolio .sheet:target) { overflow: hidden; }
 
 .portfolio .rubrics div { min-width: 0; }
 
-/* To complete: visible while the page is a draft */
-.portfolio .todo {
-  margin: 0.5rem 0 0.25rem;
-  padding: 0.45rem 0.7rem;
-  border: 1px dashed var(--subtle);
-  border-radius: 6px;
-  font-size: 13.5px;
-  line-height: 1.45;
-  color: var(--light);
-  background: none;
-}
-
-.portfolio .todo-label {
-  display: block;
-  font-size: 0.5rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--light);
-  font-variation-settings: 'GEOM' 0;
-  margin-bottom: 0.1rem;
-}
-
-.portfolio dd .todo { margin-top: 0.4rem; }
 
 /* Tables: decision / alternative, before / after */
 .portfolio .tablewrap {
