@@ -168,7 +168,6 @@
 /* ---------- Before, and elsewhere: plain section on the summary ---------- */
 .portfolio .elsewhere {
   padding-top: 2rem;
-  border-top: 1px solid var(--border);
 }
 
 .portfolio .elsewhere h3,
@@ -278,13 +277,11 @@ html:has(.portfolio .sheet:target) { overflow: hidden; }
 .portfolio .sheet-bar {
   margin-bottom: 1.5rem;
   padding-bottom: 0.7rem;
-  border-bottom: 1px solid var(--border);
 }
 
 .portfolio .sheet-foot {
   margin-top: 2.5rem;
   padding-top: 0.8rem;
-  border-top: 1px solid var(--border);
 }
 
 .portfolio .sheet-close,
@@ -316,8 +313,6 @@ html:has(.portfolio .sheet:target) { overflow: hidden; }
   gap: 0.9rem 1.5rem;
   margin: 1.5rem 0 0.5rem;
   padding: 1rem 0 1.1rem;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
 }
 
 .portfolio .facts div { min-width: 0; }
@@ -498,7 +493,6 @@ html:has(.portfolio .sheet:target) { overflow: hidden; }
 .portfolio .closing {
   margin-top: 3rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
 }
 
 .portfolio .closing p { margin-bottom: 0.5rem; }
