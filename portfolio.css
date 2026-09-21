@@ -19,6 +19,8 @@
 
 .portfolio .menu-dropdown .menu-home { color: var(--light); }
 
+.portfolio .topbar .lang-toggle { margin-bottom: 0; }
+
 .portfolio .article-body {
   font-size: 16px;
   color: var(--mid);
