@@ -97,6 +97,23 @@
 
 .portfolio .case-title .entry-logo { height: 0.72em; }
 
+/* Kind of outcome: zero to one, feature, pattern, consulting, software, prototype */
+.portfolio .case-kind {
+  display: inline-block;
+  vertical-align: 0.35em;
+  margin-left: 0.5rem;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-size: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--light);
+  font-variation-settings: 'GEOM' 0;
+  white-space: nowrap;
+}
+
 .glow-enabled .portfolio [style*="--glow"] .case-title::before {
   content: '';
   position: absolute;
@@ -240,6 +257,9 @@
 
 html:has(.portfolio .sheet:target) { overflow: hidden; }
 
+.portfolio .sheet:focus,
+.portfolio .sheet:focus-visible { outline: none; }
+
 .portfolio .sheet-paper {
   outline: none;
   max-width: 800px;
@@ -294,6 +314,150 @@ html:has(.portfolio .sheet:target) { overflow: hidden; }
 
 .portfolio .sheet .case-header { margin-bottom: 0.25rem; }
 
+/* ---------- Facts: the business problem, the people, the start, the money ---------- */
+.portfolio .facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem 1.5rem;
+  margin: 1.5rem 0 0.5rem;
+  padding: 1rem 0 1.1rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.portfolio .facts div { min-width: 0; }
+
+.portfolio .facts dt,
+.portfolio .rubrics dt {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--light);
+  font-variation-settings: 'GEOM' 0;
+  margin-bottom: 0.25rem;
+}
+
+.portfolio .facts dd,
+.portfolio .rubrics dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--dark);
+}
+
+/* What I did: verbs first, method after */
+.portfolio .did {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.portfolio .did li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-bottom: 0.55rem;
+  max-width: 660px;
+}
+
+.portfolio .did li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.45rem;
+  height: 2px;
+  background: var(--subtle);
+}
+
+.portfolio .did-verb {
+  font-weight: 500;
+  color: var(--black);
+  font-variation-settings: 'GEOM' 0;
+}
+
+/* User journeys: steps in a row, before muted, after plain */
+.portfolio .journey {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.portfolio .journey-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.portfolio .journey-label {
+  flex: 0 0 4rem;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--light);
+  font-variation-settings: 'GEOM' 0;
+  padding-top: 0.55rem;
+}
+
+.portfolio .journey-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: stretch;
+}
+
+.portfolio .journey-steps li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  max-width: none;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--white);
+  padding: 0.4rem 0.6rem;
+}
+
+.portfolio .journey-steps li:not(:last-child)::after {
+  content: '→';
+  color: var(--subtle);
+  margin-left: 0.15rem;
+}
+
+.portfolio .journey-row.muted .journey-steps li {
+  color: var(--light);
+  border-style: dashed;
+  background: none;
+}
+
+.portfolio .journey-note {
+  color: var(--light);
+  font-weight: 300;
+  font-size: 14px;
+  margin: 0.25rem 0 1.25rem;
+}
+
+/* Rubrics: tools, technical expertise, management, ecosystem */
+.portfolio .rubrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem 1.5rem;
+  margin: 2rem 0 0.5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.portfolio .rubrics div { min-width: 0; }
+
+
 /* Tables: decision / alternative, before / after */
 .portfolio .tablewrap {
   overflow-x: auto;
@@ -347,6 +511,12 @@ html:has(.portfolio .sheet:target) { overflow: hidden; }
 /* ---------- Responsive ---------- */
 @media (max-width: 600px) {
   .portfolio .case-card { padding: 0.9rem 1rem 0.85rem; border-radius: 6px; }
+  .portfolio .facts,
+  .portfolio .rubrics { grid-template-columns: 1fr; }
+  .portfolio .journey-row { flex-direction: column; gap: 0.3rem; }
+  .portfolio .journey-label { padding-top: 0; }
+  .portfolio .journey-steps { flex-direction: column; }
+  .portfolio .journey-steps li:not(:last-child)::after { content: '↓'; margin-left: auto; }
   .portfolio .sheet:target { padding: 0.5rem 0.5rem 2rem; }
   .portfolio .sheet-paper { padding: 0.9rem 1.1rem 1.4rem; border-radius: 8px; }
   .portfolio .sheet-bar { margin-bottom: 1.1rem; }
@@ -411,7 +581,12 @@ html:has(.portfolio .sheet:target) { overflow: hidden; }
   .portfolio .tldr { break-inside: avoid; }
   .portfolio .article-body .tldr p { font-size: 10.5px; }
   .portfolio .tablewrap,
+  .portfolio .facts,
+  .portfolio .rubrics,
+  .portfolio .journey,
   .portfolio .article-figure { break-inside: avoid; }
+  .portfolio .facts dd, .portfolio .rubrics dd { font-size: 10.5px; }
+  .portfolio .journey-steps li { font-size: 9.5px; }
   .portfolio .article-figure figcaption { font-size: 9.5px; }
   .portfolio .closing { border: none; }
   .portfolio a { color: inherit; text-decoration: none; }
