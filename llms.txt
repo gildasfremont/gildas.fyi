@@ -20,6 +20,7 @@ Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équi
 
 ## Portfolio
 - Eight product cases and a side project (EN) : https://gildas.fyi/portfolio
+- Huit cas produit et un projet perso (FR) : https://gildas.fyi/portfolio-fr
 
 ## Articles
 - L'impersonation : un pattern qui structure un logiciel entier — https://gildas.fyi/impersonation-pattern

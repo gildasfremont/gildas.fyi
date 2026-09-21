@@ -19,6 +19,8 @@
 
 .portfolio .menu-dropdown .menu-home { color: var(--light); }
 
+.portfolio .topbar .lang-toggle { margin-bottom: 0; }
+
 .portfolio .article-body {
   font-size: 16px;
   color: var(--mid);
@@ -49,18 +51,6 @@
 
 .portfolio .case-card:hover { border-color: var(--subtle); }
 
-.portfolio .case-open {
-  display: inline-block;
-  margin-top: 0.3rem;
-  font-size: 0.7rem;
-  color: var(--mid);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-color: var(--border);
-}
-
-.portfolio .case-card:hover .case-open,
-.portfolio .case-open:hover { color: var(--black); text-decoration-color: var(--subtle); }
 
 /* Case header: logo + name, one-line thesis, role line, outcome chips */
 .portfolio .case-header { margin-bottom: 0.25rem; }
@@ -546,7 +536,6 @@ html:has(.portfolio .sheet:target) { overflow: hidden; }
   .portfolio .article-body { font-size: 11px; }
   .portfolio .cases { gap: 0.5rem; margin-bottom: 1rem; }
   .portfolio .case-card { break-inside: avoid; padding: 0.5rem 0.7rem; border-radius: 0; }
-  .portfolio .case-open { display: none; }
   .portfolio .case-title { font-size: 0.9rem; }
   .portfolio .case-title::before, .portfolio .mini-name::before { display: none !important; }
   .portfolio .case-deck { font-size: 0.7rem; }
