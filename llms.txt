@@ -19,8 +19,8 @@ Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équi
 - zoneadsl.com (directeur produit, 2019–2020) — 1,2 M visiteurs/mois. Refonte des parcours d'acquisition et du CMS. Architecture d'information encore utilisée aujourd'hui. Racheté par hipto (2026).
 
 ## Portfolio
-- Eight product cases and a side project (EN) : https://gildas.fyi/portfolio
-- Huit cas produit et un projet perso (FR) : https://gildas.fyi/portfolio-fr
+- Eight product cases and a side project (EN) : https://gildas.fyi/en/portfolio
+- Huit cas produit et un projet perso (FR) : https://gildas.fyi/portfolio
 
 ## Articles
 - L'impersonation : un pattern qui structure un logiciel entier — https://gildas.fyi/impersonation-pattern

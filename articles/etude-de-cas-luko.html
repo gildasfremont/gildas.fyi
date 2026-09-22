@@ -15,10 +15,10 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="fr_FR">
   <meta name="theme-color" content="#fafcf9">
-  <link rel="preload" href="CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <script>
@@ -28,7 +28,7 @@
 <div class="container article-page">
 
   <nav class="lang-toggle">
-    <a href="unsolicited-redesign-luko.html" onclick="if(history.length>1){history.back();return false;}">← Article original</a>
+    <a href="/unsolicited-redesign-luko" onclick="if(history.length>1){history.back();return false;}">← Article original</a>
   </nav>
 
   <article>
@@ -55,7 +55,7 @@
       <p>Sur la hiérarchie&nbsp;: les documents sont éclatés entre trois endroits. Les blocs de la home sont rédigés comme des pages marketing. Le prompt newsletter est plus visible que l'accès aux contrats. La bannière Allianz Travel apparaît jusque dans le formulaire d'attestation. Le modèle mental de l'utilisateur (« je gère mes assurances ») ne correspond pas à l'architecture de l'information qui lui est présentée (« voici nos offres »).</p>
 
       <figure class="article-figure">
-        <img src="img/luko-original.jpg" alt="Page d'accueil de l'espace Mon Compte Luko by Allianz Direct" loading="lazy">
+        <img src="/img/luko-original.jpg" alt="Page d'accueil de l'espace Mon Compte Luko by Allianz Direct" loading="lazy">
         <figcaption>
           <strong>L'espace Mon Compte tel qu'il existe aujourd'hui.</strong> Bannière Allianz Travel en haut de page, prompt newsletter avant les contrats, documents éclatés en trois blocs rédigés comme des pages marketing.
         </figcaption>
@@ -76,7 +76,7 @@
       <p>Proximity principle&nbsp;: l'onglet Documents disparaît. Les documents appartiennent au contexte de chaque contrat, pas à un silo séparé. Le profil est sous l'avatar, pas dans un onglet. La navigation passe de trois onglets à zéro&nbsp;: tout est accessible depuis la home parce que tout est au bon endroit.</p>
 
       <figure class="article-figure">
-        <img src="img/luko-redesign.jpg" alt="Prototype du redesign Luko" loading="lazy">
+        <img src="/img/luko-redesign.jpg" alt="Prototype du redesign Luko" loading="lazy">
         <figcaption>
           <strong>Le prototype après trois itérations.</strong> Attestations et déclaration de sinistre au premier plan. Contrats en cartes avec adresse et prix. Catalogue d'assurances à la place des faux boutons «&nbsp;ajouter un contrat&nbsp;».
         </figcaption>
@@ -93,14 +93,14 @@
       <p>La déclaration de sinistre part désormais de la home en un clic. L'utilisateur choisit le logement concerné, puis un wizard en cinq étapes (logement, type, détails, photos, confirmation) le guide sans jamais le renvoyer vers un contrat ou un accordéon. Dans l'interface actuelle, déclarer un sinistre suppose de trouver d'abord le bon contrat, puis de naviguer dans ses sous-menus — un parcours qui présuppose que l'utilisateur pense en termes de numéros de contrat, pas en termes de problème à résoudre.</p>
 
       <figure class="article-figure">
-        <img src="img/luko-flow-sinistre.svg" alt="Comparaison des flux de déclaration de sinistre : existant (contrat → chercher le lien) vs redesign (home → wizard 5 étapes)" loading="lazy">
+        <img src="/img/luko-flow-sinistre.svg" alt="Comparaison des flux de déclaration de sinistre : existant (contrat → chercher le lien) vs redesign (home → wizard 5 étapes)" loading="lazy">
         <figcaption>
           <strong>Déclaration de sinistre : existant vs redesign.</strong> Le parcours actuel part du contrat et demande de trouver un lien enterré. Le redesign part du problème et guide avec un wizard.
         </figcaption>
       </figure>
 
       <figure class="article-figure">
-        <img src="img/luko-sinistre.jpg" alt="Flux de déclaration de sinistre : étape 1 Logement avec sélection parmi les adresses assurées, stepper 5 étapes" loading="lazy">
+        <img src="/img/luko-sinistre.jpg" alt="Flux de déclaration de sinistre : étape 1 Logement avec sélection parmi les adresses assurées, stepper 5 étapes" loading="lazy">
         <figcaption>
           <strong>Déclaration de sinistre, étape 1.</strong> L'utilisateur choisit le logement concerné. Le wizard affiche les cinq étapes restantes. Pas de tunnel caché dans un contrat.
         </figcaption>
@@ -109,14 +109,14 @@
       <p>La génération d'attestation suit la même logique. Depuis la home, l'utilisateur clique, choisit le contrat, puis voit immédiatement les quatre types d'attestation disponibles (responsabilité civile, assurance scolaire, location de salle, location de vacances) avec leur usage indiqué en sous-titre. Un clic génère le PDF. Dans l'interface actuelle, ce même parcours demande cinq interactions et un accordéon.</p>
 
       <figure class="article-figure">
-        <img src="img/luko-flow-attestation.svg" alt="Comparaison des flux d'attestation : existant (5 interactions, accordéon caché) vs redesign (3 interactions, téléchargement direct)" loading="lazy">
+        <img src="/img/luko-flow-attestation.svg" alt="Comparaison des flux d'attestation : existant (5 interactions, accordéon caché) vs redesign (3 interactions, téléchargement direct)" loading="lazy">
         <figcaption>
           <strong>Génération d'attestation : existant vs redesign.</strong> Cinq interactions avec scroll et accordéon contre trois interactions avec téléchargement direct.
         </figcaption>
       </figure>
 
       <figure class="article-figure">
-        <img src="img/luko-attestation.jpg" alt="Génération d'attestation : quatre types affichés en cartes avec icône de téléchargement et description d'usage" loading="lazy">
+        <img src="/img/luko-attestation.jpg" alt="Génération d'attestation : quatre types affichés en cartes avec icône de téléchargement et description d'usage" loading="lazy">
         <figcaption>
           <strong>Génération d'attestation après sélection du contrat.</strong> Les quatre types sont visibles d'un coup avec leur contexte d'usage. Un clic télécharge le PDF.
         </figcaption>
@@ -129,14 +129,14 @@
       <p>Le principe est celui de la co-localisation : chaque information vit dans le contexte qui lui donne du sens. L'original éparpille ces éléments entre la home, un onglet Documents et les sous-pages de chaque contrat. Le redesign les rassemble en un seul endroit hiérarchisé.</p>
 
       <figure class="article-figure">
-        <img src="img/luko-architecture.svg" alt="Architecture de l'information : existant avec données dispersées entre Home, onglet Documents et sous-page contrat vs redesign avec tout regroupé sous la vue contrat" loading="lazy">
+        <img src="/img/luko-architecture.svg" alt="Architecture de l'information : existant avec données dispersées entre Home, onglet Documents et sous-page contrat vs redesign avec tout regroupé sous la vue contrat" loading="lazy">
         <figcaption>
           <strong>Architecture de l'information : dispersion vs co-localisation.</strong> L'existant répartit les données entre trois écrans. Le redesign regroupe tout sous le contrat.
         </figcaption>
       </figure>
 
       <figure class="article-figure">
-        <img src="img/luko-detail-contrat.jpg" alt="Vue de détail d'un contrat : en-tête avec adresse et statut, cartes d'attestation, liste de documents, accordéons garanties et paiement" loading="lazy">
+        <img src="/img/luko-detail-contrat.jpg" alt="Vue de détail d'un contrat : en-tête avec adresse et statut, cartes d'attestation, liste de documents, accordéons garanties et paiement" loading="lazy">
         <figcaption>
           <strong>Vue de détail du contrat 8 Rue des Lilas.</strong> Attestations, documents, garanties et paiement regroupés sur une seule page. Les documents appartiennent au contrat, pas à un onglet séparé.
         </figcaption>
@@ -166,7 +166,7 @@
   </footer>
 
 </div>
-<script src="script.js"></script>
+<script src="/script.js"></script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
