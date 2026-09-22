@@ -4,17 +4,17 @@
   <url>
     <loc>https://gildas.fyi/</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/"/>
     <lastmod>2026-04-07</lastmod>
   </url>
   <url>
-    <loc>https://gildas.fyi/en</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en"/>
+    <loc>https://gildas.fyi/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/"/>
     <lastmod>2026-04-07</lastmod>
   </url>
   <url>
-    <loc>https://gildas.fyi/portfolio-en</loc>
+    <loc>https://gildas.fyi/en/portfolio</loc>
     <lastmod>2026-09-15</lastmod>
   </url>
   <url>
@@ -56,5 +56,44 @@
   <url>
     <loc>https://gildas.fyi/etude-de-cas-luko</loc>
     <lastmod>2026-04-07</lastmod>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/audit-ubaq-methode</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/conformite-fonctionnalite</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/etude-de-cas-luko</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/gmail-etats-binaires</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/impersonation-pattern</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/index</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/paradoxe-solow-ia</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/parti-pris-logiciel</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/rapport-si-essec</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/think-different-write-smarter</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/unsolicited-redesign-luko</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/vitesse-vision</loc>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/en/vous-navez-pas-besoin-dun-pm</loc>
   </url>
 </urlset>

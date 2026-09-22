@@ -3,7 +3,7 @@
 ## Structure
 
 - `index.html` — version française
-- `en.html` — version anglaise
+- `en/index.html` — version anglaise (tout l'anglais vit sous `/en/`)
 - `style.css` — styles partagés
 - `generate-pdf.mjs` — script de génération des PDF via Puppeteer
 
@@ -11,7 +11,7 @@
 
 Quand le contenu textuel change (expériences, paragraphes, sections) :
 
-1. **Traduction** : toujours reporter le changement dans les deux fichiers (`index.html` et `en.html`). Le contenu doit rester synchronisé.
+1. **Traduction** : toujours reporter le changement dans les deux fichiers (`index.html` et `en/index.html`). Le contenu doit rester synchronisé.
 2. **PDF** : regénérer les deux PDF après chaque modification de contenu visible. Le script `generate-pdf.mjs` s'en charge :
    ```
    node generate-pdf.mjs
