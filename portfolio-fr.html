@@ -121,14 +121,14 @@
         <header class="case-header">
           <h2 class="case-title"><a href="#guinet">Guinet-Derriaz 1912<img src="img/guinet.png" alt="" class="entry-logo"></a></h2><span class="case-kind">Logiciel</span>
           <p class="case-deck">Un système d'information pour un groupe qui n'en avait pas</p>
-          <p class="case-role">Système d'information à partir de zéro · un an à deux jours par semaine · 100&nbsp;k€ de budget</p>
+          <p class="case-role">Système d'information à partir de zéro · 2022, un an à deux jours par semaine · 100&nbsp;k€ de budget</p>
         </header>
       </section>
       <section class="case-card" data-case="synaxe" data-kind="Conseil" style="--glow: 30,30,120">
         <header class="case-header">
           <h2 class="case-title"><a href="#synaxe">Synaxe<img src="img/synaxe.png" alt="" class="entry-logo"></a></h2><span class="case-kind">Conseil</span>
           <p class="case-deck">Un produit capteurs qui était un produit conformité</p>
-          <p class="case-role">CPO à temps partagé · six mois · Plateforme DUNE, opérations sur matières dangereuses</p>
+          <p class="case-role">CPO à temps partagé · 2023–2024, six mois · Suite DUNE, carrières, centrales à béton et à enrobés</p>
         </header>
       </section>
       <section class="case-card" data-case="monbanquet" data-kind="Logiciel" style="--glow: 195,155,100">
@@ -604,53 +604,59 @@
         <header class="case-header">
           <h2 class="case-title" id="guinet-title">Guinet-Derriaz 1912<img src="img/guinet.png" alt="" class="entry-logo"></h2><span class="case-kind">Logiciel</span>
           <p class="case-deck">Un système d'information pour un groupe qui n'en avait pas</p>
-          <p class="case-role">Système d'information à partir de zéro · un an à deux jours par semaine · 100&nbsp;k€ de budget</p>
+          <p class="case-role">Système d'information à partir de zéro · 2022, un an à deux jours par semaine · 100&nbsp;k€ de budget</p>
           <div class="milestone-tags">
             <span class="milestone-tag">Un an, deux jours par semaine, 100&nbsp;k€</span>
-            <span class="milestone-tag">Des silos sur tableurs à une seule donnée</span>
+            <span class="milestone-tag">Une douzaine de fichiers privés remplacés par un référentiel</span>
             <span class="milestone-tag">14&nbsp;carrières, un catalogue</span>
           </div>
         </header>
-        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Quatorze carrières, dix millions d'euros de chiffre d'affaires et pas de système d'information, avec cent mille euros et deux jours par semaine. J'ai commencé par le catalogue produit plutôt que par les outils que les gens demandaient, parce que chaque outil aurait sinon reposé sur quatre versions incompatibles de ce catalogue. Des équipes qui travaillaient en silos travaillent maintenant sur la même donnée.</p></div>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Un groupe industriel du marbre, quatorze carrières, une dizaine de millions d'euros de chiffre d'affaires, des ventes dans plusieurs pays, et aucun système d'information. Les commandes vivaient dans des tableurs individuels et personne ne pouvait dire ce qui était en stock, dans quelle carrière, sous quel nom. On me demandait des outils pour les commerciaux et pour les opérations. J'ai commencé par le catalogue produit, parce que le nom sous lequel un client commande et le nom que la production utilise n'avaient rien en commun, et que rien en aval ne pouvait s'automatiser avant que ce soit réglé. Puis j'ai choisi des éditeurs plutôt que de construire. Un an à deux jours par semaine, cent mille euros, et le groupe est sorti de l'année en chiffrant, en suivant et en livrant depuis un référentiel partagé.</p></div>
 
-        <dl class="facts">
-          <div><dt>Le problème métier, et qui j'ai aidé</dt><dd>Un groupe industriel familial du marbre, quatorze carrières, des clients à l'étranger&nbsp;: des commerciaux qui chiffrent sur une version du catalogue, des opérations qui travaillent sur une autre, une direction pour qui aucune question qui traverse deux équipes n'a une seule réponse. Le problème métier&nbsp;: des devis et des commandes qui ne décrivaient pas les mêmes produits.</dd></div>
-          <div><dt>Avec qui j'ai travaillé, et ma responsabilité</dt><dd>Rattaché à la direction du groupe, avec les commerciaux, les opérations et les carrières. Ma responsabilité&nbsp;: tout le système d'information, construit à partir de zéro, avec cent mille euros et deux jours par semaine pendant un an.</dd></div>
-          <div><dt>Le point de départ</dt><dd>Environ dix millions d'euros de chiffre d'affaires et pas de système d'information&nbsp;: des fichiers par équipe, quatre versions du catalogue.</dd></div>
-          <div><dt>Ce qui comptait</dt><dd>Un seul catalogue. Chaque outil construit sur quatre versions des produits aurait échoué au premier désaccord entre deux équipes.</dd></div>
-          <div><dt>Le choix, dans les contraintes</dt><dd>Cent mille euros, deux jours par semaine, un an. Le catalogue d'abord, la base de données ensuite, les outils en dernier, et une liste de choses non construites.</dd></div>
-          <div><dt>Ce que ça a rapporté</dt><dd>Des équipes qui travaillaient en silos travaillent maintenant sur la même donnée. À ce budget, l'essentiel du travail a été de décider ce qu'on ne construirait pas.</dd></div>
-        </dl>
-        <h3>Ce que j'ai fait</h3>
+        <h3>Le contexte</h3>
+        <p>Guinet-Derriaz extrait et transforme de la pierre depuis 1912. En 2022, le groupe a quatorze carrières, des clients à l'étranger, et fonctionne sur des fichiers par équipe&nbsp;: les commerciaux chiffrent sur une version du catalogue, les opérations travaillent sur une autre, et aucune question qui traverse deux équipes n'a une seule réponse. Je suis rattaché à la direction du groupe, seul profil produit, avec les commerciaux, les opérations et les carrières comme interlocuteurs. Ce qui était à moi&nbsp;: tout le système d'information, du catalogue aux outils, dans une enveloppe de cent mille euros et deux jours par semaine pendant un an.</p>
+
+        <h3>Le vrai problème</h3>
+        <p>La demande, c'était des outils. Un outil pour les commerciaux, un outil pour les carrières, vite. Le problème que j'ai trouvé en dessous, c'est qu'un bloc de marbre change de nom entre le moment où un client le commande et le moment où la production le traite, et que quatre versions du catalogue circulaient. Un outil construit sur ces quatre versions aurait échoué au premier désaccord entre deux équipes, et le premier désaccord aurait renvoyé tout le monde aux tableurs. Tant que le catalogue n'était pas réglé, ni le stock, ni les devis, ni les livraisons ne pouvaient être automatisés.</p>
+
+        <h3>Les options, et ce que j'ai choisi</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th></th><th>Ce que j'ai choisi</th><th>Les alternatives crédibles</th></tr></thead>
+          <tbody>
+            <tr><td>L'ordre</td><td>Le catalogue d'abord, la base de données ensuite, les outils en dernier.</td><td>Commencer par les outils demandés, et normaliser le catalogue au fil de l'eau.</td></tr>
+            <tr><td>Construire ou acheter</td><td>Choisir des éditeurs pour les outils de vente et d'opérations, et les poser sur le référentiel.</td><td>Développer sur mesure, ce qui à ce budget aurait donné un outil et demi.</td></tr>
+            <tr><td>L'irrégulier</td><td>Faire tourner sur Excel et Airtable les processus encore trop irréguliers pour être automatisés, jusqu'à ce que leurs règles soient assez claires pour être encodées.</td><td>Les forcer dans un outil tout de suite, et encoder des règles que personne ne connaissait encore.</td></tr>
+            <tr><td>Le coût</td><td>Les outils que les gens attendaient sont arrivés en dernier, après des mois passés sur un catalogue que personne n'avait demandé, et j'ai dû tenir cet ordre devant des équipes qui voulaient voir quelque chose.</td><td></td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>Ce que j'ai fait, dans l'ordre</h3>
         <ul class="did">
-          <li><span class="did-verb">Séquencer&nbsp;: le catalogue d'abord.</span> Chaque outil aurait sinon reposé sur quatre versions incompatibles des produits, et le premier désaccord entre deux outils aurait renvoyé tout le monde aux tableurs.</li>
-          <li><span class="did-verb">Formaliser le catalogue produit.</span> Une description de chaque produit sur laquelle les commerciaux, les opérations et les carrières sont d'accord.</li>
+          <li><span class="did-verb">Formaliser le catalogue produit.</span> Une description de chaque produit sur laquelle les commerciaux, les opérations et les carrières sont d'accord, avec la correspondance entre le nom commercial et le nom de production.</li>
           <li><span class="did-verb">Construire la base de données partagée.</span> La pièce la moins visible et celle dont tout dépend, livrée avant que quiconque voie un outil.</li>
-          <li><span class="did-verb">Puis les outils pour les commerciaux et pour les opérations.</span> Sur la même donnée.</li>
-          <li><span class="did-verb">Décider ce qu'on ne construit pas.</span> Le principal levier à ce budget.</li>
+          <li><span class="did-verb">Sélectionner les outils plutôt que les construire.</span> Pour la vente et pour les opérations, posés sur la même donnée.</li>
+          <li><span class="did-verb">Laisser l'irrégulier sur Excel et Airtable.</span> Jusqu'à ce que les règles soient assez claires pour être encodées, et décider ce qui ne serait pas construit, ce qui à ce budget était le principal levier.</li>
         </ul>
-
-        <h3>Ce qui a été construit</h3>
-        <p>Un catalogue produit formalisé. Une base de données partagée construite dessus. Des outils pour les commerciaux. Des outils pour les opérations. Dans cet ordre.</p>
-        <h3>Qui s'en sert</h3>
-        <p>Les commerciaux, les opérations et les carrières, sur la même donnée.</p>
-
-        <h3>La décision de séquencement&nbsp;: le catalogue d'abord</h3>
-        <p>Avec ce budget et deux jours par semaine, l'ordre du travail est la stratégie. La tentation est de commencer par ce que les gens demandent&nbsp;: des outils pour les commerciaux, des outils pour les carrières. J'ai commencé par le catalogue, parce que chaque outil aurait reposé sur quatre versions incompatibles de ce catalogue, et que le premier désaccord entre deux outils aurait renvoyé tout le monde aux tableurs.</p>
-        <p>La base de données partagée, construite sur un catalogue formalisé, est donc venue d'abord, avant que quiconque voie un outil&nbsp;: la pièce la moins visible et celle dont tout dépend. Les outils pour les commerciaux et pour les opérations sont venus par-dessus.</p>
 
         <h3>L'ordre du travail</h3>
         <div class="journey">
           <div class="journey-row"><span class="journey-label">Construit</span><ol class="journey-steps"><li>Catalogue produit, formalisé</li><li>Base de données partagée</li><li>Outils pour les commerciaux</li><li>Outils pour les opérations</li></ol></div>
         </div>
         <p class="journey-note">Demandé d'abord&nbsp;: les outils. Construit d'abord&nbsp;: le catalogue.</p>
+
+        <h3>Ce que ça a donné</h3>
+        <p>Livré et en usage. Le groupe est sorti de l'année en chiffrant, en suivant ses commandes et en livrant depuis un référentiel partagé, au lieu d'une douzaine de fichiers privés. Les commerciaux, les opérations et les carrières travaillent sur la même donnée. Je n'ai pas de mesure du temps de devis ou du taux d'erreur avant et après, parce que rien n'était mesuré avant et que ce n'était pas dans le budget de l'instrumenter&nbsp;; je préfère le dire que produire un pourcentage.</p>
+
+        <h3>Ce que j'en ai retenu</h3>
+        <p>À budget fixe, la séquence décide de ce qui existe à la fin. Un référentiel construit en premier est ce qui permet à chaque outil suivant d'être petit, et donc achetable plutôt que développé. L'autre chose, c'est qu'un tableur n'est pas un échec&nbsp;: c'est la bonne réponse tant qu'un processus n'a pas de règle stable, et vouloir l'automatiser trop tôt coûte plus cher que de l'attendre.</p>
         <dl class="rubrics">
-          <div><dt>Expertise technique</dt><dd>Modélisation de données d'un catalogue pour un produit physique et variable, un système d'information à partir de rien.</dd></div>
+          <div><dt>Outils</dt><dd>Un référentiel produit et sa base de données, des éditeurs pour la vente et les opérations, Excel et Airtable pour ce qui n'était pas encore automatisable.</dd></div>
+          <div><dt>Expertise technique</dt><dd>Modélisation d'un catalogue pour un produit physique et variable, un système d'information à partir de rien, la sélection d'éditeurs.</dd></div>
           <div><dt>Management</dt><dd>Un an à deux jours par semaine avec un budget fixe&nbsp;: discipline de périmètre, et dire non aux outils demandés en premier.</dd></div>
           <div><dt>Écosystème</dt><dd>Les carrières, des clients internationaux, les commerciaux, les opérations, un groupe familial qui découvre le logiciel.</dd></div>
         </dl>
         <h3>Méthode et références</h3>
-        <p>La stratégie a été l'ordre du travail. À budget fixe, la séquence décide de ce qui existe à la fin, et un référentiel partagé construit en premier est ce qui permet à chaque outil suivant d'être petit.</p>
+        <p>Rien de savant. Le référentiel avant les outils, acheter avant de construire, et laisser un processus sur tableur tant que sa règle n'est pas connue.</p>
 
         <div class="sheet-foot">
           <a href="#" class="sheet-close">← Portfolio</a>
@@ -668,49 +674,62 @@
         <header class="case-header">
           <h2 class="case-title" id="synaxe-title">Synaxe<img src="img/synaxe.png" alt="" class="entry-logo"></h2><span class="case-kind">Conseil</span>
           <p class="case-deck">Un produit capteurs qui était un produit conformité</p>
-          <p class="case-role">CPO à temps partagé · six mois · Plateforme DUNE, opérations sur matières dangereuses</p>
+          <p class="case-role">CPO à temps partagé · 2023–2024, six mois · Suite DUNE, carrières, centrales à béton et à enrobés</p>
           <div class="milestone-tags">
             <span class="milestone-tag">Des capteurs à la conformité en six mois</span>
-            <span class="milestone-tag">Des maquettes et des specs que l'équipe pouvait construire</span>
+            <span class="milestone-tag">Deux outils livrés avec deux développeurs</span>
+            <span class="milestone-tag">De nouveaux contrats et des renouvellements</span>
           </div>
         </header>
-        <div class="tldr"><span class="tldr-label">TL;DR</span><p>DUNE se vendait comme une surcouche de capteurs pour camions-toupies. Les entretiens avec les exploitants ont montré que leur difficulté n'était pas de mesurer ce qu'ils faisaient mais de le prouver ensuite au régulateur. Repositionné en outil de gestion et de conformité, avec les maquettes et les spécifications dont l'équipe avait besoin pour le construire, en six mois.</p></div>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>DUNE, la suite de Synaxe pour les carrières, les centrales à béton et les centrales à enrobés, se vendait comme une surcouche logicielle de capteurs sur les camions&nbsp;: savoir ce que le camion transporte et où il est. Les entretiens avec les exploitants ont montré que leur difficulté n'était pas de mesurer mais de prouver. Un site qui ne peut pas déposer ses déclarations de déchets ne peut plus rien recevoir. J'ai argumenté le repositionnement vers un outil de gestion et de conformité, puis, avec deux développeurs, livré l'outil de facturation, du ticket de pesée à la facture, et l'outil de conformité déchets. Les deux ont amené de nouveaux contrats et des renouvellements.</p></div>
 
-        <dl class="facts">
-          <div><dt>Le problème métier, et qui j'ai aidé</dt><dd>Des exploitants industriels qui déplacent des matières dangereuses dans un cadre réglementaire qui n'a pas été écrit pour ce qui se passe sur un site, et les fondateurs de DUNE, qui leur vendaient des capteurs. Le problème métier&nbsp;: un produit vendu sur la mesure à des clients dont la difficulté était de prouver ce qu'ils avaient fait, à un inspecteur, après coup.</dd></div>
-          <div><dt>Le client, et mon mandat</dt><dd>CPO à temps partagé pendant six mois, avec les fondateurs et l'équipe d'ingénierie, entretiens avec les exploitants. Ma responsabilité&nbsp;: la définition du produit, les maquettes et les spécifications.</dd></div>
-          <div><dt>Le point de départ</dt><dd>Une couche logicielle au-dessus de capteurs installés sur des camions-toupies&nbsp;: savoir ce que le camion transporte et où il est.</dd></div>
-          <div><dt>Ce qui comptait</dt><dd>La difficulté du client était de prouver, pas de mesurer. La conformité a une ligne budgétaire, de meilleurs chiffres n'en ont pas.</dd></div>
-          <div><dt>Le choix, dans les contraintes</dt><dd>Six mois. Les entretiens d'abord, puis un repositionnement argumenté à partir d'eux, puis des maquettes et des spécifications pour que l'équipe ait quelque chose à construire plutôt qu'une stratégie à interpréter.</dd></div>
-          <div><dt>Ce que ça a rapporté</dt><dd>Un repositionnement de surcouche de capteurs à outil de gestion et de conformité, avec les maquettes et les spécifications pour le construire.</dd></div>
-        </dl>
+        <h3>Le contexte</h3>
+        <p>Synaxe édite DUNE, utilisée par des exploitants de carrières, de centrales à béton et de centrales à enrobés, avec Colas et Heidelberg Materials parmi ses clients. Le produit était présenté comme une couche logicielle au-dessus de capteurs installés sur les camions. J'y suis intervenu six mois comme CPO à temps partagé, avec les fondateurs et l'équipe d'ingénierie. Ce qui était à moi&nbsp;: les entretiens avec les exploitants, la définition du produit, les maquettes et les spécifications, puis la livraison de deux outils avec deux développeurs.</p>
+
+        <h3>Le vrai problème</h3>
+        <p>Le pitch parlait de mesure&nbsp;: de meilleurs chiffres sur les flux de matériaux. Les exploitants que j'ai interrogés parlaient d'autre chose. Ils déplacent des matériaux, dont des déchets, dans un cadre réglementaire qui n'a pas été écrit pour ce qui se passe sur un site, avec des obligations qui s'empilent, déclarations d'acceptation préalable, bordereaux de suivi, registres, Trackdéchets. Leur difficulté quotidienne n'était pas de savoir ce qu'ils avaient fait. C'était de le prouver après coup, à un inspecteur ou à un donneur d'ordre, et un site qui ne peut pas déposer ses déclarations ne peut plus rien recevoir. La donnée existait dans la pratique et ne pouvait pas être transformée en preuve. La conformité a une ligne budgétaire chez le client&nbsp;; de meilleurs chiffres n'en ont pas.</p>
+
+        <h3>Les options, et ce que j'ai choisi</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th></th><th>Ce que j'ai choisi</th><th>L'alternative crédible</th></tr></thead>
+          <tbody>
+            <tr><td>Le pari</td><td>Repositionner DUNE en outil de gestion et de conformité pour les sites, et le construire tout de suite&nbsp;: la facturation, du ticket de pesée à la facture, et la conformité déchets.</td><td>Garder le positionnement capteurs et améliorer la mesure, avec la conformité comme module de plus.</td></tr>
+            <tr><td>Pourquoi</td><td>C'est le problème que les exploitants achètent. Et livrer deux outils qui tournent en six mois valait mieux qu'une stratégie à interpréter par l'équipe après mon départ.</td><td>Un marché où le client ne voit pas de ligne budgétaire, et un pivot qui n'aurait été qu'un document.</td></tr>
+            <tr><td>Le coût</td><td>Le pitch capteurs, sur lequel l'entreprise s'était construite, passe au second plan, et six mois de deux développeurs vont dans des outils de gestion plutôt que dans la mesure. Ce que ce renoncement a coûté aux fondateurs, je ne l'écris pas à leur place.</td><td></td></tr>
+          </tbody>
+        </table></div>
+
         <h3>Ce que j'ai fait</h3>
         <ul class="did">
-          <li><span class="did-verb">Interroger les exploitants.</span> Ce qu'ils font sur un site, ce qu'ils doivent prouver, et à qui.</li>
-          <li><span class="did-verb">Recadrer le problème de technique à réglementaire.</span> La donnée existe dans la pratique et ne peut pas être transformée en preuve.</li>
-          <li><span class="did-verb">Repositionner le produit.</span> De la mesure à un dossier défendable quand l'inspecteur arrive, argumenté à partir des entretiens.</li>
-          <li><span class="did-verb">Concevoir les maquettes et écrire les spécifications.</span> Pour que l'équipe puisse exécuter dans les six mois.</li>
+          <li><span class="did-verb">Interroger les exploitants.</span> Ce qu'ils font sur un site, ce qu'ils doivent prouver, à qui, et ce qui se passe quand ils ne peuvent pas.</li>
+          <li><span class="did-verb">Recadrer le problème, de technique à réglementaire.</span> Et l'argumenter devant les fondateurs à partir des entretiens, pas d'une conviction.</li>
+          <li><span class="did-verb">Concevoir et spécifier.</span> Les maquettes et les spécifications des deux outils, pour que l'équipe ait quelque chose à construire.</li>
+          <li><span class="did-verb">Livrer avec deux développeurs.</span> L'outil de facturation, du ticket de pesée à la facture, et l'outil de conformité déchets, dans les six mois.</li>
         </ul>
 
-        <h3>Livrables</h3>
-        <p>Le repositionnement, argumenté à partir des entretiens. Les maquettes du nouveau produit. Les spécifications à partir desquelles l'équipe pouvait construire.</p>
         <h3>Avant et après</h3>
         <div class="tablewrap"><table>
           <thead><tr><th></th><th>Tel que vendu</th><th>Tel que repositionné</th></tr></thead>
           <tbody>
-            <tr><td>Produit</td><td>Une surcouche de capteurs pour camions-toupies.</td><td>Un outil de gestion et de conformité pour les opérations sur matières dangereuses.</td></tr>
-            <tr><td>Problème</td><td>Technique&nbsp;: la donnée n'est pas capturée.</td><td>Réglementaire&nbsp;: la donnée existe dans la pratique et ne peut pas être transformée en preuve.</td></tr>
-            <tr><td>Valeur</td><td>De meilleurs chiffres.</td><td>Un dossier défendable quand l'inspecteur arrive.</td></tr>
+            <tr><td>Produit</td><td>Une surcouche de capteurs sur les camions.</td><td>Un outil de gestion et de conformité pour les sites.</td></tr>
+            <tr><td>Problème</td><td>Technique&nbsp;: la donnée n'est pas capturée.</td><td>Réglementaire&nbsp;: la donnée existe dans la pratique et ne peut pas devenir une preuve.</td></tr>
+            <tr><td>Valeur</td><td>De meilleurs chiffres.</td><td>Une facture juste et un dossier défendable quand l'inspecteur arrive.</td></tr>
           </tbody>
         </table></div>
 
+        <h3>Ce que ça a donné</h3>
+        <p>Livré&nbsp;: les deux outils, en production chez des clients. Ce que j'en sais&nbsp;: ils ont amené de nouveaux contrats et des renouvellements, et je n'ai pas de montant à mettre en face. Le repositionnement, lui, est un choix des fondateurs que j'ai argumenté, et c'est à eux que revient ce qu'ils en ont fait depuis.</p>
+
+        <h3>Ce que j'en ai retenu</h3>
+        <p>Les entretiens menés comme une enquête, pas comme une liste de souhaits, donnent le problème que le client paie. Et un pivot n'existe que s'il produit quelque chose&nbsp;: la partie qui a compté n'est pas la présentation du repositionnement, c'est les deux outils qui tournaient à la fin des six mois.</p>
         <dl class="rubrics">
-          <div><dt>Expertise technique</dt><dd>Des données capteurs transformées en registres de conformité, les contraintes réglementaires du transport de matières dangereuses comme exigences produit.</dd></div>
-          <div><dt>Management</dt><dd>Mener un pivot avec des fondateurs en six mois, et laisser à l'équipe une définition de produit qu'elle pouvait construire.</dd></div>
-          <div><dt>Écosystème</dt><dd>Les exploitants industriels, la logistique du ciment, le régulateur et ses inspecteurs.</dd></div>
+          <div><dt>Outils</dt><dd>Entretiens, maquettes, spécifications.</dd></div>
+          <div><dt>Expertise technique</dt><dd>Du ticket de pesée à la facture, des données de site transformées en registres de conformité, les obligations déchets comme exigences produit.</dd></div>
+          <div><dt>Management</dt><dd>Mener un repositionnement avec des fondateurs en six mois, et livrer avec deux développeurs.</dd></div>
+          <div><dt>Écosystème</dt><dd>Les exploitants de carrières et de centrales, les majors du BTP comme clients, le régulateur et ses inspecteurs.</dd></div>
         </dl>
         <h3>Méthode et références</h3>
-        <p>Des entretiens menés comme une enquête plutôt que comme une liste de souhaits, puis un avant-après qui nomme ce qu'on a abandonné. Un pivot n'est crédible que s'il a un coût.</p>
+        <p>Des entretiens d'exploitants menés comme une enquête, puis un avant-après qui nomme ce qu'on a mis de côté. Un repositionnement n'est crédible que s'il a un coût, et il ne vaut que s'il est construit.</p>
 
         <div class="sheet-foot">
           <a href="#" class="sheet-close">← Portfolio</a>
@@ -735,40 +754,49 @@
             <a href="https://www.frenchweb.fr/foodtech-monbanquet-rachete-par-lallemand-b2b-food/392986" target="_blank" rel="noopener" class="milestone-tag">Racheté par B2B Food Group (2020)<svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M3.5 2.5H9.5V8.5M9 3L3 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </header>
-        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Chaque commande est un devis sur mesure qui doit tenir la marge sous des contraintes qui ne sont pas déterministes&nbsp;: le picking, les livraisons, la charge des cuisines. J'ai conçu un générateur avec ces contraintes à l'intérieur, pour qu'un commercial ne voie jamais un menu que l'opération ne peut pas livrer. Un menu personnalisé en trente minutes là où la concurrence mettait des jours, un tunnel d'acquisition en hausse de moitié, et un CEO qui dit que c'est ce qui a sauvé l'entreprise.</p></div>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Monbanquet livrait des buffets d'entreprise préparés par un réseau d'artisans indépendants, donc chaque commande dépendait de fournisseurs que nous ne contrôlions pas et chaque devis était sur mesure. Un devis mettait des jours à sortir, et pouvait être juste sur le papier et impossible à livrer. J'ai conçu un générateur qui met les contraintes à l'intérieur de la génération, la marge, le picking, les livraisons, la charge de chaque cuisine à cette date, pour qu'un commercial ne voie jamais un menu que l'opération ne peut pas tenir. Un menu personnalisé en trente minutes là où la concurrence mettait des jours, un tunnel d'acquisition en hausse de moitié, et un CEO qui dit que c'est ce qui a sauvé l'entreprise.</p></div>
 
-        <dl class="facts">
-          <div><dt>Le problème métier, et qui j'ai aidé</dt><dd>Des commerciaux qui rédigent des devis sur mesure pour des clients entreprises, des artisans indépendants et des cuisines qui doivent les honorer, et des clients qui attendaient des jours pour un menu. Le problème métier&nbsp;: un devis juste sur le papier et impossible à livrer, ou assez tardif pour perdre la commande.</dd></div>
-          <div><dt>Avec qui j'ai travaillé, et ma responsabilité</dt><dd>Directeur produit, rattaché au CEO, avec l'équipe commerciale, les opérations et les ingénieurs. Ma responsabilité&nbsp;: l'outil commercial, de bout en bout.</dd></div>
-          <div><dt>Le point de départ</dt><dd>Des devis produits en plusieurs jours, à la main, contre des contraintes que personne ne voyait en même temps&nbsp;: la marge, le picking, les livraisons, la charge de chaque cuisine à cette date.</dd></div>
-          <div><dt>Ce qui comptait</dt><dd>La marge et les cuisines, pas le catalogue ni l'interface. Un devis est une promesse que l'opération doit tenir à cette date, et l'outil devait savoir ce que l'opération savait.</dd></div>
-          <div><dt>Le choix, dans les contraintes</dt><dd>Une petite équipe, un seul outil. Les contraintes à l'intérieur de la génération pour que le commercial ne voie jamais un menu impossible. Trente minutes au lieu de plusieurs jours.</dd></div>
-          <div><dt>Ce que ça a rapporté</dt><dd>Un menu personnalisé en trente minutes là où la concurrence mettait des jours. Un tunnel d'acquisition en hausse de cinquante pour cent. «&nbsp;C'est ce qui a sauvé l'entreprise&nbsp;», selon le CEO de l'époque. Racheté par B2B Food Group en 2020.</dd></div>
-        </dl>
+        <h3>Le contexte</h3>
+        <p>Monbanquet, créé en 2016, vendait des buffets d'entreprise préparés par plus de soixante-dix artisans sélectionnés. En janvier 2020, quand B2B Food Group l'a racheté, la société avait servi 500&nbsp;000 convives sur 10&nbsp;000 événements. J'y ai dirigé le produit de 2017 à 2019, rattaché au CEO, avec l'équipe commerciale, les opérations et les ingénieurs. Ce qui était à moi&nbsp;: l'outil commercial, de la formulation du problème à la version livrée.</p>
+
+        <h3>Le vrai problème</h3>
+        <p>Un traiteur qui ne cuisine pas lui-même vit sur des promesses. Chaque commande est un devis sur mesure, et le devis doit tenir la marge en respectant des contraintes que personne ne voit d'un coup&nbsp;: ce que chaque artisan peut produire ce jour-là, le picking, les tournées de livraison, la charge de chaque cuisine à cette date. Un commercial qui rédige un devis n'a aucun moyen de savoir lequel est impossible. Résultat, des devis produits en plusieurs jours, vérifiés par les opérations après coup, retravaillés ou refusés, et des clients qui attendaient un menu pendant que la concurrence en envoyait un.</p>
+
+        <h3>Les options, et ce que j'ai choisi</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th></th><th>Ce que j'ai choisi</th><th>Les alternatives crédibles</th></tr></thead>
+          <tbody>
+            <tr><td>Le pari</td><td>Un générateur de devis avec les contraintes à l'intérieur de la génération, pas vérifiées après.</td><td>Un catalogue de menus fixes, plus rapide à vendre et moins rentable. Ou garder le sur-mesure et accélérer la validation par les opérations.</td></tr>
+            <tr><td>Pourquoi</td><td>Un devis est une promesse que l'opération doit tenir à cette date. Si l'outil sait ce que l'opération sait, le commercial ne peut plus promettre l'impossible, et le délai disparaît avec l'aller-retour.</td><td>Le catalogue fixe renonçait à ce qui différenciait Monbanquet. Accélérer la validation gardait le problème, en plus vite.</td></tr>
+            <tr><td>Le coût</td><td>Un générateur qui dit parfois non aux commerciaux, payés sur ce qu'ils signent, et une petite équipe qui a passé son temps à modéliser des contraintes de cuisine plutôt qu'à faire des écrans.</td><td></td></tr>
+          </tbody>
+        </table></div>
+
         <h3>Ce que j'ai fait</h3>
         <ul class="did">
-          <li><span class="did-verb">S'asseoir avec les commerciaux et les opérations et lister les contraintes.</span> La marge, le picking, les livraisons, la charge des cuisines&nbsp;: ce qui rendait un devis impossible une fois envoyé.</li>
-          <li><span class="did-verb">Mettre les contraintes à l'intérieur de la génération, pas après.</span> Le commercial ne voit jamais un menu que l'opération ne peut pas livrer.</li>
-          <li><span class="did-verb">Livrer un devis en trente minutes.</span> Et le mesurer sur le tunnel.</li>
+          <li><span class="did-verb">M'asseoir avec les commerciaux et les opérations.</span> Et lister ce qui rendait un devis impossible une fois envoyé&nbsp;: la marge, le picking, les livraisons, la charge des cuisines.</li>
+          <li><span class="did-verb">Mettre ces contraintes dans la génération.</span> Le générateur ne propose que des menus que l'opération peut livrer ce jour-là, à une marge qui tient.</li>
+          <li><span class="did-verb">Livrer et mesurer sur le tunnel.</span> Un devis en trente minutes, et l'effet lu sur le tunnel d'acquisition.</li>
         </ul>
-
-        <h3>Ce qui a été construit</h3>
-        <p>Un générateur de devis avec la marge, le picking, les livraisons et la charge de chaque cuisine à l'intérieur de la génération, et un menu personnalisé en sortie, en trente minutes.</p>
-        <h3>Qui s'en sert</h3>
-        <p>L'équipe commerciale, tous les jours. Les opérations, qui ont cessé de retravailler des devis déjà envoyés.</p>
 
         <h3>Un devis, avant et après</h3>
         <div class="journey">
           <div class="journey-row muted"><span class="journey-label">Avant</span><ol class="journey-steps"><li>Demande du client</li><li>Le commercial ébauche un menu</li><li>Les opérations vérifient, des jours plus tard</li><li>Retravail ou refus</li><li>Devis envoyé</li></ol></div>
           <div class="journey-row"><span class="journey-label">Après</span><ol class="journey-steps"><li>Demande du client</li><li>Générateur&nbsp;: marge, picking, livraisons, charge des cuisines à l'intérieur</li><li>Menu en trente minutes</li><li>Commande que l'opération peut livrer</li></ol></div>
         </div>
+
+        <h3>Ce que ça a donné</h3>
+        <p>Livré, et utilisé tous les jours par les commerciaux&nbsp;; les opérations ont cessé de retravailler des devis déjà envoyés. Un menu personnalisé en trente minutes là où la concurrence mettait plusieurs jours. Le tunnel d'acquisition en hausse de cinquante pour cent, le chiffre que nous suivions à l'époque. «&nbsp;C'est ce qui a sauvé l'entreprise&nbsp;», selon le CEO. Le rachat par B2B Food Group en janvier 2020 est venu après mon départ, et je ne le mets pas à mon compte.</p>
+
+        <h3>Ce que j'en ai retenu</h3>
+        <p>Les contraintes à l'intérieur de la génération plutôt que validées après, c'est toute la méthode, et elle vaut au-delà des buffets&nbsp;: dès qu'un outil de vente ignore ce que l'opération sait, il produit des promesses. La partie difficile n'était pas l'interface, c'était de faire dire aux cuisines ce qu'elles savaient sans l'avoir jamais écrit.</p>
         <dl class="rubrics">
           <div><dt>Expertise technique</dt><dd>Génération sous contraintes, calcul de marge, capacité par cuisine et par date.</dd></div>
           <div><dt>Management</dt><dd>Directeur produit dans une petite équipe, autant sur le plateau commercial et en cuisine que sur le produit.</dd></div>
           <div><dt>Écosystème</dt><dd>Des artisans indépendants, des cuisines, des clients entreprises, une équipe commerciale payée sur ce qu'elle signe.</dd></div>
         </dl>
         <h3>Méthode et références</h3>
-        <p>Les contraintes à l'intérieur de la génération plutôt que validées après, c'est toute la méthode. C'est ce qui transforme un devis de document en promesse que l'opération peut tenir.</p>
+        <p>Rien d'autre que ce qui est dit plus haut&nbsp;: aller chercher les contraintes là où elles sont, chez ceux qui les subissent, et les mettre dans l'outil plutôt que dans une étape de contrôle.</p>
 
         <div class="sheet-foot">
           <a href="#" class="sheet-close">← Portfolio</a>
@@ -793,77 +821,71 @@
             <span class="milestone-tag">Attestation&nbsp;: de cinq interactions à trois</span>
           </div>
         </header>
-        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Un redesign d'espace client d'assurance fait de mon propre chef, donc le seul cas ici avec des écrans. Un assuré se connecte pour obtenir un document ou déclarer un sinistre, et tout ce qui ne servait pas ces deux choses a été retiré. Deux parcours reconstruits de bout en bout&nbsp;: un sinistre déclaré depuis l'accueil en cinq étapes, et une attestation en trois interactions au lieu de cinq. Prototype en ligne, construit avec Claude en quelques heures.</p></div>
-
-        <dl class="facts">
-          <div><dt>Le problème, et pour qui</dt><dd>Des assurés qui se connectent pour l'une de deux raisons, obtenir un document ou déclarer un sinistre, et qui trouvent un espace client qui se comporte comme un canal d'acquisition. Personne n'a payé pour ça&nbsp;: c'est le seul travail de cette page dont les écrans m'appartiennent, et il montre ce que je fais quand personne ne me paie.</dd></div>
-          <div><dt>Avec qui j'ai travaillé</dt><dd>Seul, avec Claude, en quelques heures, après une conversation avec un ancien de l'équipe Luko qui a confirmé le diagnostic. Ma responsabilité&nbsp;: tout.</dd></div>
-          <div><dt>Le point de départ</dt><dd>Une attestation qui prenait cinq interactions, un scroll et un accordéon. Des documents à trois endroits. Un chat qui passait en anglais quand il plantait, une erreur 503 avec la page en texte brut.</dd></div>
-          <div><dt>Ce qui comptait</dt><dd>Deux raisons de se connecter&nbsp;: obtenir un document, déclarer un sinistre. Tout le reste était du bruit, et le bruit sur un espace client, ce sont des appels au support.</dd></div>
-          <div><dt>Le choix, dans les contraintes</dt><dd>Quelques heures, pas de budget, Claude comme outil. Un audit, trois itérations, deux parcours reconstruits de bout en bout, un prototype en ligne.</dd></div>
-          <div><dt>Ce que ça montre</dt><dd>Un prototype, en ligne, avec deux parcours de bout en bout&nbsp;: un sinistre déclaré depuis l'accueil en cinq étapes, une attestation en trois interactions au lieu de cinq. L'argument métier est le même que pour n'importe quel espace client&nbsp;: moins d'appels au support, moins d'assurés qui abandonnent, et un canal qui cesse de vendre à des gens venus pour être servis.</dd></div>
-        </dl>
-        <h3>Ce que j'ai fait</h3>
-        <ul class="did">
-          <li><span class="did-verb">Auditer en trois constats.</span> Positionnement, confiance, hiérarchie.</li>
-          <li><span class="did-verb">Poser la règle.</span> Un assuré se connecte pour obtenir un document ou déclarer un sinistre, tout ce qui ne sert pas ces deux choses disparaît.</li>
-          <li><span class="did-verb">Itérer trois fois, un principe à chaque fois.</span> Divulgation progressive, le wording comme interface, la proximité.</li>
-          <li><span class="did-verb">Reconstruire les deux parcours de bout en bout et mettre le prototype en ligne.</span> </li>
-        </ul>
-
-        <h3>L'essayer</h3>
-        <p>Le prototype est en ligne sur <a href="https://dist-neon-delta-32.vercel.app/" target="_blank" rel="noopener">dist-neon-delta-32.vercel.app</a>&nbsp;: l'accueil, l'assistant de déclaration de sinistre et le parcours d'attestation sont cliquables de bout en bout.</p>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Je suis client Luko depuis des années. Un jour où j'avais besoin d'une attestation de responsabilité civile, il m'a fallu ouvrir le contrat, trouver le bon accordéon, comprendre les types d'attestation, puis générer le document. J'ai refait l'espace client de mon propre chef, avec Claude, en quelques heures, à partir d'une règle&nbsp;: un assuré se connecte pour obtenir un document ou déclarer un sinistre, et tout ce qui ne sert pas ces deux choses disparaît. Deux parcours reconstruits de bout en bout, un prototype en ligne, et le seul cas de cette page dont les écrans m'appartiennent.</p></div>
 
         <h3>Pourquoi celui-ci est ici</h3>
-        <p>Les redesigns non sollicités ont été une mode Dribbble il y a dix ans et ont été critiqués à juste titre&nbsp;: concevoir sur un coin de table sans les vraies contraintes du produit, c'est trop facile. J'inclus celui-ci quand même, pour deux raisons. C'est le seul travail de cette page dont les écrans m'appartiennent. Et il montre ce que je fais quand personne ne me paie pour le faire, ce qui est un signal honnête sur ma façon de penser.</p>
-        <p>Je suis client Luko depuis des années. J'avais besoin d'une attestation de responsabilité civile, et l'obtenir voulait dire ouvrir le contrat, trouver le bon accordéon, comprendre les types d'attestation, puis générer le document. J'en ai parlé avec un ancien de l'équipe Luko, qui a confirmé le diagnostic&nbsp;: après le rachat, l'équipe avait beaucoup changé et les décisions produit étaient devenues difficiles à faire construire.</p>
+        <p>Les redesigns non sollicités ont été une mode Dribbble il y a dix ans et ont été critiqués à juste titre&nbsp;: concevoir sur un coin de table sans les contraintes réelles du produit, c'est trop facile. J'inclus celui-ci quand même, pour deux raisons. C'est le seul travail de cette page dont les écrans m'appartiennent, tout le reste étant sous confidentialité. Et il montre ce que je fais quand personne ne me paie, ce qui est un signal honnête sur ma façon de penser. J'en ai parlé avec un ancien de l'équipe Luko, qui a confirmé le diagnostic&nbsp;: après le rachat par Allianz Direct, l'équipe avait beaucoup changé et les décisions produit étaient devenues difficiles à faire construire.</p>
 
-        <h3>L'audit, en trois constats</h3>
-        <p>Le positionnement. L'espace client n'arrivait pas à décider s'il était un outil de gestion ou un canal d'acquisition, et un produit qui sert deux jobs contradictoires échoue aux deux. La confiance. Le chat passait en anglais quand il plantait, des pages presque vides se chargeaient lentement, et un rafraîchissement pouvait renvoyer une erreur 503 non récupérée avec la page en texte brut, bandeau cookies compris. La performance perçue se lit comme de la fiabilité. La hiérarchie. Les documents vivaient à trois endroits, les blocs de l'accueil se lisaient comme des pages marketing, l'invitation à la newsletter était plus visible que les contrats, et une bannière Allianz Travel vous suivait jusque dans le formulaire d'attestation. Le modèle de l'utilisateur, «&nbsp;je gère mon assurance&nbsp;», ne correspondait pas à l'architecture, «&nbsp;voici nos offres&nbsp;».</p>
+        <h3>Le vrai problème</h3>
+        <p>Trois constats. Le positionnement&nbsp;: l'espace client n'arrivait pas à décider s'il était un outil de gestion ou un canal d'acquisition, et un produit qui sert deux jobs contradictoires échoue aux deux. La confiance&nbsp;: le chat passait en anglais quand il plantait, des pages presque vides se chargeaient lentement, et un rafraîchissement pouvait renvoyer une erreur 503 avec la page en texte brut, bandeau cookies compris. La hiérarchie&nbsp;: les documents vivaient à trois endroits, les blocs de l'accueil se lisaient comme des pages marketing, l'invitation à la newsletter était plus visible que les contrats, et une bannière Allianz Travel suivait l'utilisateur jusque dans le formulaire d'attestation. Le modèle de l'utilisateur, «&nbsp;je gère mon assurance&nbsp;», ne correspondait pas à l'architecture, «&nbsp;voici nos offres&nbsp;».</p>
         <figure class="article-figure">
           <img src="img/luko-original.jpg" alt="L'espace client Luko tel qu'il existe" width="1440" height="1600" loading="lazy">
           <figcaption>L'espace client tel qu'il est. Bannière Allianz Travel en haut, invitation à la newsletter avant les contrats, documents répartis dans trois blocs écrits comme des pages marketing.</figcaption>
         </figure>
 
-        <h3>La règle qui a guidé le prototype</h3>
-        <p>Un assuré se connecte pour l'une de deux raisons&nbsp;: obtenir un document, ou déclarer un sinistre. Tout ce qui ne sert pas ces deux choses a été retiré. Trois itérations ont suivi, chacune guidée par un principe. La divulgation progressive&nbsp;: le sinistre démarre sur l'accueil par le choix du bien, les actions apparaissent dans le contexte de chaque contrat. Le wording comme interface&nbsp;: «&nbsp;ajouter un contrat&nbsp;» devient «&nbsp;s'assurer&nbsp;», une action système remplacée par l'intention de l'utilisateur, et le vrai catalogue remplace un bouton générique qui ne promettait rien. La proximité&nbsp;: l'onglet Documents disparaît, les documents appartiennent à leur contrat, le profil se range sous l'avatar, et la navigation passe de trois onglets à aucun.</p>
+        <h3>La règle, et ce qu'elle a coûté</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th></th><th>Ce que j'ai choisi</th><th>L'alternative crédible</th></tr></thead>
+          <tbody>
+            <tr><td>Le pari</td><td>Une seule règle&nbsp;: un assuré se connecte pour obtenir un document ou déclarer un sinistre. Tout ce qui ne sert pas ces deux choses est retiré, catalogue et newsletter compris.</td><td>Garder l'architecture, trois onglets et un catalogue, et améliorer le visuel et les libellés.</td></tr>
+            <tr><td>Pourquoi</td><td>Le bruit sur un espace client, ce sont des appels au support et des assurés qui abandonnent. Un canal d'acquisition qui s'adresse à des gens venus pour être servis ne convertit pas, il agace.</td><td>Un habillage ne change pas le job que l'espace essaie de faire, et c'est le job qui était faux.</td></tr>
+            <tr><td>Le coût</td><td>Un redesign non sollicité ignore les contraintes que je ne connais pas&nbsp;: obligations légales d'affichage, système d'information de l'assureur, objectifs de vente croisée de l'équipe. Je le présente comme ce qu'il est, un raisonnement avec des écrans, pas un produit livrable tel quel.</td><td></td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>Ce que j'ai fait</h3>
+        <ul class="did">
+          <li><span class="did-verb">Auditer en trois constats.</span> Positionnement, confiance, hiérarchie, ci-dessus.</li>
+          <li><span class="did-verb">Itérer trois fois, un principe à chaque fois.</span> La divulgation progressive&nbsp;: le sinistre démarre sur l'accueil par le choix du bien, les actions apparaissent dans le contexte de chaque contrat. Le wording comme interface&nbsp;: «&nbsp;ajouter un contrat&nbsp;» devient «&nbsp;s'assurer&nbsp;», et le vrai catalogue remplace un bouton générique qui ne promettait rien. La proximité&nbsp;: l'onglet Documents disparaît, les documents appartiennent à leur contrat, le profil se range sous l'avatar, et la navigation passe de trois onglets à aucun.</li>
+          <li><span class="did-verb">Reconstruire les deux parcours de bout en bout et mettre le prototype en ligne.</span> L'accueil, l'assistant de déclaration de sinistre et le parcours d'attestation sont cliquables sur <a href="https://dist-neon-delta-32.vercel.app/" target="_blank" rel="noopener">dist-neon-delta-32.vercel.app</a>.</li>
+        </ul>
         <figure class="article-figure">
           <img src="img/luko-redesign.jpg" alt="Accueil de l'espace client redessiné" width="1440" height="1176" loading="lazy">
           <figcaption>Le prototype après trois itérations. Attestations et sinistres d'abord. Les contrats en cartes avec adresse et prix. Un catalogue d'assurances là où étaient les faux boutons «&nbsp;ajouter un contrat&nbsp;».</figcaption>
         </figure>
 
         <h3>Déclarer un sinistre&nbsp;: du contrat au problème</h3>
-        <p>Aujourd'hui, déclarer un sinistre suppose de trouver d'abord le bon contrat, puis un lien enfoui dans ses sous-menus, ce qui présume que l'utilisateur pense en numéros de contrat plutôt qu'au problème qu'il a. Le redesign part du problème, sur l'accueil, et un assistant en cinq étapes (bien, type, détails, photos, confirmation) ne renvoie jamais l'utilisateur vers un contrat.</p>
+        <p>Aujourd'hui, déclarer un sinistre suppose de trouver d'abord le bon contrat, puis un lien enfoui dans ses sous-menus, ce qui présume que l'utilisateur pense en numéros de contrat plutôt qu'au problème qu'il a. Le redesign part du problème, sur l'accueil, et un assistant en cinq étapes, bien, type, détails, photos, confirmation, ne renvoie jamais l'utilisateur vers un contrat.</p>
         <figure class="article-figure">
           <img src="img/luko-sinistre.jpg" alt="Assistant de déclaration, étape un : l'utilisateur choisit le bien, le stepper montre les étapes restantes" width="1440" height="900" loading="lazy">
           <figcaption>Sinistre, étape un&nbsp;: l'utilisateur choisit le bien. Le stepper montre ce qui reste.</figcaption>
         </figure>
 
         <h3>Obtenir une attestation&nbsp;: de cinq interactions à trois</h3>
-        <p>Depuis l'accueil, l'utilisateur clique, choisit le contrat, et voit d'un coup les quatre types d'attestation (responsabilité civile, scolaire, location de salle, location de vacances) avec leur cas d'usage en sous-titre. Un clic télécharge le PDF. Le parcours actuel prend cinq interactions, un scroll et un accordéon.</p>
+        <p>Depuis l'accueil, l'utilisateur clique, choisit le contrat, et voit d'un coup les quatre types d'attestation, responsabilité civile, scolaire, location de salle, location de vacances, avec leur cas d'usage en sous-titre. Un clic télécharge le PDF. Le parcours actuel prend cinq interactions, un scroll et un accordéon.</p>
         <figure class="article-figure">
           <img src="img/luko-attestation.jpg" alt="Types d'attestation après le choix du contrat, chacun en carte avec son cas d'usage et une icône de téléchargement" width="1440" height="900" loading="lazy">
           <figcaption>Les types d'attestation après le choix du contrat, chacun avec son cas d'usage. Un clic télécharge.</figcaption>
         </figure>
 
-        <h3>La vue contrat&nbsp;: la co-localisation</h3>
+        <h3>La vue contrat&nbsp;: tout au même endroit</h3>
         <p>Chaque contrat a sa page&nbsp;: adresse, statut, dates et prix annuel en haut, puis le sinistre pour ce bien, puis les attestations de ce contrat, puis ses documents avec leurs dates, puis les garanties, les personnes assurées et le paiement en accordéons. L'original disperse tout ça entre l'accueil, un onglet Documents et les sous-pages du contrat. Le redesign met chaque information dans le contexte qui lui donne son sens.</p>
         <figure class="article-figure">
           <img src="img/luko-detail-contrat.jpg" alt="Vue contrat : adresse et statut en haut, cartes d'attestation, liste des documents, garanties et paiement en accordéons" width="1440" height="1920" loading="lazy">
           <figcaption>La vue contrat. Attestations, documents, garanties et paiement sur une seule page, sous le contrat auquel ils appartiennent.</figcaption>
         </figure>
-        <p>Le prototype est en ligne sur <a href="https://dist-neon-delta-32.vercel.app/" target="_blank" rel="noopener">dist-neon-delta-32.vercel.app</a> et le cas complet est dans <a href="/etude-de-cas-luko">Étude de cas&nbsp;: redesign de Luko avec Claude</a>. L'audit, les itérations et les écrans ont été produits avec Claude en une courte session&nbsp;: le raisonnement est le travail, l'outil le rend seulement peu coûteux à montrer.</p>
 
-        <h3>Les deux parcours, existant contre redesign</h3>
-        <p>Déclarer un sinistre. Existant&nbsp;: accueil, ouvrir le contrat, trouver le lien dans ses sous-menus, puis le formulaire. Redesign&nbsp;: depuis l'accueil, choisir le bien, puis un assistant en cinq étapes qui ne renvoie jamais l'utilisateur vers un contrat. Obtenir une attestation. Existant&nbsp;: cinq interactions, un scroll et un accordéon. Redesign&nbsp;: trois interactions et un téléchargement.</p>
+        <h3>Ce que ça montre, et ce que ça ne montre pas</h3>
+        <p>Un prototype en ligne, pas un produit livré, et aucun résultat mesuré puisque rien n'a été mis devant des assurés. L'argument métier est celui de n'importe quel espace client&nbsp;: moins d'appels au support, moins d'assurés qui abandonnent, et un canal qui cesse de vendre à des gens venus pour être servis. Ce que je peux montrer, c'est le raisonnement et les écrans, et le cas complet est dans <a href="/etude-de-cas-luko">Étude de cas&nbsp;: redesign de Luko avec Claude</a>.</p>
+
+        <h3>Ce que j'en ai retenu</h3>
+        <p>L'audit, les itérations et les écrans ont été produits avec Claude en une courte session. Ce n'est pas l'outil qui fait le cas, c'est la règle posée avant d'ouvrir l'outil&nbsp;; sans elle, le même outil aurait produit un habillage. Le raisonnement est le travail, l'outil le rend seulement peu coûteux à montrer.</p>
         <dl class="rubrics">
           <div><dt>Outils</dt><dd>Claude, pour l'audit, les itérations et les écrans.</dd></div>
           <div><dt>Expertise technique</dt><dd>Architecture de l'information d'un espace client d'assurance, un prototype qui fonctionne.</dd></div>
           <div><dt>Management</dt><dd>Aucun. Un projet perso.</dd></div>
           <div><dt>Écosystème</dt><dd>Un ancien de Luko, et les assurés d'un assureur après un rachat.</dd></div>
         </dl>
-        <h3>Méthode et références</h3>
-        <p>Les redesigns non sollicités ont été critiqués à juste titre comme du travail sur un coin de table sans les contraintes du produit. Celui-ci est ici parce que ses écrans sont à moi et parce que le raisonnement est le travail, l'outil le rend seulement peu coûteux à montrer. Le cas complet est dans <a href="/etude-de-cas-luko">Étude de cas&nbsp;: redesign de Luko avec Claude</a>.</p>
 
         <div class="sheet-foot">
           <a href="#" class="sheet-close">← Portfolio</a>
