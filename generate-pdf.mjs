@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer';
 const PORT = process.env.PORT || 55666;
 const pages = [
   { url: 'index.html', output: 'cv-gildas-fremont.pdf', format: 'A4' },
-  { url: 'en.html', output: 'resume-gildas-fremont.pdf', format: 'Letter' },
+  { url: 'en/index.html', output: 'resume-gildas-fremont.pdf', format: 'Letter' },
 ];
 
 const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
