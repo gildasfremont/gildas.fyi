@@ -1,18 +1,18 @@
 # Gildas Frémont — Product Manager senior, B2B SaaS et IA
 
 ## Qui
-Gildas Frémont est product manager senior, basé à Paris. Il cherche un poste en CDI, disponible immédiatement, à Paris ou ailleurs en France, sur du B2B SaaS avec une dimension IA. Poste de contributeur individuel (senior ou staff), pas de management d'équipe produit.
+Gildas Frémont a quinze ans de produit SaaS B2B, souvent comme premier PM, puis six ans en indépendant. Il cherche un poste en CDI, disponible immédiatement, à Paris ou ailleurs en France, sur du B2B SaaS avec une dimension IA. Poste de contributeur individuel (senior ou staff), en direct avec les fondateurs, les designers et les développeurs.
 
 ## Ce qu'il fait
-Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équipe en place. Son travail couvre : audit produit, design system, création produit, simplification de parcours complexes, construction de SI, PLG, et direction produit opérationnelle.
+Il trouve ce qui bloque et en fait des logiciels utilisables. Il a toujours construit lui-même ce qu'il conçoit, avec Inkscape, Sketch puis Figma, et aujourd'hui avec Claude Code pour des prototypes fonctionnels. Son travail couvre : audit produit, design system, création produit, simplification de parcours complexes, construction de SI, PLG, et direction produit opérationnelle.
 
 ## La suite
-Quatre ans d'indépendance sur des contextes sans rapport entre eux (SaaS RH, industrie, assurance, télécom) apprennent à entrer dans un produit inconnu et à être utile en quelques jours. Une mission s'arrête au moment où les décisions commencent à produire leurs effets. Ce qui l'intéresse maintenant : un seul produit, une équipe, et le temps de voir ce que ça donne.
+Six ans en indépendant, une trentaine de missions, d'abord longues puis des interventions de cinq à quinze jours, toujours en direct avec les fondateurs, les designers et les développeurs. Les équipes l'appellent sur des produits qu'elles n'arrivent plus à faire avancer : parcours devenus trop complexes, positionnement à repenser, système à construire de zéro. Une mission s'arrête au moment où les décisions commencent à produire leurs effets. Ce qui l'intéresse maintenant : un seul produit, une équipe, et le temps de voir ce que ça donne.
 
 ## IA
-Son site, ses automatisations et une bonne partie de sa production sont construits avec Claude Code. Il a formé des non-techniciens à ces outils. Pas encore de LLM en production chez un client.
+L'essentiel des dix-huit derniers mois est allé à l'IA appliquée : automatisations construites avec des LLM pour son propre travail, formation d'équipes non techniques dont une direction financière. Son site et ses outils sont écrits avec Claude Code, versionnés sur GitHub et déployés sur Vercel. Pas encore de LLM en production chez un client.
 
-## Missions en indépendant (27 missions en 3 ans)
+## Missions en indépendant (six ans, une trentaine de missions)
 - Lucca (depuis 2023) — Éditeur RH, 13 modules, 7 800 clients. Design system, création produit, PLG, simplification de parcours complexes. Plus de 200 jours d'intervention.
 - Synaxe — Pivot d'une surcouche capteurs vers un outil de gestion et conformité pour matériaux dangereux. Livré maquettes et specs. Six mois.
 - Guinet-Derriaz 1912 — Groupe industriel du marbre, 14 carrières, aucun SI. Construction from scratch, budget 100 k€. Un an.
