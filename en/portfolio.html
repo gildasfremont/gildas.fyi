@@ -195,7 +195,7 @@
 
         <div class="mini-entry" style="--glow: 150,120,60">
           <div class="mini-head"><span class="mini-name"><span class="entry-company">Mineral Expertise</span><img src="/img/chunk-logo.png" alt="" class="entry-logo"></span><span class="entry-role">Co-founder and CPO of Chunk, 2020–2021</span></div>
-          <p>Co-found a startup around the marble slab trade, six months in the field then four tracks through to a data model and mockups. The case is <a href="#chunk">above</a>.</p>
+          <p>Co-found a project around the marble slab trade, six months in the field then four tracks through to a data model and mockups. The case is <a href="#chunk">above</a>.</p>
         </div>
 
         <div class="mini-entry">
@@ -623,14 +623,17 @@
             <span class="milestone-tag">A marketplace and a stock tool, mocked up</span>
           </div>
         </header>
-        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Mineral Expertise, a high-end marble house, asked me to co-found a startup around the slab trade. Two slabs from the same block don't share the same veining, so buyers travel to the yard, and each party keeps its share of the information in a tool that talks to no other. I spent six months in the trade before the first screen, then ran four tracks through to a data model drawn from the scans and a marketplace mocked up. The thesis was a chain: a scan gives a slab online, slabs a stock, a stock a catalogue, catalogues a marketplace, and the roadmap started with the stock tool, useful to the seller without a single buyer. I stopped it on one reading: a marketplace needs shared stock and shared prices, where the stone trade runs on trust and on holding information back. The team moved on to Guinet-Derriaz.</p></div>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>A slab of marble is a one-off piece: two slabs cut from the same block can have different veining. To choose, the buyer has to see the actual slab. But the information that makes that choice possible, availability, characteristics and price, is spread across several tools and several parties. With Mineral Expertise, we explored an idea: link the scans to the stocks, the stocks to the catalogues, then the catalogues to a marketplace. The fieldwork confirmed the information-circulation problem. It also revealed the central difficulty of the solution: a useful marketplace assumes that sellers share their stock and their prices, while their business rests in part on controlling that information and on the relationship of trust with their clients. So I treated the marketplace as a hypothesis to test, not a destination to reach. The exploration produced a data model, several product directions and a production-tracking tool. It did not prove that a stone marketplace was impossible; it showed that our proposal depended on a change in commercial behaviour that we had no sufficient reason to take for granted.</p></div>
 
         <h3>The context</h3>
-        <p>Mineral Expertise sells high-end marble to architects, hotels and yacht builds, from Paris, Monaco, Geneva and Dubai, with a workshop in Pietrasanta. In the autumn of 2020, its founder René Camart and Nicolas Camart, who was already running a platform project, asked me to start a company with them around the slab trade. I came in as co-founder and CPO, with discovery and product, the costs carried by Mineral Expertise.</p>
-        <p>I started in the field: the yards from October 2020, suppliers' price lists, the trade press, then several weeks in Lyon in January and February 2021, where I also built an order-tracking board for a factory, machine by machine: gang saw, flaming line, polisher, cutting, finishing shop. Six months before the first screen.</p>
+        <p>In the autumn of 2020, René Camart and Nicolas Camart asked me to co-found a project around the slab trade. Mineral Expertise sold high-end marble to architects, hotels and yacht builds, from Paris, Monaco, Geneva and Dubai, with a workshop in Pietrasanta.</p>
+        <p>I joined the project as co-founder and CPO, responsible for discovery and product. Rather than start with the interface, I spent the first months observing the trade: visits to yards, price lists, the trade press and conversations with the players. In January and February 2021, in Lyon, I also built an order-tracking board for a factory, machine by machine: gang saw, flaming line, polisher, cutting, finishing shop.</p>
+        <p>This fieldwork preceded the first screen by about six months.</p>
 
         <h3>The real problem</h3>
-        <p>Around a slab, five tools that don't talk to each other: the scanner gives the real dimensions but in heavy files, WhatsApp carries the sale with poor photos and already-stale stock, the factory tracks production in a spreadsheet, quotes leave as PDFs with no follow-up, and layout plans ignore the available slabs. Interviews brought out a sale in two moves: first “which stone”, long and rarely closed, then “which slab”, fast but blocked by availability, since the slab the client picks is often already sold. Most of the output, 95% according to the December 2020 pitch deck, is made of less sought-after slabs that only need to meet the right project.</p>
+        <p>Around a single slab, several systems each held part of the information. The scanner gave the real dimensions, but as heavy files. The commercial exchanges went through WhatsApp and photos of uneven quality. The stock could be out of date by the time the buyer chose. Production was tracked in spreadsheets, quotes circulated as PDFs, and layout plans were not linked to the slabs actually available.</p>
+        <p>So the problem was not only to make the slabs visible online. A reliable representation of each piece had to be tied to its commercial state: where it is, whether it is still available, and whether it fits the buyer's project.</p>
+        <p>The interviews also brought out two moments of sale. The first is choosing a stone; it is long and does not always lead to an order. The second is choosing a specific slab; it is faster, but can fail because the slab chosen has already been sold. According to the December 2020 pitch deck, about 95% of output was less sought-after slabs, which mostly needed to find the right project.</p>
 
         <figure class="cx-fig">
           <div class="cx-diagram">
@@ -660,7 +663,7 @@
               <text class="cx-s" x="546" y="292" font-size="11.5">blind to available slabs</text>
             </svg>
           </div>
-          <figcaption><strong>The trade's tools in 2020.</strong> Each one knows part of the slab, none passes it on. Diagram redrawn for this case.</figcaption>
+          <figcaption><strong>The trade's tools in 2020.</strong> Each one knows part of the slab, none passes it on.</figcaption>
         </figure>
 
         <figure class="cx-fig">
@@ -688,21 +691,11 @@
               <text class="cx-t" x="440" y="230" font-size="14.5">picks is often already sold</text>
             </svg>
           </div>
-          <figcaption><strong>A sale in two moves.</strong> Sellers only compete in the second phase, where everything hinges on availability. After the “A two steps process” slide in the 2021 decks.</figcaption>
+          <figcaption><strong>A sale in two moves.</strong> Sellers only compete in the second phase, where everything hinges on availability.</figcaption>
         </figure>
 
         <h3>The constraints</h3>
         <p>A young joint venture, a two-sided market that only tips once both buyers and sellers are present, and a trade that holds on to trust, keeps its prices and shows its stock to the people it knows. Slab-selling tools already existed without shifting those habits.</p>
-
-        <h3>The options and what I chose</h3>
-        <div class="tablewrap"><table>
-          <thead><tr><th></th><th>What I chose</th><th>The credible alternative</th></tr></thead>
-          <tbody>
-            <tr><td>The order</td><td>The seller-side stock tool first, wired to the scanners and useful without a single buyer, the marketplace next.</td><td>Open the marketplace right away to prove demand, entering the stock by hand.</td></tr>
-            <tr><td>The data</td><td>Start from the scans almost every supplier already produces, for each slab's real dimensions.</td><td>Photos and hand-entered listings, simpler but wrong and quickly stale.</td></tr>
-            <tr><td>The cost</td><td>The marketplace, what everyone was waiting for, came last, behind a stock tool the sellers had not asked for.</td><td></td></tr>
-          </tbody>
-        </table></div>
 
         <h3>The four tracks</h3>
         <p>Each track answered one piece of the picture. I ran them one after another, partly in parallel, and pushed each to something concrete, a deck, screens or real data, to discuss with the yards and the specifiers rather than describe an intention.</p>
@@ -712,6 +705,7 @@
           <li><span class="did-verb">Chunk, the marketplace and the stock tool.</span> On the buyer side, a search by stone, area and thickness, results by lot with the price per m², the minimum order and the storage city, and an “Include alternatives” option that groups one stone sold under several names (Thassos white, Bianco Neve, Thassos Nieve). The block page answers the second phase: a range of contiguous slabs, how much of the block is already reserved, availability elsewhere, and the revenue model to put up for discussion, a 5% commission, storage at €7 a day, delivery handled by Chunk; a variant goes to the end client without prices. On the seller side, each lot is downloadable in Web, HD, Autocad or XML, shareable through a link in WhatsApp, and a QR-code sticker on the slab ties photos taken off-scanner back to the right lot.</li>
           <li><span class="did-verb">Real sizes, from the scans.</span> The data model starts from the exports of a market scanner, with their three measurements (external, commercial, internal) and the slab's outline, and plans integration with MapaScan, Taglio SlabVision and Stone Scan Iris. Retro-nesting turns the search around: start from the shapes of a plan, typed in centimetres, to find the slabs that minimise waste or price per square centimetre.</li>
         </ul>
+        <p>These deliverables were not a marketplace in production. They served to make the proposal concrete, to check the objects the system needed, and to identify the dependencies that remained to be resolved.</p>
 
         <figure class="article-figure">
           <img src="/img/chunk/community-feed.png" alt="StoneLane mobile screen: a feed of slab listings with the stone's name, finish, block dimensions and date, two slabs marked sold" width="411" height="731" loading="lazy">
@@ -742,8 +736,9 @@
         </figure>
         <p>At the end of the reasoning, a tripod and a digital camera are enough where the scanner costs thirty thousand euros, for the use that matters: a stock measured, not just photographed. A scanner is still more precise, but a slab does not need the micron to enter a search, a cutting plan or a retro-nesting. What a scanner keeps inside the factories, a sticker puts in the hands of every seller.</p>
 
-        <h3>The chain</h3>
-        <p>End to end, the tracks formed a chain: a scan gives a slab online, slabs online form a stock, a stock with a price forms a catalogue, catalogues brought together form a marketplace. The roadmap followed that order.</p>
+        <h3>The product thesis</h3>
+        <p>The logic was simple to state: turn the scan into a browsable representation of a slab, link each slab to an up-to-date stock, gather the stocks into a usable catalogue, then open that catalogue to several sellers and buyers in a marketplace.</p>
+        <p>This sequence had an advantage: the stock tool could serve a seller even before the marketplace reached a critical mass of buyers, which made it possible to explore a first product value without waiting for the two-sided market to form. But this technical progression did not guarantee commercial progression. Data can be technically shareable without its owner having any interest in sharing it.</p>
         <figure class="cx-fig">
           <div class="cx-diagram">
             <svg viewBox="0 0 760 200" role="img" aria-label="Value chain: scan, slab online, stock online, catalogue, marketplace, with the three steps of the roadmap.">
@@ -775,11 +770,12 @@
           <figcaption><strong>The thesis, as a chain.</strong> The first step, a stock tool wired to the scanners, served the seller without a single buyer. For the same reason, each yard could get its own branded version of Chunk.</figcaption>
         </figure>
 
-        <h3>What came out of it</h3>
-        <p>Everything described here was built: the discovery, the data model, four tracks pushed through to screens and real data, a marketplace and a stock tool mocked up, prospecting among the yards and the specifiers. I did not turn it into a running marketplace. A marketplace needs shared stock and comparable prices, and a slab a stranger can reserve; but the resellers I met held on to their own platform and their exclusivities, and the suppliers to a relationship where stock and price stay close. The proposal assumed a change in practice that nothing I was seeing gave me sufficient reason to take for granted. In 2022 the team moved on to Guinet-Derriaz, the same product seen from the factory.</p>
+        <h3>The decision</h3>
+        <p>I stopped the marketplace direction, and the team moved on to the <a href="#guinet">Guinet-Derriaz</a> project. The reason was not that the need to find and sell slabs better was imaginary. It was that the envisaged solution required a level of stock and price sharing that the commercial model I had observed gave no grounds to assume.</p>
+        <p>A different approach could have worked with different sharing rules, a tighter scope, or an internal tool that creates value without exposing the data to the whole market. I had not established that these variants would have produced an economically viable business; they remained hypotheses, not results of the project.</p>
 
         <h3>What I took from it</h3>
-        <p>The sequence was worth as much as the thesis: starting with the stock tool, useful to the seller without a single buyer, let me treat the marketplace as a hypothesis to test, not a destination to reach. Because a marketplace is not just a product, it is a change in how a market shares information. The real question was not “can every slab be made findable?”, which the scans answered, but “do the actors have an interest in feeding a common system that makes them findable?”, and nothing in the way they sold guaranteed it. When a market runs on holding information back, no screen forces it open. The same reasoning, taken to the factory floor, produced the information system at Guinet-Derriaz.</p>
+        <p>A marketplace is not built simply by bringing supply and demand together in an interface. It depends on what each participant agrees to reveal, the value they get in return, and the commercial control they keep. So the field has a more demanding job than confirming a user problem: it has to check the economic and organisational conditions that make the solution possible. In this project, the decisive question was not “can every slab be made findable?”, but “do the actors have an interest in feeding a common system that makes these slabs findable?”. That distinction is what gave the exploration its value, even though the marketplace was never launched.</p>
         <dl class="rubrics">
           <div><dt>Technical expertise</dt><dd>A data model drawn from scanner exports, with their three measurements and the outline, high-fidelity mockups on the buyer and seller sides, retro-nesting from a plan.</dd></div>
           <div><dt>Management</dt><dd>Co-founder and CPO of a joint venture, six months of discovery, four tracks run in parallel, prospecting among the yards and the specifiers.</dd></div>
