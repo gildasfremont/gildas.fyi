@@ -479,6 +479,24 @@ html:has(.portfolio .sheet:target) { overflow: hidden; }
 /* Figures: reuse .article-figure from style.css */
 .portfolio .article-figure { margin: 1.25rem 0 1.5rem; }
 
+/* Case diagrams (inline SVG schematics) */
+.portfolio .cx-fig { margin: 1.25rem 0 1.5rem; }
+.portfolio .cx-diagram { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: clamp(14px, 2.5vw, 26px); overflow-x: auto; }
+.portfolio .cx-diagram svg { display: block; width: 100%; height: auto; }
+.portfolio .cx-fig figcaption { margin-top: 0.55rem; font-size: 0.8125rem; line-height: 1.45; color: var(--light); }
+.portfolio .cx-fig figcaption strong { color: var(--dark); font-weight: 600; }
+.portfolio .cx-diagram svg text.cx-t { fill: var(--dark); font-family: var(--font); }
+.portfolio .cx-diagram svg text.cx-s { fill: var(--light); font-family: var(--font); letter-spacing: 0.04em; }
+.portfolio .cx-diagram svg text.cx-onhl { fill: #fff; font-family: var(--font); }
+.portfolio .cx-diagram svg .cx-box { fill: var(--white); stroke: var(--dark); stroke-width: 1.5; }
+.portfolio .cx-diagram svg .cx-soft { fill: var(--bg); stroke: var(--subtle); stroke-width: 1; }
+.portfolio .cx-diagram svg .cx-hl { fill: rgb(150,120,60); }
+.portfolio .cx-diagram svg .cx-line { stroke: var(--light); stroke-width: 1.5; fill: none; }
+.portfolio .cx-diagram svg .cx-dash { stroke: var(--light); stroke-width: 1.5; fill: none; stroke-dasharray: 5 5; }
+.portfolio .cx-diagram svg .cx-arrow { stroke: var(--dark); stroke-width: 1.5; fill: none; }
+.portfolio .cx-diagram svg .cx-ah { fill: var(--dark); }
+.portfolio .cx-diagram svg .cx-gap { fill: var(--bg); stroke: var(--light); stroke-width: 1.5; }
+
 /* Closing */
 .portfolio .closing {
   margin-top: 3rem;
