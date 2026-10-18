@@ -195,7 +195,7 @@
 
         <div class="mini-entry" style="--glow: 150,120,60">
           <div class="mini-head"><span class="mini-name"><span class="entry-company">Mineral Expertise</span><img src="/img/chunk-logo.png" alt="" class="entry-logo"></span><span class="entry-role">Cofondateur et CPO de Chunk, 2020–2021</span></div>
-          <p>Cofonder une startup autour de la vente de tranches de marbre, six mois de terrain puis quatre pistes jusqu'à un modèle de données et des maquettes. Le cas est <a href="#chunk">plus haut</a>.</p>
+          <p>Monter un projet autour de la vente de tranches de marbre, six mois de terrain puis quatre pistes jusqu'à un modèle de données et des maquettes. Le cas est <a href="#chunk">plus haut</a>.</p>
         </div>
 
         <div class="mini-entry">
@@ -623,14 +623,15 @@
             <span class="milestone-tag">Une marketplace et un outil de stock maquettés</span>
           </div>
         </header>
-        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Mineral Expertise, une maison de marbre haut de gamme, m'a proposé de cofonder une startup autour de la vente de tranches. Deux tranches d'un même bloc n'ont pas le même veinage, donc les acheteurs se déplacent au dépôt, et chaque acteur garde sa part d'information dans un outil qui ne parle à aucun autre. J'ai passé six mois dans la filière avant le premier écran, puis mené quatre pistes jusqu'à un modèle de données tiré des scans et une marketplace maquettée. La thèse tenait en une chaîne&nbsp;: un scan donne une tranche en ligne, les tranches un stock, le stock un catalogue, les catalogues une marketplace, et la feuille de route commençait par l'outil de stock, utile au vendeur sans un seul acheteur. Je l'ai arrêtée sur un constat&nbsp;: une marketplace demande un stock et des prix partagés, là où le commerce de la pierre vit sur la confiance et la rétention de l'information. L'équipe est passée à Guinet-Derriaz.</p></div>
+        <div class="tldr"><span class="tldr-label">TL;DR</span><p>Une tranche de marbre est une pièce unique&nbsp;: deux tranches d'un même bloc n'ont pas le même veinage, et l'acheteur doit voir la tranche réelle avant de l'acheter. L'information qui rend ce choix possible, la disponibilité, les caractéristiques et le prix, est répartie entre plusieurs outils et plusieurs acteurs. Avec Mineral Expertise, nous avons exploré une idée&nbsp;: relier les scans aux stocks, les stocks aux catalogues, et les catalogues à une marketplace. Les six mois de terrain ont confirmé le problème de circulation de l'information, mais ils ont surtout révélé la difficulté centrale de la solution&nbsp;: une marketplace utile suppose que les vendeurs partagent leur stock et leurs prix, alors que leur métier repose sur la maîtrise de cette information et sur la relation avec leurs clients. J'ai donc traité la marketplace comme une hypothèse à vérifier, pas comme une destination. L'exploration a produit un modèle de données, plusieurs pistes et des maquettes&nbsp;; elle n'a pas démontré qu'une marketplace de la pierre était impossible, mais que notre proposition dépendait d'un changement de pratique que rien ne permettait de tenir pour acquis. L'équipe est ensuite passée à Guinet-Derriaz.</p></div>
 
         <h3>Le contexte</h3>
-        <p>Mineral Expertise vend du marbre haut de gamme à des architectes, des hôtels et des chantiers de yachts, depuis Paris, Monaco, Genève et Dubaï, avec un atelier à Pietrasanta. À l'automne 2020, son fondateur René Camart et Nicolas Camart, qui portait déjà un projet de plateforme, m'ont proposé de monter une startup avec eux autour de la vente de tranches. J'y suis entré comme cofondateur et CPO, avec la discovery et le produit, les frais pris en charge par Mineral Expertise.</p>
-        <p>J'ai commencé par le terrain&nbsp;: les dépôts dès octobre 2020, les grilles de prix des fournisseurs, la presse professionnelle, puis plusieurs semaines à Lyon en janvier et février 2021, où j'ai aussi construit pour une usine un tableau de suivi des commandes machine par machine : châssis, flammeuse, polissoir, débit, marbrerie. Six mois avant le premier écran.</p>
+        <p>À l'automne 2020, René Camart, fondateur de Mineral Expertise, et Nicolas Camart, qui portait déjà un projet de plateforme, m'ont proposé de monter un projet avec eux autour de la vente de tranches de pierre. Mineral Expertise vend du marbre haut de gamme à des architectes, des hôtels et des chantiers de yachts, depuis Paris, Monaco, Genève et Dubaï, avec un atelier à Pietrasanta. J'y suis entré comme cofondateur et CPO, responsable de la discovery et du produit, les frais pris en charge par Mineral Expertise.</p>
+        <p>Plutôt que de commencer par l'interface, j'ai passé les premiers mois à observer la filière&nbsp;: les dépôts dès octobre 2020, les grilles de prix des fournisseurs, la presse professionnelle, puis plusieurs semaines à Lyon en janvier et février 2021. J'y ai aussi construit pour une usine un tableau de suivi des commandes, organisé par machine, du châssis à la marbrerie en passant par la flammeuse, le polissoir et le débit. Ce travail de terrain a précédé le premier écran d'environ six mois.</p>
 
         <h3>Le vrai problème</h3>
-        <p>Autour d'une tranche, cinq outils qui ne se parlent pas&nbsp;: le scanner donne les dimensions réelles mais dans des fichiers lourds, WhatsApp porte la vente avec de mauvaises photos et un stock déjà périmé, l'usine suit sa production dans un tableur, les devis partent en PDF sans suivi, et les plans de calepinage ignorent les tranches disponibles. En entretien, la vente est apparue en deux temps&nbsp;: d'abord «&nbsp;quelle pierre&nbsp;», longue et peu conclue, puis «&nbsp;quelle tranche&nbsp;», rapide mais bloquée par la disponibilité, la tranche validée par le client étant souvent déjà vendue. L'essentiel de la production, 95 % d'après le pitch deck de décembre 2020, est fait de tranches moins cotées qui ont seulement besoin de rencontrer le bon projet.</p>
+        <p>Autour d'une même tranche, plusieurs systèmes détenaient chacun une partie de l'information. Le scanner fournissait les dimensions réelles, mais sous forme de fichiers lourds. Les échanges commerciaux passaient par WhatsApp et des photos de qualité variable, et le stock pouvait être obsolète au moment où l'acheteur choisissait. La production était suivie dans des tableurs, les devis circulaient en PDF, et les plans de calepinage n'étaient pas reliés aux tranches réellement disponibles. Le problème n'était donc pas seulement de rendre les tranches visibles en ligne, mais de relier une représentation fiable de chaque pièce à son état commercial&nbsp;: où elle se trouve, si elle est encore disponible, et si elle correspond au projet de l'acheteur.</p>
+        <p>Les entretiens ont aussi fait apparaître deux moments de vente. Le premier consiste à choisir une pierre&nbsp;; il est long et ne débouche pas toujours sur une commande. Le second consiste à choisir une tranche précise&nbsp;; il est plus rapide, mais échoue souvent parce que la tranche retenue a déjà été vendue. D'après le pitch deck de décembre 2020, environ 95 % de la production relevait de tranches moins cotées, qui devaient surtout rencontrer le bon projet.</p>
 
         <figure class="cx-fig">
           <div class="cx-diagram">
@@ -660,7 +661,7 @@
               <text class="cx-s" x="546" y="292" font-size="11.5">ignore les tranches disponibles</text>
             </svg>
           </div>
-          <figcaption><strong>Les outils de la filière en 2020.</strong> Chacun connaît une partie de la tranche, aucun ne la transmet aux autres. Schéma refait pour le cas.</figcaption>
+          <figcaption><strong>Les outils de la filière en 2020.</strong> Chacun connaît une partie de la tranche, aucun ne la transmet aux autres.</figcaption>
         </figure>
 
         <figure class="cx-fig">
@@ -688,21 +689,11 @@
               <text class="cx-t" x="440" y="230" font-size="14.5">par le client est souvent déjà vendue</text>
             </svg>
           </div>
-          <figcaption><strong>Une vente en deux temps.</strong> La concurrence entre vendeurs ne joue que dans la seconde phase, où tout dépend de la disponibilité. D'après la slide « A two steps process » des decks de 2021.</figcaption>
+          <figcaption><strong>Une vente en deux temps.</strong> La concurrence entre vendeurs ne joue que dans la seconde phase, où tout dépend de la disponibilité.</figcaption>
         </figure>
 
         <h3>Les contraintes</h3>
-        <p>Une joint venture naissante, un marché à deux faces qui ne bascule qu'une fois acheteurs et vendeurs présents, et un commerce qui tient à la confiance, garde ses prix et montre son stock à ceux qu'il connaît. Des outils de commercialisation de tranches existaient déjà sans avoir déplacé ces habitudes.</p>
-
-        <h3>Les options et ce que j'ai choisi</h3>
-        <div class="tablewrap"><table>
-          <thead><tr><th></th><th>Ce que j'ai choisi</th><th>L'alternative crédible</th></tr></thead>
-          <tbody>
-            <tr><td>L'ordre</td><td>L'outil de stock côté vendeur d'abord, branché sur les scanners et utile sans un seul acheteur, la marketplace ensuite.</td><td>Ouvrir la marketplace tout de suite pour prouver la demande, en saisissant le stock à la main.</td></tr>
-            <tr><td>La donnée</td><td>Partir des scans que presque tous les fournisseurs produisent déjà, pour les dimensions réelles de chaque tranche.</td><td>Des photos et des fiches saisies à la main, plus simples mais fausses et vite périmées.</td></tr>
-            <tr><td>Le coût</td><td>La marketplace, ce que tout le monde attendait, venait en dernier, derrière un outil de stock que les vendeurs n'avaient pas demandé.</td><td></td></tr>
-          </tbody>
-        </table></div>
+        <p>Le projet partait avec plusieurs contraintes. C'était une joint venture naissante, sur un marché à deux faces qui ne bascule qu'une fois les acheteurs et les vendeurs présents en nombre. Et le commerce de la pierre tient à la confiance&nbsp;: chaque acteur garde ses prix et ne montre son stock qu'à ceux qu'il connaît. Des outils de commercialisation de tranches existaient déjà, sans avoir déplacé ces habitudes.</p>
 
         <h3>Les quatre pistes</h3>
         <p>Chaque piste répondait à un morceau du constat. Je les ai menées l'une après l'autre, en partie en parallèle, et poussé chacune jusqu'à un support concret, un deck, des écrans ou des données réelles, pour en parler avec les dépôts et les prescripteurs plutôt que de décrire une intention.</p>
