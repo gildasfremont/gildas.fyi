@@ -497,6 +497,12 @@ html:has(.portfolio .sheet:target) { overflow: hidden; }
 .portfolio .cx-diagram svg .cx-ah { fill: var(--dark); }
 .portfolio .cx-diagram svg .cx-gap { fill: var(--bg); stroke: var(--light); stroke-width: 1.5; }
 
+/* Screenshots that must not upscale: centred on a light band */
+.portfolio .article-figure.cx-fit { background: var(--bg); }
+.portfolio .article-figure.cx-fit .cx-media { display: flex; flex-wrap: wrap; gap: clamp(10px, 2.5vw, 24px); justify-content: center; align-items: flex-start; padding: clamp(14px, 3vw, 28px); }
+.portfolio .article-figure.cx-fit img { display: block; width: auto; max-width: 100%; height: auto; }
+.portfolio .article-figure.cx-tall img { max-width: min(100%, 440px); }
+
 /* Closing */
 .portfolio .closing {
   margin-top: 3rem;

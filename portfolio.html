@@ -721,10 +721,26 @@
           <img src="/img/chunk/poc-results.png" alt="Résultats de recherche Chunk, par lot : prix au mètre carré, nombre de tranches, minimum de commande et ville de stockage" width="1152" height="1240" loading="lazy">
           <figcaption><strong>La recherche, côté acheteur.</strong> Les résultats par lot, avec le prix au mètre carré, le minimum de commande et le lieu de stockage. Maquette 2021, vendeurs fictifs.</figcaption>
         </figure>
+        <figure class="article-figure cx-fit cx-tall">
+          <div class="cx-media"><img src="/img/chunk/poc-block.png" alt="Fiche de bloc Chunk : photo de la tranche, prix au mètre carré, choix de la plage de tranches, frais Chunk, options de livraison, téléchargements et disponibilité chez d'autres fournisseurs" width="898" height="2000" loading="lazy"></div>
+          <figcaption><strong>La fiche de bloc.</strong> La plage de tranches contiguës, le prix avec la part de Chunk, les options de livraison, les téléchargements Autocad et HD, la disponibilité de la même pierre ailleurs. Maquette 2021, vendeur fictif.</figcaption>
+        </figure>
         <figure class="article-figure">
           <img src="/img/chunk/scan-bundle.png" alt="Outil vendeur Chunk : un lot de huit tranches de Statuario avec leurs dimensions et un lien partageable par tranche" width="1440" height="1284" loading="lazy">
           <figcaption><strong>L'outil côté vendeur, construit sur les scans.</strong> Un lot de tranches de Statuario avec ses dimensions réelles et un lien partageable par tranche. Décembre 2020.</figcaption>
         </figure>
+        <figure class="article-figure cx-fit">
+          <div class="cx-media"><img src="/img/chunk/scan-retronesting.png" alt="Écran de retro-nesting : saisie des formes d'un plan en centimètres, épaisseur, quantité et choix entre moindre perte et prix au centimètre carré" width="472" height="632" loading="lazy"></div>
+          <figcaption><strong>Le retro-nesting.</strong> Chercher une tranche à partir des formes d'un plan, selon la moindre perte ou le prix au centimètre carré.</figcaption>
+        </figure>
+        <h3>Une idée en marge : la photo plutôt que le scanner</h3>
+        <p>Les scanners que j'intégrais sont des installations fixes, bardées de capteurs, autour de vingt à trente mille euros la machine et parfois bien plus. Seules les grosses usines en ont une, et sans elle la photo d'une tranche restait une image de catalogue, bonne pour montrer, pas pour mesurer. L'idée que je défendais prenait le problème à l'envers : faire produire à une simple photo la donnée métier du scanner, les vraies dimensions, l'orientation et la couleur, pour qu'un dépôt la produise sans posséder la machine.</p>
+        <p>Tout tenait dans le sticker, et il était dessiné pour ça. Une tranche est plane et posée à plat : un repère de taille connue dans le cadre fixe l'échelle et redresse la perspective, le cas d'école de la métrologie mono-image, une homographie qui ramène les pixels sur le plan réel, décrite dès 2002 et lisible par des marqueurs comme ArUco, dans OpenCV au milieu des années 2010. Les pastilles de couleur du même sticker, sous la même lumière, calibrent la teinte comme une charte de couleurs. Mires d'alignement, pastilles, code : taille, orientation, couleur, le sticker portait les trois repères.</p>
+        <figure class="article-figure cx-fit">
+          <div class="cx-media"><img src="/img/chunk/scan-sticker.png" alt="Sticker Chunk : pastilles de couleur, roue CMJN, mires d'alignement, QR code et code-barres, collé sur la tranche pour servir de repère de taille, d'orientation et de couleur" width="258" height="302" loading="lazy"></div>
+          <figcaption><strong>Le repère, dans le sticker.</strong> Le sticker Chunk portait déjà les trois repères : des pastilles de couleur pour la teinte, des mires d'alignement pour l'échelle et l'orientation, un QR code pour rattacher la photo au bon lot. Une tranche photographiée avec lui dans le cadre, et la mesure suit.</figcaption>
+        </figure>
+        <p>Au bout du raisonnement, un trépied et un appareil photo numérique remplaçaient la machine à trente mille euros pour l'usage qui comptait, un stock mesuré et pas seulement photographié. Un scanner reste plus précis, mais une tranche n'a pas besoin du micron pour entrer dans une recherche, un calepinage ou un retro-nesting. Ce qu'un scanner réservait aux usines, un sticker le mettait entre les mains de chaque vendeur.</p>
 
         <h3>La chaîne</h3>
         <p>Mises bout à bout, les pistes formaient une chaîne : un scan donne une tranche en ligne, les tranches en ligne forment un stock, le stock avec un prix forme un catalogue, les catalogues réunis forment une marketplace. La feuille de route suivait cet ordre.</p>

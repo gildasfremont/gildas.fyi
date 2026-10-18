@@ -721,10 +721,26 @@
           <img src="/img/chunk/poc-results.png" alt="Chunk search results, by lot: price per square metre, number of slabs, minimum order and storage city" width="1152" height="1240" loading="lazy">
           <figcaption><strong>Search, on the buyer side.</strong> Results by lot, with the price per square metre, the minimum order and the storage location. 2021 mockup, fictional sellers.</figcaption>
         </figure>
+        <figure class="article-figure cx-fit cx-tall">
+          <div class="cx-media"><img src="/img/chunk/poc-block.png" alt="Chunk block page: photo of the slab, price per square metre, choice of slab range, Chunk fees, delivery options, downloads and availability from other suppliers" width="898" height="2000" loading="lazy"></div>
+          <figcaption><strong>The block page.</strong> The range of contiguous slabs, the price with Chunk's cut, the delivery options, the Autocad and HD downloads, availability elsewhere. 2021 mockup, fictional seller.</figcaption>
+        </figure>
         <figure class="article-figure">
           <img src="/img/chunk/scan-bundle.png" alt="Chunk seller tool: a lot of eight Statuario slabs with their dimensions and a shareable link per slab" width="1440" height="1284" loading="lazy">
           <figcaption><strong>The seller-side tool, built on the scans.</strong> A lot of Statuario slabs with its real dimensions and a shareable link per slab. December 2020.</figcaption>
         </figure>
+        <figure class="article-figure cx-fit">
+          <div class="cx-media"><img src="/img/chunk/scan-retronesting.png" alt="Retro-nesting screen: entering the shapes of a plan in centimetres, thickness, quantity and a choice between least waste and price per square centimetre" width="472" height="632" loading="lazy"></div>
+          <figcaption><strong>Retro-nesting.</strong> Find a slab from the shapes of a plan, by least waste or by price per square centimetre.</figcaption>
+        </figure>
+        <h3>A side idea: the photo instead of the scanner</h3>
+        <p>The scanners I was integrating are fixed installations, packed with sensors, around twenty to thirty thousand euros a machine and often far more. Only the big factories own one, and without it a slab's photo stayed a catalogue image, good for showing, not for measuring. The idea I argued turned the problem around: make a plain photo produce the scanner's operational data, the real dimensions, the orientation and the colour, so a yard could produce it without owning the machine.</p>
+        <p>It all came down to the sticker, and it was designed for it. A slab is flat and lies flat: a reference of known size in the frame fixes the scale and corrects the perspective, the textbook case of single-image metrology, a homography that maps the pixels onto the real plane, described as early as 2002 and readable by markers like ArUco, in OpenCV by the mid-2010s. The colour patches on the same sticker, under the same light, calibrate the colour the way a colour chart does. Registration marks, patches, code: size, orientation, colour, the sticker carried all three references.</p>
+        <figure class="article-figure cx-fit">
+          <div class="cx-media"><img src="/img/chunk/scan-sticker.png" alt="Chunk sticker: colour patches, a CMYK wheel, registration marks, a QR code and a barcode, stuck on the slab to serve as a size, orientation and colour reference" width="258" height="302" loading="lazy"></div>
+          <figcaption><strong>The reference, in the sticker.</strong> The Chunk sticker already carried all three references: colour patches for the hue, registration marks for scale and orientation, a QR code to tie the photo to the right lot. Photograph a slab with it in the frame, and the measurement follows.</figcaption>
+        </figure>
+        <p>At the end of the reasoning, a tripod and a digital camera replaced the thirty-thousand-euro machine for the use that mattered, a stock measured and not just photographed. A scanner is still more precise, but a slab does not need the micron to enter a search, a cutting plan or a retro-nesting. What a scanner kept inside the factories, a sticker put in the hands of every seller.</p>
 
         <h3>The chain</h3>
         <p>End to end, the tracks formed a chain: a scan gives a slab online, slabs online form a stock, a stock with a price forms a catalogue, catalogues brought together form a marketplace. The roadmap followed that order.</p>
