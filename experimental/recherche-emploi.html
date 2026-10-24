@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recherche d'emploi avec Claude — Gildas Frémont</title>
+  <meta name="description" content="Une base de connaissances sourcée et un outil de suivi sans intelligence propre : Claude remplit, je lis, l'outil ne calcule rien.">
+  <link rel="canonical" href="https://gildas.fyi/experimental/recherche-emploi">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Recherche d'emploi avec Claude — Gildas Frémont">
+  <meta property="og:description" content="Une base de connaissances sourcée et un outil de suivi sans intelligence propre : Claude remplit, je lis, l'outil ne calcule rien.">
+  <meta property="og:url" content="https://gildas.fyi/experimental/recherche-emploi">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.je-roles { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+.je-role { border: 1px solid var(--border); border-radius: 4px; padding: 0.7rem 0.8rem; }
+.je-role b { display: block; font-size: 15px; color: var(--black); font-weight: 600; margin-bottom: 0.2rem; }
+.je-role p { font-size: 13px !important; color: var(--mid); margin: 0 !important; line-height: 1.5; }
+.je-role.tool { background: repeating-linear-gradient(135deg, var(--white) 0 6px, var(--bg) 6px 12px); }
+.je-facts { list-style: none; margin-top: 0.25rem; }
+.je-facts li { display: grid; grid-template-columns: 7rem 1fr; gap: 0.75rem; padding: 0.45rem 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--mid); }
+.je-facts li:last-child { border-bottom: none; }
+.je-chip { justify-self: start; align-self: start; font-size: 11px; padding: 0.05rem 0.45rem; border-radius: 99px; border: 1px solid; white-space: nowrap; }
+.je-chip.ok { color: rgb(var(--xp-live)); border-color: rgba(var(--xp-live), .4); }
+.je-chip.tbc { color: rgb(var(--xp-pause)); border-color: rgba(var(--xp-pause), .5); }
+.je-chip.gap { color: rgb(var(--xp-red)); border-color: rgba(var(--xp-red), .4); border-style: dashed; }
+.je-day { position: relative; height: 34px; margin: 0.4rem 0 1.6rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.je-day .seg { position: absolute; top: 6px; bottom: 6px; border-radius: 2px; }
+.je-day .seg.js { background: rgba(var(--xp-red), .25); border: 1px solid rgba(var(--xp-red), .5); }
+.je-day .seg.sp { background: rgba(var(--xp-pause), .25); border: 1px solid rgba(var(--xp-pause), .5); }
+.je-day .seg.cc { background: rgba(var(--xp-live), .25); border: 1px solid rgba(var(--xp-live), .5); }
+.je-day .tick { position: absolute; bottom: -1.3rem; font-size: 11px; color: var(--light); transform: translateX(-50%); }
+.je-key { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: 12px; color: var(--mid); }
+.je-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.3rem; vertical-align: -1px; }
+.je-sizes { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.3rem 0.6rem; align-items: center; font-size: 13px; }
+.je-sizes .bar { position: relative; height: 14px; }
+.je-sizes .bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 1px; }
+.je-sizes .bar i.before { background: var(--border); }
+.je-sizes .bar i.after { background: var(--black); }
+.je-sizes .bar em { position: absolute; top: -1px; font-style: normal; font-size: 11px; color: var(--light); padding-left: 0.3rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 600px) { .je-roles { grid-template-columns: 1fr; } .je-facts li { grid-template-columns: 1fr; gap: 0.2rem; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-recherche-emploi">
+
+  <nav class="lang-toggle">
+    <a href="/experimental">← Expérimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · septembre et octobre 2026</p>
+      <h1>Recherche d'emploi</h1>
+      <p class="article-page-subtitle">Claude repère les offres, les évalue et tient le suivi&nbsp;; je relis et j'envoie</p>
+      <p class="article-meta">17 septembre au 22 octobre 2026 · Next.js, Postgres, MCP · écrit avec Claude Code · outil privé</p>
+    </header>
+
+    <div class="xp-thesis">
+      <span class="xp-thesis-label">Le pari</span>
+      <p>Un agent peut faire le travail de fond d'une recherche d'emploi, repérer, évaluer, tenir le fil, préparer, s'il dispose de deux choses&nbsp;: une base de connaissances sourcée qu'il consulte avant d'écrire, et un registre conçu pour qu'il le remplisse et que l'humain le lise. L'outil lui-même ne doit rien calculer.</p>
+    </div>
+
+    <div class="xp-facts">
+      <div class="xp-fact"><b>82</b><span>flux d'offres lus chaque matin, 8 types d'ATS</span></div>
+      <div class="xp-fact"><b>~3&nbsp;900</b><span>postes parcourus à chaque passage</span></div>
+      <div class="xp-fact"><b>3 jours</b><span>pour construire l'outil, 6 PR</span></div>
+      <div class="xp-fact"><b>~6 h</b><span>de vie pour l'outil open source essayé avant</span></div>
+    </div>
+
+    <div class="article-body">
+
+      <h2>Genèse</h2>
+
+      <p>Tout a commencé le 17&nbsp;septembre par un dépôt de fichiers texte qui sert de mémoire&nbsp;: mes expériences, des fiches sur les entreprises où j'ai travaillé, des recommandations, une méthode d'écriture. Quand je demande à Claude un CV, un message ou la préparation d'un entretien, il cherche d'abord là, cite ses fichiers, et n'invente rien.</p>
+
+      <p>Chaque fait de la base porte l'un de ces trois statuts, et Claude doit le respecter.</p>
+
+      <figure class="xp-figure">
+        <ul class="je-facts">
+          <li><span class="je-chip ok">Établi</span><span>Dit par moi ou sourcé. Utilisable tel quel.</span></li>
+          <li><span class="je-chip tbc">À confirmer</span><span>Extrapolation plausible, jamais validée. Utilisable seulement en le signalant.</span></li>
+          <li><span class="je-chip gap">Trou</span><span>Information manquante. Claude pose la question au lieu de combler.</span></li>
+        </ul>
+        <figcaption>Les trois statuts tels qu'ils sont écrits dans le mode d'emploi de la base.</figcaption>
+      </figure>
+
+      <p>Le suivi des candidatures, lui, vivait dans un Google Doc. Au bout d'un mois, il pesait 300&nbsp;Ko de texte, avec des lignes d'offre de 1&nbsp;500 caractères. Plus personne ne pouvait le lire, moi compris.</p>
+
+      <h2>Le 20 octobre, en une journée</h2>
+
+      <figure class="xp-figure">
+        <div class="je-day">
+          <div class="seg js" style="left:9.6%;width:45.9%"></div>
+          <div class="seg sp" style="left:55.5%;width:5%"></div>
+          <div class="seg cc" style="left:66.9%;width:33.1%"></div>
+          <span class="tick" style="left:9.6%">11 h</span>
+          <span class="tick" style="left:55.5%">17 h</span>
+          <span class="tick" style="left:66.9%">18 h 42</span>
+          <span class="tick" style="left:96%">23 h</span>
+        </div>
+        <div class="je-key"><span><i style="background:rgba(var(--xp-red),.35)"></i>JobSync, un outil open source essayé</span><span><i style="background:rgba(var(--xp-pause),.35)"></i>spécification écrite</span><span><i style="background:rgba(var(--xp-live),.35)"></i>l'outil construit par Claude Code</span></div>
+      </figure>
+
+      <p>Le matin, j'ai installé JobSync, un outil libre de suivi de candidatures. Claude y a importé 89 offres, une par une parce que l'import par lots échouait, puis en a ajouté 29. Je l'ai quitté en fin d'après-midi, parce qu'il évaluait lui-même l'adéquation des offres, le travail que je voulais confier à Claude. Il n'avait pas de fil d'échanges par candidature, ne savait pas représenter le processus annoncé par une entreprise, et tournait dans Docker sur un Mac de 8&nbsp;Go.</p>
+
+      <p>À 17&nbsp;h, la spécification de mon propre outil était écrite. À 18&nbsp;h&nbsp;42, Claude Code livrait une première version complète&nbsp;: base de données, API, serveur MCP, lecture des flux d'offres, import de tout l'historique. À 23&nbsp;h, elle était fusionnée.</p>
+
+      <h2>Qui fait quoi</h2>
+
+      <figure class="xp-figure">
+        <div class="je-roles">
+          <div class="je-role"><b>Claude remplit</b><p>Lit les offres du jour, les évalue, crée les fiches, tient le fil des échanges, prépare ce qui est prêt à envoyer.</p></div>
+          <div class="je-role"><b>Je lis</b><p>Une vue du jour, un pipeline, une sélection. Je tranche, je réponds aux questions, j'envoie moi-même.</p></div>
+          <div class="je-role tool"><b>L'outil ne calcule rien</b><p>Pas de score, pas d'IA intégrée. Il stocke, il trace qui a écrit quoi, il n'envoie aucun message.</p></div>
+        </div>
+        <figcaption>L'interface web pour moi, l'API et le serveur MCP pour l'agent reposent sur la même couche de services. Chaque écriture est rejouable sans doublon et signée par son auteur.</figcaption>
+      </figure>
+
+      <h2>Essais et erreurs</h2>
+
+      <ul class="xp-trials">
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Corrigé</span>
+          <div>
+            <h3>Des réponses trop lourdes pour un agent</h3>
+            <p>Les premières réponses du serveur MCP saturaient le contexte de Claude. Elles ont été compactées, mesures à l'appui.</p>
+            <div class="je-sizes" style="margin-top:0.6rem">
+              <span>Le pipeline</span><span class="bar"><i class="before" style="width:100%"></i><i class="after" style="width:30.3%"></i><em style="left:30.3%">142 → 43 Ko</em></span>
+              <span>Les entreprises</span><span class="bar"><i class="before" style="width:93.7%"></i><i class="after" style="width:17.6%"></i><em style="left:17.6%">133 → 25 Ko</em></span>
+              <span>La vue du jour</span><span class="bar"><i class="before" style="width:40.1%"></i><i class="after" style="width:9.2%"></i><em style="left:9.2%">57 → 13 Ko</em></span>
+            </div>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Retiré</span>
+          <div>
+            <h3>Un niveau de priorité de trop</h3>
+            <p>Un niveau C ajouté le 20&nbsp;octobre, retiré le lendemain.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Corrigé</span>
+          <div>
+            <h3>Une interface qui en montrait trop</h3>
+            <p>Les tâches et les automatisations avaient leurs propres onglets. La navigation est passée à cinq entrées, et «&nbsp;prête à envoyer&nbsp;» est devenue un statut au lieu d'un drapeau.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Corrigé</span>
+          <div>
+            <h3>Des gestes manuels au déploiement</h3>
+            <p>L'import de l'historique et le premier passage des flux se lançaient à la main. Ils se font désormais seuls à chaque déploiement, et l'alerte des flux ne passe au rouge qu'après un échec total ou deux échecs de suite.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2>Chronologie</h2>
+
+      <ol class="xp-timeline">
+        <li class="k-ship"><time>17 sept.</time><span>La base de connaissances&nbsp;: profil, expériences, entreprises, méthode, verbatims.</span></li>
+        <li><time>23 sept.</time><span>Treize axes de recherche et un sourcing d'éditeurs hors des sites d'emploi.</span></li>
+        <li class="k-gap"><time></time><span>Le suivi grossit dans un Google Doc.</span></li>
+        <li class="k-fail"><time>20 oct., 11 h</time><span>JobSync installé, 118 offres importées, quitté à 17 h.</span></li>
+        <li class="k-ship"><time>20 oct., 18 h 42</time><span>Première version de l'outil, livrée par Claude Code.</span></li>
+        <li class="k-pivot"><time>21 oct.</time><span>Interface resserrée, trois revues de design, réponses MCP compactées, connexion OAuth pour claude.ai.</span></li>
+        <li class="k-ship"><time>21 oct., 21 h</time><span>Premier passage des flux en production&nbsp;: 83 offres à trier.</span></li>
+        <li><time>22 oct.</time><span>Agenda en lecture seule, filtré des rendez-vous personnels.</span></li>
+        <li><time>chaque matin</time><span>Les flux passent seuls. Puis Claude trie.</span></li>
+      </ol>
+      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>abandon</span></p>
+
+      <h2>Ce que ça a donné</h2>
+
+      <p>L'outil tourne chaque jour depuis le 21&nbsp;octobre. À chaque passage, l'outil lit environ 3&nbsp;900 postes, en retient une centaine de postes produit et ne remonte que les nouveaux&nbsp;: 83 le premier jour, puis 1, 0 et 11. Le critère de réussite que je m'étais fixé, que le tri du lundi soir se fasse seul, sera vérifiable pour la première fois le 26&nbsp;octobre.</p>
+
+      <ul class="xp-deliverables">
+        <li><span>Base de connaissances</span><span>fichiers texte, privée</span></li>
+        <li><span>Outil de suivi</span><span>web, API, serveur MCP, privé</span></li>
+        <li><span>Mode d'emploi pour l'agent</span><span>une page que l'agent lit en premier</span></li>
+      </ul>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/experimental/copropriete"><small>← Précédent</small>Comptes de copropriété</a>
+      <a class="next" href="/experimental/futurun"><small>Suivant →</small>Futurun</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

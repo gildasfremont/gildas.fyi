@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campagne — Gildas Frémont</title>
+  <meta name="description" content="Remplacer le tableur d'une maison de famille par un calendrier qui montre combien de lits sont pris chaque nuit, et laisser la négociation à la famille.">
+  <link rel="canonical" href="https://gildas.fyi/experimental/campagne">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Campagne — Gildas Frémont">
+  <meta property="og:description" content="Remplacer le tableur d'une maison de famille par un calendrier qui montre combien de lits sont pris chaque nuit, et laisser la négociation à la famille.">
+  <meta property="og:url" content="https://gildas.fyi/experimental/campagne">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.ca-month { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.ca-month b { font-weight: 400; font-size: 11px; color: var(--light); text-align: center; padding-bottom: 0.2rem; }
+.ca-day { aspect-ratio: 1 / 0.8; border-radius: 3px; padding: 3px 4px; font-size: 10px; line-height: 1.1; display: flex; flex-direction: column; justify-content: space-between; background: var(--bg); color: var(--light); }
+.ca-day span:last-child { font-size: 13px; font-weight: 600; color: var(--black); text-align: right; font-variant-numeric: tabular-nums; }
+.ca-day.l1 { background: rgba(var(--xp-live), .14); }
+.ca-day.l2 { background: rgba(var(--xp-pause), .22); }
+.ca-day.l3 { background: rgba(var(--xp-red), .22); }
+.ca-day.l4 { background: rgb(var(--xp-red)); color: var(--white); }
+.ca-day.l4 span:last-child { color: var(--white); }
+.ca-day.empty { background: transparent; }
+.ca-key { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: 12px; color: var(--mid); margin-top: 0.75rem; }
+.ca-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.3rem; vertical-align: -1px; }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-campagne">
+
+  <nav class="lang-toggle">
+    <a href="/experimental">← Expérimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · avril 2026</p>
+      <h1>Campagne</h1>
+      <p class="article-page-subtitle">Savoir combien de lits sont pris chaque nuit dans la maison de famille</p>
+      <p class="article-meta">10 avril au 8 mai 2026 · Next.js, Postgres · écrit avec Claude Code · usage familial</p>
+    </header>
+
+    <div class="xp-thesis">
+      <span class="xp-thesis-label">Le pari</span>
+      <p>Un tableur familial qui ne remplit plus sa fonction peut être remplacé par un calendrier sur téléphone, sans compte ni mot de passe, où chacun pose ses dates et voit combien de lits sont pris chaque nuit. L'app montre&nbsp;; la négociation reste entre les gens.</p>
+    </div>
+
+    <div class="xp-facts">
+      <div class="xp-fact"><b>~60</b><span>membres, répartis en 8 branches</span></div>
+      <div class="xp-fact"><b>32</b><span>couchages</span></div>
+      <div class="xp-fact"><b>3</b><span>seuils&nbsp;: 17, 27, 32</span></div>
+      <div class="xp-fact"><b>48</b><span>commits, dont la moitié jamais fusionnée</span></div>
+    </div>
+
+    <div class="article-body">
+
+      <h2>Genèse</h2>
+
+      <p>Une maison de famille, une soixantaine de personnes qui s'y succèdent, et un Google Sheet pour s'organiser. Avec le temps, le tableur avait accumulé des doublons, des lignes sans dates, et ne donnait aucune vue de l'occupation.</p>
+
+      <p>La spécification demandait de montrer, pour chaque nuit, le nombre de couchages occupés, avec des seuils de couleur. Pas de réservation, pas de validation, pas de compte. Si une nuit déborde, la famille en parle, comme avant, mais en voyant le problème.</p>
+
+      <figure class="xp-figure">
+        <span class="xp-label">Un mois d'été · données fictives</span>
+        <div class="ca-month"></div>
+        <div class="ca-key"><span><i style="background:rgba(var(--xp-live),.14)"></i>jusqu'à 17</span><span><i style="background:rgba(var(--xp-pause),.22)"></i>jusqu'à 27</span><span><i style="background:rgba(var(--xp-red),.22)"></i>jusqu'à 32</span><span><i style="background:rgb(var(--xp-red))"></i>au-delà de la capacité</span></div>
+        <figcaption>Le chiffre de chaque case est le nombre de lits pris cette nuit-là. Le calendrier montre où ça coince et laisse la famille décider qui cède sa place.</figcaption>
+      </figure>
+
+      <h2>Essais et erreurs</h2>
+
+      <ul class="xp-trials">
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Corrigé</span>
+          <div>
+            <h3>Des prénoms inventés dans les données de départ</h3>
+            <p>La première version préremplie contenait des membres de la famille qui n'existaient pas&nbsp;: Claude avait ajouté des noms à la liste. Ils ont été retirés le soir même, et la règle «&nbsp;ne jamais inventer de données, s'en tenir à la spécification&nbsp;» est entrée dans les consignes du projet. On la retrouve ensuite, sous d'autres mots, dans les consignes d'autres projets.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict open">Non fusionné</span>
+          <div>
+            <h3>Une base de données, puis le stockage du navigateur</h3>
+            <p>En mai, une session de Claude a remplacé la base Postgres par le stockage local du téléphone. Le commit lui-même en notait la conséquence&nbsp;: plus aucun partage entre appareils ni entre personnes, ce qui annulait l'intérêt du calendrier. La branche, avec ses 24 commits, n'a jamais été fusionnée.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict open">Non fusionné</span>
+          <div>
+            <h3>Affecter les chambres</h3>
+            <p>Sur la même branche&nbsp;: une vue par jour, des compteurs par branche familiale, un sélecteur de dates façon réservation de vol, et une page pour attribuer les chambres. On s'approche là de l'arbitrage que la spécification laissait à la famille.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2>Chronologie</h2>
+
+      <ol class="xp-timeline">
+        <li><time>10 avr., 16 h 40</time><span>Spécification.</span></li>
+        <li class="k-ship"><time>10 avr., 16 h 57</time><span>Première version complète, dix-sept minutes plus tard.</span></li>
+        <li class="k-fail"><time>10 avr., 21 h 22</time><span>Les prénoms inventés sont retirés.</span></li>
+        <li><time>10 avr., soir</time><span>Tous les membres affichés, légende des seuils, consignes de travail pour Claude.</span></li>
+        <li class="k-ship"><time>11 avr.</time><span>Gestion des membres, corrections sur téléphone.</span></li>
+        <li class="k-pivot"><time>8 mai</time><span>24 commits sur une branche&nbsp;: stockage local, vue par jour, chambres. Jamais fusionnée.</span></li>
+      </ol>
+      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>abandon</span></p>
+
+      <h2>Ce que ça a donné</h2>
+
+      <p>La version de la spécification a été livrée en deux jours&nbsp;: vue par mois et par semaine, saisie des séjours, identité retenue sur le téléphone, seuils colorés. La suite est restée sur une branche, et l'état de la version en ligne est à revérifier.</p>
+
+    </div>
+  </article>
+<script>
+(function(){
+  var m = document.querySelector('.ca-month');
+  if (!m) return;
+  ['lun.','mar.','mer.','jeu.','ven.','sam.','dim.'].forEach(function(d){ var b = document.createElement('b'); b.textContent = d; m.appendChild(b); });
+  var beds = [6,6,9,14,22,24,11, 8,8,8,12,19,26,25, 14,16,18,24,31,34,29, 27,27,28,30,33,31,22, 15,12,7];
+  for (var i = 0; i < 1; i++) { var e = document.createElement('div'); e.className = 'ca-day empty'; m.appendChild(e); }
+  beds.forEach(function(n, i){
+    var d = document.createElement('div');
+    d.className = 'ca-day ' + (n > 32 ? 'l4' : n > 27 ? 'l3' : n > 17 ? 'l2' : 'l1');
+    d.innerHTML = '<span>' + (i + 1) + '</span><span>' + n + '</span>';
+    m.appendChild(d);
+  });
+})();
+</script>
+
+    <nav class="xp-nav">
+      <a href="/experimental/swisser"><small>← Précédent</small>Swisser</a>
+      <a class="next" href="/experimental/commentaire"><small>Suivant →</small>Commentaire</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

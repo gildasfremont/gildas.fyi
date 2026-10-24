@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recettes — Gildas Frémont</title>
+  <meta name="description" content="Un livre de recettes sorti d'un Google Doc, devenu en une journée un site statique qui calcule la part de chacun selon son profil.">
+  <link rel="canonical" href="https://gildas.fyi/experimental/recettes">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Recettes — Gildas Frémont">
+  <meta property="og:description" content="Un livre de recettes sorti d'un Google Doc, devenu en une journée un site statique qui calcule la part de chacun selon son profil.">
+  <meta property="og:url" content="https://gildas.fyi/experimental/recettes">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.re-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.re-prof label { display: flex; justify-content: space-between; font-size: 13px; color: var(--mid); margin-top: 0.45rem; }
+.re-prof input[type=range] { width: 100%; accent-color: var(--black); }
+.re-prof select { font: inherit; font-size: 13px; padding: 0.1rem 0.3rem; border: 1px solid var(--border); border-radius: 3px; background: var(--white); color: var(--dark); }
+.re-plate { margin-top: 1.25rem; }
+.re-bar { display: flex; height: 30px; border-radius: 15px; overflow: hidden; border: 1px solid var(--black); }
+.re-bar div { display: flex; align-items: center; justify-content: center; font-size: 12px; transition: flex-grow .25s ease; white-space: nowrap; overflow: hidden; }
+.re-bar .a { background: var(--black); color: var(--white); }
+.re-bar .b { background: var(--white); color: var(--black); }
+.re-note { font-size: 12px; color: var(--light); margin-top: 0.4rem; }
+@media (max-width: 600px) { .re-split { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-recettes">
+
+  <nav class="lang-toggle">
+    <a href="/experimental">← Expérimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · juin 2026</p>
+      <h1>Recettes</h1>
+      <p class="article-page-subtitle">Un livre de recettes qui calcule la portion de chacun</p>
+      <p class="article-meta">30 juin 2026 · HTML, CSS, JavaScript · écrit avec Claude Code · <a href="https://recettes-gilt.vercel.app" target="_blank" rel="noopener">ouvrir l'app</a></p>
+    </header>
+
+    <div class="xp-thesis">
+      <span class="xp-thesis-label">Le pari</span>
+      <p>Un livre de recettes rangé dans un Google Doc peut devenir en une journée une petite app qui sert en cuisine, et qui calcule la part de chacun selon son profil. Sans framework, sans build&nbsp;: des fichiers statiques et des données en JSON suffisent.</p>
+    </div>
+
+    <div class="xp-facts">
+      <div class="xp-fact"><b>1 jour</b><span>du premier commit à la version actuelle</span></div>
+      <div class="xp-fact"><b>40</b><span>recettes</span></div>
+      <div class="xp-fact"><b>12</b><span>commits</span></div>
+      <div class="xp-fact"><b>0</b><span>dépendance</span></div>
+    </div>
+
+    <div class="article-body">
+
+      <h2>Genèse</h2>
+
+      <p>Un livre de recettes du sud de l'Europe et du Levant, pensées pour un déficit calorique doux, répond à un problème concret&nbsp;: on cuisine une fois pour deux, avec des portions différentes dans les assiettes. Le Google Doc donnait les recettes sans dire combien servir à chacun.</p>
+
+      <p>Le site range donc le contenu dans deux fichiers JSON, et le code se contente de l'afficher et de calculer. Pour chaque plat, la part de chacun dépend de son profil&nbsp;: le site calcule les besoins d'entretien selon l'équation de Mifflin-St Jeor, puis les réduit selon l'objectif de perte. Ce qui reste dans la casserole part en doggybag.</p>
+
+      <figure class="xp-figure">
+        <div class="re-split">
+          <div class="re-prof" data-p="a">
+            <span class="xp-label">Assiette 1</span>
+            <label>Sexe <select data-k="sex"><option value="m">homme</option><option value="f">femme</option></select></label>
+            <label>Poids <span data-out="w">80 kg</span></label><input type="range" min="45" max="120" value="80" data-k="w">
+            <label>Taille <span data-out="h">180 cm</span></label><input type="range" min="150" max="200" value="180" data-k="h">
+            <label>Âge <span data-out="age">40 ans</span></label><input type="range" min="18" max="80" value="40" data-k="age">
+          </div>
+          <div class="re-prof" data-p="b">
+            <span class="xp-label">Assiette 2</span>
+            <label>Sexe <select data-k="sex"><option value="m">homme</option><option value="f" selected>femme</option></select></label>
+            <label>Poids <span data-out="w">62 kg</span></label><input type="range" min="45" max="120" value="62" data-k="w">
+            <label>Taille <span data-out="h">166 cm</span></label><input type="range" min="150" max="200" value="166" data-k="h">
+            <label>Âge <span data-out="age">38 ans</span></label><input type="range" min="18" max="80" value="38" data-k="age">
+          </div>
+        </div>
+        <div class="re-plate">
+          <div class="re-bar"><div class="a"></div><div class="b"></div></div>
+          <p class="re-note"></p>
+        </div>
+        <figcaption>Le calcul du site, réduit à l'essentiel&nbsp;: activité légère, perte de deux kilos par mois pour les deux. Dans l'app, on règle aussi l'activité et l'objectif, et le dessert ou l'accompagnement choisis réduisent la part du plat.</figcaption>
+      </figure>
+
+      <h2>Essais et erreurs</h2>
+
+      <p>Les douze commits tiennent dans la journée du 30&nbsp;juin, et presque chacun retire quelque chose.</p>
+
+      <ul class="xp-trials">
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Remplacé</span>
+          <div>
+            <h3>Des profils tout faits, puis des critères objectifs</h3>
+            <p>D'abord des préréglages, puis le sexe et un objectif en kilos par mois, enfin le poids, la taille, l'âge et l'activité, avec un calcul.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Déplacé</span>
+          <div>
+            <h3>Les profils dans un onglet, puis dans chaque recette</h3>
+            <p>On règle les profils au moment où l'on en a besoin, en touchant la répartition au bas du plat. L'onglet a disparu.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Fondu</span>
+          <div>
+            <h3>Le savoir-faire et les courses à part</h3>
+            <p>Deux sections distinctes pour «&nbsp;ce qui fait le goût&nbsp;» et les substituts de courses. Elles ont été fondues dans les ingrédients et les étapes, là où on les lit en cuisinant. 351 lignes en moins.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Réduit</span>
+          <div>
+            <h3>Les filtres</h3>
+            <p>Une colonne, puis une colonne discrète, puis un menu déroulant.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2>Chronologie</h2>
+
+      <ol class="xp-timeline">
+        <li class="k-ship"><time>2 h 17</time><span>Premier commit&nbsp;: le site statique et ses recettes.</span></li>
+        <li><time>2 h 39</time><span>Accords «&nbsp;ça va avec&nbsp;».</span></li>
+        <li class="k-pivot"><time>9 h 02</time><span>Profils réglables, doggybag, boissons. Les recettes passent en JSON éditable.</span></li>
+        <li><time>9 h 47</time><span>Les profils quittent leur onglet pour les recettes. Composeur du repas.</span></li>
+        <li class="k-pivot"><time>17 h 49</time><span>Profils par critères objectifs et équation de Mifflin-St Jeor.</span></li>
+        <li class="k-ship"><time>18 h 13</time><span>Contenu fondu dans les recettes, interface épurée, barre flottante.</span></li>
+      </ol>
+      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span></p>
+
+      <h2>Ce que ça a donné</h2>
+
+      <p>Quarante recettes, une page des besoins et une page des principes. Les réglages restent sur le téléphone, rien n'est envoyé nulle part. Le site n'a pas changé depuis le 30&nbsp;juin.</p>
+
+      <ul class="xp-deliverables">
+        <li><span><a href="https://recettes-gilt.vercel.app" target="_blank" rel="noopener">recettes-gilt.vercel.app</a></span><span>en ligne</span></li>
+        <li><span>Données</span><span>recipes.json, content.json</span></li>
+      </ul>
+
+    </div>
+  </article>
+<script>
+(function(){
+  var fig = document.querySelector('.re-split');
+  if (!fig) return;
+  function need(p){
+    var g = function(k){ return p.querySelector('[data-k="' + k + '"]').value; };
+    var bmr = 10 * g('w') + 6.25 * g('h') - 5 * g('age') + (g('sex') === 'm' ? 5 : -161);
+    return bmr * 1.375 - (2 * 7700 / 30);
+  }
+  function render(){
+    var a = need(fig.querySelector('[data-p="a"]')), b = need(fig.querySelector('[data-p="b"]'));
+    var pa = Math.round(100 * a / (a + b)), pb = 100 - pa;
+    var bar = document.querySelector('.re-bar');
+    bar.querySelector('.a').style.flexGrow = pa; bar.querySelector('.a').textContent = pa + ' %';
+    bar.querySelector('.b').style.flexGrow = pb; bar.querySelector('.b').textContent = pb + ' %';
+    document.querySelector('.re-note').textContent = 'Besoins du jour : ' + Math.round(a) + ' et ' + Math.round(b) + ' kcal. Le plat se partage dans la même proportion.';
+    fig.querySelectorAll('[data-out]').forEach(function(o){
+      var v = o.closest('.re-prof').querySelector('[data-k="' + o.dataset.out + '"]').value;
+      o.textContent = v + (o.dataset.out === 'w' ? ' kg' : o.dataset.out === 'h' ? ' cm' : ' ans');
+    });
+  }
+  fig.addEventListener('input', render);
+  render();
+})();
+</script>
+
+    <nav class="xp-nav">
+      <a href="/experimental/futurun"><small>← Précédent</small>Futurun</a>
+      <a class="next" href="/experimental/swisser"><small>Suivant →</small>Swisser</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

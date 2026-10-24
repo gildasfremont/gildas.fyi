@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disciple — Gildas Frémont</title>
+  <meta name="description" content="Une plateforme où l'on décrit un travail plutôt qu'un agent : un architecte planifie, un orchestrateur répartit et juge, des agents exécutent.">
+  <link rel="canonical" href="https://gildas.fyi/experimental/disciple">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Disciple — Gildas Frémont">
+  <meta property="og:description" content="Une plateforme où l'on décrit un travail plutôt qu'un agent : un architecte planifie, un orchestrateur répartit et juge, des agents exécutent.">
+  <meta property="og:url" content="https://gildas.fyi/experimental/disciple">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.di-org { display: grid; gap: 0.6rem; justify-items: center; }
+.di-node { border: 1px solid var(--black); border-radius: 4px; padding: 0.5rem 0.8rem; text-align: center; font-size: 13px; color: var(--mid); background: var(--white); max-width: 22rem; }
+.di-node b { display: block; font-size: 15px; color: var(--black); font-weight: 600; }
+.di-node.user { border-style: dashed; border-color: var(--subtle); }
+.di-arrow { font-size: 12px; color: var(--light); line-height: 1; }
+.di-ops { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+.di-ops .di-node { border-color: var(--subtle); padding: 0.4rem 0.6rem; }
+.di-ops .di-node b { font-size: 13px; }
+.di-ob { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; font-size: 13px; color: var(--mid); }
+.di-ob div { border-top: 2px solid var(--black); padding-top: 0.4rem; }
+.di-ob div + div { border-top-color: rgb(var(--xp-live)); }
+.di-ob b { display: block; color: var(--black); font-weight: 600; }
+.di-runs { display: grid; grid-template-columns: 9rem repeat(3, 1fr); gap: 0.35rem 0.5rem; align-items: center; font-size: 12px; }
+.di-runs .cell { height: 22px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
+.di-runs .ko { background: rgba(var(--xp-red), .18); color: rgb(var(--xp-red)); }
+.di-runs .mid { background: rgba(var(--xp-pause), .2); color: var(--dark); }
+.di-runs .ok { background: rgba(var(--xp-live), .18); color: rgb(var(--xp-live)); }
+.di-runs .h { color: var(--light); text-align: center; }
+@media (max-width: 600px) { .di-ob { grid-template-columns: 1fr; } .di-runs { grid-template-columns: 6.5rem repeat(3, 1fr); } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-disciple">
+
+  <nav class="lang-toggle">
+    <a href="/experimental">← Expérimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · mars 2026</p>
+      <h1>Disciple</h1>
+      <p class="article-page-subtitle">Confier un travail à une équipe d'agents IA sans avoir à les configurer</p>
+      <p class="article-meta">22 au 31 mars 2026 · Python, FastAPI, SQLite · écrit avec Claude Code · prototype privé</p>
+    </header>
+
+    <div class="xp-thesis">
+      <span class="xp-thesis-label">Le pari</span>
+      <p>Les gens veulent résoudre un problème, et les plateformes d'agents leur demandent d'abord de construire un agent. Si l'unité de base est le travail à faire, un architecte peut en tirer un plan, un orchestrateur peut le répartir et juger les résultats, et des agents peuvent exécuter et s'améliorer par la mémoire, sans que l'utilisateur ait jamais à parler d'outils.</p>
+    </div>
+
+    <div class="xp-facts">
+      <div class="xp-fact"><b>84</b><span>commits en dix jours</span></div>
+      <div class="xp-fact"><b>47</b><span>idées au backlog, une trentaine implémentées</span></div>
+      <div class="xp-fact"><b>10</b><span>sessions de test</span></div>
+      <div class="xp-fact"><b>1,53&nbsp;$</b><span>pour cinq exécutions complètes</span></div>
+    </div>
+
+    <div class="article-body">
+
+      <h2>Genèse</h2>
+
+      <p>La phrase de départ est dans les notes de réflexion du projet&nbsp;: personne ne veut un agent, les gens veulent résoudre quelque chose. On décrit un travail. Un architecte pose les questions utiles et produit un plan. Un orchestrateur distribue les tâches, en parallèle quand c'est possible, et juge ce qui revient. Les agents d'exécution, définis par l'utilisateur, font le travail et gardent la mémoire de ce qui a marché.</p>
+
+      <figure class="xp-figure">
+        <div class="di-org">
+          <div class="di-node user"><b>Le travail à faire</b>décrit en une phrase, sans vocabulaire technique</div>
+          <span class="di-arrow">↓</span>
+          <div class="di-node"><b>L'architecte</b>pose les questions, produit le plan</div>
+          <span class="di-arrow">↓</span>
+          <div class="di-node"><b>L'orchestrateur</b>répartit, relance, juge les résultats</div>
+          <span class="di-arrow">↓</span>
+          <div class="di-ops">
+            <div class="di-node"><b>Agent</b>recherche</div>
+            <div class="di-node"><b>Agent</b>rédaction</div>
+            <div class="di-node"><b>Agent</b>analyse</div>
+          </div>
+        </div>
+        <div class="di-ob">
+          <div><b>Obligation de moyens</b>Les agents d'exécution suivent une méthode et en rendent compte.</div>
+          <div><b>Obligation de résultat</b>L'orchestrateur juge le livrable contre l'objectif, et renvoie si ça ne va pas.</div>
+        </div>
+        <figcaption>Les trois niveaux du modèle, tels que décrits dans le document d'architecture. Les noms des agents d'exécution sont des exemples&nbsp;: c'est l'utilisateur qui les définit.</figcaption>
+      </figure>
+
+      <h2>Essais et erreurs</h2>
+
+      <p>Les tests ont été joués par des personas simulés, cinq profils non techniques aux besoins différents, et non par de vrais utilisateurs. Ils ont quand même fait apparaître les mêmes murs, session après session.</p>
+
+      <figure class="xp-figure">
+        <div class="di-runs">
+          <span></span><span class="h">Avant</span><span class="h">→</span><span class="h">Après</span>
+          <span>L'architecte agit dès le premier message</span><span class="cell ko">0 sur 3</span><span class="h">tool use simulé</span><span class="cell ok">3 sur 3</span>
+          <span>Tâches réussies par lot</span><span class="cell mid">3 sur 5</span><span class="h">fenêtre glissante</span><span class="cell ok">6 sur 6</span>
+        </div>
+        <figcaption>Deux blocages et leur correction, d'après les rapports de test du dépôt. La dernière session de recette, notée sur trois niveaux, passe 207 vérifications sur 216.</figcaption>
+      </figure>
+
+      <ul class="xp-trials">
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Corrigé</span>
+          <div>
+            <h3>L'architecte qui interroge au lieu d'agir</h3>
+            <p>Première session&nbsp;: les trois personas restent bloqués dans un questionnaire. En passant par la ligne de commande, l'architecte n'avait pas accès aux outils natifs. Ils ont été simulés en JSON dans le texte, et dès la session suivante chaque persona avait son plan en un seul échange.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Faux</span>
+          <div>
+            <h3>Le zéro coût</h3>
+            <p>L'idée était d'utiliser l'abonnement plutôt que l'API, donc sans coût marginal. Le 23&nbsp;mars, plus aucun appel ne passait&nbsp;: la ligne de commande consommait aussi des crédits d'API, et le solde était vide. Il a fallu forcer la connexion par l'abonnement.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Corrigé</span>
+          <div>
+            <h3>Le contexte qui déborde</h3>
+            <p>Sur les gros plans, l'orchestrateur perdait le fil et les tâches échouaient. Une fenêtre glissante sur l'historique a suffi à faire passer tous les lots.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict open">Ouvert</span>
+          <div>
+            <h3>Un vocabulaire de développeur</h3>
+            <p>Un persona a résumé le problème&nbsp;: «&nbsp;C'est quoi code_execution, fetch_url&nbsp;? Je m'en fiche de ça.&nbsp;» Le modèle promettait de ne jamais parler d'outils, et l'interface en montrait.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict open">Ouvert</span>
+          <div>
+            <h3>Le coût d'un orchestrateur bavard</h3>
+            <p>Sur cinq exécutions, l'une coûtait trois à quatre fois plus que les autres. L'orchestrateur ne plafonnait pas la longueur de ses sorties.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2>Chronologie</h2>
+
+      <ol class="xp-timeline">
+        <li class="k-ship"><time>22 mars</time><span>Premier commit. Tâches en parallèle, passage de YAML à SQLite.</span></li>
+        <li class="k-pivot"><time>23 mars</time><span>Interface refaite, passage par l'abonnement, sept sessions de test.</span></li>
+        <li class="k-fail"><time>23 mars</time><span>Plus aucun appel ne passe&nbsp;: crédits d'API épuisés.</span></li>
+        <li><time>24 mars</time><span>Backlog de 47 idées en onze thèmes, dont une trentaine implémentées dans la journée.</span></li>
+        <li class="k-ship"><time>28 mars</time><span>Suites de recette, journaux structurés, intégration continue.</span></li>
+        <li><time>30-31 mars</time><span>Le fichier principal est découpé en six modules.</span></li>
+        <li class="k-gap"><time>depuis</time><span>En pause.</span></li>
+      </ol>
+      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>échec</span></p>
+
+      <h2>Ce que ça a donné</h2>
+
+      <p>Un prototype qui va de bout en bout&nbsp;: conversation avec l'architecte, plan, orchestration, livrables, mémoire, intégration continue. Il manque les agents système imaginés pour la suite, chargés de former, d'analyser et de construire de nouveaux agents.</p>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/experimental/commentaire"><small>← Précédent</small>Commentaire</a>
+      <a class="next" href="/experimental"><small>Tous les projets →</small>Expérimental</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

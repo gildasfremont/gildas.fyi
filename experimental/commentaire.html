@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commentaire — Gildas Frémont</title>
+  <meta name="description" content="Des commentaires vocaux ancrés dans le texte, envoyés à un co-lecteur IA silencieux. La chaîne fonctionne de bout en bout ; la latence l'a arrêtée.">
+  <link rel="canonical" href="https://gildas.fyi/experimental/commentaire">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Commentaire — Gildas Frémont">
+  <meta property="og:description" content="Des commentaires vocaux ancrés dans le texte, envoyés à un co-lecteur IA silencieux. La chaîne fonctionne de bout en bout ; la latence l'a arrêtée.">
+  <meta property="og:url" content="https://gildas.fyi/experimental/commentaire">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.cm-doc { display: grid; grid-template-columns: 1fr 12rem; gap: 1rem; }
+.cm-text { font-size: 15px; line-height: 1.7; color: var(--mid); }
+.cm-text mark { background: rgba(var(--xp-pause), .2); color: var(--black); padding: 0 1px; border-bottom: 1px solid rgb(var(--xp-pause)); }
+.cm-margin { position: relative; font-size: 12px; }
+.cm-note { border-left: 2px solid rgb(var(--xp-pause)); padding: 0.2rem 0 0.2rem 0.5rem; margin-bottom: 0.6rem; color: var(--mid); line-height: 1.45; }
+.cm-note .who { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light); }
+.cm-note.ai { border-left-color: var(--black); }
+.cm-wait { display: inline-block; margin-top: 0.2rem; font-size: 10px; color: rgb(var(--xp-red)); }
+.cm-lat { display: grid; grid-template-columns: 9.5rem 1fr; gap: 0.5rem 0.75rem; align-items: center; font-size: 13px; }
+.cm-lat .bar { position: relative; height: 16px; background: var(--bg); border-radius: 2px; }
+.cm-lat .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: rgba(var(--xp-red), .75); border-radius: 2px; }
+.cm-lat .bar s { position: absolute; top: -3px; bottom: -3px; width: 2px; background: rgb(var(--xp-live)); text-decoration: none; }
+.cm-lat .bar em { position: absolute; right: 0.4rem; top: 0; font-size: 11px; font-style: normal; color: var(--mid); line-height: 16px; font-variant-numeric: tabular-nums; }
+.cm-loop { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 0.5rem; text-align: center; font-size: 13px; }
+.cm-loop div { border: 1px solid var(--border); border-radius: 4px; padding: 0.5rem; }
+.cm-loop b { display: block; color: var(--black); font-weight: 600; }
+.cm-loop span { color: var(--light); font-size: 18px; }
+@media (max-width: 600px) { .cm-doc { grid-template-columns: 1fr; } .cm-loop { grid-template-columns: 1fr; } .cm-loop span { transform: rotate(90deg); } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-commentaire">
+
+  <nav class="lang-toggle">
+    <a href="/experimental">← Expérimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · avril 2026</p>
+      <h1>Commentaire</h1>
+      <p class="article-page-subtitle">Annoter un texte à voix haute et lire les réponses d'une IA dans la marge</p>
+      <p class="article-meta">15 au 17 avril 2026 · Rust, Tauri, whisper.cpp · écrit avec Claude Code · <a href="https://github.com/gildasfremont/commentaire" target="_blank" rel="noopener">code public</a></p>
+    </header>
+
+    <div class="xp-thesis">
+      <span class="xp-thesis-label">Le pari</span>
+      <p>Le chat est mal fait pour annoter&nbsp;: il faut recopier le passage, attendre la réponse, et tout s'empile dans un fil. Un co-lecteur silencieux, qui reçoit des commentaires dits à voix haute et accrochés au texte, peut le remplacer. Il tourne sur le Mac, avec l'abonnement Claude de l'utilisateur, sans clé d'API.</p>
+    </div>
+
+    <div class="xp-facts">
+      <div class="xp-fact"><b>21 h</b><span>pour la chaîne complète</span></div>
+      <div class="xp-fact"><b>6 sur 6</b><span>commentaires bien classés</span></div>
+      <div class="xp-fact"><b>454&nbsp;Mo</b><span>de mémoire, pour une cible de 1,2&nbsp;Go</span></div>
+      <div class="xp-fact"><b>17 s</b><span>pour classer un commentaire, cible&nbsp;: 1,5</span></div>
+    </div>
+
+    <div class="article-body">
+
+      <h2>L'idée, sur une page</h2>
+
+      <figure class="xp-figure">
+        <div class="cm-doc">
+          <p class="cm-text">Le diagnostic ne porte ni sur les décisions business ni sur la couverture fonctionnelle. Il porte sur <mark>ce qui empêche l'outil de fonctionner comme ses utilisateurs s'y attendent</mark>, et sur les raisons pour lesquelles ça continue. L'analyse fait apparaître cinq catégories de dysfonctionnements qui, pris isolément, ressemblent à des <mark>erreurs de conception classiques</mark>.</p>
+          <div class="cm-margin">
+            <div class="cm-note"><span class="who">Dit à voix haute</span>«&nbsp;Trop abstrait, il faut un exemple ici.&nbsp;»</div>
+            <div class="cm-note ai"><span class="who">Co-lecteur</span>Noté. Le kanban du paragraphe suivant ferait l'affaire.<span class="cm-wait">répondu après 17 secondes</span></div>
+            <div class="cm-note"><span class="who">Dit à voix haute</span>«&nbsp;Lesquelles&nbsp;?&nbsp;»</div>
+          </div>
+        </div>
+        <figcaption>On garde une touche enfoncée, on parle, on relâche. Whisper transcrit sur la machine, Haiku classe le commentaire, Opus rédige la réponse, et la réponse s'accroche au passage dans la marge. Le texte de l'exemple vient d'un de mes articles.</figcaption>
+      </figure>
+
+      <h2>Genèse</h2>
+
+      <p>La spécification a été écrite le 15&nbsp;avril au soir, avec une architecture en Next.js. Le lendemain matin, elle a été réécrite&nbsp;: l'app serait de bureau, en Tauri, avec Whisper en local et Claude appelé en ligne de commande. Raison donnée dans le document&nbsp;: un Mac de 8&nbsp;Go, pas de clé d'API, pas de serveur. Les cinq tickets de la première feuille de route ont été annulés.</p>
+
+      <p>Le projet a aussi servi de terrain pour une méthode&nbsp;: deux agents qui travaillent ensemble sans se parler directement.</p>
+
+      <figure class="xp-figure">
+        <div class="cm-loop">
+          <div><b>Cowork</b>écrit la spec et les tickets</div>
+          <span>→</span>
+          <div><b>Linear</b>un ticket, une branche</div>
+          <span>→</span>
+          <div><b>Claude Code</b>commite à chaque étape, relit les consignes à chaque commit</div>
+        </div>
+        <figcaption>Claude Code prend le premier ticket libre, le passe en cours, crée la branche qui porte son nom, et pousse après chaque étape parce qu'un autre agent suit le dépôt en direct. Un fichier de consignes sert de canal retour pour corriger la trajectoire ou arrêter. En fin de ticket&nbsp;: fait, pas fait, problèmes, commande de test.</figcaption>
+      </figure>
+
+      <h2>Essais et erreurs</h2>
+
+      <ul class="xp-trials">
+        <li class="xp-trial">
+          <span class="xp-verdict open">Bloquant</span>
+          <div>
+            <h3>La latence</h3>
+            <p>Les classifications étaient justes et la mémoire tenait, mais chaque appel de Claude en sous-processus coûte plusieurs secondes avant même de réfléchir.</p>
+            <div class="cm-lat" style="margin-top:0.7rem">
+              <span>Haiku, seul</span><span class="bar"><i style="width:64.7%"></i><s style="left:8.8%"></s><em>5,4 à 11 s</em></span>
+              <span>Haiku, dans l'app</span><span class="bar"><i style="width:100%"></i><s style="left:8.8%"></s><em>17 s</em></span>
+              <span>Opus, premier mot</span><span class="bar"><i style="width:68.8%"></i><s style="left:29.4%"></s><em>11,7 s</em></span>
+            </div>
+            <p class="xp-proof">trait vert&nbsp;: la cible · rapport de tests du 17 avril</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Corrigé</span>
+          <div>
+            <h3>Un prompt système que personne ne lisait</h3>
+            <p>Claude a d'abord passé ses consignes par une variable d'environnement que l'outil en ligne de commande ignore. Pendant une dizaine de minutes, le classifieur a répondu comme dans une conversation. La note qu'il en a laissée&nbsp;: toujours lire l'aide de la commande avant de deviner.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Remplacé</span>
+          <div>
+            <h3>Détecter la voix au volume</h3>
+            <p>La détection par le niveau sonore captait tout, au point que Whisper a fini par transcrire un bruit de porte. Elle a été remplacée par une touche à maintenir pour parler.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Signalé</span>
+          <div>
+            <h3>Le périmètre qui glisse</h3>
+            <p>Le 17&nbsp;avril, trois nouvelles idées sont apparues&nbsp;: garder l'historique, versionner, laisser l'IA modifier le texte, trois idées qui sortaient du premier périmètre. Claude Code l'a relevé dans une note qui déclarait l'architecture périmée.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Faille</span>
+          <div>
+            <h3>Un fichier qui ne devait pas être lu</h3>
+            <p>Cowork gardait ses critères de recette dans un fichier marqué «&nbsp;Claude Code ne doit jamais voir ce fichier&nbsp;». Un <code>git add</code> trop large a ajouté le fichier au dépôt, où Claude Code l'a lu avant de le retirer. Le dépôt en conclut que la convention est fragile.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2>Chronologie</h2>
+
+      <ol class="xp-timeline">
+        <li><time>15 avr., 19 h</time><span>Dépôt créé, spécification v0.1.</span></li>
+        <li class="k-pivot"><time>16 avr., 13 h 40</time><span>Architecture v2&nbsp;: de Next.js à une app de bureau en Tauri.</span></li>
+        <li><time>16 avr., 14 h 46</time><span>Lecteur de Markdown.</span></li>
+        <li><time>16 avr., 16 h 54</time><span>Capture audio et Whisper.</span></li>
+        <li><time>16 avr., 20 h 16</time><span>Classifieur Haiku.</span></li>
+        <li class="k-ship"><time>16 avr., 20 h 40</time><span>Réponses d'Opus. La chaîne est complète.</span></li>
+        <li class="k-fail"><time>17 avr., 6 h 48</time><span>Tests de bout en bout&nbsp;: justes, mais trop lents.</span></li>
+        <li class="k-pivot"><time>17 avr., 9 h 27</time><span>Touche pour parler, au lieu de la détection au volume.</span></li>
+        <li class="k-ship"><time>17 avr., 9 h 34</time><span>Commentaires ancrés dans la marge.</span></li>
+        <li class="k-gap"><time>depuis</time><span>En pause. Le ticket sur la latence reste ouvert, marqué urgent.</span></li>
+      </ol>
+      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>échec</span></p>
+
+      <h2>Ce que ça a donné</h2>
+
+      <p>Une app de bureau qui fonctionne en mode développement, de la voix à la réponse dans la marge, et un rapport de tests chiffré. Elle n'a jamais été empaquetée, et son code est public.</p>
+
+      <p>La note laissée par Claude Code le 17&nbsp;avril désigne le coupable&nbsp;: l'appel de Claude en sous-processus est le goulot d'étranglement du projet.</p>
+
+      <ul class="xp-deliverables">
+        <li><span><a href="https://github.com/gildasfremont/commentaire" target="_blank" rel="noopener">Code source</a></span><span>Rust et JavaScript, public</span></li>
+        <li><span>Spécification, architecture, rapport de tests</span><span>dans le dépôt</span></li>
+      </ul>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/experimental/campagne"><small>← Précédent</small>Campagne</a>
+      <a class="next" href="/experimental/disciple"><small>Suivant →</small>Disciple</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

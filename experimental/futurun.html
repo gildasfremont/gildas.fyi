@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futurun — Gildas Frémont</title>
+  <meta name="description" content="Une app locale qui agrège banques, épargne et saisie derrière un même contrat de connecteur, calcule le runway, et réduit la reconnexion à un écran.">
+  <link rel="canonical" href="https://gildas.fyi/experimental/futurun">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Futurun — Gildas Frémont">
+  <meta property="og:description" content="Une app locale qui agrège banques, épargne et saisie derrière un même contrat de connecteur, calcule le runway, et réduit la reconnexion à un écran.">
+  <meta property="og:url" content="https://gildas.fyi/experimental/futurun">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.fu-contract { font-family: var(--xp-mono); font-size: 12.5px; line-height: 1.7; color: var(--mid); background: var(--bg); border-radius: 4px; padding: 0.8rem 1rem; margin-bottom: 1rem; white-space: pre; overflow-x: auto; }
+.fu-contract b { color: var(--black); font-weight: 600; }
+.fu-contract em { font-style: normal; color: var(--light); }
+.fu-state { font-size: 12px; white-space: nowrap; }
+.fu-state::before { content: '●'; margin-right: 0.3rem; color: rgb(var(--c)); }
+.fu-state.ok { --c: var(--xp-live); }
+.fu-state.fragile { --c: var(--xp-pause); }
+.fu-state.idle { --c: var(--xp-stop); }
+.fu-runway { display: flex; align-items: flex-end; gap: 3px; height: 70px; margin-top: 0.5rem; }
+.fu-runway i { flex: 1; background: var(--black); border-radius: 1px 1px 0 0; }
+.fu-runway i.low { background: rgb(var(--xp-pause)); }
+.fu-runway i.out { background: rgb(var(--xp-red)); }
+.fu-axis { display: flex; justify-content: space-between; font-size: 11px; color: var(--light); margin-top: 0.3rem; }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-futurun">
+
+  <nav class="lang-toggle">
+    <a href="/experimental">← Expérimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · octobre 2026</p>
+      <h1>Futurun</h1>
+      <p class="article-page-subtitle">Voir tous ses comptes au même endroit et savoir combien de mois on tient</p>
+      <p class="article-meta">12 au 20 octobre 2026 · Next.js, Python · écrit avec Claude Code · usage personnel</p>
+    </header>
+
+    <div class="xp-thesis">
+      <span class="xp-thesis-label">Le pari</span>
+      <p>Une seule app, installée chez soi, peut agréger des sources financières qui n'ont rien en commun, open banking, scraping, API, export et saisie, si elles passent toutes par le même contrat. Elle donne alors un burn rate et un runway fiables, et la seule friction qui reste, se reconnecter, tient dans un écran.</p>
+    </div>
+
+    <div class="xp-facts">
+      <div class="xp-fact"><b>5</b><span>méthodes de connexion, un seul contrat</span></div>
+      <div class="xp-fact"><b>11</b><span>connexions actives</span></div>
+      <div class="xp-fact"><b>77</b><span>commits sur 3 jours actifs</span></div>
+      <div class="xp-fact"><b>6 h</b><span>entre deux synchronisations</span></div>
+    </div>
+
+    <div class="article-body">
+
+      <h2>Genèse</h2>
+
+      <p>En freelance, le chiffre qui compte est le nombre de mois devant soi. Mes comptes sont répartis entre une banque, une néobanque, une assurance-vie, un plan d'épargne retraite et un crédit. Chacun a son mode d'accès, et chaque connexion expire à son rythme.</p>
+
+      <p>La reconnexion est donc devenue le cœur du produit. Chaque source est un connecteur qui renvoie des comptes et des transactions, et qui lève une seule erreur quand il faut se réauthentifier. L'écran des connexions met celles à renouveler en haut, avec leur formulaire déjà ouvert.</p>
+
+      <figure class="xp-figure">
+<div class="fu-contract"><em>// le même contrat pour toutes les sources</em>
+<b>connect</b>(form)          <em>→ clé, identifiants, fichier, saisie</em>
+<b>start</b>() · <b>complete</b>()  <em>→ open banking, aller-retour OAuth</em>
+<b>sync</b>()                <em>→ comptes + transactions</em>
+<b>throw</b> ReauthRequired   <em>→ la source remonte en haut de l'écran</em></div>
+        <table class="xp-table">
+          <thead><tr><th>Connecteur</th><th>Méthode</th><th>Ce qui s'est passé</th><th>État</th></tr></thead>
+          <tbody>
+            <tr><td>Open banking</td><td>DSP2, via Enable Banking</td><td>Fonctionne. Il a fallu une adresse de retour en HTTPS sur le réseau local, une adresse fixe pour la liste blanche du prestataire, et un accès professionnel pour une néobanque.</td><td><span class="fu-state ok">5 actives</span></td></tr>
+            <tr><td>woob</td><td>Scraping de l'espace client, en Python</td><td>Fonctionne, mais casse quand un site change. Le module d'un assureur a dû être corrigé deux fois le premier jour.</td><td><span class="fu-state fragile">2 actives</span></td></tr>
+            <tr><td>CSV</td><td>Relevé exporté et collé</td><td>Pour la banque qui n'a pas d'accès.</td><td><span class="fu-state ok">1 active</span></td></tr>
+            <tr><td>Saisie</td><td>À la main</td><td>Crédits, prêts amortissables, immobilier.</td><td><span class="fu-state ok">3 actives</span></td></tr>
+            <tr><td>Binance</td><td>API en lecture seule</td><td>Écrit, jamais branché.</td><td><span class="fu-state idle">inutilisé</span></td></tr>
+          </tbody>
+        </table>
+        <figcaption>Cinq méthodes derrière la même interface. La colonne de droite compte les connexions réellement configurées.</figcaption>
+      </figure>
+
+      <h2>Essais et erreurs</h2>
+
+      <ul class="xp-trials">
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Simplifié</span>
+          <div>
+            <h3>Le budget, refait six fois dans la journée</h3>
+            <p>Chaque version du budget ajoutait une notion&nbsp;: postes, dépenses à venir, comparaison entre prévu et réel. Dans la dernière, une dépense tient en un nom et un montant, auxquels s'ajoutent au besoin une fréquence et une durée.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Retiré</span>
+          <div>
+            <h3>Un écran de procédures par source</h3>
+            <p>Créé le 12&nbsp;octobre pour expliquer comment brancher chaque compte, fusionné dans l'écran des connexions une semaine plus tard. La barre d'onglets a disparu avec lui.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict open">Option</span>
+          <div>
+            <h3>Héberger l'app sur un serveur</h3>
+            <p>Une image Docker existe. Elle n'a pas servi&nbsp;: l'app démarre seule sur le Mac, et le téléphone la consulte sur le même Wi-Fi.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Gardé</span>
+          <div>
+            <h3>Deux passes de revue d'interface</h3>
+            <p>Champs en 16 pixels pour qu'iPhone ne zoome pas, contrastes, cibles tactiles, confirmation avant suppression. Deux passes successives le même jour, le 19&nbsp;octobre.</p>
+          </div>
+        </li>
+      </ul>
+
+      <figure class="xp-figure">
+        <span class="xp-label">Solde projeté sur douze mois · forme de la frise, valeurs fictives</span>
+        <div class="fu-runway">
+          <i style="height:96%"></i><i style="height:88%"></i><i style="height:81%"></i><i style="height:77%"></i><i style="height:68%"></i><i style="height:60%"></i><i style="height:55%"></i><i style="height:46%"></i><i class="low" style="height:37%"></i><i class="low" style="height:28%"></i><i class="out" style="height:17%"></i><i class="out" style="height:8%"></i>
+        </div>
+        <div class="fu-axis"><span>ce mois</span><span>+6 mois</span><span>+12 mois</span></div>
+        <figcaption>Le burn se calcule sur 30 et 90 jours, hors virements entre mes propres comptes. La frise prolonge le solde mois par mois, avec les dépenses déclarées dans le budget.</figcaption>
+      </figure>
+
+      <h2>Chronologie</h2>
+
+      <ol class="xp-timeline">
+        <li class="k-ship"><time>12 oct.</time><span>Contrat de connecteur, open banking, Binance, CSV, saisie. Burn et runway. Secrets chiffrés.</span></li>
+        <li><time>12 oct.</time><span>Connecteur woob et image Docker.</span></li>
+        <li class="k-fail"><time>12 oct.</time><span>Le module d'un assureur casse sur une nouvelle page. Deux correctifs.</span></li>
+        <li><time>12 oct.</time><span>Lanceur en double-clic, mises à jour depuis l'app.</span></li>
+        <li class="k-pivot"><time>12 oct.</time><span>Six versions du budget avant la plus simple.</span></li>
+        <li class="k-gap"><time>13-18 oct.</time><span>Aucun commit.</span></li>
+        <li class="k-pivot"><time>19 oct.</time><span>Démarrage automatique. L'écran des procédures fusionne avec les connexions.</span></li>
+        <li><time>19 oct.</time><span>Frise du solde sur douze mois.</span></li>
+        <li class="k-ship"><time>20 oct.</time><span>Serveur MCP&nbsp;: Claude peut consulter et modifier Futurun sans l'interface.</span></li>
+        <li><time>20 oct.</time><span>Libellés génériques et réglages, pour qu'un autre puisse l'installer.</span></li>
+      </ol>
+      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>abandon</span></p>
+
+      <h2>Ce que ça a donné</h2>
+
+      <p>Une app qui démarre avec le Mac, se synchronise toutes les six heures et s'ouvre sur le téléphone. Onze connexions, une cinquantaine de tests, et un serveur MCP pour l'interroger depuis une conversation.</p>
+
+      <p>Elle n'a qu'un utilisateur, même si le dernier commit la prépare pour d'autres&nbsp;: avec des accès bancaires en jeu, l'ouvrir demande d'abord une relecture de sécurité.</p>
+
+      <ul class="xp-deliverables">
+        <li><span>App locale, installable sur téléphone</span><span>privée</span></li>
+        <li><span>Serveur MCP</span><span>lecture et écriture</span></li>
+        <li><span>Lanceur Mac avec mises à jour</span><span>double-clic</span></li>
+      </ul>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/experimental/recherche-emploi"><small>← Précédent</small>Recherche d'emploi</a>
+      <a class="next" href="/experimental/recettes"><small>Suivant →</small>Recettes</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

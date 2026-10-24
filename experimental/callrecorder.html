@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CallRecorder — Gildas Frémont</title>
+  <meta name="description" content="Un enregistreur d'appels qui se lance seul, garde tout sur le Mac et se laisse interroger par Claude. Deuxième tentative, trois jours.">
+  <link rel="canonical" href="https://gildas.fyi/experimental/callrecorder">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="CallRecorder — Gildas Frémont">
+  <meta property="og:description" content="Un enregistreur d'appels qui se lance seul, garde tout sur le Mac et se laisse interroger par Claude. Deuxième tentative, trois jours.">
+  <meta property="og:url" content="https://gildas.fyi/experimental/callrecorder">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.cr-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.cr-col { min-width: 0; }
+.cr-col + .cr-col { border-left: 1px solid var(--border); padding-left: 1.25rem; }
+.cr-track { margin: 0.55rem 0; }
+.cr-track b { display: block; font-weight: 400; font-size: 12px; color: var(--light); margin-bottom: 0.2rem; }
+.cr-wave { display: flex; align-items: center; gap: 2px; height: 22px; }
+.cr-wave i { flex: 1; min-width: 1px; border-radius: 1px; background: var(--black); }
+.cr-them .cr-wave i { background: rgb(var(--xp-live)); }
+.cr-film { height: 22px; border-radius: 2px; background: repeating-linear-gradient(90deg, var(--subtle) 0 10px, var(--white) 10px 12px); }
+.cr-snaps { height: 22px; display: flex; align-items: center; justify-content: space-between; }
+.cr-snaps i { width: 9px; height: 13px; border: 1px solid var(--light); border-radius: 1px; }
+.cr-deps { list-style: none; margin-top: 0.9rem; padding-top: 0.6rem; border-top: 1px dashed var(--border); font-size: 13px; color: var(--mid); }
+.cr-deps li::before { content: '+ '; color: var(--light); }
+@media (max-width: 600px) {
+  .cr-cols { grid-template-columns: 1fr; }
+  .cr-col + .cr-col { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1rem; }
+}
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-callrecorder">
+
+  <nav class="lang-toggle">
+    <a href="/experimental">← Expérimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · octobre 2026</p>
+      <h1>CallRecorder</h1>
+      <p class="article-page-subtitle">Enregistrer et transcrire ses appels sur Mac, sans rien lancer</p>
+      <p class="article-meta">22 au 24 octobre 2026 · Swift · écrit avec Claude Code · <a href="https://gildasfremont.github.io/callrecorder-site/" target="_blank" rel="noopener">page de téléchargement</a></p>
+    </header>
+
+    <div class="xp-thesis">
+      <span class="xp-thesis-label">Le pari</span>
+      <p>Un enregistreur d'appels peut se lancer seul dès qu'une app prend le micro, sans agenda, sans pilote audio et sans bouton, garder le son et la transcription sur le Mac, et rendre ces conversations lisibles par Claude. Le tout dans une app qu'on installe sans être développeur.</p>
+    </div>
+
+    <div class="xp-facts">
+      <div class="xp-fact"><b>3 jours</b><span>du premier fichier à la version publique</span></div>
+      <div class="xp-fact"><b>85</b><span>commits</span></div>
+      <div class="xp-fact"><b>5&nbsp;050</b><span>lignes de Swift</span></div>
+      <div class="xp-fact"><b>8</b><span>apps d'appel reconnues</span></div>
+    </div>
+
+    <div class="article-body">
+
+      <h2>Genèse</h2>
+
+      <p>Le premier essai s'appelait meet-recorder. Écrit en Python avant avril 2026, il interrogeait Google Agenda toutes les minutes et proposait d'enregistrer cinq minutes avant chaque visio. Il capturait quatre flux avec ffmpeg&nbsp;: le micro, le son du Mac à travers BlackHole, une vidéo de l'écran entier et la webcam. La transcription passait par l'API Whisper d'OpenAI.</p>
+
+      <p>Pour savoir qui parle, il cherchait, une image par seconde, le contour bleu que Google Meet dessine autour de la personne qui a la parole. L'écran était découpé en trois colonnes fixes, et la colonne qui s'allumait donnait l'orateur.</p>
+
+      <p>Il ne tournait que chez son auteur, qui devait installer Homebrew, créer à la main un appareil audio multi-sorties dans les réglages du Mac, configurer un projet Google Cloud pour lire l'agenda et fournir une clé OpenAI. Il a été archivé le 8&nbsp;avril 2026.</p>
+
+      <p>Six mois plus tard, CallRecorder repart de tout ce qu'on peut retirer. L'agenda, parce que macOS signale quand une app prend le micro. BlackHole, parce qu'un «&nbsp;process tap&nbsp;» capte le son d'une seule application. La vidéo, parce que deux pistes audio séparent déjà ma voix de celle des autres. Le cloud pour la transcription, parce que whisper.cpp tourne sur la puce du Mac.</p>
+
+      <figure class="xp-figure">
+        <div class="cr-cols">
+          <div class="cr-col">
+            <span class="xp-label">meet-recorder · avant avril 2026</span>
+            <div class="cr-track"><b>Micro</b><div class="cr-wave" data-seed="1"></div></div>
+            <div class="cr-track"><b>Tout le son du Mac, via BlackHole</b><div class="cr-wave" data-seed="2"></div></div>
+            <div class="cr-track"><b>Écran entier, 15 images par seconde</b><div class="cr-film"></div></div>
+            <div class="cr-track"><b>Webcam, 720p</b><div class="cr-film"></div></div>
+            <ul class="cr-deps"><li>Homebrew et ffmpeg</li><li>BlackHole et un appareil multi-sorties</li><li>Un projet Google Cloud</li><li>Une clé OpenAI</li></ul>
+          </div>
+          <div class="cr-col">
+            <span class="xp-label">CallRecorder · octobre 2026</span>
+            <div class="cr-track"><b>me.m4a · mon micro</b><div class="cr-wave" data-turns="me"></div></div>
+            <div class="cr-track cr-them"><b>them.m4a · le son de l'app d'appel, rien d'autre</b><div class="cr-wave" data-turns="them"></div></div>
+            <div class="cr-track"><b>Une capture de la fenêtre d'appel toutes les 30 secondes</b><div class="cr-snaps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <ul class="cr-deps"><li>Un .dmg, ou une ligne dans le terminal</li><li>Un appel de test pour donner les autorisations</li></ul>
+          </div>
+        </div>
+        <figcaption>Ce qui est enregistré pendant un appel, avant et après. Les deux pistes de CallRecorder alternent&nbsp;: quand je parle, l'autre piste se tait. La transcription peut ainsi écrire «&nbsp;moi&nbsp;» et «&nbsp;les autres&nbsp;» sans analyser les voix.</figcaption>
+      </figure>
+
+      <h2>Essais et erreurs</h2>
+
+      <ul class="xp-trials">
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Retiré</span>
+          <div>
+            <h3>Le micro traité par macOS, pour retirer l'écho</h3>
+            <p>Ajouté à 19&nbsp;h&nbsp;34, retiré à 19&nbsp;h&nbsp;41. Le traitement de la voix de macOS coupe la capture du son des autres apps, étouffe le micro, et ne retire pas l'écho qu'elles produisent.</p>
+            <p class="xp-proof">23 oct. · 964e0dc → 8ef9423</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Reporté</span>
+          <div>
+            <h3>Reconnaître chaque interlocuteur</h3>
+            <p>Le contour bleu ne marchait que sur Meet et sur une grille fixe. La première version s'en tient à «&nbsp;moi&nbsp;» et «&nbsp;les autres&nbsp;», que les deux pistes donnent déjà. L'idée du contour reste une piste pour séparer plusieurs voix sur la piste des autres.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Gardé</span>
+          <div>
+            <h3>Un appel de test au lieu d'un assistant pas à pas</h3>
+            <p>Le premier assistant demandait toutes les autorisations d'un coup, sans contexte. Le second lance un faux appel, et macOS les demande au moment où elles servent, comme le font Zoom ou Meet.</p>
+            <p class="xp-proof">22-23 oct. · 80a4a57 → 1eb016f</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict open">En suspens</span>
+          <div>
+            <h3>Signer l'app</h3>
+            <p>Sans compte Apple Developer, l'app n'est pas notarisée et macOS la bloque au premier lancement. La signature du .dmg a été abandonnée, et la fenêtre d'installation explique comment passer outre. Elle a connu 24 versions en une journée.</p>
+            <p class="xp-proof">22 oct. · 51a1022</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Gardé</span>
+          <div>
+            <h3>Laisser Claude qualifier l'appel</h3>
+            <p>Après l'appel, Claude consulte l'agenda et les mails en lecture seule, ainsi que les captures de la fenêtre, pour trouver un titre, les participants et le vocabulaire à donner à Whisper. Il n'a le droit de rattacher un rendez-vous que sur une preuve.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2>Chronologie</h2>
+
+      <ol class="xp-timeline">
+        <li><time>avant avr.</time><span>meet-recorder en Python&nbsp;: agenda, BlackHole, quatre flux, API OpenAI.</span></li>
+        <li class="k-fail"><time>8 avr.</time><span>Archivé.</span></li>
+        <li class="k-gap"><time></time><span>Six mois sans enregistreur.</span></li>
+        <li><time>22 oct., 13 h</time><span>Spécification et premier code Swift.</span></li>
+        <li class="k-ship"><time>22 oct., 22 h</time><span>Premier commit, déjà complet&nbsp;: enregistrement, transcription, qualification par Claude, serveur MCP.</span></li>
+        <li class="k-fail"><time>22 oct., 23 h</time><span>Installation en une ligne. La signature du .dmg est abandonnée.</span></li>
+        <li class="k-pivot"><time>23 oct., 0 h 39</time><span>L'assistant est refait autour d'un appel de test.</span></li>
+        <li><time>23 oct.</time><span>24 versions de la fenêtre d'installation.</span></li>
+        <li class="k-fail"><time>23 oct., 19 h</time><span>Le micro anti-écho, essayé puis retiré sept minutes plus tard.</span></li>
+        <li><time>23 oct., 23 h</time><span>Journal d'usage local et commande <code>calls usage</code>.</span></li>
+        <li class="k-ship"><time>24 oct., 20 h</time><span>Distribution publique&nbsp;: page de téléchargement, mises à jour automatiques, versions 0.3.0 puis 0.3.1.</span></li>
+        <li><time>24 oct., 20 h</time><span>Slack, Webex et Loom reconnus.</span></li>
+      </ol>
+      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>abandon</span></p>
+
+      <h2>Ce que ça a donné</h2>
+
+      <p>L'app est publique depuis le 24&nbsp;octobre 2026. Elle reconnaît Zoom, Teams, Meet dans le navigateur, FaceTime, WhatsApp, Slack, Webex et Loom, sur les Mac Apple Silicon. Le code reste privé&nbsp;; la page, les binaires et les mises à jour sont publics.</p>
+
+      <p>Elle n'a pour l'instant servi qu'à des appels de test&nbsp;: six enregistrements en trois jours, aucun utilisateur extérieur connu. Le journal d'usage ajouté le 23&nbsp;octobre comptera la suite, les appels captés, ratés, transcrits et relus, sans rien envoyer hors du Mac.</p>
+
+      <ul class="xp-deliverables">
+        <li><span>App dans la barre des menus</span><span>.dmg de 4&nbsp;Mo</span></li>
+        <li><span>Commande <code>calls</code></span><span>list, transcribe, keep, delete, doctor, usage</span></li>
+        <li><span>Serveur MCP pour Claude</span><span>8 outils</span></li>
+        <li><span><a href="https://gildasfremont.github.io/callrecorder-site/" target="_blank" rel="noopener">Page de téléchargement</a></span><span>publique</span></li>
+      </ul>
+
+    </div>
+  </article>
+<script>
+(function(){
+  // Deux pistes en alternance : quand l'une parle, l'autre se tait.
+  var turns = [[0,9,'me'],[9,21,'them'],[21,27,'me'],[27,40,'them'],[40,52,'me'],[52,64,'them']];
+  function rnd(s){ return function(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
+  document.querySelectorAll('.cr-wave').forEach(function(el){
+    var r = rnd(+el.dataset.seed || (el.dataset.turns === 'me' ? 3 : 7));
+    for (var i = 0; i < 64; i++) {
+      var on = true;
+      if (el.dataset.turns) {
+        on = turns.some(function(t){ return i >= t[0] && i < t[1] && t[2] === el.dataset.turns; });
+      }
+      var h = on ? 20 + r() * 80 : 4;
+      var bar = document.createElement('i');
+      bar.style.height = h + '%';
+      if (!on) bar.style.opacity = '.25';
+      el.appendChild(bar);
+    }
+  });
+})();
+</script>
+
+    <nav class="xp-nav">
+      <a href="/experimental"><small>← Tous les projets</small>Expérimental</a>
+      <a class="next" href="/experimental/copropriete"><small>Suivant →</small>Comptes de copropriété</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

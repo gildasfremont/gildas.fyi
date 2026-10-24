@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les comptes d'une copropriété — Gildas Frémont</title>
+  <meta name="description" content="Un conseil syndical bénévole reconstitue des comptes vérifiables à partir des pièces brutes du syndic : chaque chiffre est calculé, sourcé, mis en cache et recontrôlé.">
+  <link rel="canonical" href="https://gildas.fyi/experimental/copropriete">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Les comptes d'une copropriété — Gildas Frémont">
+  <meta property="og:description" content="Un conseil syndical bénévole reconstitue des comptes vérifiables à partir des pièces brutes du syndic : chaque chiffre est calculé, sourcé, mis en cache et recontrôlé.">
+  <meta property="og:url" content="https://gildas.fyi/experimental/copropriete">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.co-chain { list-style: none; display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; counter-reset: s; }
+.co-chain li { position: relative; padding: 0.6rem 0.5rem 0.6rem 0; font-size: 13px; color: var(--mid); line-height: 1.4; }
+.co-chain li::before { counter-increment: s; content: counter(s); display: block; width: 1.4rem; height: 1.4rem; line-height: 1.4rem; text-align: center; border-radius: 50%; border: 1px solid var(--black); font-size: 11px; color: var(--black); margin-bottom: 0.4rem; background: var(--white); position: relative; z-index: 1; }
+.co-chain li::after { content: ''; position: absolute; top: calc(0.6rem + 0.7rem); left: 1.4rem; right: 0; height: 1px; background: var(--subtle); }
+.co-chain li:last-child::after { display: none; }
+.co-chain b { display: block; font-weight: 600; color: var(--black); font-size: 13px; }
+.co-chain code { font-family: var(--xp-mono); font-size: 11px; color: var(--light); }
+.co-card { margin-top: 1.25rem; border: 1px solid var(--border); border-radius: 4px; padding: 0.9rem 1rem; }
+.co-row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.3rem 0; border-bottom: 1px dotted var(--border); font-variant-numeric: tabular-nums; }
+.co-row:last-of-type { border-bottom: none; }
+.co-row sup { color: rgb(var(--xp-live)); font-size: 10px; margin-left: 0.15rem; }
+.co-total { font-weight: 600; color: var(--black); border-top: 1px solid var(--black); margin-top: 0.3rem; padding-top: 0.45rem; }
+.co-sources { list-style: none; margin-top: 0.7rem; font-size: 12px; color: var(--light); }
+.co-sources li span { color: rgb(var(--xp-live)); margin-right: 0.3rem; }
+.co-alert { margin-top: 0.8rem; padding: 0.5rem 0.7rem; border-radius: 3px; background: rgba(var(--xp-pause), .1); color: var(--mid); font-size: 12px; }
+.co-alert code { font-family: var(--xp-mono); font-size: 11px; }
+.co-bars { display: grid; grid-template-columns: 7rem 1fr 2rem; gap: 0.35rem 0.6rem; align-items: center; font-size: 13px; }
+.co-bars i { display: block; height: 8px; background: var(--black); border-radius: 1px; }
+.co-bars span:nth-child(3n) { text-align: right; color: var(--light); font-variant-numeric: tabular-nums; }
+@media (max-width: 600px) {
+  .co-chain { grid-template-columns: 1fr 1fr; }
+  .co-chain li::after { display: none; }
+}
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-copropriete">
+
+  <nav class="lang-toggle">
+    <a href="/experimental">← Expérimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · septembre 2026</p>
+      <h1>Comptes de copropriété</h1>
+      <p class="article-page-subtitle">Reconstituer les comptes à partir des pièces du syndic, chiffre par chiffre</p>
+      <p class="article-meta">23 septembre au 21 octobre 2026 · Next.js, Python · écrit avec Claude Code · outil privé</p>
+    </header>
+
+    <div class="xp-thesis">
+      <span class="xp-thesis-label">Le pari</span>
+      <p>Un conseil syndical bénévole peut reconstituer seul, à partir des pièces brutes du syndic, des comptes que n'importe qui peut vérifier. À une condition&nbsp;: que chaque chiffre soit calculé depuis des sources citées, mis en cache, recontrôlé automatiquement, et que chaque action à mener soit une issue qu'on peut suivre.</p>
+    </div>
+
+    <div class="xp-facts">
+      <div class="xp-fact"><b>1&nbsp;520</b><span>pièces du syndic relevées et passées en texte</span></div>
+      <div class="xp-fact"><b>10</b><span>exercices, de 2017 à 2026</span></div>
+      <div class="xp-fact"><b>59</b><span>contrôles automatiques</span></div>
+      <div class="xp-fact"><b>433</b><span>commits en 17 jours actifs</span></div>
+    </div>
+
+    <div class="article-body">
+
+      <h2>Genèse</h2>
+
+      <p>Une copropriété en Seine-Saint-Denis, un changement de syndic, et une réclamation à chiffrer contre l'ancien. Il restait le grand livre tenu par l'ancien et l'espace documents du nouveau, plus de mille pièces, à partir desquelles il fallait reconstituer les comptes sans se fier au grand livre.</p>
+
+      <p>La première journée a servi à tout relever&nbsp;: 1&nbsp;520 documents, leurs métadonnées, leur texte, en OCR quand il le fallait. Puis à pointer, pièce par pièce, les dépenses de chaque exercice. 91 lignes sur 92 ont trouvé leur justificatif en 2023, 91 sur 95 en 2024.</p>
+
+      <p>Le reste a consisté à rendre ce travail vérifiable par les autres copropriétaires.</p>
+
+      <h2>La méthode de calcul</h2>
+
+      <p>Le 3&nbsp;octobre, un commit a fixé la méthode pour tous les chiffres reconstitués&nbsp;: calcul gardé, résultat en cache, chaque chiffre retraçable.</p>
+
+      <figure class="xp-figure">
+        <ol class="co-chain">
+          <li><b>Les entrées</b>une ligne par valeur, avec sa source <code>compta/*.csv</code></li>
+          <li><b>La méthode</b>une fonction commentée <code>calculer…()</code></li>
+          <li><b>Le cache</b>un script lancé à la main écrit le résultat</li>
+          <li><b>Le contrôle</b>refait le calcul, signale un cache périmé</li>
+          <li><b>La page</b>montre les composantes et leurs sources</li>
+          <li><b>Le README</b>dit quelle commande relancer</li>
+        </ol>
+        <div class="co-card">
+          <span class="xp-label">Solde bancaire de l'exercice · exemple</span>
+          <div class="co-row"><span>Solde à l'ouverture</span><span>12&nbsp;480,00<sup>1</sup></span></div>
+          <div class="co-row"><span>Appels de fonds encaissés</span><span>+&nbsp;48&nbsp;210,50<sup>2</sup></span></div>
+          <div class="co-row"><span>Dépenses pointées</span><span>−&nbsp;51&nbsp;902,17<sup>3</sup></span></div>
+          <div class="co-row co-total"><span>Solde à la clôture</span><span>8&nbsp;788,33</span></div>
+          <ul class="co-sources">
+            <li><span>1</span>Relevé bancaire de clôture, page 1</li>
+            <li><span>2</span>Grand livre, compte des copropriétaires, total des crédits</li>
+            <li><span>3</span>Pointage pièce par pièce, 92 lignes, dont une sans justificatif</li>
+          </ul>
+          <p class="co-alert">Contrôle de fraîcheur&nbsp;: le cache a été calculé avant la dernière pièce ajoutée. Relancer <code>npx tsx scripts/soldes-exercices.ts</code></p>
+        </div>
+        <figcaption>La forme que prend un chiffre sur le site. Les montants de cet exemple sont fictifs&nbsp;; la structure est celle de l'outil. Une valeur déduite par l'outil et non arrêtée par le syndic porte la mention «&nbsp;non arrêté par le syndic&nbsp;».</figcaption>
+      </figure>
+
+      <h2>Essais et erreurs</h2>
+
+      <ul class="xp-trials">
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Retiré</span>
+          <div>
+            <h3>Une file de commandes GitHub jouées sur le Mac</h3>
+            <p>Les conversations avec Claude déposaient des commandes dans une file, qu'un script exécutait ensuite sur la machine. Mise en place le 24&nbsp;septembre, abandonnée le lendemain&nbsp;: les conversations lancent désormais git et gh directement.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict kept">Restructuré</span>
+          <div>
+            <h3>Des issues rangées en objectifs, problèmes et solutions</h3>
+            <p>Les premières issues, posées à plat, ont été réorganisées en arbre le 25&nbsp;septembre. Chaque solution porte une action, un canal, un critère «&nbsp;terminé quand&nbsp;» et un seul statut. Le site lit leur contenu pour afficher l'avancement, et le tableau de suivi se déduit des issues sans jamais se modifier à la main.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Retiré</span>
+          <div>
+            <h3>Une version réservée au conseil, avec les noms masqués</h3>
+            <p>Le site n'existe plus qu'en une version, derrière un mot de passe, où seuls les numéros de sécurité sociale et les IBAN sont masqués.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict dropped">Retiré</span>
+          <div>
+            <h3>Une conversation chargée de surveiller les autres</h3>
+            <p>La «&nbsp;tour de contrôle&nbsp;» chargée de relire l'avancement n'a jamais tourné. Le 20&nbsp;octobre, le protocole a été nettoyé de tout ce qui ne se pratiquait pas, et la page des contrôles montre désormais les retards.</p>
+          </div>
+        </li>
+        <li class="xp-trial">
+          <span class="xp-verdict open">Ouvert</span>
+          <div>
+            <h3>Les exercices anciens</h3>
+            <p>2023 à 2026 sont pointés, alors que 2017 à 2022 reposent sur des extractions automatiques et un OCR qui reste à relire, ce que le site signale sur chaque page concernée.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2>Les 91 actions, par objectif</h2>
+
+      <figure class="xp-figure">
+        <div class="co-bars">
+          <span>Trésorerie</span><i style="width:100%"></i><span>46</span>
+          <span>Légalité</span><i style="width:100%"></i><span>46</span>
+          <span>Recouvrement</span><i style="width:84.8%"></i><span>39</span>
+          <span>Salubrité</span><i style="width:65.2%"></i><span>30</span>
+          <span>Valorisation</span><i style="width:43.5%"></i><span>20</span>
+        </div>
+        <figcaption>Une issue peut servir plusieurs objectifs. Au 24 octobre, 16 actions attendent le syndic, 7 sont bloquées, 39 sont à faire.</figcaption>
+      </figure>
+
+      <h2>Chronologie</h2>
+
+      <ol class="xp-timeline">
+        <li class="k-ship"><time>23 sept.</time><span>Premier commit. 1&nbsp;520 pièces relevées, rapprochement des dépenses de 2017 à 2026.</span></li>
+        <li><time>24 sept.</time><span>Dossier de réclamation chiffré de 14 pages, généré par script.</span></li>
+        <li class="k-pivot"><time>25 sept.</time><span>Les issues passent en arbre. La file de commandes est abandonnée. Première version du site.</span></li>
+        <li><time>28-29 sept.</time><span>Eau et compteurs par lot, fournisseurs, devis, assurance reliée aux sinistres.</span></li>
+        <li><time>1er oct.</time><span>Les noms propres sortent du code et passent dans les données.</span></li>
+        <li class="k-fail"><time>2 oct.</time><span>La section «&nbsp;Caisse&nbsp;» est supprimée et répartie ailleurs.</span></li>
+        <li class="k-pivot"><time>3 oct.</time><span>La règle des six étapes&nbsp;: calcul gardé, cache, chiffre retraçable.</span></li>
+        <li><time>7 oct.</time><span>Journée de 58 commits. Constat&nbsp;: l'eau répartie par l'ancien syndic égale les factures sur 2017-2025.</span></li>
+        <li class="k-gap"><time>8-18 oct.</time><span>Pause.</span></li>
+        <li class="k-ship"><time>19-20 oct.</time><span>Export d'un dossier partagé avec les copropriétaires, filtré par une liste blanche. Calendrier .ics.</span></li>
+      </ol>
+      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>abandon</span></p>
+
+      <h2>Ce que ça a donné</h2>
+
+      <p>Un site en lecture seule, recalculé à chaque déploiement et toutes les heures, avec un bandeau d'alerte quand un contrôle échoue. La partie double est reconstituée pièce par pièce, sans reprendre le grand livre du syndic, qui ne sert que d'étalon. Des courriers, un dossier de réclamation, un dossier d'assemblée générale et un dépôt partagé avec les autres copropriétaires.</p>
+
+      <p>Ce qui n'est pas encore établi&nbsp;: combien les autres copropriétaires s'en servent.</p>
+
+      <ul class="xp-deliverables">
+        <li><span>Site de suivi</span><span>Next.js, privé</span></li>
+        <li><span>Contrôles automatiques</span><span>59 règles</span></li>
+        <li><span>Courriers et dossier de réclamation</span><span>20 courriers, 1 PDF de 14 pages</span></li>
+        <li><span>Dossier partagé</span><span>export filtré, sans données personnelles</span></li>
+      </ul>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/experimental/callrecorder"><small>← Précédent</small>CallRecorder</a>
+      <a class="next" href="/experimental/recherche-emploi"><small>Suivant →</small>Recherche d'emploi</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
