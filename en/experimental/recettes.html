@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recettes — Gildas Frémont</title>
+  <meta name="description" content="One dish for two people with different needs: a recipe book that became, in a single day, an app that works out each person's share.">
+  <link rel="canonical" href="https://gildas.fyi/en/experimental/recettes">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/recettes">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/recettes">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/recettes">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Recettes — Gildas Frémont">
+  <meta property="og:description" content="One dish for two people with different needs: a recipe book that became, in a single day, an app that works out each person's share.">
+  <meta property="og:url" content="https://gildas.fyi/en/experimental/recettes">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/en/experimental/context/recettes.md" title="Full write-up">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.re-plates { margin: 2rem 0 !important; padding: 1.25rem 1.25rem 1rem; border: 1px solid var(--border); border-radius: 10px; background: #fbf8f4; }
+.re-plates .dish { font-size: 13px; color: var(--mid); margin-bottom: 1rem; }
+.re-plates .dish b { color: var(--black); font-weight: 600; }
+.re-row { display: grid; grid-template-columns: 1fr 1fr 0.7fr; gap: 1.25rem; align-items: start; }
+.re-plate svg { display: block; width: 100%; max-width: 170px; height: auto; margin: 0 auto 0.6rem; }
+.re-plate .who { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; font-size: 14px; color: var(--black); font-weight: 600; }
+.re-plate .who select { font: inherit; font-size: 12px; font-weight: 400; color: var(--mid); border: 1px solid var(--border); border-radius: 3px; background: var(--white); padding: 0 0.2rem; }
+.re-plate .res { white-space: nowrap; font-size: 13px; color: #a0573c; margin: 0.15rem 0 0.5rem; font-variant-numeric: tabular-nums; }
+.re-plate label.w { display: flex; justify-content: space-between; font-size: 12px; color: var(--mid); }
+.re-plate input[type=range] { width: 100%; accent-color: #a0573c; }
+.re-plate fieldset { border: none; margin-top: 0.4rem; }
+.re-plate legend { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); margin-bottom: 0.15rem; }
+.re-plate fieldset label { display: flex; align-items: center; gap: 0.35rem; font-size: 12.5px; color: var(--mid); line-height: 1.7; cursor: pointer; }
+.re-plate fieldset label span { margin-left: auto; color: var(--light); font-variant-numeric: tabular-nums; }
+.re-plate input[type=radio] { accent-color: #a0573c; }
+.re-doggy { text-align: center; padding-top: 0.6rem; }
+.re-doggy svg { display: block; width: 72px; height: auto; margin: 0 auto 0.5rem; }
+.re-doggy b { display: block; font-size: 20px; font-weight: 600; color: var(--black); font-variant-numeric: tabular-nums; }
+.re-doggy span { font-size: 12px; color: var(--light); line-height: 1.4; display: block; }
+.re-shot img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.re-book { margin: 1.5rem 0 2rem; padding: 1.5rem 1.6rem; background: #f8f4ee; border-radius: 4px; max-width: 36em; }
+.re-book p { font-size: 16px; line-height: 1.65; color: #3a332c; margin: 0 0 0.8rem !important; }
+.re-book p:last-child { margin-bottom: 0 !important; }
+.re-book .xp-kicker { color: #a0573c; margin-bottom: 0.7rem; }
+.re-day { position: relative; margin: 2.2rem 0 2.8rem; height: 52px; }
+.re-day .axis { position: absolute; left: 0; right: 0; top: 24px; height: 1px; background: var(--subtle); }
+.re-day .band { position: absolute; top: 14px; height: 21px; border-radius: 3px; background: #a0573c; min-width: 4px; }
+.re-day .lab { position: absolute; top: -6px; font-size: 12px; color: var(--mid); white-space: nowrap; }
+.re-day .tick { position: absolute; top: 38px; font-size: 11px; color: var(--light); transform: translateX(-50%); font-variant-numeric: tabular-nums; }
+.re-pair { display: grid; grid-template-columns: 2.2fr 1fr; gap: 0.9rem; align-items: start; margin: 2rem 0; }
+.re-pair figure { margin: 0 !important; }
+@media (max-width: 600px) {
+  .re-plate .res { font-size: 12px; }
+  .re-row { grid-template-columns: 1fr 1fr; }
+  .re-doggy { grid-column: 1 / -1; display: flex; align-items: center; gap: 0.8rem; text-align: left; padding-top: 0; }
+  .re-doggy svg { margin: 0; width: 52px; }
+  .re-pair { grid-template-columns: 1fr; }
+  .re-day .lab { display: none; }
+}
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-recettes">
+
+  <nav class="lang-toggle">
+    <a href="/en/experimental">← Experimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · June 30, 2026</p>
+      <h1>Splitting one dish between two people with different needs</h1>
+      <p class="article-page-subtitle">One recipe, two plates: a recipe book that became an app in a day</p>
+      <p class="article-meta">Online since June 30, 2026 · HTML, CSS and JavaScript, no dependencies · built with Claude Code · <a href="https://recettes-gilt.vercel.app" target="_blank" rel="noopener">open the app (in French)</a> · <a href="/en/experimental/context/recettes.md">full write-up (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>You cook a single dish for two people. One of them wants to lose a little weight, the other to stay as they are, and their plates shouldn't hold the same amount. The recipe book, kept in a Google Doc, gave the ingredients for two without saying how much to serve each person.</p>
+
+      <figure class="re-plates" id="re-plates">
+        <p class="dish"><b>Whole roast sea bream, fennel and lemon</b> · the whole dish, about 560&nbsp;kcal</p>
+        <div class="re-row">
+          <div class="re-plate" data-p="a" data-sex="f" data-age="38" data-h="166">
+            <svg viewBox="0 0 140 140" aria-hidden="true"><circle cx="70" cy="70" r="66" fill="#fff" stroke="#e6ded2" stroke-width="2"/><circle cx="70" cy="70" r="50" fill="#f6f1ea"/><path class="food" fill="#c4704f"/></svg>
+            <div class="who">Her <select data-k="goal"><option value="1" selected>lose weight</option><option value="0">maintain</option></select></div>
+            <p class="res"></p>
+            <label class="w">Target weight <span data-out></span></label>
+            <input type="range" min="45" max="110" value="62" data-k="w" aria-label="Target weight, her">
+            <fieldset><legend>Dessert</legend>
+              <label><input type="radio" name="da" value="0" checked> None</label>
+              <label><input type="radio" name="da" value="80"> Plain yogurt <span>+80</span></label>
+              <label><input type="radio" name="da" value="230"> Greek yogurt, honey, pistachios <span>+230</span></label>
+            </fieldset>
+          </div>
+          <div class="re-plate" data-p="b" data-sex="m" data-age="40" data-h="180">
+            <svg viewBox="0 0 140 140" aria-hidden="true"><circle cx="70" cy="70" r="66" fill="#fff" stroke="#e6ded2" stroke-width="2"/><circle cx="70" cy="70" r="50" fill="#f6f1ea"/><path class="food" fill="#c4704f"/></svg>
+            <div class="who">Him <select data-k="goal"><option value="1">lose weight</option><option value="0" selected>maintain</option></select></div>
+            <p class="res"></p>
+            <label class="w">Target weight <span data-out></span></label>
+            <input type="range" min="45" max="110" value="80" data-k="w" aria-label="Target weight, him">
+            <fieldset><legend>Dessert</legend>
+              <label><input type="radio" name="db" value="0" checked> None</label>
+              <label><input type="radio" name="db" value="80"> Plain yogurt <span>+80</span></label>
+              <label><input type="radio" name="db" value="230"> Greek yogurt, honey, pistachios <span>+230</span></label>
+            </fieldset>
+          </div>
+          <div class="re-doggy">
+            <svg viewBox="0 0 80 70" aria-hidden="true"><path d="M10 26 L70 26 L64 64 L16 64 Z" fill="#fff" stroke="#c9bfb2" stroke-width="2"/><path d="M14 26 L24 8 L56 8 L66 26" fill="none" stroke="#c9bfb2" stroke-width="2"/><rect class="fill" x="17" y="62" width="46" height="0" fill="#c4704f" opacity=".75"/></svg>
+            <div><b data-doggy>0</b><span>kcal of the dish<br>in the doggy bag</span></div>
+          </div>
+        </div>
+        <figcaption>The app's two default profiles, on a dish from the collection. Here, the split follows the ratio of each person's needs, computed with the Mifflin-St Jeor equation, light activity, and two kilos a month for whoever wants to lose weight; the app adds its own guidelines for lunch and dinner. Dessert counts toward the share of whoever has it: their portion of the dish shrinks by as much, and the rest goes in the doggy bag, as in the app.</figcaption>
+      </figure>
+
+      <p>The app runs this calculation at the bottom of every recipe. It gives each person's share in calories and as a percentage of the dish, then lets you build the meal with a dessert, sides and the day's drinks.</p>
+
+      <figure class="re-shot">
+        <img src="/img/experimental/recettes-repartition.jpg" alt="The block that splits the dish: two profiles, their calories and their share of the dish, then the meal builder" width="1400" height="763" loading="lazy">
+        <figcaption>The "La bonne quantité pour chacun" block (the right amount for each person) in the live app, with its default profiles. Tapping the split lets you set age, target weight, height, activity and goal.</figcaption>
+      </figure>
+
+      <h2>The book's rules</h2>
+
+      <p>The app has its own principles page, which explains how the book was thought out.</p>
+
+      <div class="re-book">
+        <span class="xp-kicker">The app's "Principes" page, summarized</span>
+        <p>One recipe, two plates. Quantities are for two, and the split happens at serving time: at lunch, the smaller share is around 40% of the dish; at dinner, around a third, rounded out with a yogurt in the evening.</p>
+        <p>Everything is weighed raw and dry, because pasta more than doubles once cooked and would throw off the calculation.</p>
+        <p>Losing weight means holding a moderate deficit over time. A kilo of fat is worth about 7,700&nbsp;kcal.</p>
+        <p>Oil is measured to the gram and goes where you can taste it, raw, as a finish. A tablespoon is 120&nbsp;kcal.</p>
+        <p>Calories go where they give the most pleasure, and flavor comes from what costs almost nothing: salt, lemon, garlic, herbs, sumac, browning pushed further.</p>
+      </div>
+
+      <h2>June 30</h2>
+
+      <div class="re-day" aria-hidden="true">
+        <div class="axis"></div>
+        <div class="band" style="left:9.5%;width:1.5%"></div>
+        <div class="band" style="left:37.6%;width:5.1%"></div>
+        <div class="band" style="left:74.2%;width:1.7%"></div>
+        <span class="lab" style="left:9.5%">the site</span>
+        <span class="lab" style="left:37.6%">profiles, meal builder</span>
+        <span class="lab" style="left:66%">per-profile calculation</span>
+        <span class="tick" style="left:9.5%">2:17 a.m.</span>
+        <span class="tick" style="left:37.6%">9:02 a.m.</span>
+        <span class="tick" style="left:75.9%">6:13 p.m.</span>
+      </div>
+
+      <p>The first commit lands at 2:17 a.m.: a static site, with no framework and no build step, the recipes kept apart in a data file. By 2:39, every recipe says what goes with it.</p>
+
+      <p>In the morning, between 9 and 10:16 a.m., the profiles become adjustable, the doggy bag and drinks make it onto the recipe cards, and the recipes move into a file you can edit without touching the code. The profiles leave their own tab for the bottom of each recipe, where they are needed, and the meal builder arrives.</p>
+
+      <p>Late in the afternoon, after presets and then a simple choice of sex and kilos to lose per month, the profiles come to be set by objective criteria, and the calculation switches to the Mifflin-St Jeor equation. The cooking know-how and the shopping substitutes, until then in sections of their own, are folded into the ingredients and steps, where you read them while cooking: 351 fewer lines. The twelfth and last commit, at 6:13 p.m., adds a floating bar.</p>
+
+      <div class="re-pair">
+        <figure class="re-shot">
+          <img src="/img/experimental/recettes-recette.jpg" alt="A recipe card with the calories of the whole dish and suggested sides" width="1400" height="941" loading="lazy">
+          <figcaption>A recipe card, with what goes with the dish and its calories.</figcaption>
+        </figure>
+        <figure class="re-shot">
+          <img src="/img/experimental/recettes-mobile.jpg" alt="The same recipe card on a phone" width="700" height="1515" loading="lazy">
+          <figcaption>On a phone, next to the stove.</figcaption>
+        </figure>
+      </div>
+
+      <p>The app holds some forty dishes from southern Europe and the Levant, from lunches to winter stews. Settings stay on the device, and nothing is sent anywhere.</p>
+
+    </div>
+  </article>
+<script>
+(function(){
+  var box = document.getElementById('re-plates');
+  if (!box) return;
+  var DISH = 560;
+  function need(el){
+    var w = +el.querySelector('[data-k="w"]').value, h = +el.dataset.h, age = +el.dataset.age;
+    var bmr = 10 * w + 6.25 * h - 5 * age + (el.dataset.sex === 'm' ? 5 : -161);
+    var goal = +el.querySelector('[data-k="goal"]').value;
+    return bmr * 1.375 - goal * (2 * 7700 / 30);
+  }
+  function wedge(frac){
+    var cx = 70, cy = 70, r = 46;
+    if (frac <= 0.001) return '';
+    if (frac >= 0.999) return 'M70 24 A46 46 0 1 1 69.99 24 Z';
+    var a = frac * 2 * Math.PI, x = cx + r * Math.sin(a), y = cy - r * Math.cos(a);
+    return 'M70 70 L70 24 A46 46 0 ' + (frac > 0.5 ? 1 : 0) + ' 1 ' + x.toFixed(2) + ' ' + y.toFixed(2) + ' Z';
+  }
+  function render(){
+    var plates = box.querySelectorAll('.re-plate'), needs = [], doggy = 0;
+    plates.forEach(function(p){ needs.push(need(p)); });
+    var total = needs[0] + needs[1];
+    plates.forEach(function(p, i){
+      var share = needs[i] / total, target = share * DISH;
+      var d = +p.querySelector('input[type=radio]:checked').value;
+      var part = Math.max(0, target - d);
+      doggy += target - part;
+      p.querySelector('.food').setAttribute('d', wedge(part / DISH));
+      p.querySelector('.res').textContent = Math.round(part) + ' kcal · ' + Math.round(100 * part / DISH) + '%';
+      p.querySelector('[data-out]').textContent = p.querySelector('[data-k="w"]').value + ' kg';
+    });
+    box.querySelector('[data-doggy]').textContent = Math.round(doggy);
+    var hgt = Math.min(34, 34 * doggy / 300);
+    var f = box.querySelector('.re-doggy .fill'); f.setAttribute('y', 62 - hgt); f.setAttribute('height', hgt);
+  }
+  box.addEventListener('input', render);
+  box.addEventListener('change', render);
+  render();
+})();
+</script>
+
+    <nav class="xp-nav">
+      <a href="/en/experimental/futurun"><small>← Previous</small>Futurun</a>
+      <a class="next" href="/en/experimental/swisser"><small>Next →</small>Swisser</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/resume-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Resume ↓</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

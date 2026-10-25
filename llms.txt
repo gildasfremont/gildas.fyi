@@ -23,7 +23,7 @@ Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équi
 - Huit cas produit et un projet perso (FR) : https://gildas.fyi/portfolio
 
 ## Projets expérimentaux
-Outils construits avec Claude Code pour ses propres problèmes, chacun avec un dossier complet en Markdown. Index : https://gildas.fyi/experimental/llms.txt
+Outils construits avec Claude Code pour ses propres problèmes, chacun avec un dossier complet en Markdown. Index : https://gildas.fyi/experimental/llms.txt (en anglais : https://gildas.fyi/en/experimental/llms.txt)
 - CallRecorder, enregistrer et transcrire ses appels sur Mac : https://gildas.fyi/experimental/contexte/callrecorder.md
 - Comptes de copropriété reconstitués et vérifiables : https://gildas.fyi/experimental/contexte/copropriete.md
 - Recherche d'emploi tenue par Claude : https://gildas.fyi/experimental/contexte/recherche-emploi.md

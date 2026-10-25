@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commentaire — Gildas Frémont</title>
+  <meta name="description" content="Pinning a remark to the passage you're reading and letting an AI answer in the margin. An AI co-reader built in 21 hours.">
+  <link rel="canonical" href="https://gildas.fyi/en/experimental/commentaire">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/commentaire">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/commentaire">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/commentaire">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Commentaire — Gildas Frémont">
+  <meta property="og:description" content="Pinning a remark to the passage you're reading and letting an AI answer in the margin. An AI co-reader built in 21 hours.">
+  <meta property="og:url" content="https://gildas.fyi/en/experimental/commentaire">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/en/experimental/context/commentaire.md" title="Full write-up">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.cm-versus { display: grid; grid-template-columns: 1fr 1.7fr; gap: 1rem; }
+.cm-pane { border: 1px solid var(--border); border-radius: 8px; background: var(--white); padding: 1rem; }
+.cm-pane > .xp-kicker { margin-bottom: 0.8rem; }
+.cm-bubble { font-size: 13px; line-height: 1.5; color: var(--dark); padding: 0.5rem 0.65rem; border-radius: 10px; margin-bottom: 0.55rem; max-width: 92%; }
+.cm-bubble.me { background: #eef1ec; margin-left: auto; border-bottom-right-radius: 3px; }
+.cm-bubble.ai { background: var(--bg); border: 1px solid var(--border); border-bottom-left-radius: 3px; }
+.cm-bubble q { display: block; quotes: none; font-size: 12px; color: var(--light); border-left: 2px solid var(--subtle); padding-left: 0.45rem; margin-bottom: 0.3rem; }
+.cm-doc { display: grid; grid-template-columns: 1fr 9.5rem; gap: 1rem; }
+.cm-doc .txt { font-size: 14px; line-height: 1.75; color: var(--mid); margin: 0 !important; }
+.cm-doc mark { background: rgba(var(--xp-pause), .2); color: var(--black); border-bottom: 1px solid rgb(var(--xp-pause)); }
+.cm-note { border-left: 2px solid rgb(var(--xp-pause)); padding: 0.1rem 0 0.1rem 0.5rem; margin-bottom: 0.65rem; font-size: 12.5px; color: var(--mid); line-height: 1.45; }
+.cm-note.ai { border-left-color: var(--black); }
+.cm-note small { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); }
+.cm-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 1.5rem 0 2rem; font-size: 13px; color: var(--mid); }
+.cm-flow span { border: 1px solid var(--border); border-radius: 99px; padding: 0.2rem 0.7rem; background: var(--white); }
+.cm-flow i { font-style: normal; color: var(--light); }
+.cm-report { margin: 1.5rem 0 2rem; border: 1px solid var(--black); border-radius: 2px; background: var(--white); }
+.cm-report .head { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 1rem; border-bottom: 1px solid var(--black); font-size: 12px; color: var(--mid); font-family: var(--xp-mono); }
+.cm-row { display: grid; grid-template-columns: 12rem 1fr 6.5rem; gap: 0.5rem 1rem; align-items: center; padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); }
+.cm-row:last-of-type { border-bottom: none; }
+.cm-row .what { font-size: 14px; color: var(--black); }
+.cm-row .what small { display: block; font-size: 12px; color: var(--light); }
+.cm-row .num { font-family: var(--xp-mono); font-size: 19px; text-align: right; font-variant-numeric: tabular-nums; }
+.cm-row.ok .num { color: rgb(var(--xp-live)); }
+.cm-row.ko .num { color: rgb(var(--xp-red)); }
+.cm-scale { position: relative; height: 14px; background: var(--bg); border-radius: 2px; }
+.cm-scale i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 2px; }
+.cm-row.ok .cm-scale i { background: rgba(var(--xp-live), .55); }
+.cm-row.ko .cm-scale i { background: rgba(var(--xp-red), .7); }
+.cm-scale s { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--black); text-decoration: none; }
+.cm-scale s::after { content: attr(data-t); position: absolute; top: -1.15rem; left: 50%; transform: translateX(-50%); font-size: 10px; color: var(--mid); white-space: nowrap; }
+.cm-report .foot { padding: 0.6rem 1rem; font-size: 12.5px; color: var(--mid); border-top: 1px solid var(--black); line-height: 1.5; }
+.cm-relay { display: grid; grid-template-columns: repeat(3, 1fr); margin: 1.5rem 0 2rem; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.cm-relay div { padding: 0.8rem 0.9rem; font-size: 13px; color: var(--mid); line-height: 1.5; background: var(--white); }
+.cm-relay div + div { border-left: 1px solid var(--border); }
+.cm-relay b { display: block; font-size: 14px; color: var(--black); margin-bottom: 0.2rem; }
+@media (max-width: 700px) {
+  .cm-versus, .cm-doc, .cm-relay { grid-template-columns: 1fr; }
+  .cm-relay div + div { border-left: none; border-top: 1px solid var(--border); }
+  .cm-row { grid-template-columns: 1fr 5.5rem; }
+  .cm-row .cm-scale { grid-column: 1 / -1; grid-row: 2; margin-top: 1rem; }
+}
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-commentaire">
+
+  <nav class="lang-toggle">
+    <a href="/en/experimental">← Experimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · April 2026</p>
+      <h1>Pinning a remark to the passage you're reading, and letting an AI answer in the margin</h1>
+      <p class="article-page-subtitle">An AI co-reader, from voice to margin, built in 21 hours</p>
+      <p class="article-meta">April 15–17, 2026 · Rust, Tauri, whisper-rs · built with Claude Code · <a href="https://github.com/gildasfremont/commentaire" target="_blank" rel="noopener">public code</a> · <a href="/en/experimental/context/commentaire.md">full write-up (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>To discuss a text with an AI in a chat, you copy the passage, wait for the answer, then copy the next passage. The conversation grows into a long thread, while each remark belongs to a specific spot in the text, and you end up losing track of which paragraph an answer was about.</p>
+
+      <figure>
+      <div class="cm-versus">
+        <figure class="cm-pane" style="margin:0">
+          <span class="xp-kicker">In a chat</span>
+          <div class="cm-bubble me"><q>what prevents the tool from working as its users expect</q>Too abstract, this needs an example.</div>
+          <div class="cm-bubble ai">You could cite a concrete case, such as…</div>
+          <div class="cm-bubble me"><q>standard design mistakes</q>Which ones?</div>
+          <div class="cm-bubble ai">The next paragraph describes several…</div>
+        </figure>
+        <figure class="cm-pane" style="margin:0">
+          <span class="xp-kicker">In the margin</span>
+          <div class="cm-doc">
+            <p class="txt">The diagnosis does not address business decisions or functional coverage. It addresses <mark>what prevents the tool from working as its users expect</mark>, and the reasons why that persists. The analysis reveals five categories of dysfunctions that, taken individually, look like <mark>standard design mistakes</mark>.</p>
+            <div>
+              <div class="cm-note"><small>said out loud</small>"Too abstract, this needs an example."</div>
+              <div class="cm-note"><small>said out loud · question</small>"Which ones?"</div>
+              <div class="cm-note ai"><small>answer</small>The kanban in the next paragraph is one.</div>
+            </div>
+          </div>
+        </figure>
+      </div>
+      <figcaption>A redrawn illustration, on an excerpt from one of my articles. The AI's answers are examples.</figcaption>
+      </figure>
+
+      <p>Commentaire tries the other layout. You read a document, hold down a key to speak, and the remark attaches itself in the margin, level with the passage you were reading. An AI co-reader stays silent while you read and answers in the same margin when you ask it a question.</p>
+
+      <h2>How a remark travels</h2>
+
+      <div class="cm-flow" aria-label="How a remark travels">
+        <span>Key held down</span><i>→</i><span>Whisper transcribes on the Mac</span><i>→</i><span>Haiku sorts</span><i>→</i><span>Opus answers questions</span><i>→</i><span>Margin</span>
+      </div>
+
+      <p>Whisper transcribes the voice on the Mac. Claude Haiku sorts each segment into reading, comment, question or instruction, and Claude Opus writes the answers to questions, which stream into place. Claude runs from the command line, on the user's subscription, with no API key and no server. That choice dates from the day after the spec: written on the evening of April 15 for a web app in Next.js, it was replaced on the 16th at 1:40 p.m. by a desktop app architecture in Tauri, for lack of an API key and a server, on a Mac with 8&nbsp;GB of memory.</p>
+
+      <p>The full chain was running on April 16 at 8:40 p.m., and testing took place at dawn the next day.</p>
+
+      <div class="cm-report" role="group" aria-label="Measurements from April 17, 2026">
+        <div class="head"><span>Measurements</span><span>April 17, 2026</span></div>
+        <div class="cm-row ok">
+          <span class="what">Remarks sorted correctly<small>by Haiku</small></span>
+          <span class="cm-scale"><i style="width:100%"></i><s style="left:100%" data-t="all"></s></span>
+          <span class="num">6 / 6</span>
+        </div>
+        <div class="cm-row ok">
+          <span class="what">Memory used<small>ceiling set at 1.2 GB</small></span>
+          <span class="cm-scale"><i style="width:37.8%"></i><s style="left:100%" data-t="1.2 GB"></s></span>
+          <span class="num">454 MB</span>
+        </div>
+        <div class="foot">The black mark shows the ceiling that was set. The same measurements pointed to the next piece of work: the response time of Claude, called as a subprocess.</div>
+      </div>
+
+      <h2>Two fixes along the way</h2>
+
+      <p>At first, recording started whenever the volume went over a threshold. Whisper ended up transcribing <code>*Bruit de porte*</code> (a door noise). On the morning of April 17, a push-to-talk key replaced the detection.</p>
+
+      <p>Claude Code had passed the classifier's instructions through an environment variable that the <code>claude</code> command ignores. For about ten minutes, the classifier replied as if it were in a conversation. The note left after the fix: always read the command's help before guessing.</p>
+
+      <h2>Two agents that don't talk to each other</h2>
+
+      <p>The project was also a way to get Cowork and Claude Code working together, with no conversation between them, through the repository and the tickets.</p>
+
+      <div class="cm-relay">
+        <div><b>Cowork</b>writes the spec and the architecture into the repository, and the tickets into Linear.</div>
+        <div><b>Linear</b>one ticket, one branch with the same name. Claude Code takes the first free ticket and moves it to in progress.</div>
+        <div><b>Claude Code</b>pushes at every step, rereads an instructions file at every commit, and closes with "done, not done, problems, test command."</div>
+      </div>
+
+      <p>On April 17, Claude Code noted that three new ideas (keeping a history, versioning, letting the AI edit the text) fell outside the planned scope, and that the architecture would have to be rethought to take them on.</p>
+
+      <p>The app works end to end, from voice to the answer in the margin, and its code is public.</p>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/en/experimental/campagne"><small>← Previous</small>Campagne</a>
+      <a class="next" href="/en/experimental/disciple"><small>Next →</small>Disciple</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/resume-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Resume ↓</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

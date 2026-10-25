@@ -5,6 +5,7 @@ Page publique : https://gildas.fyi/experimental/commentaire
 Code source public : https://github.com/gildasfremont/commentaire
 Statut : chaîne complète livrée en 21 heures, du 15 au 17 avril 2026. Code public.
 Écrit avec Claude Code, coordonné par Cowork.
+Version anglaise : https://gildas.fyi/en/experimental/context/commentaire.md
 
 ## Le pari
 

@@ -4,6 +4,7 @@ Projet expérimental de Gildas Frémont, directeur produit freelance (https://gi
 Page publique, avec une démonstration manipulable de la ligne verte : https://gildas.fyi/experimental/swisser
 Statut : prototype local, réalisé le 1er juin 2026.
 Écrit avec Claude Code, en un après-midi.
+Version anglaise : https://gildas.fyi/en/experimental/context/swisser.md
 
 ## Le pari, en deux temps
 

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disciple — Gildas Frémont</title>
+  <meta name="description" content="Describing the work to be done instead of building an agent: an architect turns it into a plan, an orchestrator hands it out and judges, agents carry it out. A ten-day prototype, tested on simulated personas.">
+  <link rel="canonical" href="https://gildas.fyi/en/experimental/disciple">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/disciple">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/disciple">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/disciple">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Disciple — Gildas Frémont">
+  <meta property="og:description" content="Describing the work to be done instead of building an agent: an architect turns it into a plan, an orchestrator hands it out and judges, agents carry it out. A ten-day prototype, tested on simulated personas.">
+  <meta property="og:url" content="https://gildas.fyi/en/experimental/disciple">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/en/experimental/context/disciple.md" title="Full write-up">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.di-seq { margin: 2rem 0 !important; padding: 1.1rem 1rem 0.6rem; border: 1px solid var(--border); border-radius: 10px; background: var(--white); }
+.di-actors, .di-msg { display: grid; grid-template-columns: repeat(4, 1fr); }
+.di-actors span { text-align: center; font-size: 13px; font-weight: 600; color: var(--black); padding: 0.35rem 0.2rem; margin: 0 0.3rem; border: 1px solid var(--black); border-radius: 4px; background: var(--white); position: relative; z-index: 1; }
+.di-actors span small { display: block; font-size: 11px; font-weight: 400; color: var(--light); }
+.di-body { position: relative; padding: 0.4rem 0 0.4rem; }
+.di-life { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, 1fr); pointer-events: none; }
+.di-life i { justify-self: center; width: 1px; background: repeating-linear-gradient(to bottom, var(--subtle) 0 4px, transparent 4px 8px); }
+.di-msg { position: relative; align-items: end; padding-top: 0.55rem; }
+.di-arrow { position: relative; padding-bottom: 7px; }
+.di-arrow::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--black); }
+.di-arrow::after { content: ''; position: absolute; bottom: -4px; border: 4.5px solid transparent; }
+.di-arrow.r::after { right: -1px; border-left: 7px solid var(--black); border-right: 0; }
+.di-arrow.l::after { left: -1px; border-right: 7px solid var(--black); border-left: 0; }
+.di-arrow.back::before { background: rgb(var(--xp-red)); }
+.di-arrow.back.r::after { border-left-color: rgb(var(--xp-red)); }
+.di-arrow em { display: block; text-align: center; font-style: normal; font-size: 12px; line-height: 1.35; color: var(--mid); padding: 0 0.3rem; position: relative; z-index: 1; }
+.di-arrow em span { background: var(--white); }
+.di-self { justify-self: center; font-size: 12px; color: var(--mid); background: #f4f1fb; border: 1px solid #ddd5f0; border-radius: 4px; padding: 0.2rem 0.5rem; margin-top: 0.3rem; text-align: center; z-index: 1; }
+.di-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.25rem 0 2rem; max-width: 36em; }
+.di-split div { font-size: 13.5px; color: var(--mid); line-height: 1.5; border-top: 2px solid var(--black); padding-top: 0.45rem; }
+.di-split div + div { border-top-color: rgb(var(--xp-red)); }
+.di-split b { display: block; color: var(--black); font-weight: 600; }
+.di-quote { margin: 1.5rem 0 !important; padding-left: 1rem; border-left: 2px solid var(--subtle); max-width: 34em; }
+.di-quote p { font-size: 18px !important; line-height: 1.5; color: var(--black) !important; margin: 0 !important; }
+.di-log { list-style: none; margin: 1.5rem 0 2rem !important; border-left: 1px solid var(--subtle); max-width: 40em; }
+.di-log li { position: relative; padding: 0 0 1.1rem 1.2rem; font-size: 14.5px; line-height: 1.55; color: var(--mid); }
+.di-log li::before { content: ''; position: absolute; left: -4px; top: 0.45rem; width: 7px; height: 7px; border-radius: 50%; background: var(--white); border: 1px solid var(--light); }
+.di-log li.fix::before { background: rgb(var(--xp-live)); border-color: rgb(var(--xp-live)); }
+.di-log .s { display: block; font-family: var(--xp-mono); font-size: 11.5px; color: var(--light); }
+.di-log .score { font-family: var(--xp-mono); font-size: 13px; color: var(--black); }
+@media (max-width: 640px) {
+  .di-actors span { font-size: 11px; margin: 0 0.1rem; }
+  .di-actors span small { display: none; }
+  .di-arrow em { font-size: 10.5px; }
+  .di-self { font-size: 10.5px; }
+  .di-split { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-disciple">
+
+  <nav class="lang-toggle">
+    <a href="/en/experimental">← Experimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · March 2026</p>
+      <h1>Describing the work to be done instead of building an agent</h1>
+      <p class="article-page-subtitle">An architect, an orchestrator and agents, built and put to the test in ten days</p>
+      <p class="article-meta">March 22–31, 2026 · prototype · Python, FastAPI, SQLite · built with Claude Code · <a href="/en/experimental/context/disciple.md">full write-up (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <figure class="di-quote">
+        <p>"Nobody wants an agent. People want to get something solved."</p>
+        <figcaption>The starting sentence, from the project's working notes, translated from French.</figcaption>
+      </figure>
+
+      <p>Agent platforms usually start by having you build an agent, with its prompt, its tools and its permissions. Disciple starts from the work itself: you describe it, and the rest organizes itself on three levels.</p>
+
+      <figure class="di-seq">
+        <div class="di-actors"><span>You<small>describe the work</small></span><span>Architect<small>makes the plan</small></span><span>Orchestrator<small>hands out, judges</small></span><span>Agents<small>carry it out</small></span></div>
+        <div class="di-body">
+          <div class="di-life"><i></i><i></i><i></i><i></i></div>
+          <div class="di-msg"><div class="di-arrow r" style="grid-column:1 / 3;margin-left:12.5%;margin-right:12.5%"><em><span>"A monthly note on our competitors' prices"</span></em></div></div>
+          <div class="di-msg"><div class="di-arrow l" style="grid-column:1 / 3;margin-left:12.5%;margin-right:12.5%"><em><span>which sources, what format, for whom?</span></em></div></div>
+          <div class="di-msg"><div class="di-arrow r" style="grid-column:2 / 4;margin-left:12.5%;margin-right:12.5%"><em><span>the plan: tasks, inputs, outputs, acceptance contract</span></em></div></div>
+          <div class="di-msg"><div class="di-arrow r" style="grid-column:3 / 5;margin-left:12.5%;margin-right:12.5%"><em><span>tasks, in parallel where possible</span></em></div></div>
+          <div class="di-msg"><div class="di-arrow l" style="grid-column:3 / 5;margin-left:12.5%;margin-right:12.5%"><em><span>deliverables</span></em></div></div>
+          <div class="di-msg"><div class="di-arrow back r" style="grid-column:3 / 5;margin-left:12.5%;margin-right:12.5%"><em><span>a task sent back: the contract isn't met</span></em></div></div>
+          <div class="di-msg"><span class="di-self" style="grid-column:4">what worked, kept in memory</span></div>
+          <div class="di-msg"><div class="di-arrow l" style="grid-column:1 / 4;margin-left:12.5%;margin-right:12.5%"><em><span>the result, to approve or rate</span></em></div></div>
+        </div>
+        <figcaption>How a piece of work travels in Disciple's model, on a made-up example. The user only sees the exchange with the architect and the result; the execution agents are defined by the user, who never has to talk to them.</figcaption>
+      </figure>
+
+      <div class="di-split">
+        <div><b>Held to the method</b>Execution agents follow a method and remember, from one run to the next, their strengths and weaknesses.</div>
+        <div><b>Held to the result</b>The orchestrator judges each deliverable against the goal, and sends back whatever doesn't hold up.</div>
+      </div>
+
+      <p>Every run has a maximum budget, in tokens and in time.</p>
+
+      <h2>Ten test sessions</h2>
+
+      <p>The prototype was put through test sessions played by personas: five job profiles and an acceptance tester. From one session to the next, it became more reliable.</p>
+
+      <ol class="di-log">
+        <li class="fix"><span class="s">sessions 1 and 2</span>Run through the command line, the architect had no access to native tools and asked questions instead of acting. Tool calls, simulated as JSON in the text, gave it back control: each persona gets its plan in a single exchange.</li>
+        <li class="fix"><span class="s">session 3</span>On large plans, a sliding window over the history takes the batches from <span class="score">3/5</span> and <span class="score">3/6</span> successful tasks to <span class="score">6/6</span>, <span class="score">7/7</span> and <span class="score">6/6</span>.</li>
+        <li class="fix"><span class="s">session 4</span>Five runs for $1.53 in total.</li>
+        <li class="fix"><span class="s">session 7</span>First complete run, in about three minutes.</li>
+        <li class="fix"><span class="s">session 9</span><span class="score">56/56</span> acceptance checks.</li>
+        <li class="fix"><span class="s">session 10</span><span class="score">207/216</span> across thirteen scenarios, with three-layer evaluations that grade the result rather than the path taken.</li>
+      </ol>
+
+      <p>In ten days and 84 commits, the prototype learned to run the exchange with the architect, produce a plan, launch the tasks, present the results and keep a memory, and it got continuous integration. Its backlog holds 47 ideas, about thirty of them implemented in a single day, March 24.</p>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/en/experimental/commentaire"><small>← Previous</small>Commentaire</a>
+      <a class="next" href="/en/experimental"><small>All projects →</small>Experimental</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/resume-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Resume ↓</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

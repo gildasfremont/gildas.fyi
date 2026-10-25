@@ -1,0 +1,20 @@
+# Gildas Frémont: experimental projects
+
+> Tools built by Gildas Frémont, freelance product director, with Claude Code, to solve personal problems. Each project has a public page and a full write-up in Markdown (the bet, the origins, a dated timeline, trial and error, numbers, current state). The write-ups deliberately leave out people's names, addresses, real amounts and links to private repositories. The same index in French: https://gildas.fyi/experimental/llms.txt
+
+Overview page: https://gildas.fyi/en/experimental
+
+## In use
+
+- [CallRecorder](https://gildas.fyi/en/experimental/context/callrecorder.md): keeping a record of your calls without having to remember to hit record. macOS app in Swift, version 0.3.5 released October 25, 2026.
+- [Condominium accounts](https://gildas.fyi/en/experimental/context/copropriete.md): being able to check a condominium's accounts against the property manager's documents, every figure leading back to its sources. Next.js, private tool, since September 2026.
+- [Job search](https://gildas.fyi/en/experimental/context/recherche-emploi.md): letting Claude do the legwork of a job search and keeping the decisions, with a sourced knowledge base and a tracking tool that computes nothing. Next.js and MCP, since October 2026.
+- [Futurun](https://gildas.fyi/en/experimental/context/futurun.md): bringing your accounts together to see how many months of runway you have, with reconnecting fitting on one screen. Local app, since October 2026.
+- [Recettes](https://gildas.fyi/en/experimental/context/recettes.md): splitting one dish between two people with different needs. Static site, June 2026.
+
+## Prototypes
+
+- [Swisser](https://gildas.fyi/en/experimental/context/swisser.md): adjusting a page's typography from what you see, by dragging the average of the line endings. Prototype, June 2026.
+- [Campagne](https://gildas.fyi/en/experimental/context/campagne.md): seeing how many beds are taken each night in a family country house. Next.js, April 2026.
+- [Commentaire](https://gildas.fyi/en/experimental/context/commentaire.md): pinning a remark to the passage you're reading and letting an AI answer in the margin. Rust and Tauri, April 2026.
+- [Disciple](https://gildas.fyi/en/experimental/context/disciple.md): describing the work to be done instead of building an agent. Python, March 2026.

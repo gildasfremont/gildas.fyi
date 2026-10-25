@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futurun — Gildas Frémont</title>
+  <meta name="description" content="Bringing together accounts that each connect differently to know how many months your cash will last, with reconnecting a bank fitting on a single screen.">
+  <link rel="canonical" href="https://gildas.fyi/en/experimental/futurun">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/futurun">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/futurun">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/futurun">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Futurun — Gildas Frémont">
+  <meta property="og:description" content="Bringing together accounts that each connect differently to know how many months your cash will last, with reconnecting a bank fitting on a single screen.">
+  <meta property="og:url" content="https://gildas.fyi/en/experimental/futurun">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/en/experimental/context/futurun.md" title="Full write-up">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.fu-phone { width: min(100%, 360px); margin: 2rem auto 0.6rem; border: 1px solid var(--subtle); border-radius: 22px; background: #f7f8f6; padding: 0.9rem 0.8rem 1rem; box-shadow: 0 12px 30px rgba(0,0,0,.07); }
+.fu-phone .top { display: flex; justify-content: space-between; align-items: baseline; padding: 0 0.3rem 0.7rem; }
+.fu-phone .top b { font-size: 15px; color: var(--black); }
+.fu-phone .top span { font-size: 11px; color: var(--light); }
+.fu-group { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); padding: 0.4rem 0.3rem; }
+.fu-conn { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 0.6rem 0.75rem; margin-bottom: 0.45rem; transition: background .3s; }
+.fu-conn .l1 { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 13.5px; color: var(--black); }
+.fu-conn .l2 { font-size: 11.5px; color: var(--light); margin-top: 0.1rem; }
+.fu-conn .st { font-size: 11.5px; white-space: nowrap; }
+.fu-conn .st::before { content: '●'; margin-right: 0.25rem; }
+.fu-conn.ok .st { color: rgb(var(--xp-live)); }
+.fu-conn.re { border-color: rgba(var(--xp-pause), .7); background: #fffaf2; }
+.fu-conn.re .st { color: rgb(var(--xp-pause)); }
+.fu-form { margin-top: 0.55rem; display: grid; gap: 0.4rem; }
+.fu-form p { font-size: 12px !important; color: var(--mid) !important; margin: 0 !important; line-height: 1.45; }
+.fu-form button { font: inherit; font-size: 13px; padding: 0.4rem 0.6rem; border-radius: 8px; border: none; background: var(--black); color: var(--white); cursor: pointer; }
+.fu-form .field { font-size: 12px; color: var(--light); border: 1px solid var(--border); border-radius: 8px; padding: 0.35rem 0.55rem; background: var(--white); }
+.fu-methods { margin: 1.5rem 0 2rem !important; border-top: 1px solid var(--border); }
+.fu-methods .r { display: grid; grid-template-columns: 9.5rem 1fr 4.5rem; gap: 0.3rem 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 13.5px; color: var(--mid); align-items: baseline; }
+.fu-methods .r b { color: var(--black); font-weight: 600; font-size: 14px; }
+.fu-methods .r span:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--black); }
+.fu-methods .r.hd span { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light) !important; }
+@media (max-width: 600px) { .fu-methods .r.hd span:nth-child(2) { display: none; } }
+.fu-runway { margin: 1.5rem 0 2rem !important; padding: 1.1rem 1.2rem; border: 1px solid var(--border); border-radius: 8px; background: var(--white); }
+.fu-runway .num { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.fu-runway .num b { font-size: 34px; font-weight: 600; color: var(--black); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.fu-runway .num span { font-size: 13px; color: var(--mid); }
+.fu-bars { display: flex; align-items: flex-end; gap: 4px; height: 70px; margin-top: 1rem; }
+.fu-bars i { flex: 1; background: var(--black); border-radius: 2px 2px 0 0; }
+.fu-axis { display: flex; justify-content: space-between; font-size: 11px; color: var(--light); margin-top: 0.3rem; }
+.fu-calc { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 0.8rem; margin-top: 1rem; font-size: 12.5px; color: var(--mid); }
+.fu-calc b { color: var(--black); font-weight: 500; }
+@media (max-width: 600px) { .fu-methods .r { grid-template-columns: 1fr auto; } .fu-methods .r span:nth-child(2) { grid-column: 1 / -1; grid-row: 2; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-futurun">
+
+  <nav class="lang-toggle">
+    <a href="/en/experimental">← Experimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · October 2026</p>
+      <h1>Bringing your accounts together to see how many months of runway you have</h1>
+      <p class="article-page-subtitle">An app that runs at home, where reconnecting a bank fits on a single screen</p>
+      <p class="article-meta">Since October 12, 2026, personal use · Next.js, Python · built with Claude Code · <a href="/en/experimental/context/futurun.md">full write-up (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>As a freelancer, the number that matters is how many months your cash can cover. Getting it means pulling together accounts that don't connect the same way: a bank through open banking, a life insurance savings plan and a retirement savings plan through their customer portals, a statement exported by hand, a loan you enter yourself. Each kind of access expires on its own schedule.</p>
+
+      <figure>
+        <div class="fu-phone" id="fu-phone">
+          <div class="top"><b>Connections</b><span>made-up accounts</span></div>
+          <div class="fu-group">To renew</div>
+          <div class="fu-renew">
+            <div class="fu-conn re" data-name="Main bank" data-how="open banking">
+              <div class="l1"><span>Main bank</span><span class="st">access expired</span></div>
+              <div class="l2">open banking</div>
+              <div class="fu-form"><p>The consent you gave the bank has expired. It has to be renewed on the bank's side.</p><button type="button">Reconnect to the bank</button></div>
+            </div>
+            <div class="fu-conn re" data-name="Life insurance savings" data-how="customer portal">
+              <div class="l1"><span>Life insurance savings</span><span class="st">login rejected</span></div>
+              <div class="l2">customer portal</div>
+              <div class="fu-form"><span class="field">Username</span><span class="field">Password</span><button type="button">Save and sync</button></div>
+            </div>
+          </div>
+          <div class="fu-group">Up to date</div>
+          <div class="fu-ok">
+            <div class="fu-conn ok"><div class="l1"><span>Online bank</span><span class="st">2 h ago</span></div><div class="l2">open banking</div></div>
+            <div class="fu-conn ok"><div class="l1"><span>Retirement savings plan</span><span class="st">2 h ago</span></div><div class="l2">customer portal</div></div>
+            <div class="fu-conn ok"><div class="l1"><span>Account with no online access</span><span class="st">statement of the 1<sup>st</sup></span></div><div class="l2">pasted CSV statement</div></div>
+            <div class="fu-conn ok"><div class="l1"><span>Mortgage</span><span class="st">entered</span></div><div class="l2">manual entry</div></div>
+          </div>
+        </div>
+        <figcaption style="margin-left:auto;margin-right:auto;text-align:center">The connections screen, redrawn with made-up accounts. Access that needs renewing goes to the top, with its form open. Renew one.</figcaption>
+      </figure>
+
+      <p>Futurun puts reconnection at the center. The README states the principle: "one connector per source, each with its own method." All connectors follow the same contract, though. Each returns accounts and transactions, and when access expires, raises the "reconnect needed" error, which moves the source to the top of the screen. The method only changes the shape of the form: a username, a key, a file, or a round trip to the bank.</p>
+
+      <div class="fu-methods">
+        <div class="r hd"><span>Method</span><span>What it took</span><span>Connections</span></div>
+        <div class="r"><b>Open banking</b><span>An HTTPS callback address on the local network, a fixed IP address for the provider's allowlist, and business-level access for one online bank.</span><span>5</span></div>
+        <div class="r"><b>Customer portal</b><span>Scraping, with woob, for the life insurance savings and the retirement plan. When an insurer's site changed one of its pages, the module was fixed the same day.</span><span>2</span></div>
+        <div class="r"><b>CSV statement</b><span>For an account with no online access.</span><span>1</span></div>
+        <div class="r"><b>Manual entry</b><span>Credit lines, amortizing loans, property.</span><span>3</span></div>
+      </div>
+
+      <h2>How many months</h2>
+
+      <div class="fu-runway">
+        <div class="num"><b>14 months</b><span>at the pace of the last 90 days · made-up example</span></div>
+        <div class="fu-bars" aria-hidden="true"><i style="height:96%"></i><i style="height:89%"></i><i style="height:82%"></i><i style="height:76%"></i><i style="height:69%"></i><i style="height:62%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:41%"></i><i style="height:34%"></i><i style="height:27%"></i><i style="height:20%"></i></div>
+        <div class="fu-axis"><span>this month</span><span>in 12 months</span></div>
+        <div class="fu-calc">
+          <b>Available cash</b><span>accounts marked liquid, checking and savings</span>
+          <b>Net burn</b><span>spending minus income, per month, over 30 and 90 days</span>
+          <b>Left out</b><span>transfers between my own accounts</span>
+          <b>Projection</b><span>the balance month by month, with declared upcoming expenses</span>
+        </div>
+      </div>
+
+      <p>The budget was redone six times on the first day, each time adding a concept: categories, upcoming expenses, actual versus estimated. In the final version, an expense comes down to a name and an amount, with a frequency and a duration if needed.</p>
+
+      <h2>At home</h2>
+
+      <p>The app starts with the Mac, syncs every six hours and opens on the phone over the same Wi-Fi. A Docker image also lets you host it elsewhere. Credentials and tokens are encrypted in the data file, and amounts are stored in cents. Eleven connections are active, some fifty tests run, and an MCP server lets you query Futurun from a conversation with Claude.</p>
+
+      <p>Updates install from inside the app, with one button.</p>
+
+      <p>The latest commits, on October 20, replace personal labels with generic ones and add settings, so that someone else can install it.</p>
+
+    </div>
+  </article>
+<script>
+(function(){
+  var phone = document.getElementById('fu-phone');
+  if (!phone) return;
+  var ok = phone.querySelector('.fu-ok');
+  phone.querySelectorAll('.fu-renew .fu-conn button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var c = btn.closest('.fu-conn');
+      c.classList.remove('re'); c.classList.add('ok');
+      c.querySelector('.st').textContent = 'just now';
+      c.querySelector('.fu-form').remove();
+      ok.insertBefore(c, ok.firstChild);
+      if (!phone.querySelector('.fu-renew .fu-conn')) {
+        var g = phone.querySelector('.fu-group'); g.textContent = 'To renew · none';
+      }
+    });
+  });
+})();
+</script>
+
+    <nav class="xp-nav">
+      <a href="/en/experimental/recherche-emploi"><small>← Previous</small>Job search</a>
+      <a class="next" href="/en/experimental/recettes"><small>Next →</small>Recettes</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/resume-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Resume ↓</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

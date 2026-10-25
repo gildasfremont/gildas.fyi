@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job search — Gildas Frémont</title>
+  <meta name="description" content="Letting Claude do the legwork of a job search, spotting openings, assessing them and keeping track, while I keep the decisions and do the sending.">
+  <link rel="canonical" href="https://gildas.fyi/en/experimental/recherche-emploi">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/recherche-emploi">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/recherche-emploi">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/recherche-emploi">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Job search — Gildas Frémont">
+  <meta property="og:description" content="Letting Claude do the legwork of a job search, spotting openings, assessing them and keeping track, while I keep the decisions and do the sending.">
+  <meta property="og:url" content="https://gildas.fyi/en/experimental/recherche-emploi">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/en/experimental/context/recherche-emploi.md" title="Full write-up">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.je-lanes { margin: 2rem 0 !important; }
+.je-head, .je-step { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 0.9rem; }
+.je-head span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); padding: 0 0 0.5rem 0.2rem; border-bottom: 2px solid var(--black); font-variation-settings: 'GEOM' 0; }
+.je-head span.c { border-bottom-color: #c4704f; color: #a0573c; }
+.je-head span.m { border-bottom-color: #1f5f99; color: #1f5f99; }
+.je-step { position: relative; padding-top: 0.6rem; }
+.je-step + .je-step { margin-top: -1.15rem; }
+.je-step:nth-child(2) { margin-top: 0; }
+.je-card { position: relative; font-size: 13px; line-height: 1.5; color: var(--mid); background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 0.55rem 0.7rem 0.6rem 2rem; }
+.je-card::before { content: attr(data-n); position: absolute; left: 0.6rem; top: 0.55rem; font-size: 11px; color: var(--light); font-variant-numeric: tabular-nums; }
+.je-card.o { grid-column: 1; }
+.je-card.c { grid-column: 2; border-left: 3px solid #c4704f; }
+.je-card.m { grid-column: 3; border-left: 3px solid #1f5f99; }
+.je-card .who { display: none; }
+.je-card .st { font-size: 11.5px; color: var(--black); border: 1px solid var(--subtle); border-radius: 99px; padding: 0 0.4rem; white-space: nowrap; }
+.je-fact { display: grid; grid-template-columns: 6rem 1fr; gap: 0.5rem 1rem; margin: 1.25rem 0 1.75rem; max-width: 36em; }
+.je-fact span:nth-child(odd) { justify-self: start; font-size: 11.5px; padding: 0.05rem 0.5rem; border-radius: 99px; border: 1px solid; white-space: nowrap; height: fit-content; }
+.je-fact .ok { color: rgb(var(--xp-live)); border-color: rgba(var(--xp-live), .45); }
+.je-fact .tbc { color: rgb(var(--xp-pause)); border-color: rgba(var(--xp-pause), .55); }
+.je-fact .gap { color: rgb(var(--xp-red)); border-color: rgba(var(--xp-red), .45); border-style: dashed !important; }
+.je-fact span:nth-child(even) { font-size: 14px; color: var(--mid); line-height: 1.5; }
+.je-funnel { margin: 1.75rem 0 !important; max-width: 34em; }
+.je-funnel .lv { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; align-items: center; margin-bottom: 0.4rem; }
+.je-funnel .lv b { font-size: 20px; font-weight: 600; color: var(--black); text-align: right; font-variant-numeric: tabular-nums; }
+.je-funnel .lv div { font-size: 13px; color: var(--mid); padding: 0.45rem 0.7rem; background: rgba(31,95,153,.08); border-radius: 3px; }
+.je-days { display: flex; align-items: center; gap: 0.5rem; margin: 0.8rem 0 0 7.3rem; font-size: 12px; color: var(--light); flex-wrap: wrap; }
+.je-days span { border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.5rem; background: var(--white); font-variant-numeric: tabular-nums; }
+.je-days span b { color: var(--black); font-weight: 600; }
+.je-day { position: relative; height: 34px; margin: 1.5rem 0 2.6rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); max-width: 40rem; }
+.je-day .seg { position: absolute; top: 6px; bottom: 6px; border-radius: 2px; }
+.je-day .js { background: rgba(var(--xp-red), .22); border: 1px solid rgba(var(--xp-red), .5); }
+.je-day .sp { background: rgba(var(--xp-pause), .25); border: 1px solid rgba(var(--xp-pause), .5); }
+.je-day .cc { background: rgba(var(--xp-live), .25); border: 1px solid rgba(var(--xp-live), .5); }
+.je-day .t { position: absolute; bottom: -1.35rem; font-size: 11px; color: var(--light); transform: translateX(-50%); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.je-key { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: 12px; color: var(--mid); margin-bottom: 1.5rem; }
+.je-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.3rem; vertical-align: -1px; }
+.je-sizes { display: grid; grid-template-columns: 8rem 1fr; gap: 0.35rem 0.7rem; align-items: center; font-size: 13px; color: var(--mid); max-width: 34em; margin: 1.25rem 0 1.75rem; }
+.je-sizes .bar { position: relative; height: 14px; }
+.je-sizes .bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 1px; }
+.je-sizes .bar i.before { background: var(--border); }
+.je-sizes .bar i.after { background: var(--black); }
+.je-sizes .bar em { position: absolute; top: -1px; font-style: normal; font-size: 11px; color: var(--light); padding-left: 0.35rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 640px) {
+  .je-head { display: none; }
+  .je-step { grid-template-columns: 1fr; }
+  .je-step + .je-step { margin-top: 0; }
+  .je-days { margin-left: 0; }
+  .je-card.o, .je-card.c, .je-card.m { grid-column: 1; }
+  .je-card.o { border-left: 3px solid var(--black); }
+  .je-card .who { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); }
+  .je-fact { grid-template-columns: 1fr; gap: 0.2rem; }
+  .je-fact span:nth-child(even) { margin-bottom: 0.6rem; }
+}
+</style>
+  <style>
+@media (max-width: 640px) { .je-day .ap { display: none; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-recherche-emploi">
+
+  <nav class="lang-toggle">
+    <a href="/en/experimental">← Experimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · September and October 2026</p>
+      <h1>Letting Claude do the legwork of a job search, and keeping the decisions</h1>
+      <p class="article-page-subtitle">A register the agent fills in and I read, with nothing sent on my behalf</p>
+      <p class="article-meta">Since September 17, 2026, in daily use since October 21 · private tool · Next.js, Postgres, MCP · built with Claude Code · <a href="/en/experimental/context/recherche-emploi.md">full write-up (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>After a month, tracking my applications meant a 300&nbsp;KB Google Doc with 1,500-character lines for each opening. Nobody could read it anymore, me included. The legwork of a job search (spotting openings, assessing them, keeping track of every exchange, preparing applications) can go to Claude. I needed a place where it could do that, and where I could see in a few seconds what needed my attention.</p>
+
+      <figure class="je-lanes">
+        <div class="je-head"><span>The tool</span><span class="c">Claude</span><span class="m">Me</span></div>
+        <div class="je-step"><div class="je-card o" data-n="1"><span class="who">The tool</span>Every morning, reads 82 public job feeds. A new opening arrives as <span class="st">to sort</span>.</div></div>
+        <div class="je-step"><div class="je-card c" data-n="2"><span class="who">Claude</span>Qualifies the opening: list, tier S, A or B, way in, fit note. A written assessment, never a computed score.</div></div>
+        <div class="je-step"><div class="je-card m" data-n="3"><span class="who">Me</span>I keep the opening or drop it, in the Selection view.</div></div>
+        <div class="je-step"><div class="je-card c" data-n="4"><span class="who">Claude</span>Prepares the application from the knowledge base, and asks a question when a fact is missing. The opening moves to <span class="st">ready to send</span>.</div></div>
+        <div class="je-step"><div class="je-card m" data-n="5"><span class="who">Me</span>I read it over, then send it myself. Nothing goes out from the tool.</div></div>
+        <div class="je-step"><div class="je-card c" data-n="6"><span class="who">Claude</span>Keeps track: exchanges, the hiring steps announced, tasks, calendar appointments.</div></div>
+        <div class="je-step"><div class="je-card o" data-n="7"><span class="who">The tool</span>Flags the opening if it disappears from its feed.</div></div>
+        <div class="je-step"><div class="je-card m" data-n="8"><span class="who">Me</span>The <span class="st">Today</span> view tells me what is waiting for me.</div></div>
+        <figcaption>The path of an opening, with no company names. Claude goes through an MCP server, some sixty operations, and I go through the web interface; both rest on the same services, and every write is signed by its author.</figcaption>
+      </figure>
+
+      <p>The tool's spec set two rules. A human must be able to do everything an agent does, and the other way around. And the tool prepares, I send: it computes no score, has no AI built in and never sends a message.</p>
+
+      <h2>So that Claude makes nothing up</h2>
+
+      <p>Before the tool came a memory. Since September 17, a repository of text files has held my profile, my experience, notes on the companies I have worked for, recommendations and a writing method. When I ask for a resume, a message or interview prep, Claude looks there first and cites its files. Every fact in it carries one of three statuses.</p>
+
+      <div class="je-fact">
+        <span class="ok">Established</span><span>Said by me or sourced. Usable as is.</span>
+        <span class="tbc">To confirm</span><span>A plausible extrapolation, never validated. Usable only if flagged as such.</span>
+        <span class="gap">Gap</span><span>Missing information. Claude asks instead of filling it in.</span>
+      </div>
+
+      <h2>One tool tried, another built, on the same day</h2>
+
+      <div class="je-day" aria-hidden="true">
+        <div class="seg js" style="left:9.6%;width:45.9%"></div>
+        <div class="seg sp" style="left:55.5%;width:5%"></div>
+        <div class="seg cc" style="left:66.9%;width:33.1%"></div>
+        <span class="t" style="left:9.6%">11:15<span class="ap"> a.m.</span></span>
+        <span class="t" style="left:55.5%">5:13<span class="ap"> p.m.</span></span>
+        <span class="t" style="left:66.9%">6:42<span class="ap"> p.m.</span></span>
+        <span class="t" style="left:100%;transform:translateX(-100%)">11:00<span class="ap"> p.m.</span></span>
+      </div>
+      <div class="je-key"><span><i style="background:rgba(var(--xp-red),.35)"></i>JobSync, tried then dropped</span><span><i style="background:rgba(var(--xp-pause),.35)"></i>the spec</span><span><i style="background:rgba(var(--xp-live),.35)"></i>the tool, built by Claude Code</span></div>
+
+      <p>On the morning of October 20, I installed JobSync, an open-source application tracker. Claude imported 118 openings into it. I left it six hours later: its built-in AI assessed the openings itself, when I wanted that role to go to Claude, and it tracked neither the exchanges nor the hiring steps employers announced. The spec for my own tool was written by 5:17 p.m. At 6:42 p.m., Claude Code delivered a complete first version, with the API, the MCP server, the feed reader and an import of the whole history. It was merged at 11 p.m.</p>
+
+      <h2>The daily watch</h2>
+
+      <figure class="je-funnel">
+        <div class="lv"><b>82</b><div>public job feeds, across eight kinds of ATS: Ashby, Greenhouse, Lever, Teamtailor, SmartRecruiters, Workable, Recruitee, Personio</div></div>
+        <div class="lv"><b>~3,900</b><div>positions read on each run</div></div>
+        <div class="lv"><b>~110</b><div>look like a product role</div></div>
+        <div class="je-days">Only new ones come up for sorting: <span>Oct. 21 <b>83</b></span><span>then <b>1</b></span><span><b>0</b></span><span><b>11</b></span></div>
+        <figcaption>The first production run, on the evening of October 21, brought up 83 openings, then 1, 0 and 11 over the following days. A run takes 3 to 45 seconds.</figcaption>
+      </figure>
+
+      <h2>Responses sized for an agent</h2>
+
+      <p>An agent reads everything it gets back. The MCP server's first responses were too heavy for it. They were slimmed down, with measurements to show for it.</p>
+
+      <div class="je-sizes">
+        <span>The pipeline</span><span class="bar"><i class="before" style="width:100%"></i><i class="after" style="width:30.3%"></i><em style="left:30.3%">142 → 43 KB</em></span>
+        <span>Companies</span><span class="bar"><i class="before" style="width:93.7%"></i><i class="after" style="width:17.6%"></i><em style="left:17.6%">133 → 25 KB</em></span>
+        <span>The day view</span><span class="bar"><i class="before" style="width:40.1%"></i><i class="after" style="width:9.2%"></i><em style="left:9.2%">57 → 13 KB</em></span>
+      </div>
+
+      <p>The day after the first version, the interface was tightened to five entries, "ready to send" went from a flag to a status, one priority level too many went away, and the feed alert now turns red only after a total failure or two failures in a row.</p>
+
+      <p>The tool has run every day since October 21.</p>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/en/experimental/copropriete"><small>← Previous</small>Condominium accounts</a>
+      <a class="next" href="/en/experimental/futurun"><small>Next →</small>Futurun</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/resume-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Resume ↓</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

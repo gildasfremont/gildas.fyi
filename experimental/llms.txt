@@ -3,10 +3,11 @@
 > Outils construits par Gildas Frémont, directeur produit freelance, avec Claude Code, pour ses propres problèmes. Chaque projet a une page publique et un dossier complet en Markdown (le pari, la genèse, la chronologie datée, les essais et erreurs, les chiffres, l'état actuel). Les dossiers excluent volontairement les noms de personnes, les adresses, les montants réels et les liens vers des dépôts privés.
 
 Page d'ensemble : https://gildas.fyi/experimental
+Version anglaise de cet index : https://gildas.fyi/en/experimental/llms.txt
 
 ## En usage
 
-- [CallRecorder](https://gildas.fyi/experimental/contexte/callrecorder.md) : garder une trace de ses appels sans penser à lancer l'enregistrement. App macOS en Swift, version 0.3.1 publiée le 24 octobre 2026.
+- [CallRecorder](https://gildas.fyi/experimental/contexte/callrecorder.md) : garder une trace de ses appels sans penser à lancer l'enregistrement. App macOS en Swift, version 0.3.5 publiée le 25 octobre 2026.
 - [Comptes de copropriété](https://gildas.fyi/experimental/contexte/copropriete.md) : pouvoir vérifier les comptes d'une copropriété à partir des pièces du syndic, chaque chiffre renvoyant à ses sources. Next.js, outil privé, depuis septembre 2026.
 - [Recherche d'emploi](https://gildas.fyi/experimental/contexte/recherche-emploi.md) : laisser Claude faire le travail de fond d'une recherche d'emploi et garder la décision : une base de connaissances sourcée et un outil de suivi qui ne calcule rien. Next.js et MCP, depuis octobre 2026.
 - [Futurun](https://gildas.fyi/experimental/contexte/futurun.md) : réunir ses comptes pour savoir combien de mois tient sa trésorerie, avec une reconnexion qui tient dans un écran. App locale, depuis octobre 2026.

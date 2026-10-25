@@ -4,6 +4,7 @@ Projet expérimental de Gildas Frémont, directeur produit freelance (https://gi
 Page publique : https://gildas.fyi/experimental/copropriete
 Statut : en usage depuis septembre 2026. Outil privé, protégé par mot de passe ; ni le site ni le dépôt ne sont publics.
 Écrit avec Claude Code et Cowork.
+Version anglaise : https://gildas.fyi/en/experimental/context/copropriete.md
 
 Ce dossier décrit la méthode et le déroulé. Il ne contient volontairement aucun nom (immeuble, syndic, copropriétaires, fournisseurs), aucun montant réel et aucun numéro de lot.
 

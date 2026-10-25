@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campagne — Gildas Frémont</title>
+  <meta name="description" content="Seeing how many beds are taken each night in a family house that sleeps 32, and leaving the negotiation over dates to the family.">
+  <link rel="canonical" href="https://gildas.fyi/en/experimental/campagne">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/campagne">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/campagne">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/campagne">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Campagne — Gildas Frémont">
+  <meta property="og:description" content="Seeing how many beds are taken each night in a family house that sleeps 32, and leaving the negotiation over dates to the family.">
+  <meta property="og:url" content="https://gildas.fyi/en/experimental/campagne">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/en/experimental/context/campagne.md" title="Full write-up">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.ca-wrap { margin: 2rem 0 !important; display: grid; grid-template-columns: 1fr 13rem; gap: 1.25rem; align-items: start; }
+.ca-month { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.ca-month .dow { font-size: 11px; color: var(--light); text-align: center; padding-bottom: 0.2rem; }
+.ca-day { aspect-ratio: 1 / 0.82; border: none; border-radius: 4px; padding: 3px 5px; font: inherit; font-size: 10px; line-height: 1.1; display: flex; flex-direction: column; justify-content: space-between; text-align: left; cursor: pointer; background: var(--bg); color: var(--light); outline-offset: 1px; }
+.ca-day b { font-size: 14px; font-weight: 600; color: var(--black); text-align: right; font-variant-numeric: tabular-nums; }
+.ca-day.l1 { background: rgba(var(--xp-live), .14); }
+.ca-day.l2 { background: rgba(var(--xp-pause), .24); }
+.ca-day.l3 { background: rgba(var(--xp-red), .24); }
+.ca-day.l4 { background: rgb(var(--xp-red)); color: var(--white); }
+.ca-day.l4 b { color: var(--white); }
+.ca-day.sel { box-shadow: inset 0 0 0 2px var(--black); }
+.ca-day.empty { background: transparent; cursor: default; }
+.ca-side { border: 1px solid var(--border); border-radius: 8px; background: var(--white); padding: 0.8rem 0.9rem; font-size: 13px; color: var(--mid); }
+.ca-side .n { font-size: 26px; font-weight: 600; color: var(--black); font-variant-numeric: tabular-nums; }
+.ca-side .n small { font-size: 13px; font-weight: 400; color: var(--light); }
+.ca-side ul { list-style: none; margin-top: 0.6rem; }
+.ca-side li { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.25rem 0; border-top: 1px solid var(--border); font-size: 12.5px; }
+.ca-side li span:last-child { color: var(--black); font-variant-numeric: tabular-nums; }
+.ca-side .verdict { margin-top: 0.6rem; font-size: 12px; color: var(--light); line-height: 1.45; }
+.ca-key { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: 12px; color: var(--mid); margin-top: 0.7rem; }
+.ca-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.3rem; vertical-align: -1px; }
+.ca-file { margin: 1.5rem 0 2rem !important; max-width: 34rem; border: 1px solid var(--border); border-radius: 6px; background: var(--white); overflow: hidden; }
+.ca-file .nm { font-family: var(--xp-mono); font-size: 11.5px; color: var(--light); padding: 0.45rem 0.8rem; border-bottom: 1px solid var(--border); background: var(--bg); }
+.ca-file pre { font-family: var(--xp-mono); font-size: 12.5px; line-height: 1.75; color: var(--dark); padding: 0.7rem 0.8rem; white-space: pre-wrap; margin: 0; }
+.ca-file pre em { font-style: normal; color: var(--light); }
+@media (max-width: 640px) { .ca-wrap { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-campagne">
+
+  <nav class="lang-toggle">
+    <a href="/en/experimental">← Experimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · April and May 2026</p>
+      <h1>Seeing how many beds are taken, night by night, in a family country house</h1>
+      <p class="article-page-subtitle">A calendar that shows how full the house is and leaves the decisions to the family</p>
+      <p class="article-meta">April 10 to May 8, 2026 · Next.js, Postgres · built with Claude Code · family use · <a href="/en/experimental/context/campagne.md">full write-up (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>The house sleeps thirty-two, and some sixty people from eight branches of the family take turns staying there. They used to organize it in a Google Sheet that had piled up duplicates and rows with no dates, and that couldn't answer the one question that matters before you pick your dates: how many beds are already taken that night.</p>
+
+      <figure>
+        <div class="ca-wrap">
+          <div>
+            <div class="ca-month" id="ca-month"></div>
+            <div class="ca-key"><span><i style="background:rgba(var(--xp-live),.14)"></i>up to 17</span><span><i style="background:rgba(var(--xp-pause),.24)"></i>up to 27</span><span><i style="background:rgba(var(--xp-red),.24)"></i>up to 32</span><span><i style="background:rgb(var(--xp-red))"></i>more people than beds</span></div>
+          </div>
+          <div class="ca-side" id="ca-side" aria-live="polite"></div>
+        </div>
+        <figcaption>A summer month redrawn with made-up stays. Each square shows how many beds are taken on the night that starts that day, colored by the app's thresholds. Tap a night to see the stays that fill it.</figcaption>
+      </figure>
+
+      <p>Everyone enters their dates from their phone, with no account and no password: identity is a simple preference kept on the device. When a night overflows, the app shows it, and the family sorts it out. The spec puts it in one sentence: the negotiation happens within the family, outside the app.</p>
+
+      <h2>Seventeen minutes, then rules</h2>
+
+      <p>The spec was written on April 10 at 4:40 p.m. At 4:57 p.m., Claude Code delivered a complete first version: month and week views, entering stays, colored thresholds at 17, 27 and 32 beds. Member management came the next day.</p>
+
+      <p>To fill out the starting data, Claude had added family members who don't exist. The fix that removes them was written at 5:53 p.m. At 9:44 p.m., the project got its instructions file for Claude, with this section.</p>
+
+      <figure class="ca-file">
+        <div class="nm">CLAUDE.md · Principles (translated from French)</div>
+<pre><em>-</em> Never make up data: stick to the spec
+<em>-</em> If information is missing, ask instead of improvising
+<em>-</em> Don't contradict what the user sees in their UI
+<em>-</em> Think before acting, not the other way around
+<em>-</em> Don't add features nobody asked for</pre>
+      </figure>
+
+      <h2>What came next</h2>
+
+      <p>On May 8, a Claude session explored what came next on a working branch, in 24 commits: a day view, counters per family branch, a date picker like the ones for booking flights, and the room assignment page the spec had planned for a second phase, with an alert when a room is overbooked.</p>
+
+    </div>
+  </article>
+<script>
+(function(){
+  var month = document.getElementById('ca-month'), side = document.getElementById('ca-side');
+  if (!month) return;
+  // Made-up stays: [branch, arrival, departure, people]. Nights run from arrival to the day before departure.
+  var stays = [['Branch A',1,9,6],['Branch B',3,11,7],['Branch C',5,8,5],['Branch D',10,18,8],['Branch E',12,16,9],['Branch F',15,22,7],['Branch G',18,24,9],['Branch H',19,23,6],['Branch C',20,23,9],['Branch A',21,28,5],['Branch E',25,30,9],['Branch B',28,32,4]];
+  function on(n){ return stays.filter(function(s){ return n >= s[1] && n < s[2]; }); }
+  function beds(n){ return on(n).reduce(function(a,s){ return a + s[3]; }, 0); }
+  function lvl(b){ return b > 32 ? 'l4' : b > 27 ? 'l3' : b > 17 ? 'l2' : 'l1'; }
+  function ord(n){ var s = ['th','st','nd','rd'], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+  ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(function(d){ var e = document.createElement('span'); e.className = 'dow'; e.textContent = d; month.appendChild(e); });
+  var e0 = document.createElement('span'); e0.className = 'ca-day empty'; month.appendChild(e0);
+  for (var n = 1; n <= 31; n++) {
+    var b = beds(n), d = document.createElement('button');
+    d.type = 'button'; d.className = 'ca-day ' + lvl(b); d.dataset.n = n;
+    d.innerHTML = '<span>' + n + '</span><b>' + b + '</b>';
+    d.setAttribute('aria-label', 'Night of the ' + ord(n) + ', ' + b + ' beds');
+    month.appendChild(d);
+  }
+  function show(n){
+    month.querySelectorAll('.sel').forEach(function(x){ x.classList.remove('sel'); });
+    month.querySelector('[data-n="' + n + '"]').classList.add('sel');
+    var list = on(n), b = beds(n);
+    var v = b > 32 ? (b - 32) + ' bed' + (b - 32 > 1 ? 's' : '') + ' short. The app doesn\'t say who gives up their place.' : b > 27 ? 'The house is almost full.' : b > 17 ? 'There is still room.' : 'The house is quiet.';
+    side.innerHTML = '<span class="xp-kicker">Night of the ' + ord(n) + '</span><div class="n">' + b + ' <small>/ 32 beds</small></div><ul>' +
+      list.map(function(s){ return '<li><span>' + s[0] + ' · ' + ord(s[1]) + ' to ' + ord(s[2]) + '</span><span>' + s[3] + '</span></li>'; }).join('') +
+      '</ul><p class="verdict">' + v + '</p>';
+  }
+  month.addEventListener('click', function(e){ var d = e.target.closest('.ca-day'); if (d && d.dataset.n) show(+d.dataset.n); });
+  var worst = 1; for (var k = 1; k <= 31; k++) if (beds(k) > beds(worst)) worst = k;
+  show(worst);
+})();
+</script>
+
+    <nav class="xp-nav">
+      <a href="/en/experimental/swisser"><small>← Previous</small>Swisser</a>
+      <a class="next" href="/en/experimental/commentaire"><small>Next →</small>Commentaire</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/resume-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Resume ↓</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -4,6 +4,7 @@ Projet expérimental de Gildas Frémont, directeur produit freelance (https://gi
 Page publique : https://gildas.fyi/experimental/campagne
 Statut : livré en avril 2026. Usage familial.
 Écrit avec Claude Code.
+Version anglaise : https://gildas.fyi/en/experimental/context/campagne.md
 
 Ce dossier ne contient volontairement aucun nom de famille, prénom ou lieu.
 

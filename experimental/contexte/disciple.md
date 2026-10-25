@@ -4,6 +4,7 @@ Projet expérimental de Gildas Frémont, directeur produit freelance (https://gi
 Page publique : https://gildas.fyi/experimental/disciple
 Statut : prototype fonctionnel, construit du 22 au 31 mars 2026. Dépôt privé.
 Écrit avec Claude Code.
+Version anglaise : https://gildas.fyi/en/experimental/context/disciple.md
 
 ## Le pari
 

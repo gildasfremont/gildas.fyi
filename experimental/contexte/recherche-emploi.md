@@ -4,6 +4,7 @@ Projet expérimental de Gildas Frémont, directeur produit freelance (https://gi
 Page publique : https://gildas.fyi/experimental/recherche-emploi
 Statut : en usage quotidien depuis le 21 octobre 2026. Base de connaissances et outil privés ; l'outil est réservé à un seul compte.
 Écrit avec Claude Code et Cowork.
+Version anglaise : https://gildas.fyi/en/experimental/context/recherche-emploi.md
 
 Ce dossier décrit le mécanisme. Il ne contient volontairement aucun nom d'entreprise visée, de cabinet ou de recruteur, aucune rémunération et aucun résultat de candidature.
 

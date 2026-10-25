@@ -4,6 +4,7 @@ Projet expérimental de Gildas Frémont, directeur produit freelance (https://gi
 Page publique : https://gildas.fyi/experimental/futurun
 Statut : en usage personnel depuis le 12 octobre 2026. Dépôt privé.
 Écrit avec Claude Code.
+Version anglaise : https://gildas.fyi/en/experimental/context/futurun.md
 
 Ce dossier ne contient volontairement aucun solde, aucun établissement nommé et aucune donnée bancaire.
 

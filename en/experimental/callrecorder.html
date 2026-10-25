@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CallRecorder — Gildas Frémont</title>
+  <meta name="description" content="Keeping a record of your calls without having to remember to hit record: a Mac app that starts recording when a calling app picks up the microphone, transcribes on the spot, and that Claude can read.">
+  <link rel="canonical" href="https://gildas.fyi/en/experimental/callrecorder">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/callrecorder">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/callrecorder">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/callrecorder">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="CallRecorder — Gildas Frémont">
+  <meta property="og:description" content="Keeping a record of your calls without having to remember to hit record: a Mac app that starts recording when a calling app picks up the microphone, transcribes on the spot, and that Claude can read.">
+  <meta property="og:url" content="https://gildas.fyi/en/experimental/callrecorder">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/en/experimental/context/callrecorder.md" title="Full write-up">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.cr-trip { margin: 2rem 0 !important; padding: 1.25rem; border: 1px solid var(--border); border-radius: 10px; background: var(--white); }
+.cr-zones { display: grid; grid-template-columns: 1.35fr 1fr; gap: 1.25rem; }
+.cr-zone > .xp-kicker { padding-bottom: 0.45rem; margin-bottom: 0.8rem; border-bottom: 2px solid var(--black); }
+.cr-zone.after > .xp-kicker { border-bottom-color: rgb(var(--xp-live)); }
+.cr-zone .quote { display: block; font-size: 12px; color: var(--light); margin: -0.5rem 0 0.8rem; font-style: italic; }
+.cr-ev { font-size: 12.5px; color: var(--mid); margin: 0.2rem 0; }
+.cr-ev b { color: var(--black); font-weight: 600; }
+.cr-track { margin: 0.5rem 0; }
+.cr-track small { display: block; font-size: 11px; color: var(--light); margin-bottom: 0.15rem; font-family: var(--xp-mono); }
+.cr-wave { display: flex; align-items: center; gap: 2px; height: 22px; }
+.cr-wave i { flex: 1; min-width: 1px; border-radius: 1px; background: var(--black); }
+.cr-them .cr-wave i { background: rgb(var(--xp-live)); }
+.cr-snaps { display: flex; justify-content: space-between; height: 18px; align-items: center; }
+.cr-snaps i { width: 10px; height: 13px; border: 1px solid var(--light); border-radius: 1px; }
+.cr-steps { list-style: none; counter-reset: s; }
+.cr-steps li { counter-increment: s; position: relative; padding: 0 0 0.75rem 1.6rem; font-size: 13px; color: var(--mid); line-height: 1.5; }
+.cr-steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 1.15rem; height: 1.15rem; border-radius: 50%; border: 1px solid rgb(var(--xp-live)); color: rgb(var(--xp-live)); font-size: 10.5px; display: flex; align-items: center; justify-content: center; }
+.cr-steps b { color: var(--black); font-weight: 600; }
+.cr-shot img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.cr-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+.cr-pair figure { margin: 0 !important; }
+.cr-minus { margin: 1.5rem 0 2rem !important; border-top: 1px solid var(--border); }
+.cr-minus .row { display: grid; grid-template-columns: 1fr 1.6rem 1fr; gap: 0.6rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.cr-minus .old { color: var(--light); text-decoration: line-through; text-decoration-color: rgba(var(--xp-red), .7); }
+.cr-minus .arr { color: var(--light); text-align: center; }
+.cr-minus .new { color: var(--black); }
+.cr-minus .head { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); padding: 0.5rem 0 0.3rem; border-bottom: 1px solid var(--border); }
+@media (max-width: 640px) {
+  .cr-zones, .cr-pair { grid-template-columns: 1fr; }
+  .cr-minus .row { grid-template-columns: 1fr; gap: 0.1rem; }
+  .cr-minus .arr { display: none; }
+}
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-callrecorder">
+
+  <nav class="lang-toggle">
+    <a href="/en/experimental">← Experimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · October 2026</p>
+      <h1>Keeping a record of your calls without having to remember to hit record</h1>
+      <p class="article-page-subtitle">A Mac app that records when a calling app picks up the microphone, transcribes on the spot, and that Claude can read</p>
+      <p class="article-meta">October 22–25, 2026, version 0.3.5 released · Swift · built with Claude Code · <a href="https://gildasfremont.github.io/callrecorder-site/" target="_blank" rel="noopener">download page (in French)</a> · <a href="/en/experimental/context/callrecorder.md">full write-up (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>To find what was said on a call, you need a recording, and to have a recording, you need to have thought of it before the conversation started. My first attempt, meet-recorder, sent a reminder five minutes before every video call on my calendar, but I still had to click to start recording, and setting it up took a virtual audio driver, a Google Cloud project and an OpenAI key. I archived it in April. CallRecorder starts from the same need, with one rule: ask for nothing during the call.</p>
+
+      <figure class="cr-trip">
+        <div class="cr-zones">
+          <div class="cr-zone">
+            <span class="xp-kicker">During the call</span>
+            <span class="quote">"automatic, dumb, reliable"</span>
+            <p class="cr-ev"><b>Zoom picks up the mic</b>: recording starts.</p>
+            <div class="cr-track"><small>me.m4a · my microphone</small><div class="cr-wave" data-turns="me"></div></div>
+            <div class="cr-track cr-them"><small>them.m4a · the calling app's audio, nothing else</small><div class="cr-wave" data-turns="them"></div></div>
+            <div class="cr-track"><small>a screenshot of the window every 30 s</small><div class="cr-snaps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <p class="cr-ev"><b>Zoom releases the mic</b>: recording stops.</p>
+          </div>
+          <div class="cr-zone after">
+            <span class="xp-kicker">Afterwards</span>
+            <span class="quote">"on demand, extensible pipeline"</span>
+            <ol class="cr-steps">
+              <li><b>Transcription</b> by Whisper, on the Mac. The two tracks are enough to tell "me" from "the others."</li>
+              <li><b>Identification</b> by Claude: a title, the participants, and the vocabulary to give Whisper, drawn from the screenshots, the calendar and Gmail, all read without changing anything. A call is matched to a meeting only on evidence.</li>
+              <li><b>Finding the call</b> again in the Calls window, with the <code>calls</code> command, or by asking Claude through an MCP server.</li>
+            </ol>
+          </div>
+        </div>
+        <figcaption>The two phases the spec keeps apart, in its own words, translated from French. The two tracks take turns: when I talk, the other side is quiet. Zoom is the example here; the app also recognizes Teams, Meet in the browser, FaceTime, WhatsApp, Slack, Webex and Loom.</figcaption>
+      </figure>
+
+      <p>The spec says "personal use, everything stays on the machine." The audio, the transcript and the usage log never leave the Mac. Two things do, and both are optional: identification by Claude, through the claude.ai subscription, and the setup log, which masks names and folders and stops after the first transcribed call. Each call is a folder holding its two tracks, its context and its transcript, which you can open, copy or delete by hand. Only apps on an allowlist trigger anything: Siri or dictation can take the microphone and nothing starts.</p>
+
+      <figure class="cr-shot">
+        <img src="/img/experimental/callrecorder-appels.jpg" alt="The Calls window: a list of calls with title, participants, date, duration, app and status" width="1600" height="676" loading="lazy">
+        <figcaption>The Calls window, in French like the rest of the app. Titles and participants come from Claude's identification. The calls in this screenshot are made up, generated for the download page.</figcaption>
+      </figure>
+
+      <h2>What had to go</h2>
+
+      <p>meet-recorder only ever ran on my machine. CallRecorder was built by removing whatever kept it that way.</p>
+
+      <div class="cr-minus">
+        <div class="row head"><span>meet-recorder, before April</span><span></span><span>CallRecorder, October</span></div>
+        <div class="row"><span class="old">Google Calendar polled every minute</span><span class="arr">→</span><span class="new">a macOS event when an app takes the microphone</span></div>
+        <div class="row"><span class="old">BlackHole and an audio device set up by hand</span><span class="arr">→</span><span class="new">the calling app's audio alone, captured directly</span></div>
+        <div class="row"><span class="old">the whole screen and the webcam, filmed</span><span class="arr">→</span><span class="new">a screenshot of the window every 30 seconds</span></div>
+        <div class="row"><span class="old">OpenAI's Whisper API and its key</span><span class="arr">→</span><span class="new">whisper.cpp, on the Mac's own chip</span></div>
+        <div class="row"><span class="old">Google Meet's blue outline, searched for frame by frame</span><span class="arr">→</span><span class="new">two tracks, "me" and "the others"</span></div>
+        <div class="row"><span class="old">Homebrew, ffmpeg, Python, a Google Cloud project</span><span class="arr">→</span><span class="new">a .dmg, or one line in Terminal</span></div>
+      </div>
+
+      <p>The blue outline has not gone away, though. meet-recorder split the screen into three fixed columns and looked, once a second, for the tile Meet outlines when someone speaks. The CallRecorder spec brings the idea back for a version 2, without a heavy model: Zoom, Teams and Meet outline whoever is speaking and show their name in their tile, and reading that frame and that name on screen would be enough to attribute each sentence on the other side's track.</p>
+
+      <h2>Three days, one of them on setup</h2>
+
+      <p>The first file dates from October 22 at 1:20 p.m., and the first commit, at 10:19 p.m., already contains recording, transcription, identification and the MCP server. It is numbered 0.2.0: version 0.1 only ever existed on disk, during those nine hours.</p>
+
+      <p>The 23rd went mostly into setup. The first setup assistant asked for every permission at once, without saying why. The second runs a fake call, and macOS asks for each permission at the moment it is needed, as it would during a real call. The installer window went through 24 versions that day. Also on the 23rd, at 7:34 p.m., macOS echo cancellation was added to the microphone, and removed at 7:41: it cut off the capture of other apps' audio and muffled the mic, without removing the echo.</p>
+
+      <div class="cr-pair">
+        <figure class="cr-shot">
+          <img src="/img/experimental/callrecorder-08-appel-conversation.jpg" alt="The test call: two tiles, the user and a test caller, and a recording timer" width="1400" height="1059" loading="lazy">
+          <figcaption>The setup assistant's test call.</figcaption>
+        </figure>
+        <figure class="cr-shot">
+          <img src="/img/experimental/callrecorder-10-transcription-resultat.jpg" alt="The transcript of the test call, with time-stamped lines from the user and the test caller" width="1400" height="1059" loading="lazy">
+          <figcaption>Its transcript. The caller asks for a first name and what the weather is like; the recorded answer is "Gildas, et il fait très beau" (Gildas, and it's lovely out).</figcaption>
+        </figure>
+      </div>
+
+      <p>The app has been public since October 24, for Apple silicon Macs running macOS 15 or later, with automatic updates that the user approves.</p>
+
+      <p>The next day, a first person installed it on their own Mac, over a video call. Two things slowed them down: Claude Desktop only rereads its configuration at launch, and nothing said so; and on the .dmg's background image, the "Open Anyway" box looked like a real button. Version 0.3.4, released the same day, asks you to restart Claude and redraws the box as a screenshot. Version 0.3.5 followed half an hour later.</p>
+
+    </div>
+  </article>
+<script>
+(function(){
+  var turns = [[0,9,'me'],[9,21,'them'],[21,27,'me'],[27,40,'them'],[40,52,'me'],[52,64,'them']];
+  function rnd(s){ return function(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
+  document.querySelectorAll('.cr-wave').forEach(function(el){
+    var r = rnd(el.dataset.turns === 'me' ? 3 : 7);
+    for (var i = 0; i < 64; i++) {
+      var on = turns.some(function(t){ return i >= t[0] && i < t[1] && t[2] === el.dataset.turns; });
+      var bar = document.createElement('i');
+      bar.style.height = (on ? 20 + r() * 80 : 4) + '%';
+      if (!on) bar.style.opacity = '.25';
+      el.appendChild(bar);
+    }
+  });
+})();
+</script>
+
+    <nav class="xp-nav">
+      <a href="/en/experimental"><small>← All projects</small>Experimental</a>
+      <a class="next" href="/en/experimental/copropriete"><small>Next →</small>Condominium accounts</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/resume-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Resume ↓</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -5,6 +5,7 @@ Page publique : https://gildas.fyi/experimental/recettes
 App en ligne : https://recettes-gilt.vercel.app
 Statut : en ligne depuis le 30 juin 2026. Dépôt privé.
 Écrit avec Claude Code.
+Version anglaise : https://gildas.fyi/en/experimental/context/recettes.md
 
 ## Le pari
 

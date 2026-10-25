@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swisser — Gildas Frémont</title>
+  <meta name="description" content="Adjusting a page's typography from what you see: you drag a green line, the average of the line endings, and the CSS follows. An afternoon's prototype.">
+  <link rel="canonical" href="https://gildas.fyi/en/experimental/swisser">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/swisser">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/swisser">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/swisser">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swisser — Gildas Frémont">
+  <meta property="og:description" content="Adjusting a page's typography from what you see: you drag a green line, the average of the line endings, and the CSS follows. An afternoon's prototype.">
+  <meta property="og:url" content="https://gildas.fyi/en/experimental/swisser">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/en/experimental/context/swisser.md" title="Full write-up">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.sw-stage { position: relative; padding: 2.2rem 1.4rem 1.2rem; border: 1px solid var(--border); border-radius: 8px; background: var(--white); user-select: none; }
+.sw-text { position: relative; font-size: 17px; line-height: 26px; color: var(--dark); hyphens: auto; -webkit-hyphens: auto; margin: 0 !important; }
+.sw-text.grid { background-image: repeating-linear-gradient(to bottom, transparent 0 25px, rgba(var(--xp-red), .35) 25px 26px); }
+.sw-line { position: absolute; top: 0.7rem; bottom: 0.7rem; width: 2px; margin-left: -1px; background: rgb(var(--xp-live)); cursor: ew-resize; touch-action: none; }
+.sw-line::before { content: ''; position: absolute; inset: 0 -12px; }
+.sw-line::after { content: attr(data-label); position: absolute; top: -1.35rem; left: 50%; transform: translateX(-50%); font-size: 11px; color: rgb(var(--xp-live)); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sw-ends i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: rgba(var(--xp-live), .5); margin: -2.5px 0 0 -2.5px; pointer-events: none; }
+.sw-tools { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; margin-top: 0.8rem; font-size: 13px; color: var(--mid); }
+.sw-tools button { font: inherit; font-size: 12px; padding: 0.15rem 0.6rem; border: 1px solid var(--border); border-radius: 3px; background: var(--white); color: var(--dark); cursor: pointer; }
+.sw-tools button[aria-pressed="true"] { border-color: rgb(var(--xp-red)); color: rgb(var(--xp-red)); }
+.sw-tools code { color: var(--light); }
+.sw-afternoon { position: relative; margin: 2.4rem 0 3rem; height: 40px; }
+.sw-afternoon .seg { position: absolute; top: 10px; height: 20px; border-radius: 2px; }
+.sw-afternoon .a { background: rgba(var(--xp-red), .22); }
+.sw-afternoon .b { background: rgba(var(--xp-live), .28); }
+.sw-afternoon .pv { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--black); }
+.sw-afternoon span { position: absolute; font-size: 12px; color: var(--mid); white-space: nowrap; }
+.sw-afternoon span.t { top: 44px; color: var(--light); font-variant-numeric: tabular-nums; }
+.sw-afternoon span.l { top: -20px; }
+.sw-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0 2rem; max-width: 36em; }
+.sw-two figure { margin: 0 !important; }
+.sw-two svg { display: block; width: 100%; height: auto; background: var(--white); border: 1px solid var(--border); border-radius: 6px; }
+.sw-two figcaption b { display: block; font-weight: 600; color: var(--black); }
+.sw-two .wrong figcaption b { color: rgb(var(--xp-red)); }
+@media (max-width: 600px) { .sw-afternoon span.l { display: none; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-swisser">
+
+  <nav class="lang-toggle">
+    <a href="/en/experimental">← Experimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · June 1, 2026</p>
+      <h1>Adjusting a page's typography from what you see</h1>
+      <p class="article-page-subtitle">You drag a line, the average of where the lines end, and the CSS follows</p>
+      <p class="article-meta">An afternoon's prototype · TypeScript, Vite, no framework · built with Claude Code · <a href="/en/experimental/context/swisser.md">full write-up (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>A typographer judges a paragraph by its ragged right edge: the line endings spread around an average position, and that average is set by adjusting the measure, the type size and the leading. In a site editor, you adjust CSS properties (margins, widths, sizes) without seeing what they do to that edge. Swisser lets you adjust what you see instead.</p>
+
+      <figure>
+        <div class="sw-stage">
+          <p class="sw-text" lang="en">A well-set paragraph shows in the shape of its right edge. The line endings spread around an average position, with no teeth and no holes, and the eye returns to the start of the next line without effort. Typographers set that average by adjusting the measure, the type size and the leading. In a site editor, you set CSS properties without seeing what they produce. Here, you grab the average and move it.</p>
+          <div class="sw-ends"></div>
+          <div class="sw-line" role="slider" aria-label="Average of the line endings" tabindex="0"></div>
+        </div>
+        <div class="sw-tools">
+          <span>Drag the green line, with the mouse or the arrow keys.</span>
+          <code class="sw-css"></code>
+          <button type="button" class="sw-grid" aria-pressed="false">Grid from the first idea</button>
+        </div>
+        <figcaption>The dots mark the line endings, the green line their average, recalculated after every browser render. As in the prototype, the line drives the paragraph's right padding, and the matching CSS shows alongside.</figcaption>
+      </figure>
+
+      <h2>A pivot at 3:46 p.m.</h2>
+
+      <div class="sw-afternoon" aria-hidden="true">
+        <div class="seg a" style="left:0;width:38.5%"></div>
+        <div class="pv" style="left:38.5%"></div>
+        <div class="seg b" style="left:40.8%;width:59.2%"></div>
+        <span class="l" style="left:0">Composing a page from a font</span>
+        <span class="l" style="left:40.8%">Adjusting a page that exists</span>
+        <span class="t" style="left:0">2:06 p.m.</span>
+        <span class="t" style="left:38.5%;transform:translateX(-50%)">3:46 p.m.</span>
+        <span class="t" style="right:0">6:26 p.m.</span>
+      </div>
+
+      <p>The first idea came at it from the other end: a Markdown document and a font. The engine read the font's metrics (x-height, cap height, ascenders, descenders), derived a baseline grid from them, and compared it with the text the browser displayed, at three screen widths. The button in the demo overlays a grid of that kind. By 2:27 p.m., it was running.</p>
+
+      <p>It wasn't what I was trying to adjust. At 3:46 p.m., the pivot is written into the project's memory and six files are deleted, from the grid calculation to the font reader. The new version starts from an existing web page, saved and then pasted or dropped into the editor, because a remote site refuses to display inside a frame. The project had done without a framework from the start, so that it could measure the actual rendering and line the overlay up to the pixel.</p>
+
+      <h2>The line was vertical</h2>
+
+      <p>The brief called for a "horizontal green line," and in the same breath described an average of line endings, which can only be vertical. Claude tried to satisfy both.</p>
+
+      <div class="sw-two">
+        <figure class="wrong">
+          <svg viewBox="0 0 220 150" role="img" aria-label="A paragraph and a horizontal green segment under the text, whose right end marks the average">
+            <g fill="#c8ccc6"><rect x="16" y="18" width="170" height="7" rx="2"/><rect x="16" y="34" width="150" height="7" rx="2"/><rect x="16" y="50" width="178" height="7" rx="2"/><rect x="16" y="66" width="140" height="7" rx="2"/><rect x="16" y="82" width="166" height="7" rx="2"/><rect x="16" y="98" width="96" height="7" rx="2"/></g>
+            <line x1="16" y1="124" x2="161" y2="124" stroke="rgb(40,160,90)" stroke-width="3"/><circle cx="161" cy="124" r="4" fill="rgb(40,160,90)"/>
+          </svg>
+          <figcaption><b>What Claude built</b>A horizontal segment whose right end carries the average.</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 220 150" role="img" aria-label="The same paragraph, with a dot at each line ending and a vertical green line at their average">
+            <g fill="#c8ccc6"><rect x="16" y="18" width="170" height="7" rx="2"/><rect x="16" y="34" width="150" height="7" rx="2"/><rect x="16" y="50" width="178" height="7" rx="2"/><rect x="16" y="66" width="140" height="7" rx="2"/><rect x="16" y="82" width="166" height="7" rx="2"/><rect x="16" y="98" width="96" height="7" rx="2"/></g>
+            <g fill="rgba(40,160,90,.55)"><circle cx="186" cy="21.5" r="3"/><circle cx="166" cy="37.5" r="3"/><circle cx="194" cy="53.5" r="3"/><circle cx="156" cy="69.5" r="3"/><circle cx="182" cy="85.5" r="3"/></g>
+            <line x1="177" y1="8" x2="177" y2="138" stroke="rgb(40,160,90)" stroke-width="3"/>
+          </svg>
+          <figcaption><b>What was described</b>A vertical line at the average of the line endings.</figcaption>
+        </figure>
+      </div>
+
+      <p>The compromise didn't hold. The rule Claude drew from it stayed in the project's memory: when the word and the function contradict each other, follow the function.</p>
+
+      <h2>By the end of the afternoon</h2>
+
+      <p>At 6:26 p.m., the editor found ten text blocks on the sample page, and let you pick one and drag its line.</p>
+
+    </div>
+  </article>
+<script>
+(function(){
+  var stage = document.querySelector('.sw-stage');
+  if (!stage) return;
+  var p = stage.querySelector('.sw-text'), line = stage.querySelector('.sw-line'), dots = stage.querySelector('.sw-ends'), css = document.querySelector('.sw-css');
+  var pad = 60;
+  function measure(){
+    var r = document.createRange(); r.selectNodeContents(p);
+    var byTop = {};
+    Array.prototype.forEach.call(r.getClientRects(), function(x){ if (x.width < 1) return; var k = Math.round(x.top); byTop[k] = Math.max(byTop[k] || 0, x.right); });
+    var s = stage.getBoundingClientRect(), tops = Object.keys(byTop).map(Number).sort(function(a,b){ return a - b; });
+    dots.innerHTML = '';
+    var ends = tops.slice(0, -1).map(function(t){
+      var x = byTop[t] - s.left, d = document.createElement('i');
+      d.style.left = x + 'px'; d.style.top = (t - s.top + 13) + 'px'; dots.appendChild(d);
+      return x;
+    });
+    var mean = ends.reduce(function(a,b){ return a + b; }, 0) / Math.max(ends.length, 1);
+    line.style.left = mean + 'px';
+    line.dataset.label = 'average ' + Math.round(mean) + ' px';
+    css.textContent = 'padding-right: ' + Math.round(pad) + 'px';
+  }
+  function setPad(v){ pad = Math.max(0, Math.min(p.clientWidth * 0.6, v)); p.style.paddingRight = pad + 'px'; measure(); }
+  var startX = 0, startPad = 0, dragging = false;
+  line.addEventListener('pointerdown', function(e){ dragging = true; startX = e.clientX; startPad = pad; line.setPointerCapture(e.pointerId); });
+  line.addEventListener('pointermove', function(e){ if (dragging) setPad(startPad - (e.clientX - startX)); });
+  line.addEventListener('pointerup', function(){ dragging = false; });
+  line.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowLeft') { setPad(pad + 10); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { setPad(pad - 10); e.preventDefault(); }
+  });
+  document.querySelector('.sw-grid').addEventListener('click', function(){
+    var on = p.classList.toggle('grid'); this.setAttribute('aria-pressed', on);
+  });
+  window.addEventListener('resize', measure);
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function(){ setPad(pad); });
+})();
+</script>
+
+    <nav class="xp-nav">
+      <a href="/en/experimental/recettes"><small>← Previous</small>Recettes</a>
+      <a class="next" href="/en/experimental/campagne"><small>Next →</small>Campagne</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/resume-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Resume ↓</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
