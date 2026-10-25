@@ -1,6 +1,7 @@
 /* ------------------------------------------------
-   Expérimental — projets traités comme des thèses
-   Chargé après style.css. Préfixe xp-.
+   Expérimental
+   Commun : typographie, espacements, listing et navigation.
+   Tout le reste vit dans la page du projet.
    ------------------------------------------------ */
 
 :root {
@@ -11,14 +12,39 @@
   --xp-mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
 
-.xp-page .article-body > p { font-size: 16px; }
-
 .xp-intro {
   font-size: 16px;
   color: var(--mid);
   max-width: 34em;
   margin-top: 0.5rem;
 }
+
+/* Corps de texte : une mesure lisible, les figures peuvent être plus larges */
+.xp-page .article-body > p,
+.xp-page .article-body > ul,
+.xp-page .article-body > ol { font-size: 16px; line-height: 1.65; max-width: 36em; }
+.xp-page .article-body > p { margin-bottom: 1rem; }
+.xp-page .article-body h2 { margin: 2.5rem 0 0.75rem; }
+.xp-page .article-body h3 { font-size: 16px; font-weight: 600; color: var(--black); margin: 1.5rem 0 0.4rem; font-variation-settings: 'GEOM' 0; }
+.xp-page .article-body figure { margin: 2rem 0; }
+.xp-page .article-body figcaption { font-size: 13px; color: var(--light); font-weight: 300; line-height: 1.5; margin-top: 0.6rem; max-width: 40em; }
+.xp-page code { font-family: var(--xp-mono); font-size: 0.85em; }
+
+/* Petites capitales d'étiquette, partout la même */
+.xp-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--light);
+  font-variation-settings: 'GEOM' 0;
+}
+
+.xp-kicker a { color: inherit; text-decoration: none; }
+.xp-kicker a:hover { color: var(--mid); }
+
+.xp-crumb { margin-bottom: 0.4rem; }
 
 /* ---------- Listing ---------- */
 
@@ -131,271 +157,7 @@
 
 .xp-links .xp-nolink { color: var(--light); font-weight: 300; }
 
-/* ---------- Page projet : en-tête ---------- */
-
-.xp-crumb {
-  font-size: 0.55rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--light);
-  margin-bottom: 0.4rem;
-}
-
-.xp-crumb a { color: inherit; text-decoration: none; }
-.xp-crumb a:hover { color: var(--mid); }
-
-.xp-thesis {
-  margin: 1.5rem 0 0.5rem;
-  padding: 0.9rem 1rem 0.9rem 1.1rem;
-  border-left: 2px solid var(--black);
-  background: var(--white);
-}
-
-.xp-thesis-label,
-.xp-label {
-  display: block;
-  font-size: 0.5rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--light);
-  margin-bottom: 0.3rem;
-  font-variation-settings: 'GEOM' 0;
-}
-
-.xp-thesis p {
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--black);
-  margin: 0;
-}
-
-.xp-facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
-  gap: 0.75rem 1rem;
-  margin: 1.5rem 0 0.5rem;
-  padding: 0.9rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.xp-fact b {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--black);
-  line-height: 1.2;
-  font-variation-settings: 'GEOM' 0;
-  font-variant-numeric: tabular-nums;
-}
-
-.xp-fact span {
-  display: block;
-  font-size: 0.5rem;
-  color: var(--light);
-  line-height: 1.35;
-  margin-top: 0.15rem;
-}
-
-/* ---------- Essais et erreurs ---------- */
-
-.xp-trials { list-style: none; margin: 1rem 0 1.5rem; }
-
-.xp-trial {
-  display: grid;
-  grid-template-columns: 5.2rem 1fr;
-  gap: 0 0.9rem;
-  padding: 0.75rem 0;
-  border-top: 1px solid var(--border);
-}
-
-.xp-trial:last-child { border-bottom: 1px solid var(--border); }
-
-.xp-verdict {
-  font-size: 0.5rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding-top: 0.2rem;
-  color: rgb(var(--c, var(--xp-stop)));
-  font-variation-settings: 'GEOM' 0;
-}
-
-.xp-verdict.kept { --c: var(--xp-live); }
-.xp-verdict.dropped { --c: var(--xp-red); }
-.xp-verdict.open { --c: var(--xp-pause); }
-
-.xp-trial h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--black);
-  line-height: 1.4;
-  font-variation-settings: 'GEOM' 0;
-}
-
-.xp-trial p {
-  font-size: 15px;
-  color: var(--mid);
-  font-weight: 300;
-  line-height: 1.6;
-  margin: 0.2rem 0 0 !important;
-}
-
-.xp-trial .xp-proof {
-  font-family: var(--xp-mono);
-  font-size: 12px;
-  color: var(--light);
-}
-
-/* ---------- Chronologie ---------- */
-
-.xp-timeline {
-  list-style: none;
-  margin: 1rem 0 1.5rem;
-  position: relative;
-}
-
-.xp-timeline::before {
-  content: '';
-  position: absolute;
-  left: 5.6rem;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  width: 1px;
-  background: var(--border);
-}
-
-.xp-timeline li {
-  display: grid;
-  grid-template-columns: 5.2rem 1fr;
-  gap: 0 0.9rem;
-  padding: 0.3rem 0;
-  position: relative;
-  font-size: 15px;
-  line-height: 1.55;
-}
-
-.xp-timeline li::before {
-  content: '';
-  position: absolute;
-  left: calc(5.6rem - 3px);
-  top: 0.75em;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 1px solid var(--subtle);
-}
-
-.xp-timeline li.k-ship::before { background: rgb(var(--xp-live)); border-color: rgb(var(--xp-live)); }
-.xp-timeline li.k-fail::before { background: rgb(var(--xp-red)); border-color: rgb(var(--xp-red)); }
-.xp-timeline li.k-pivot::before { background: rgb(var(--xp-pause)); border-color: rgb(var(--xp-pause)); }
-.xp-timeline li.k-gap { color: var(--light); font-style: italic; }
-
-.xp-timeline time {
-  font-size: 13px;
-  color: var(--light);
-  font-weight: 300;
-  font-variant-numeric: tabular-nums;
-  text-align: right;
-  padding-right: 0.6rem;
-}
-
-.xp-timeline span { color: var(--mid); padding-left: 0.6rem; }
-
-.xp-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.2rem 1rem;
-  font-size: 12px;
-  color: var(--light);
-  margin-top: -0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.xp-legend i {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  margin-right: 0.3rem;
-  border: 1px solid var(--subtle);
-  vertical-align: 0.05em;
-}
-.xp-legend i.k-ship { background: rgb(var(--xp-live)); border-color: rgb(var(--xp-live)); }
-.xp-legend i.k-fail { background: rgb(var(--xp-red)); border-color: rgb(var(--xp-red)); }
-.xp-legend i.k-pivot { background: rgb(var(--xp-pause)); border-color: rgb(var(--xp-pause)); }
-
-/* ---------- Figures sur mesure (communs) ---------- */
-
-.xp-figure {
-  margin: 1.75rem 0;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--white);
-  font-size: 14px;
-  line-height: 1.5;
-  overflow-x: auto;
-}
-
-.xp-figure figcaption {
-  font-size: 13px;
-  color: var(--light);
-  font-weight: 300;
-  margin-top: 0.75rem;
-  line-height: 1.5;
-}
-
-.xp-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-.xp-table th {
-  text-align: left;
-  font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--light);
-  padding: 0 0.6rem 0.4rem 0;
-  border-bottom: 1px solid var(--border);
-  font-variation-settings: 'GEOM' 0;
-}
-
-.xp-table td {
-  padding: 0.5rem 0.6rem 0.5rem 0;
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  color: var(--mid);
-}
-
-.xp-table tr:last-child td { border-bottom: none; }
-.xp-table td:first-child { color: var(--black); font-weight: 500; white-space: nowrap; }
-.xp-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-
-/* ---------- Livrables et navigation ---------- */
-
-.xp-deliverables { list-style: none; margin: 0.75rem 0 1rem; }
-
-.xp-deliverables li {
-  font-size: 15px;
-  color: var(--mid);
-  padding: 0.35rem 0;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.xp-deliverables li span:last-child {
-  color: var(--light);
-  font-weight: 300;
-  text-align: right;
-}
+/* ---------- Navigation entre projets ---------- */
 
 .xp-nav {
   display: flex;
@@ -412,14 +174,12 @@
 .xp-nav small { display: block; font-size: 11px; color: var(--light); letter-spacing: 0.08em; text-transform: uppercase; }
 .xp-nav .next { text-align: right; margin-left: auto; }
 
+
 @media (max-width: 600px) {
   .xp-item { grid-template-columns: 1fr; }
   .xp-when { margin-bottom: 0.2rem; }
   .xp-when br { display: none; }
-  .xp-trial { grid-template-columns: 1fr; }
-  .xp-verdict { padding: 0 0 0.15rem; }
-  .xp-timeline::before { left: 4.1rem; }
-  .xp-timeline li { grid-template-columns: 3.7rem 1fr; }
-  .xp-timeline li::before { left: calc(4.1rem - 3px); }
-  .xp-timeline time { font-size: 12px; }
 }
+
+.xp-intro a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--subtle); }
+.xp-intro a:hover { color: var(--black); }

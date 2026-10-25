@@ -22,6 +22,18 @@ Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équi
 - Eight product cases and a side project (EN) : https://gildas.fyi/en/portfolio
 - Huit cas produit et un projet perso (FR) : https://gildas.fyi/portfolio
 
+## Projets expérimentaux
+Outils construits avec Claude Code pour ses propres problèmes, chacun avec un dossier complet en Markdown. Index : https://gildas.fyi/experimental/llms.txt
+- CallRecorder, enregistrer et transcrire ses appels sur Mac : https://gildas.fyi/experimental/contexte/callrecorder.md
+- Comptes de copropriété reconstitués et vérifiables : https://gildas.fyi/experimental/contexte/copropriete.md
+- Recherche d'emploi tenue par Claude : https://gildas.fyi/experimental/contexte/recherche-emploi.md
+- Futurun, comptes et runway : https://gildas.fyi/experimental/contexte/futurun.md
+- Recettes, portions par profil : https://gildas.fyi/experimental/contexte/recettes.md
+- Swisser, typographie par une ligne : https://gildas.fyi/experimental/contexte/swisser.md
+- Campagne, calendrier des couchages : https://gildas.fyi/experimental/contexte/campagne.md
+- Commentaire, annotation vocale avec une IA : https://gildas.fyi/experimental/contexte/commentaire.md
+- Disciple, orchestration d'agents : https://gildas.fyi/experimental/contexte/disciple.md
+
 ## Articles
 - L'impersonation : un pattern qui structure un logiciel entier — https://gildas.fyi/impersonation-pattern
 - Anatomie d'un audit produit : méthode et raisonnement — https://gildas.fyi/audit-ubaq-methode

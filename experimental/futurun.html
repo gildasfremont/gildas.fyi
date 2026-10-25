@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Futurun — Gildas Frémont</title>
-  <meta name="description" content="Une app locale qui agrège banques, épargne et saisie derrière un même contrat de connecteur, calcule le runway, et réduit la reconnexion à un écran.">
+  <meta name="description" content="Réunir des comptes qui se connectent tous différemment pour savoir combien de mois tient sa trésorerie, et faire tenir la reconnexion dans un seul écran.">
   <link rel="canonical" href="https://gildas.fyi/experimental/futurun">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Futurun — Gildas Frémont">
-  <meta property="og:description" content="Une app locale qui agrège banques, épargne et saisie derrière un même contrat de connecteur, calcule le runway, et réduit la reconnexion à un écran.">
+  <meta property="og:description" content="Réunir des comptes qui se connectent tous différemment pour savoir combien de mois tient sa trésorerie, et faire tenir la reconnexion dans un seul écran.">
   <meta property="og:url" content="https://gildas.fyi/experimental/futurun">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -17,21 +17,43 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
   <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/experimental/contexte/futurun.md" title="Dossier complet">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
-.fu-contract { font-family: var(--xp-mono); font-size: 12.5px; line-height: 1.7; color: var(--mid); background: var(--bg); border-radius: 4px; padding: 0.8rem 1rem; margin-bottom: 1rem; white-space: pre; overflow-x: auto; }
-.fu-contract b { color: var(--black); font-weight: 600; }
-.fu-contract em { font-style: normal; color: var(--light); }
-.fu-state { font-size: 12px; white-space: nowrap; }
-.fu-state::before { content: '●'; margin-right: 0.3rem; color: rgb(var(--c)); }
-.fu-state.ok { --c: var(--xp-live); }
-.fu-state.fragile { --c: var(--xp-pause); }
-.fu-state.idle { --c: var(--xp-stop); }
-.fu-runway { display: flex; align-items: flex-end; gap: 3px; height: 70px; margin-top: 0.5rem; }
-.fu-runway i { flex: 1; background: var(--black); border-radius: 1px 1px 0 0; }
-.fu-runway i.low { background: rgb(var(--xp-pause)); }
-.fu-runway i.out { background: rgb(var(--xp-red)); }
+.fu-phone { width: min(100%, 360px); margin: 2rem auto 0.6rem; border: 1px solid var(--subtle); border-radius: 22px; background: #f7f8f6; padding: 0.9rem 0.8rem 1rem; box-shadow: 0 12px 30px rgba(0,0,0,.07); }
+.fu-phone .top { display: flex; justify-content: space-between; align-items: baseline; padding: 0 0.3rem 0.7rem; }
+.fu-phone .top b { font-size: 15px; color: var(--black); }
+.fu-phone .top span { font-size: 11px; color: var(--light); }
+.fu-group { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); padding: 0.4rem 0.3rem; }
+.fu-conn { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 0.6rem 0.75rem; margin-bottom: 0.45rem; transition: background .3s; }
+.fu-conn .l1 { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 13.5px; color: var(--black); }
+.fu-conn .l2 { font-size: 11.5px; color: var(--light); margin-top: 0.1rem; }
+.fu-conn .st { font-size: 11.5px; white-space: nowrap; }
+.fu-conn .st::before { content: '●'; margin-right: 0.25rem; }
+.fu-conn.ok .st { color: rgb(var(--xp-live)); }
+.fu-conn.re { border-color: rgba(var(--xp-pause), .7); background: #fffaf2; }
+.fu-conn.re .st { color: rgb(var(--xp-pause)); }
+.fu-form { margin-top: 0.55rem; display: grid; gap: 0.4rem; }
+.fu-form p { font-size: 12px !important; color: var(--mid) !important; margin: 0 !important; line-height: 1.45; }
+.fu-form button { font: inherit; font-size: 13px; padding: 0.4rem 0.6rem; border-radius: 8px; border: none; background: var(--black); color: var(--white); cursor: pointer; }
+.fu-form .field { font-size: 12px; color: var(--light); border: 1px solid var(--border); border-radius: 8px; padding: 0.35rem 0.55rem; background: var(--white); }
+.fu-methods { margin: 1.5rem 0 2rem !important; border-top: 1px solid var(--border); }
+.fu-methods .r { display: grid; grid-template-columns: 9.5rem 1fr 4.5rem; gap: 0.3rem 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 13.5px; color: var(--mid); align-items: baseline; }
+.fu-methods .r b { color: var(--black); font-weight: 600; font-size: 14px; }
+.fu-methods .r span:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--black); }
+.fu-methods .r.idle span:last-child { color: var(--light); }
+.fu-methods .r.hd span { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light) !important; }
+@media (max-width: 600px) { .fu-methods .r.hd span:nth-child(2) { display: none; } }
+.fu-runway { margin: 1.5rem 0 2rem !important; padding: 1.1rem 1.2rem; border: 1px solid var(--border); border-radius: 8px; background: var(--white); }
+.fu-runway .num { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.fu-runway .num b { font-size: 34px; font-weight: 600; color: var(--black); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.fu-runway .num span { font-size: 13px; color: var(--mid); }
+.fu-bars { display: flex; align-items: flex-end; gap: 4px; height: 70px; margin-top: 1rem; }
+.fu-bars i { flex: 1; background: var(--black); border-radius: 2px 2px 0 0; }
 .fu-axis { display: flex; justify-content: space-between; font-size: 11px; color: var(--light); margin-top: 0.3rem; }
+.fu-calc { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 0.8rem; margin-top: 1rem; font-size: 12.5px; color: var(--mid); }
+.fu-calc b { color: var(--black); font-weight: 500; }
+@media (max-width: 600px) { .fu-methods .r { grid-template-columns: 1fr auto; } .fu-methods .r span:nth-child(2) { grid-column: 1 / -1; grid-row: 2; } }
 </style>
 </head>
 <body>
@@ -47,123 +69,99 @@
 
   <article>
     <header class="article-page-header">
-      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · octobre 2026</p>
-      <h1>Futurun</h1>
-      <p class="article-page-subtitle">Voir tous ses comptes au même endroit et savoir combien de mois on tient</p>
-      <p class="article-meta">12 au 20 octobre 2026 · Next.js, Python · écrit avec Claude Code · usage personnel</p>
+      <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · octobre 2026</p>
+      <h1>Réunir ses comptes pour savoir combien de mois tient sa trésorerie</h1>
+      <p class="article-page-subtitle">Une app installée chez soi, où se reconnecter à une banque tient dans un seul écran</p>
+      <p class="article-meta">Depuis le 12 octobre 2026, usage personnel · Next.js, Python · écrit avec Claude Code · <a href="/experimental/contexte/futurun.md">dossier complet (Markdown)</a></p>
     </header>
-
-    <div class="xp-thesis">
-      <span class="xp-thesis-label">Le pari</span>
-      <p>Une seule app, installée chez soi, peut agréger des sources financières qui n'ont rien en commun, open banking, scraping, API, export et saisie, si elles passent toutes par le même contrat. Elle donne alors un burn rate et un runway fiables, et la seule friction qui reste, se reconnecter, tient dans un écran.</p>
-    </div>
-
-    <div class="xp-facts">
-      <div class="xp-fact"><b>5</b><span>méthodes de connexion, un seul contrat</span></div>
-      <div class="xp-fact"><b>11</b><span>connexions actives</span></div>
-      <div class="xp-fact"><b>77</b><span>commits sur 3 jours actifs</span></div>
-      <div class="xp-fact"><b>6 h</b><span>entre deux synchronisations</span></div>
-    </div>
 
     <div class="article-body">
 
-      <h2>Genèse</h2>
+      <p>En freelance, le chiffre qui compte est le nombre de mois que la trésorerie peut couvrir. Pour le connaître, il faut rapprocher des comptes qui ne se connectent pas de la même façon&nbsp;: une banque par l'open banking, une assurance-vie et un plan d'épargne retraite par leur espace client, un relevé exporté à la main, un crédit qu'on saisit soi-même. Chaque accès expire à son rythme.</p>
 
-      <p>En freelance, le chiffre qui compte est le nombre de mois devant soi. Mes comptes sont répartis entre une banque, une néobanque, une assurance-vie, un plan d'épargne retraite et un crédit. Chacun a son mode d'accès, et chaque connexion expire à son rythme.</p>
-
-      <p>La reconnexion est donc devenue le cœur du produit. Chaque source est un connecteur qui renvoie des comptes et des transactions, et qui lève une seule erreur quand il faut se réauthentifier. L'écran des connexions met celles à renouveler en haut, avec leur formulaire déjà ouvert.</p>
-
-      <figure class="xp-figure">
-<div class="fu-contract"><em>// le même contrat pour toutes les sources</em>
-<b>connect</b>(form)          <em>→ clé, identifiants, fichier, saisie</em>
-<b>start</b>() · <b>complete</b>()  <em>→ open banking, aller-retour OAuth</em>
-<b>sync</b>()                <em>→ comptes + transactions</em>
-<b>throw</b> ReauthRequired   <em>→ la source remonte en haut de l'écran</em></div>
-        <table class="xp-table">
-          <thead><tr><th>Connecteur</th><th>Méthode</th><th>Ce qui s'est passé</th><th>État</th></tr></thead>
-          <tbody>
-            <tr><td>Open banking</td><td>DSP2, via Enable Banking</td><td>Fonctionne. Il a fallu une adresse de retour en HTTPS sur le réseau local, une adresse fixe pour la liste blanche du prestataire, et un accès professionnel pour une néobanque.</td><td><span class="fu-state ok">5 actives</span></td></tr>
-            <tr><td>woob</td><td>Scraping de l'espace client, en Python</td><td>Fonctionne, mais casse quand un site change. Le module d'un assureur a dû être corrigé deux fois le premier jour.</td><td><span class="fu-state fragile">2 actives</span></td></tr>
-            <tr><td>CSV</td><td>Relevé exporté et collé</td><td>Pour la banque qui n'a pas d'accès.</td><td><span class="fu-state ok">1 active</span></td></tr>
-            <tr><td>Saisie</td><td>À la main</td><td>Crédits, prêts amortissables, immobilier.</td><td><span class="fu-state ok">3 actives</span></td></tr>
-            <tr><td>Binance</td><td>API en lecture seule</td><td>Écrit, jamais branché.</td><td><span class="fu-state idle">inutilisé</span></td></tr>
-          </tbody>
-        </table>
-        <figcaption>Cinq méthodes derrière la même interface. La colonne de droite compte les connexions réellement configurées.</figcaption>
-      </figure>
-
-      <h2>Essais et erreurs</h2>
-
-      <ul class="xp-trials">
-        <li class="xp-trial">
-          <span class="xp-verdict kept">Simplifié</span>
-          <div>
-            <h3>Le budget, refait six fois dans la journée</h3>
-            <p>Chaque version du budget ajoutait une notion&nbsp;: postes, dépenses à venir, comparaison entre prévu et réel. Dans la dernière, une dépense tient en un nom et un montant, auxquels s'ajoutent au besoin une fréquence et une durée.</p>
+      <figure>
+        <div class="fu-phone" id="fu-phone">
+          <div class="top"><b>Connexions</b><span>comptes fictifs</span></div>
+          <div class="fu-group">À renouveler</div>
+          <div class="fu-renew">
+            <div class="fu-conn re" data-name="Banque principale" data-how="open banking">
+              <div class="l1"><span>Banque principale</span><span class="st">accès expiré</span></div>
+              <div class="l2">open banking</div>
+              <div class="fu-form"><p>L'accord donné à la banque a expiré. Il faut le renouveler chez elle.</p><button type="button">Se reconnecter à la banque</button></div>
+            </div>
+            <div class="fu-conn re" data-name="Assurance-vie" data-how="espace client">
+              <div class="l1"><span>Assurance-vie</span><span class="st">identifiants refusés</span></div>
+              <div class="l2">espace client</div>
+              <div class="fu-form"><span class="field">Identifiant</span><span class="field">Mot de passe</span><button type="button">Enregistrer et synchroniser</button></div>
+            </div>
           </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict dropped">Retiré</span>
-          <div>
-            <h3>Un écran de procédures par source</h3>
-            <p>Créé le 12&nbsp;octobre pour expliquer comment brancher chaque compte, fusionné dans l'écran des connexions une semaine plus tard. La barre d'onglets a disparu avec lui.</p>
+          <div class="fu-group">À jour</div>
+          <div class="fu-ok">
+            <div class="fu-conn ok"><div class="l1"><span>Néobanque</span><span class="st">il y a 2 h</span></div><div class="l2">open banking</div></div>
+            <div class="fu-conn ok"><div class="l1"><span>Plan d'épargne retraite</span><span class="st">il y a 2 h</span></div><div class="l2">espace client</div></div>
+            <div class="fu-conn ok"><div class="l1"><span>Compte sans accès en ligne</span><span class="st">relevé du 1<sup>er</sup></span></div><div class="l2">relevé CSV collé</div></div>
+            <div class="fu-conn ok"><div class="l1"><span>Crédit immobilier</span><span class="st">saisi</span></div><div class="l2">saisie</div></div>
           </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict open">Option</span>
-          <div>
-            <h3>Héberger l'app sur un serveur</h3>
-            <p>Une image Docker existe. Elle n'a pas servi&nbsp;: l'app démarre seule sur le Mac, et le téléphone la consulte sur le même Wi-Fi.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict kept">Gardé</span>
-          <div>
-            <h3>Deux passes de revue d'interface</h3>
-            <p>Champs en 16 pixels pour qu'iPhone ne zoome pas, contrastes, cibles tactiles, confirmation avant suppression. Deux passes successives le même jour, le 19&nbsp;octobre.</p>
-          </div>
-        </li>
-      </ul>
-
-      <figure class="xp-figure">
-        <span class="xp-label">Solde projeté sur douze mois · forme de la frise, valeurs fictives</span>
-        <div class="fu-runway">
-          <i style="height:96%"></i><i style="height:88%"></i><i style="height:81%"></i><i style="height:77%"></i><i style="height:68%"></i><i style="height:60%"></i><i style="height:55%"></i><i style="height:46%"></i><i class="low" style="height:37%"></i><i class="low" style="height:28%"></i><i class="out" style="height:17%"></i><i class="out" style="height:8%"></i>
         </div>
-        <div class="fu-axis"><span>ce mois</span><span>+6 mois</span><span>+12 mois</span></div>
-        <figcaption>Le burn se calcule sur 30 et 90 jours, hors virements entre mes propres comptes. La frise prolonge le solde mois par mois, avec les dépenses déclarées dans le budget.</figcaption>
+        <figcaption style="margin-left:auto;margin-right:auto;text-align:center">L'écran des connexions, redessiné avec des comptes fictifs. Les accès à renouveler passent en tête, formulaire ouvert. Renouvelez-en un.</figcaption>
       </figure>
 
-      <h2>Chronologie</h2>
+      <p>Futurun met la reconnexion au centre. Le README pose le principe&nbsp;: «&nbsp;un connecteur par source, chacun avec sa méthode&nbsp;». Tous les connecteurs suivent pourtant le même contrat. Chacun renvoie des comptes et des transactions, et, quand l'accès expire, lève l'erreur «&nbsp;il faut se reconnecter&nbsp;», qui fait passer la source en tête de l'écran. La méthode change seulement la forme du formulaire&nbsp;: un identifiant, une clé, un fichier, ou un aller-retour vers la banque.</p>
 
-      <ol class="xp-timeline">
-        <li class="k-ship"><time>12 oct.</time><span>Contrat de connecteur, open banking, Binance, CSV, saisie. Burn et runway. Secrets chiffrés.</span></li>
-        <li><time>12 oct.</time><span>Connecteur woob et image Docker.</span></li>
-        <li class="k-fail"><time>12 oct.</time><span>Le module d'un assureur casse sur une nouvelle page. Deux correctifs.</span></li>
-        <li><time>12 oct.</time><span>Lanceur en double-clic, mises à jour depuis l'app.</span></li>
-        <li class="k-pivot"><time>12 oct.</time><span>Six versions du budget avant la plus simple.</span></li>
-        <li class="k-gap"><time>13-18 oct.</time><span>Aucun commit.</span></li>
-        <li class="k-pivot"><time>19 oct.</time><span>Démarrage automatique. L'écran des procédures fusionne avec les connexions.</span></li>
-        <li><time>19 oct.</time><span>Frise du solde sur douze mois.</span></li>
-        <li class="k-ship"><time>20 oct.</time><span>Serveur MCP&nbsp;: Claude peut consulter et modifier Futurun sans l'interface.</span></li>
-        <li><time>20 oct.</time><span>Libellés génériques et réglages, pour qu'un autre puisse l'installer.</span></li>
-      </ol>
-      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>abandon</span></p>
+      <div class="fu-methods">
+        <div class="r hd"><span>Méthode</span><span>Ce qui s'est passé</span><span>Connexions</span></div>
+        <div class="r"><b>Open banking</b><span>Il a fallu une adresse de retour en HTTPS sur le réseau local, une adresse fixe pour la liste blanche du prestataire, et un accès professionnel pour une néobanque.</span><span>5</span></div>
+        <div class="r"><b>Espace client</b><span>Par scraping, avec woob. Le module d'un assureur a cassé quand le site a changé de page, et a été corrigé deux fois le premier jour.</span><span>2</span></div>
+        <div class="r"><b>Relevé CSV</b><span>Pour la banque qui n'a pas d'accès.</span><span>1</span></div>
+        <div class="r"><b>Saisie</b><span>Crédits, prêts amortissables, immobilier.</span><span>3</span></div>
+        <div class="r idle"><b>API</b><span>Une plateforme crypto, en lecture seule. Le connecteur est écrit, jamais branché.</span><span>0</span></div>
+      </div>
 
-      <h2>Ce que ça a donné</h2>
+      <h2>Combien de mois</h2>
 
-      <p>Une app qui démarre avec le Mac, se synchronise toutes les six heures et s'ouvre sur le téléphone. Onze connexions, une cinquantaine de tests, et un serveur MCP pour l'interroger depuis une conversation.</p>
+      <div class="fu-runway">
+        <div class="num"><b>14 mois</b><span>au rythme des 90 derniers jours · exemple fictif</span></div>
+        <div class="fu-bars" aria-hidden="true"><i style="height:96%"></i><i style="height:89%"></i><i style="height:82%"></i><i style="height:76%"></i><i style="height:69%"></i><i style="height:62%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:41%"></i><i style="height:34%"></i><i style="height:27%"></i><i style="height:20%"></i></div>
+        <div class="fu-axis"><span>ce mois</span><span>dans 12 mois</span></div>
+        <div class="fu-calc">
+          <b>Trésorerie disponible</b><span>les comptes marqués liquides, courant et épargne</span>
+          <b>Burn net</b><span>dépenses moins revenus, mensualisés sur 30 et 90 jours</span>
+          <b>Exclus</b><span>les virements entre mes propres comptes</span>
+          <b>Projection</b><span>le solde mois par mois, avec les dépenses à venir déclarées</span>
+        </div>
+      </div>
 
-      <p>Elle n'a qu'un utilisateur, même si le dernier commit la prépare pour d'autres&nbsp;: avec des accès bancaires en jeu, l'ouvrir demande d'abord une relecture de sécurité.</p>
+      <p>Le budget a été refait six fois le premier jour, en ajoutant chaque fois une notion, postes, dépenses à venir, observé contre estimé. Dans la dernière version, une dépense se réduit à un nom et un montant, avec une fréquence et une durée si besoin.</p>
 
-      <ul class="xp-deliverables">
-        <li><span>App locale, installable sur téléphone</span><span>privée</span></li>
-        <li><span>Serveur MCP</span><span>lecture et écriture</span></li>
-        <li><span>Lanceur Mac avec mises à jour</span><span>double-clic</span></li>
-      </ul>
+      <h2>Chez moi</h2>
+
+      <p>L'app démarre avec le Mac, se synchronise toutes les six heures et s'ouvre sur le téléphone, sur le même Wi-Fi. Une image Docker existe pour l'héberger ailleurs, sans qu'aucun déploiement en soit connu. Les identifiants et les jetons sont chiffrés dans le fichier de données, et les montants y sont stockés en centimes. Onze connexions sont actives, une cinquantaine de tests tournent, et un serveur MCP permet d'interroger Futurun depuis une conversation avec Claude.</p>
+
+      <p>Les mises à jour se font depuis l'app. Elles se sont bloquées une fois&nbsp;: un fichier de cache Python suivi par git par erreur empêchait le Mac de récupérer la nouvelle version. Le commit qui l'a retiré s'intitule «&nbsp;Retire le cache Python&nbsp;».</p>
+
+      <p>Futurun n'a qu'un utilisateur. Les derniers commits, le 20&nbsp;octobre, remplacent les libellés personnels par des libellés génériques et ajoutent des réglages, pour qu'une autre personne puisse l'installer.</p>
 
     </div>
   </article>
+<script>
+(function(){
+  var phone = document.getElementById('fu-phone');
+  if (!phone) return;
+  var ok = phone.querySelector('.fu-ok');
+  phone.querySelectorAll('.fu-renew .fu-conn button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var c = btn.closest('.fu-conn');
+      c.classList.remove('re'); c.classList.add('ok');
+      c.querySelector('.st').textContent = 'à l\'instant';
+      c.querySelector('.fu-form').remove();
+      ok.insertBefore(c, ok.firstChild);
+      if (!phone.querySelector('.fu-renew .fu-conn')) {
+        var g = phone.querySelector('.fu-group'); g.textContent = 'À renouveler · rien';
+      }
+    });
+  });
+})();
+</script>
 
     <nav class="xp-nav">
       <a href="/experimental/recherche-emploi"><small>← Précédent</small>Recherche d'emploi</a>

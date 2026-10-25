@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Disciple — Gildas Frémont</title>
-  <meta name="description" content="Une plateforme où l'on décrit un travail plutôt qu'un agent : un architecte planifie, un orchestrateur répartit et juge, des agents exécutent.">
+  <meta name="description" content="Décrire le travail à faire plutôt que construire un agent : un architecte en tire un plan, un orchestrateur le répartit et juge, des agents l'exécutent. Un prototype de dix jours, testé sur des personas simulés.">
   <link rel="canonical" href="https://gildas.fyi/experimental/disciple">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Disciple — Gildas Frémont">
-  <meta property="og:description" content="Une plateforme où l'on décrit un travail plutôt qu'un agent : un architecte planifie, un orchestrateur répartit et juge, des agents exécutent.">
+  <meta property="og:description" content="Décrire le travail à faire plutôt que construire un agent : un architecte en tire un plan, un orchestrateur le répartit et juge, des agents l'exécutent. Un prototype de dix jours, testé sur des personas simulés.">
   <meta property="og:url" content="https://gildas.fyi/experimental/disciple">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -17,27 +17,47 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
   <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/experimental/contexte/disciple.md" title="Dossier complet">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
-.di-org { display: grid; gap: 0.6rem; justify-items: center; }
-.di-node { border: 1px solid var(--black); border-radius: 4px; padding: 0.5rem 0.8rem; text-align: center; font-size: 13px; color: var(--mid); background: var(--white); max-width: 22rem; }
-.di-node b { display: block; font-size: 15px; color: var(--black); font-weight: 600; }
-.di-node.user { border-style: dashed; border-color: var(--subtle); }
-.di-arrow { font-size: 12px; color: var(--light); line-height: 1; }
-.di-ops { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
-.di-ops .di-node { border-color: var(--subtle); padding: 0.4rem 0.6rem; }
-.di-ops .di-node b { font-size: 13px; }
-.di-ob { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; font-size: 13px; color: var(--mid); }
-.di-ob div { border-top: 2px solid var(--black); padding-top: 0.4rem; }
-.di-ob div + div { border-top-color: rgb(var(--xp-live)); }
-.di-ob b { display: block; color: var(--black); font-weight: 600; }
-.di-runs { display: grid; grid-template-columns: 9rem repeat(3, 1fr); gap: 0.35rem 0.5rem; align-items: center; font-size: 12px; }
-.di-runs .cell { height: 22px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
-.di-runs .ko { background: rgba(var(--xp-red), .18); color: rgb(var(--xp-red)); }
-.di-runs .mid { background: rgba(var(--xp-pause), .2); color: var(--dark); }
-.di-runs .ok { background: rgba(var(--xp-live), .18); color: rgb(var(--xp-live)); }
-.di-runs .h { color: var(--light); text-align: center; }
-@media (max-width: 600px) { .di-ob { grid-template-columns: 1fr; } .di-runs { grid-template-columns: 6.5rem repeat(3, 1fr); } }
+.di-seq { margin: 2rem 0 !important; padding: 1.1rem 1rem 0.6rem; border: 1px solid var(--border); border-radius: 10px; background: var(--white); }
+.di-actors, .di-msg { display: grid; grid-template-columns: repeat(4, 1fr); }
+.di-actors span { text-align: center; font-size: 13px; font-weight: 600; color: var(--black); padding: 0.35rem 0.2rem; margin: 0 0.3rem; border: 1px solid var(--black); border-radius: 4px; background: var(--white); position: relative; z-index: 1; }
+.di-actors span small { display: block; font-size: 11px; font-weight: 400; color: var(--light); }
+.di-body { position: relative; padding: 0.4rem 0 0.4rem; }
+.di-life { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, 1fr); pointer-events: none; }
+.di-life i { justify-self: center; width: 1px; background: repeating-linear-gradient(to bottom, var(--subtle) 0 4px, transparent 4px 8px); }
+.di-msg { position: relative; align-items: end; padding-top: 0.55rem; }
+.di-arrow { position: relative; padding-bottom: 7px; }
+.di-arrow::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--black); }
+.di-arrow::after { content: ''; position: absolute; bottom: -4px; border: 4.5px solid transparent; }
+.di-arrow.r::after { right: -1px; border-left: 7px solid var(--black); border-right: 0; }
+.di-arrow.l::after { left: -1px; border-right: 7px solid var(--black); border-left: 0; }
+.di-arrow.back::before { background: rgb(var(--xp-red)); }
+.di-arrow.back.r::after { border-left-color: rgb(var(--xp-red)); }
+.di-arrow em { display: block; text-align: center; font-style: normal; font-size: 12px; line-height: 1.35; color: var(--mid); padding: 0 0.3rem; position: relative; z-index: 1; }
+.di-arrow em span { background: var(--white); }
+.di-self { justify-self: center; font-size: 12px; color: var(--mid); background: #f4f1fb; border: 1px solid #ddd5f0; border-radius: 4px; padding: 0.2rem 0.5rem; margin-top: 0.3rem; text-align: center; z-index: 1; }
+.di-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.25rem 0 2rem; max-width: 36em; }
+.di-split div { font-size: 13.5px; color: var(--mid); line-height: 1.5; border-top: 2px solid var(--black); padding-top: 0.45rem; }
+.di-split div + div { border-top-color: rgb(var(--xp-red)); }
+.di-split b { display: block; color: var(--black); font-weight: 600; }
+.di-quote { margin: 1.5rem 0 !important; padding-left: 1rem; border-left: 2px solid var(--subtle); max-width: 34em; }
+.di-quote p { font-size: 18px !important; line-height: 1.5; color: var(--black) !important; margin: 0 !important; }
+.di-log { list-style: none; margin: 1.5rem 0 2rem !important; border-left: 1px solid var(--subtle); max-width: 40em; }
+.di-log li { position: relative; padding: 0 0 1.1rem 1.2rem; font-size: 14.5px; line-height: 1.55; color: var(--mid); }
+.di-log li::before { content: ''; position: absolute; left: -4px; top: 0.45rem; width: 7px; height: 7px; border-radius: 50%; background: var(--white); border: 1px solid var(--light); }
+.di-log li.fix::before { background: rgb(var(--xp-live)); border-color: rgb(var(--xp-live)); }
+.di-log li.ko::before { background: rgb(var(--xp-red)); border-color: rgb(var(--xp-red)); }
+.di-log .s { display: block; font-family: var(--xp-mono); font-size: 11.5px; color: var(--light); }
+.di-log .score { font-family: var(--xp-mono); font-size: 13px; color: var(--black); }
+@media (max-width: 640px) {
+  .di-actors span { font-size: 11px; margin: 0 0.1rem; }
+  .di-actors span small { display: none; }
+  .di-arrow em { font-size: 10.5px; }
+  .di-self { font-size: 10.5px; }
+  .di-split { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -53,118 +73,63 @@
 
   <article>
     <header class="article-page-header">
-      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · mars 2026</p>
-      <h1>Disciple</h1>
-      <p class="article-page-subtitle">Confier un travail à une équipe d'agents IA sans avoir à les configurer</p>
-      <p class="article-meta">22 au 31 mars 2026 · Python, FastAPI, SQLite · écrit avec Claude Code · prototype privé</p>
+      <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · mars 2026</p>
+      <h1>Décrire le travail à faire plutôt que construire un agent</h1>
+      <p class="article-page-subtitle">Un architecte, un orchestrateur et des agents, testés pendant dix jours sur des personas simulés</p>
+      <p class="article-meta">22 au 31 mars 2026, prototype en pause · Python, FastAPI, SQLite · écrit avec Claude Code · <a href="/experimental/contexte/disciple.md">dossier complet (Markdown)</a></p>
     </header>
-
-    <div class="xp-thesis">
-      <span class="xp-thesis-label">Le pari</span>
-      <p>Les gens veulent résoudre un problème, et les plateformes d'agents leur demandent d'abord de construire un agent. Si l'unité de base est le travail à faire, un architecte peut en tirer un plan, un orchestrateur peut le répartir et juger les résultats, et des agents peuvent exécuter et s'améliorer par la mémoire, sans que l'utilisateur ait jamais à parler d'outils.</p>
-    </div>
-
-    <div class="xp-facts">
-      <div class="xp-fact"><b>84</b><span>commits en dix jours</span></div>
-      <div class="xp-fact"><b>47</b><span>idées au backlog, une trentaine implémentées</span></div>
-      <div class="xp-fact"><b>10</b><span>sessions de test</span></div>
-      <div class="xp-fact"><b>1,53&nbsp;$</b><span>pour cinq exécutions complètes</span></div>
-    </div>
 
     <div class="article-body">
 
-      <h2>Genèse</h2>
-
-      <p>La phrase de départ est dans les notes de réflexion du projet&nbsp;: personne ne veut un agent, les gens veulent résoudre quelque chose. On décrit un travail. Un architecte pose les questions utiles et produit un plan. Un orchestrateur distribue les tâches, en parallèle quand c'est possible, et juge ce qui revient. Les agents d'exécution, définis par l'utilisateur, font le travail et gardent la mémoire de ce qui a marché.</p>
-
-      <figure class="xp-figure">
-        <div class="di-org">
-          <div class="di-node user"><b>Le travail à faire</b>décrit en une phrase, sans vocabulaire technique</div>
-          <span class="di-arrow">↓</span>
-          <div class="di-node"><b>L'architecte</b>pose les questions, produit le plan</div>
-          <span class="di-arrow">↓</span>
-          <div class="di-node"><b>L'orchestrateur</b>répartit, relance, juge les résultats</div>
-          <span class="di-arrow">↓</span>
-          <div class="di-ops">
-            <div class="di-node"><b>Agent</b>recherche</div>
-            <div class="di-node"><b>Agent</b>rédaction</div>
-            <div class="di-node"><b>Agent</b>analyse</div>
-          </div>
-        </div>
-        <div class="di-ob">
-          <div><b>Obligation de moyens</b>Les agents d'exécution suivent une méthode et en rendent compte.</div>
-          <div><b>Obligation de résultat</b>L'orchestrateur juge le livrable contre l'objectif, et renvoie si ça ne va pas.</div>
-        </div>
-        <figcaption>Les trois niveaux du modèle, tels que décrits dans le document d'architecture. Les noms des agents d'exécution sont des exemples&nbsp;: c'est l'utilisateur qui les définit.</figcaption>
+      <figure class="di-quote">
+        <p>«&nbsp;Personne ne veut un agent, les gens veulent résoudre quelque chose.&nbsp;»</p>
+        <figcaption>La phrase de départ, dans les notes de réflexion du projet.</figcaption>
       </figure>
 
-      <h2>Essais et erreurs</h2>
+      <p>Les plateformes d'agents commencent en général par faire construire un agent, avec son prompt, ses outils et ses droits. Disciple part du travail lui-même&nbsp;: on le décrit, et le reste s'organise en trois niveaux.</p>
 
-      <p>Les tests ont été joués par des personas simulés, cinq profils non techniques aux besoins différents, et non par de vrais utilisateurs. Ils ont quand même fait apparaître les mêmes murs, session après session.</p>
-
-      <figure class="xp-figure">
-        <div class="di-runs">
-          <span></span><span class="h">Avant</span><span class="h">→</span><span class="h">Après</span>
-          <span>L'architecte agit dès le premier message</span><span class="cell ko">0 sur 3</span><span class="h">tool use simulé</span><span class="cell ok">3 sur 3</span>
-          <span>Tâches réussies par lot</span><span class="cell mid">3 sur 5</span><span class="h">fenêtre glissante</span><span class="cell ok">6 sur 6</span>
+      <figure class="di-seq">
+        <div class="di-actors"><span>Vous<small>décrit le travail</small></span><span>Architecte<small>fait le plan</small></span><span>Orchestrateur<small>répartit, juge</small></span><span>Agents<small>exécutent</small></span></div>
+        <div class="di-body">
+          <div class="di-life"><i></i><i></i><i></i><i></i></div>
+          <div class="di-msg"><div class="di-arrow r" style="grid-column:1 / 3;margin-left:12.5%;margin-right:12.5%"><em><span>«&nbsp;Une note mensuelle sur les prix de nos concurrents&nbsp;»</span></em></div></div>
+          <div class="di-msg"><div class="di-arrow l" style="grid-column:1 / 3;margin-left:12.5%;margin-right:12.5%"><em><span>quelles sources, quel format, pour qui&nbsp;?</span></em></div></div>
+          <div class="di-msg"><div class="di-arrow r" style="grid-column:2 / 4;margin-left:12.5%;margin-right:12.5%"><em><span>le plan&nbsp;: tâches, entrées, sorties, contrat de validation</span></em></div></div>
+          <div class="di-msg"><div class="di-arrow r" style="grid-column:3 / 5;margin-left:12.5%;margin-right:12.5%"><em><span>des tâches, en parallèle si possible</span></em></div></div>
+          <div class="di-msg"><div class="di-arrow l" style="grid-column:3 / 5;margin-left:12.5%;margin-right:12.5%"><em><span>des livrables</span></em></div></div>
+          <div class="di-msg"><div class="di-arrow back r" style="grid-column:3 / 5;margin-left:12.5%;margin-right:12.5%"><em><span>une tâche renvoyée&nbsp;: le contrat n'est pas rempli</span></em></div></div>
+          <div class="di-msg"><span class="di-self" style="grid-column:4">ce qui a marché, gardé en mémoire</span></div>
+          <div class="di-msg"><div class="di-arrow l" style="grid-column:1 / 4;margin-left:12.5%;margin-right:12.5%"><em><span>le résultat, à valider ou à évaluer</span></em></div></div>
         </div>
-        <figcaption>Deux blocages et leur correction, d'après les rapports de test du dépôt. La dernière session de recette, notée sur trois niveaux, passe 207 vérifications sur 216.</figcaption>
+        <figcaption>Le trajet d'un travail dans le modèle de Disciple, sur un exemple inventé. L'utilisateur ne voit que la première et la dernière flèche&nbsp;; les agents d'exécution sont définis par lui, mais il n'a pas à leur parler.</figcaption>
       </figure>
 
-      <ul class="xp-trials">
-        <li class="xp-trial">
-          <span class="xp-verdict kept">Corrigé</span>
-          <div>
-            <h3>L'architecte qui interroge au lieu d'agir</h3>
-            <p>Première session&nbsp;: les trois personas restent bloqués dans un questionnaire. En passant par la ligne de commande, l'architecte n'avait pas accès aux outils natifs. Ils ont été simulés en JSON dans le texte, et dès la session suivante chaque persona avait son plan en un seul échange.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict dropped">Faux</span>
-          <div>
-            <h3>Le zéro coût</h3>
-            <p>L'idée était d'utiliser l'abonnement plutôt que l'API, donc sans coût marginal. Le 23&nbsp;mars, plus aucun appel ne passait&nbsp;: la ligne de commande consommait aussi des crédits d'API, et le solde était vide. Il a fallu forcer la connexion par l'abonnement.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict kept">Corrigé</span>
-          <div>
-            <h3>Le contexte qui déborde</h3>
-            <p>Sur les gros plans, l'orchestrateur perdait le fil et les tâches échouaient. Une fenêtre glissante sur l'historique a suffi à faire passer tous les lots.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict open">Ouvert</span>
-          <div>
-            <h3>Un vocabulaire de développeur</h3>
-            <p>Un persona a résumé le problème&nbsp;: «&nbsp;C'est quoi code_execution, fetch_url&nbsp;? Je m'en fiche de ça.&nbsp;» Le modèle promettait de ne jamais parler d'outils, et l'interface en montrait.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict open">Ouvert</span>
-          <div>
-            <h3>Le coût d'un orchestrateur bavard</h3>
-            <p>Sur cinq exécutions, l'une coûtait trois à quatre fois plus que les autres. L'orchestrateur ne plafonnait pas la longueur de ses sorties.</p>
-          </div>
-        </li>
-      </ul>
+      <div class="di-split">
+        <div><b>Obligation de moyens</b>Les agents d'exécution suivent une méthode et retiennent, d'une exécution à l'autre, leurs forces et leurs faiblesses.</div>
+        <div><b>Obligation de résultat</b>L'orchestrateur juge chaque livrable contre l'objectif, et renvoie ce qui ne tient pas.</div>
+      </div>
 
-      <h2>Chronologie</h2>
+      <p>Chaque exécution a un budget maximum, en jetons et en temps. Des agents système devaient compléter le modèle, chargés de former, d'analyser et de construire de nouveaux agents&nbsp;; ils n'ont pas été écrits.</p>
 
-      <ol class="xp-timeline">
-        <li class="k-ship"><time>22 mars</time><span>Premier commit. Tâches en parallèle, passage de YAML à SQLite.</span></li>
-        <li class="k-pivot"><time>23 mars</time><span>Interface refaite, passage par l'abonnement, sept sessions de test.</span></li>
-        <li class="k-fail"><time>23 mars</time><span>Plus aucun appel ne passe&nbsp;: crédits d'API épuisés.</span></li>
-        <li><time>24 mars</time><span>Backlog de 47 idées en onze thèmes, dont une trentaine implémentées dans la journée.</span></li>
-        <li class="k-ship"><time>28 mars</time><span>Suites de recette, journaux structurés, intégration continue.</span></li>
-        <li><time>30-31 mars</time><span>Le fichier principal est découpé en six modules.</span></li>
-        <li class="k-gap"><time>depuis</time><span>En pause.</span></li>
+      <h2>Ce que les personas ont fait apparaître</h2>
+
+      <p>Il n'y a pas eu de vrais utilisateurs. Les sessions de test ont été jouées par des personas simulés, cinq profils de métier et un testeur de recette. Elles ont fait apparaître, une à une, les limites du prototype.</p>
+
+      <ol class="di-log">
+        <li class="ko"><span class="s">session 1</span>Les trois personas restent bloqués dans le questionnaire de l'architecte. Passé par la ligne de commande, il n'a pas accès aux outils natifs et pose des questions au lieu d'agir.</li>
+        <li class="fix"><span class="s">session 2</span>Les appels d'outils sont simulés en JSON dans le texte. Chaque persona obtient son plan en un seul échange.</li>
+        <li class="ko"><span class="s">23 mars</span>Plus aucun appel ne passe. L'idée était d'utiliser l'abonnement plutôt que l'API, sans coût par appel&nbsp;; la ligne de commande consommait pourtant des crédits d'API, et le solde était vide. La connexion est forcée sur l'abonnement.</li>
+        <li class="ko"><span class="s">session 3</span>Sur les gros plans, le contexte déborde&nbsp;: <span class="score">3/5</span> et <span class="score">3/6</span> tâches réussies.</li>
+        <li class="fix"><span class="s">session 3, second lot</span>Une fenêtre glissante sur l'historique&nbsp;: <span class="score">6/6</span>, <span class="score">7/7</span>, <span class="score">6/6</span>.</li>
+        <li><span class="s">session 4</span>Cinq exécutions pour 1,53&nbsp;$ au total, dont une trois à quatre fois plus chère que les autres&nbsp;: l'orchestrateur ne plafonnait pas la longueur de ses sorties.</li>
+        <li class="ko"><span class="s">session 7</span>Premier run complet, en trois minutes environ. Les agents d'exécution échouent en ligne de commande, et l'orchestrateur s'y reprend sept fois.</li>
+        <li class="fix"><span class="s">session 9</span><span class="score">56/56</span> vérifications de recette.</li>
+        <li class="fix"><span class="s">session 10</span><span class="score">207/216</span> sur treize scénarios, avec des évaluations en trois couches qui notent le résultat plutôt que le chemin suivi.</li>
       </ol>
-      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>échec</span></p>
 
-      <h2>Ce que ça a donné</h2>
+      <p>Un des personas a résumé ce que l'interface laissait encore passer&nbsp;: «&nbsp;C'est quoi code_execution, fetch_url&nbsp;? Je m'en fiche de ça.&nbsp;» Le modèle promettait de ne jamais parler d'outils, et l'écran en montrait.</p>
 
-      <p>Un prototype qui va de bout en bout&nbsp;: conversation avec l'architecte, plan, orchestration, livrables, mémoire, intégration continue. Il manque les agents système imaginés pour la suite, chargés de former, d'analyser et de construire de nouveaux agents.</p>
+      <p>En dix jours et 84 commits, le prototype a appris à conduire l'échange avec l'architecte, produire un plan, lancer les tâches, présenter les résultats, garder une mémoire, et s'est doté d'une intégration continue. Son backlog compte 47 idées, dont une trentaine implémentées en une journée le 24&nbsp;mars. Le dernier commit date du 31&nbsp;mars.</p>
 
     </div>
   </article>

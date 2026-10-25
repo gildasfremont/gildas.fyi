@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recherche d'emploi avec Claude — Gildas Frémont</title>
-  <meta name="description" content="Une base de connaissances sourcée et un outil de suivi sans intelligence propre : Claude remplit, je lis, l'outil ne calcule rien.">
+  <title>Recherche d'emploi — Gildas Frémont</title>
+  <meta name="description" content="Laisser Claude faire le travail de fond d'une recherche d'emploi, repérer, évaluer, tenir le fil, et garder pour moi la décision et l'envoi.">
   <link rel="canonical" href="https://gildas.fyi/experimental/recherche-emploi">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Recherche d'emploi avec Claude — Gildas Frémont">
-  <meta property="og:description" content="Une base de connaissances sourcée et un outil de suivi sans intelligence propre : Claude remplit, je lis, l'outil ne calcule rien.">
+  <meta property="og:title" content="Recherche d'emploi — Gildas Frémont">
+  <meta property="og:description" content="Laisser Claude faire le travail de fond d'une recherche d'emploi, repérer, évaluer, tenir le fil, et garder pour moi la décision et l'envoi.">
   <meta property="og:url" content="https://gildas.fyi/experimental/recherche-emploi">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -17,35 +17,62 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
   <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/experimental/contexte/recherche-emploi.md" title="Dossier complet">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
-.je-roles { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
-.je-role { border: 1px solid var(--border); border-radius: 4px; padding: 0.7rem 0.8rem; }
-.je-role b { display: block; font-size: 15px; color: var(--black); font-weight: 600; margin-bottom: 0.2rem; }
-.je-role p { font-size: 13px !important; color: var(--mid); margin: 0 !important; line-height: 1.5; }
-.je-role.tool { background: repeating-linear-gradient(135deg, var(--white) 0 6px, var(--bg) 6px 12px); }
-.je-facts { list-style: none; margin-top: 0.25rem; }
-.je-facts li { display: grid; grid-template-columns: 7rem 1fr; gap: 0.75rem; padding: 0.45rem 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--mid); }
-.je-facts li:last-child { border-bottom: none; }
-.je-chip { justify-self: start; align-self: start; font-size: 11px; padding: 0.05rem 0.45rem; border-radius: 99px; border: 1px solid; white-space: nowrap; }
-.je-chip.ok { color: rgb(var(--xp-live)); border-color: rgba(var(--xp-live), .4); }
-.je-chip.tbc { color: rgb(var(--xp-pause)); border-color: rgba(var(--xp-pause), .5); }
-.je-chip.gap { color: rgb(var(--xp-red)); border-color: rgba(var(--xp-red), .4); border-style: dashed; }
-.je-day { position: relative; height: 34px; margin: 0.4rem 0 1.6rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.je-lanes { margin: 2rem 0 !important; }
+.je-head, .je-step { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 0.9rem; }
+.je-head span { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); padding: 0 0 0.5rem 0.2rem; border-bottom: 2px solid var(--black); font-variation-settings: 'GEOM' 0; }
+.je-head span.c { border-bottom-color: #c4704f; color: #a0573c; }
+.je-head span.m { border-bottom-color: #1f5f99; color: #1f5f99; }
+.je-step { position: relative; padding-top: 0.6rem; }
+.je-step + .je-step { margin-top: -1.15rem; }
+.je-step:nth-child(2) { margin-top: 0; }
+.je-card { position: relative; font-size: 13px; line-height: 1.5; color: var(--mid); background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 0.55rem 0.7rem 0.6rem 2rem; }
+.je-card::before { content: attr(data-n); position: absolute; left: 0.6rem; top: 0.55rem; font-size: 11px; color: var(--light); font-variant-numeric: tabular-nums; }
+.je-card.o { grid-column: 1; }
+.je-card.c { grid-column: 2; border-left: 3px solid #c4704f; }
+.je-card.m { grid-column: 3; border-left: 3px solid #1f5f99; }
+.je-card .who { display: none; }
+.je-card .st { font-size: 11.5px; color: var(--black); border: 1px solid var(--subtle); border-radius: 99px; padding: 0 0.4rem; white-space: nowrap; }
+.je-fact { display: grid; grid-template-columns: 6rem 1fr; gap: 0.5rem 1rem; margin: 1.25rem 0 1.75rem; max-width: 36em; }
+.je-fact span:nth-child(odd) { justify-self: start; font-size: 11.5px; padding: 0.05rem 0.5rem; border-radius: 99px; border: 1px solid; white-space: nowrap; height: fit-content; }
+.je-fact .ok { color: rgb(var(--xp-live)); border-color: rgba(var(--xp-live), .45); }
+.je-fact .tbc { color: rgb(var(--xp-pause)); border-color: rgba(var(--xp-pause), .55); }
+.je-fact .gap { color: rgb(var(--xp-red)); border-color: rgba(var(--xp-red), .45); border-style: dashed !important; }
+.je-fact span:nth-child(even) { font-size: 14px; color: var(--mid); line-height: 1.5; }
+.je-funnel { margin: 1.75rem 0 !important; max-width: 34em; }
+.je-funnel .lv { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; align-items: center; margin-bottom: 0.4rem; }
+.je-funnel .lv b { font-size: 20px; font-weight: 600; color: var(--black); text-align: right; font-variant-numeric: tabular-nums; }
+.je-funnel .lv div { font-size: 13px; color: var(--mid); padding: 0.45rem 0.7rem; background: rgba(31,95,153,.08); border-radius: 3px; }
+.je-days { display: flex; align-items: center; gap: 0.5rem; margin: 0.8rem 0 0 7.3rem; font-size: 12px; color: var(--light); flex-wrap: wrap; }
+.je-days span { border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.5rem; background: var(--white); font-variant-numeric: tabular-nums; }
+.je-days span b { color: var(--black); font-weight: 600; }
+.je-day { position: relative; height: 34px; margin: 1.5rem 0 2.6rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); max-width: 40rem; }
 .je-day .seg { position: absolute; top: 6px; bottom: 6px; border-radius: 2px; }
-.je-day .seg.js { background: rgba(var(--xp-red), .25); border: 1px solid rgba(var(--xp-red), .5); }
-.je-day .seg.sp { background: rgba(var(--xp-pause), .25); border: 1px solid rgba(var(--xp-pause), .5); }
-.je-day .seg.cc { background: rgba(var(--xp-live), .25); border: 1px solid rgba(var(--xp-live), .5); }
-.je-day .tick { position: absolute; bottom: -1.3rem; font-size: 11px; color: var(--light); transform: translateX(-50%); }
-.je-key { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: 12px; color: var(--mid); }
+.je-day .js { background: rgba(var(--xp-red), .22); border: 1px solid rgba(var(--xp-red), .5); }
+.je-day .sp { background: rgba(var(--xp-pause), .25); border: 1px solid rgba(var(--xp-pause), .5); }
+.je-day .cc { background: rgba(var(--xp-live), .25); border: 1px solid rgba(var(--xp-live), .5); }
+.je-day .t { position: absolute; bottom: -1.35rem; font-size: 11px; color: var(--light); transform: translateX(-50%); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.je-key { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: 12px; color: var(--mid); margin-bottom: 1.5rem; }
 .je-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.3rem; vertical-align: -1px; }
-.je-sizes { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.3rem 0.6rem; align-items: center; font-size: 13px; }
+.je-sizes { display: grid; grid-template-columns: 8rem 1fr; gap: 0.35rem 0.7rem; align-items: center; font-size: 13px; color: var(--mid); max-width: 34em; margin: 1.25rem 0 1.75rem; }
 .je-sizes .bar { position: relative; height: 14px; }
 .je-sizes .bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 1px; }
 .je-sizes .bar i.before { background: var(--border); }
 .je-sizes .bar i.after { background: var(--black); }
-.je-sizes .bar em { position: absolute; top: -1px; font-style: normal; font-size: 11px; color: var(--light); padding-left: 0.3rem; font-variant-numeric: tabular-nums; }
-@media (max-width: 600px) { .je-roles { grid-template-columns: 1fr; } .je-facts li { grid-template-columns: 1fr; gap: 0.2rem; } }
+.je-sizes .bar em { position: absolute; top: -1px; font-style: normal; font-size: 11px; color: var(--light); padding-left: 0.35rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 640px) {
+  .je-head { display: none; }
+  .je-step { grid-template-columns: 1fr; }
+  .je-step + .je-step { margin-top: 0; }
+  .je-days { margin-left: 0; }
+  .je-card.o, .je-card.c, .je-card.m { grid-column: 1; }
+  .je-card.o { border-left: 3px solid var(--black); }
+  .je-card .who { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); }
+  .je-fact { grid-template-columns: 1fr; gap: 0.2rem; }
+  .je-fact span:nth-child(even) { margin-bottom: 0.6rem; }
+}
 </style>
 </head>
 <body>
@@ -61,135 +88,79 @@
 
   <article>
     <header class="article-page-header">
-      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · septembre et octobre 2026</p>
-      <h1>Recherche d'emploi</h1>
-      <p class="article-page-subtitle">Claude repère les offres, les évalue et tient le suivi&nbsp;; je relis et j'envoie</p>
-      <p class="article-meta">17 septembre au 22 octobre 2026 · Next.js, Postgres, MCP · écrit avec Claude Code · outil privé</p>
+      <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · septembre et octobre 2026</p>
+      <h1>Laisser Claude faire le travail de fond d'une recherche d'emploi, et garder la décision</h1>
+      <p class="article-page-subtitle">Un registre que l'agent remplit et que je lis, sans rien envoyer à ma place</p>
+      <p class="article-meta">Depuis le 17 septembre 2026, en usage quotidien depuis le 21 octobre · outil privé · Next.js, Postgres, MCP · écrit avec Claude Code · <a href="/experimental/contexte/recherche-emploi.md">dossier complet (Markdown)</a></p>
     </header>
-
-    <div class="xp-thesis">
-      <span class="xp-thesis-label">Le pari</span>
-      <p>Un agent peut faire le travail de fond d'une recherche d'emploi, repérer, évaluer, tenir le fil, préparer, s'il dispose de deux choses&nbsp;: une base de connaissances sourcée qu'il consulte avant d'écrire, et un registre conçu pour qu'il le remplisse et que l'humain le lise. L'outil lui-même ne doit rien calculer.</p>
-    </div>
-
-    <div class="xp-facts">
-      <div class="xp-fact"><b>82</b><span>flux d'offres lus chaque matin, 8 types d'ATS</span></div>
-      <div class="xp-fact"><b>~3&nbsp;900</b><span>postes parcourus à chaque passage</span></div>
-      <div class="xp-fact"><b>3 jours</b><span>pour construire l'outil, 6 PR</span></div>
-      <div class="xp-fact"><b>~6 h</b><span>de vie pour l'outil open source essayé avant</span></div>
-    </div>
 
     <div class="article-body">
 
-      <h2>Genèse</h2>
+      <p>Au bout d'un mois, le suivi de mes candidatures tenait dans un Google Doc de 300&nbsp;Ko, avec des lignes d'offre de 1&nbsp;500 caractères. Plus personne ne pouvait le lire, moi compris. Le travail de fond d'une recherche d'emploi, repérer les offres, les évaluer, tenir le fil des échanges, préparer les candidatures, peut revenir à Claude. Il me fallait un endroit où il puisse le faire, et où je voie en quelques secondes ce qui demande mon attention.</p>
 
-      <p>Tout a commencé le 17&nbsp;septembre par un dépôt de fichiers texte qui sert de mémoire&nbsp;: mes expériences, des fiches sur les entreprises où j'ai travaillé, des recommandations, une méthode d'écriture. Quand je demande à Claude un CV, un message ou la préparation d'un entretien, il cherche d'abord là, cite ses fichiers, et n'invente rien.</p>
-
-      <p>Chaque fait de la base porte l'un de ces trois statuts, et Claude doit le respecter.</p>
-
-      <figure class="xp-figure">
-        <ul class="je-facts">
-          <li><span class="je-chip ok">Établi</span><span>Dit par moi ou sourcé. Utilisable tel quel.</span></li>
-          <li><span class="je-chip tbc">À confirmer</span><span>Extrapolation plausible, jamais validée. Utilisable seulement en le signalant.</span></li>
-          <li><span class="je-chip gap">Trou</span><span>Information manquante. Claude pose la question au lieu de combler.</span></li>
-        </ul>
-        <figcaption>Les trois statuts tels qu'ils sont écrits dans le mode d'emploi de la base.</figcaption>
+      <figure class="je-lanes">
+        <div class="je-head"><span>L'outil</span><span class="c">Claude</span><span class="m">Moi</span></div>
+        <div class="je-step"><div class="je-card o" data-n="1"><span class="who">L'outil</span>Chaque matin, lit 82 flux publics d'offres. Une offre nouvelle arrive <span class="st">à trier</span>.</div></div>
+        <div class="je-step"><div class="je-card c" data-n="2"><span class="who">Claude</span>Qualifie l'offre&nbsp;: liste, tier S, A ou B, voie d'entrée, note d'adéquation. Une évaluation écrite, jamais un score calculé.</div></div>
+        <div class="je-step"><div class="je-card m" data-n="3"><span class="who">Moi</span>Dans la Sélection, retiens l'offre ou l'écarte.</div></div>
+        <div class="je-step"><div class="je-card c" data-n="4"><span class="who">Claude</span>Prépare la candidature à partir de la base de connaissances, pose une question quand un fait manque. L'offre passe <span class="st">prête à envoyer</span>.</div></div>
+        <div class="je-step"><div class="je-card m" data-n="5"><span class="who">Moi</span>Relis, puis envoie moi-même. Rien ne part de l'outil.</div></div>
+        <div class="je-step"><div class="je-card c" data-n="6"><span class="who">Claude</span>Tient le fil&nbsp;: échanges, étapes du recrutement annoncé, tâches, rendez-vous de l'agenda.</div></div>
+        <div class="je-step"><div class="je-card o" data-n="7"><span class="who">L'outil</span>Signale l'offre si elle disparaît de son flux.</div></div>
+        <div class="je-step"><div class="je-card m" data-n="8"><span class="who">Moi</span>La vue <span class="st">Aujourd'hui</span> dit ce qui m'attend.</div></div>
+        <figcaption>Le parcours d'une offre, sans nom d'entreprise. Claude passe par un serveur MCP, une soixantaine d'opérations, et moi par l'interface web&nbsp;; les deux reposent sur les mêmes services, et chaque écriture est signée par son auteur.</figcaption>
       </figure>
 
-      <p>Le suivi des candidatures, lui, vivait dans un Google Doc. Au bout d'un mois, il pesait 300&nbsp;Ko de texte, avec des lignes d'offre de 1&nbsp;500 caractères. Plus personne ne pouvait le lire, moi compris.</p>
+      <p>La spécification de l'outil posait deux règles. Un humain doit pouvoir faire tout ce qu'un agent fait, et inversement. Et l'outil prépare, j'envoie&nbsp;: il ne calcule pas de score, n'embarque pas d'IA et n'envoie jamais de message.</p>
 
-      <h2>Le 20 octobre, en une journée</h2>
+      <h2>Pour que Claude n'invente rien</h2>
 
-      <figure class="xp-figure">
-        <div class="je-day">
-          <div class="seg js" style="left:9.6%;width:45.9%"></div>
-          <div class="seg sp" style="left:55.5%;width:5%"></div>
-          <div class="seg cc" style="left:66.9%;width:33.1%"></div>
-          <span class="tick" style="left:9.6%">11 h</span>
-          <span class="tick" style="left:55.5%">17 h</span>
-          <span class="tick" style="left:66.9%">18 h 42</span>
-          <span class="tick" style="left:96%">23 h</span>
-        </div>
-        <div class="je-key"><span><i style="background:rgba(var(--xp-red),.35)"></i>JobSync, un outil open source essayé</span><span><i style="background:rgba(var(--xp-pause),.35)"></i>spécification écrite</span><span><i style="background:rgba(var(--xp-live),.35)"></i>l'outil construit par Claude Code</span></div>
+      <p>Avant l'outil, il y a eu une mémoire. Depuis le 17&nbsp;septembre, un dépôt de fichiers texte rassemble mon profil, mes expériences, des fiches sur les entreprises où j'ai travaillé, des recommandations et une méthode d'écriture. Quand je demande un CV, un message ou la préparation d'un entretien, Claude cherche d'abord là et cite ses fichiers. Chaque fait y porte l'un de trois statuts.</p>
+
+      <div class="je-fact">
+        <span class="ok">Établi</span><span>Dit par moi ou sourcé. Utilisable tel quel.</span>
+        <span class="tbc">À confirmer</span><span>Extrapolation plausible, jamais validée. Utilisable seulement en le signalant.</span>
+        <span class="gap">Trou</span><span>Information manquante. Claude pose la question au lieu de combler.</span>
+      </div>
+
+      <h2>Un outil essayé, un autre construit, le même jour</h2>
+
+      <div class="je-day" aria-hidden="true">
+        <div class="seg js" style="left:9.6%;width:45.9%"></div>
+        <div class="seg sp" style="left:55.5%;width:5%"></div>
+        <div class="seg cc" style="left:66.9%;width:33.1%"></div>
+        <span class="t" style="left:9.6%">11 h 15</span>
+        <span class="t" style="left:55.5%">17 h 13</span>
+        <span class="t" style="left:66.9%">18 h 42</span>
+        <span class="t" style="left:100%;transform:translateX(-100%)">23 h</span>
+      </div>
+      <div class="je-key"><span><i style="background:rgba(var(--xp-red),.35)"></i>JobSync, essayé puis quitté</span><span><i style="background:rgba(var(--xp-pause),.35)"></i>la spécification</span><span><i style="background:rgba(var(--xp-live),.35)"></i>l'outil, construit par Claude Code</span></div>
+
+      <p>Le 20&nbsp;octobre au matin, j'ai installé JobSync, un outil libre de suivi de candidatures. Claude y a importé 89 offres, une par une parce que l'import par lots échouait, puis en a ajouté 29. Je l'ai quitté six heures plus tard&nbsp;: son IA intégrée évaluait elle-même les offres, alors que je voulais confier ce rôle à Claude, et il ne suivait ni les échanges ni les étapes annoncées par les employeurs. La spécification de mon propre outil était écrite à 17&nbsp;h&nbsp;17. À 18&nbsp;h&nbsp;42, Claude Code livrait une première version complète, avec l'API, le serveur MCP, la lecture des flux et l'import de tout l'historique. Elle était fusionnée à 23&nbsp;h.</p>
+
+      <h2>La veille</h2>
+
+      <figure class="je-funnel">
+        <div class="lv"><b>82</b><div>flux publics d'offres, sur huit types d'ATS&nbsp;: Ashby, Greenhouse, Lever, Teamtailor, SmartRecruiters, Workable, Recruitee, Personio</div></div>
+        <div class="lv"><b>~3&nbsp;900</b><div>postes lus à chaque passage</div></div>
+        <div class="lv"><b>~110</b><div>ressemblent à un poste produit</div></div>
+        <div class="je-days">Seuls les nouveaux remontent à trier&nbsp;: <span>21 oct. <b>83</b></span><span>puis <b>1</b></span><span><b>0</b></span><span><b>11</b></span></div>
+        <figcaption>Le premier passage en production, le 21&nbsp;octobre au soir, a fait remonter 83 offres, puis 1, 0 et 11 les jours suivants. Un passage dure de 3 à 45 secondes.</figcaption>
       </figure>
 
-      <p>Le matin, j'ai installé JobSync, un outil libre de suivi de candidatures. Claude y a importé 89 offres, une par une parce que l'import par lots échouait, puis en a ajouté 29. Je l'ai quitté en fin d'après-midi, parce qu'il évaluait lui-même l'adéquation des offres, le travail que je voulais confier à Claude. Il n'avait pas de fil d'échanges par candidature, ne savait pas représenter le processus annoncé par une entreprise, et tournait dans Docker sur un Mac de 8&nbsp;Go.</p>
+      <h2>Des réponses à la taille d'un agent</h2>
 
-      <p>À 17&nbsp;h, la spécification de mon propre outil était écrite. À 18&nbsp;h&nbsp;42, Claude Code livrait une première version complète&nbsp;: base de données, API, serveur MCP, lecture des flux d'offres, import de tout l'historique. À 23&nbsp;h, elle était fusionnée.</p>
+      <p>Un agent lit tout ce qu'on lui renvoie. Les premières réponses du serveur MCP étaient trop lourdes pour lui. Elles ont été compactées, mesures à l'appui.</p>
 
-      <h2>Qui fait quoi</h2>
+      <div class="je-sizes">
+        <span>Le pipeline</span><span class="bar"><i class="before" style="width:100%"></i><i class="after" style="width:30.3%"></i><em style="left:30.3%">142 → 43 Ko</em></span>
+        <span>Les entreprises</span><span class="bar"><i class="before" style="width:93.7%"></i><i class="after" style="width:17.6%"></i><em style="left:17.6%">133 → 25 Ko</em></span>
+        <span>La vue du jour</span><span class="bar"><i class="before" style="width:40.1%"></i><i class="after" style="width:9.2%"></i><em style="left:9.2%">57 → 13 Ko</em></span>
+      </div>
 
-      <figure class="xp-figure">
-        <div class="je-roles">
-          <div class="je-role"><b>Claude remplit</b><p>Lit les offres du jour, les évalue, crée les fiches, tient le fil des échanges, prépare ce qui est prêt à envoyer.</p></div>
-          <div class="je-role"><b>Je lis</b><p>Une vue du jour, un pipeline, une sélection. Je tranche, je réponds aux questions, j'envoie moi-même.</p></div>
-          <div class="je-role tool"><b>L'outil ne calcule rien</b><p>Pas de score, pas d'IA intégrée. Il stocke, il trace qui a écrit quoi, il n'envoie aucun message.</p></div>
-        </div>
-        <figcaption>L'interface web pour moi, l'API et le serveur MCP pour l'agent reposent sur la même couche de services. Chaque écriture est rejouable sans doublon et signée par son auteur.</figcaption>
-      </figure>
+      <p>Le lendemain de la première version, l'interface a été resserrée à cinq entrées, «&nbsp;prête à envoyer&nbsp;» est passée de drapeau à statut, un niveau de priorité en trop a disparu, et l'alerte des flux ne passe plus au rouge qu'après un échec total ou deux échecs de suite.</p>
 
-      <h2>Essais et erreurs</h2>
-
-      <ul class="xp-trials">
-        <li class="xp-trial">
-          <span class="xp-verdict kept">Corrigé</span>
-          <div>
-            <h3>Des réponses trop lourdes pour un agent</h3>
-            <p>Les premières réponses du serveur MCP saturaient le contexte de Claude. Elles ont été compactées, mesures à l'appui.</p>
-            <div class="je-sizes" style="margin-top:0.6rem">
-              <span>Le pipeline</span><span class="bar"><i class="before" style="width:100%"></i><i class="after" style="width:30.3%"></i><em style="left:30.3%">142 → 43 Ko</em></span>
-              <span>Les entreprises</span><span class="bar"><i class="before" style="width:93.7%"></i><i class="after" style="width:17.6%"></i><em style="left:17.6%">133 → 25 Ko</em></span>
-              <span>La vue du jour</span><span class="bar"><i class="before" style="width:40.1%"></i><i class="after" style="width:9.2%"></i><em style="left:9.2%">57 → 13 Ko</em></span>
-            </div>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict dropped">Retiré</span>
-          <div>
-            <h3>Un niveau de priorité de trop</h3>
-            <p>Un niveau C ajouté le 20&nbsp;octobre, retiré le lendemain.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict kept">Corrigé</span>
-          <div>
-            <h3>Une interface qui en montrait trop</h3>
-            <p>Les tâches et les automatisations avaient leurs propres onglets. La navigation est passée à cinq entrées, et «&nbsp;prête à envoyer&nbsp;» est devenue un statut au lieu d'un drapeau.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict kept">Corrigé</span>
-          <div>
-            <h3>Des gestes manuels au déploiement</h3>
-            <p>L'import de l'historique et le premier passage des flux se lançaient à la main. Ils se font désormais seuls à chaque déploiement, et l'alerte des flux ne passe au rouge qu'après un échec total ou deux échecs de suite.</p>
-          </div>
-        </li>
-      </ul>
-
-      <h2>Chronologie</h2>
-
-      <ol class="xp-timeline">
-        <li class="k-ship"><time>17 sept.</time><span>La base de connaissances&nbsp;: profil, expériences, entreprises, méthode, verbatims.</span></li>
-        <li><time>23 sept.</time><span>Treize axes de recherche et un sourcing d'éditeurs hors des sites d'emploi.</span></li>
-        <li class="k-gap"><time></time><span>Le suivi grossit dans un Google Doc.</span></li>
-        <li class="k-fail"><time>20 oct., 11 h</time><span>JobSync installé, 118 offres importées, quitté à 17 h.</span></li>
-        <li class="k-ship"><time>20 oct., 18 h 42</time><span>Première version de l'outil, livrée par Claude Code.</span></li>
-        <li class="k-pivot"><time>21 oct.</time><span>Interface resserrée, trois revues de design, réponses MCP compactées, connexion OAuth pour claude.ai.</span></li>
-        <li class="k-ship"><time>21 oct., 21 h</time><span>Premier passage des flux en production&nbsp;: 83 offres à trier.</span></li>
-        <li><time>22 oct.</time><span>Agenda en lecture seule, filtré des rendez-vous personnels.</span></li>
-        <li><time>chaque matin</time><span>Les flux passent seuls. Puis Claude trie.</span></li>
-      </ol>
-      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>abandon</span></p>
-
-      <h2>Ce que ça a donné</h2>
-
-      <p>L'outil tourne chaque jour depuis le 21&nbsp;octobre. À chaque passage, l'outil lit environ 3&nbsp;900 postes, en retient une centaine de postes produit et ne remonte que les nouveaux&nbsp;: 83 le premier jour, puis 1, 0 et 11. Le critère de réussite que je m'étais fixé, que le tri du lundi soir se fasse seul, sera vérifiable pour la première fois le 26&nbsp;octobre.</p>
-
-      <ul class="xp-deliverables">
-        <li><span>Base de connaissances</span><span>fichiers texte, privée</span></li>
-        <li><span>Outil de suivi</span><span>web, API, serveur MCP, privé</span></li>
-        <li><span>Mode d'emploi pour l'agent</span><span>une page que l'agent lit en premier</span></li>
-      </ul>
+      <p>L'outil tourne chaque jour depuis le 21&nbsp;octobre. Le critère de réussite que je m'étais fixé, que le tri du lundi soir se fasse sans moi, sera vérifiable pour la première fois le 26&nbsp;octobre.</p>
 
     </div>
   </article>

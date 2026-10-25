@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Expérimental — Gildas Frémont</title>
-  <meta name="description" content="Des outils construits pour mes propres problèmes, chacun raconté comme une thèse : le pari, les essais, ce qui a cassé, ce qui reste.">
+  <meta name="description" content="Des outils construits avec Claude Code pour des problèmes que j'avais, la plupart en quelques jours. Certains servent tous les jours, d'autres se sont arrêtés en route.">
   <link rel="canonical" href="https://gildas.fyi/experimental">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Expérimental — Gildas Frémont">
-  <meta property="og:description" content="Des outils construits pour mes propres problèmes, chacun raconté comme une thèse : le pari, les essais, ce qui a cassé, ce qui reste.">
+  <meta property="og:description" content="Des outils construits avec Claude Code pour des problèmes que j'avais, la plupart en quelques jours. Certains servent tous les jours, d'autres se sont arrêtés en route.">
   <meta property="og:url" content="https://gildas.fyi/experimental">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -17,6 +17,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
   <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/plain" href="/experimental/llms.txt" title="Index pour les IA">
   <link rel="stylesheet" href="/experimental/experimental.css">
 </head>
 <body>
@@ -32,7 +33,7 @@
 
   <header class="article-page-header">
     <h1>Expérimental</h1>
-    <p class="xp-intro">Des outils construits avec Claude Code pour mes propres problèmes, la plupart en quelques jours, avec pour chacun le pari de départ, les essais ratés et ce qui en reste.</p>
+    <p class="xp-intro">Des outils construits avec Claude Code pour des problèmes que j'avais, la plupart en quelques jours. Certains servent tous les jours, d'autres se sont arrêtés en route. Chaque projet a aussi un dossier complet en Markdown, lisible par les IA (<a href="/experimental/llms.txt">index</a>).</p>
   </header>
 
   <section class="xp-group">
@@ -41,55 +42,55 @@
     <article class="xp-item">
       <div class="xp-when">oct.<br>2026</div>
       <div>
-        <h3 class="xp-title"><a href="/experimental/callrecorder">Enregistrer et transcrire ses appels sur Mac, sans rien lancer</a></h3>
+        <h3 class="xp-title"><a href="/experimental/callrecorder">Garder une trace de ses appels sans penser à lancer l'enregistrement</a></h3>
         <p class="xp-by">CallRecorder · app macOS en Swift</p>
         <p class="xp-venue"><span class="xp-dot live"></span>Version 0.3.1 publiée le 24 octobre 2026</p>
-        <p class="xp-abstract">Il se lance quand une app d'appel prend le micro, enregistre ma voix et celle des autres sur deux pistes, transcrit sur le Mac et se laisse interroger par Claude. Il remplace une première tentative qui dépendait de l'agenda, d'un pilote audio virtuel et d'une clé OpenAI.</p>
-        <p class="xp-links"><a href="/experimental/callrecorder">Genèse →</a><a href="https://gildasfremont.github.io/callrecorder-site/" target="_blank" rel="noopener">Télécharger →</a></p>
+        <p class="xp-abstract">Pour retrouver ce qui s'est dit dans un appel, il faut avoir pensé à l'enregistrer. CallRecorder démarre seul quand une app d'appel prend le micro, garde ma voix et celle des autres sur deux pistes, transcrit sur le Mac, et Claude sait relire les appels.</p>
+        <p class="xp-links"><a href="/experimental/callrecorder">Lire →</a><a href="https://gildasfremont.github.io/callrecorder-site/" target="_blank" rel="noopener">Télécharger →</a><a href="/experimental/contexte/callrecorder.md">Dossier complet →</a></p>
       </div>
     </article>
 
     <article class="xp-item">
       <div class="xp-when">sept.<br>2026</div>
       <div>
-        <h3 class="xp-title"><a href="/experimental/copropriete">Reconstituer les comptes d'une copropriété à partir des pièces du syndic</a></h3>
-        <p class="xp-by">Registre d'un conseil syndical · Next.js</p>
-        <p class="xp-venue"><span class="xp-dot live"></span>En usage depuis septembre 2026, accès privé</p>
-        <p class="xp-abstract">1&nbsp;520 pièces du syndic relevées, dix exercices reconstitués, 59 contrôles qui relancent les calculs, chaque action suivie dans une issue GitHub. Un conseiller syndical bénévole a mené le tout en quatre semaines.</p>
-        <p class="xp-links"><a href="/experimental/copropriete">Genèse →</a><span class="xp-nolink">Outil privé</span></p>
+        <h3 class="xp-title"><a href="/experimental/copropriete">Pouvoir vérifier les comptes d'une copropriété à partir des pièces du syndic</a></h3>
+        <p class="xp-by">Outil d'un conseil syndical · Next.js</p>
+        <p class="xp-venue"><span class="xp-dot live"></span>En usage depuis septembre 2026, outil privé</p>
+        <p class="xp-abstract">Chiffrer une réclamation contre un ancien syndic sans se fier à son grand livre. 1&nbsp;520 pièces relevées, et sur le site, chaque chiffre s'ouvre jusqu'aux pièces dont il vient.</p>
+        <p class="xp-links"><a href="/experimental/copropriete">Lire →</a><a href="/experimental/contexte/copropriete.md">Dossier complet →</a></p>
       </div>
     </article>
 
     <article class="xp-item">
       <div class="xp-when">sept.<br>2026</div>
       <div>
-        <h3 class="xp-title"><a href="/experimental/recherche-emploi">Faire tenir sa recherche d'emploi par Claude</a></h3>
+        <h3 class="xp-title"><a href="/experimental/recherche-emploi">Laisser Claude faire le travail de fond d'une recherche d'emploi, et garder la décision</a></h3>
         <p class="xp-by">Base de connaissances et outil de suivi · Next.js, MCP</p>
         <p class="xp-venue"><span class="xp-dot live"></span>En usage quotidien depuis le 21 octobre 2026</p>
-        <p class="xp-abstract">Une base où chaque fait est établi, à confirmer ou manquant, et un outil qui ne calcule rien&nbsp;: Claude lit 82 flux d'offres chaque matin, évalue, prépare, et je relis. Un outil open source a d'abord été essayé, puis quitté le jour même.</p>
-        <p class="xp-links"><a href="/experimental/recherche-emploi">Genèse →</a><span class="xp-nolink">Outil privé</span></p>
+        <p class="xp-abstract">Un registre que Claude remplit, offres repérées, évaluées, fil des échanges tenu, et que je lis en quelques secondes. L'outil prépare, j'envoie.</p>
+        <p class="xp-links"><a href="/experimental/recherche-emploi">Lire →</a><a href="/experimental/contexte/recherche-emploi.md">Dossier complet →</a></p>
       </div>
     </article>
 
     <article class="xp-item">
       <div class="xp-when">oct.<br>2026</div>
       <div>
-        <h3 class="xp-title"><a href="/experimental/futurun">Voir tous ses comptes au même endroit et savoir combien de mois on tient</a></h3>
-        <p class="xp-by">Futurun · app locale installable sur téléphone</p>
+        <h3 class="xp-title"><a href="/experimental/futurun">Réunir ses comptes pour savoir combien de mois tient sa trésorerie</a></h3>
+        <p class="xp-by">Futurun · app locale, installable sur téléphone</p>
         <p class="xp-venue"><span class="xp-dot live"></span>En usage personnel depuis le 12 octobre 2026</p>
-        <p class="xp-abstract">Open banking, scraping, API, export CSV et saisie à la main passent par le même contrat de connecteur. L'app en tire combien de mois je tiens au rythme actuel. La seule friction qui reste, se reconnecter, tient dans un écran.</p>
-        <p class="xp-links"><a href="/experimental/futurun">Genèse →</a><span class="xp-nolink">Usage personnel</span></p>
+        <p class="xp-abstract">Des comptes qui se connectent tous autrement, réunis chez soi pour calculer le nombre de mois devant soi. Se reconnecter à une banque tient dans un seul écran.</p>
+        <p class="xp-links"><a href="/experimental/futurun">Lire →</a><a href="/experimental/contexte/futurun.md">Dossier complet →</a></p>
       </div>
     </article>
 
     <article class="xp-item">
       <div class="xp-when">juin<br>2026</div>
       <div>
-        <h3 class="xp-title"><a href="/experimental/recettes">Un livre de recettes qui calcule la portion de chacun</a></h3>
-        <p class="xp-by">Recettes · site statique, sans framework</p>
+        <h3 class="xp-title"><a href="/experimental/recettes">Répartir un même plat entre deux personnes qui n'ont pas les mêmes besoins</a></h3>
+        <p class="xp-by">Recettes · site statique, sans dépendance</p>
         <p class="xp-venue"><span class="xp-dot live"></span>En ligne depuis le 30 juin 2026</p>
-        <p class="xp-abstract">Un livre de recettes tiré d'un Google Doc, devenu en une journée un site qui calcule la part de chacun selon son profil. Douze commits, aucune dépendance.</p>
-        <p class="xp-links"><a href="/experimental/recettes">Genèse →</a><a href="https://recettes-gilt.vercel.app" target="_blank" rel="noopener">Ouvrir l'app →</a></p>
+        <p class="xp-abstract">Une seule recette, deux assiettes&nbsp;: l'app calcule la part de chacun selon son profil, et le reste part en doggybag. Un livre de recettes devenu une app en une journée.</p>
+        <p class="xp-links"><a href="/experimental/recettes">Lire →</a><a href="https://recettes-gilt.vercel.app" target="_blank" rel="noopener">Ouvrir l'app →</a><a href="/experimental/contexte/recettes.md">Dossier complet →</a></p>
       </div>
     </article>
   </section>
@@ -100,44 +101,44 @@
     <article class="xp-item">
       <div class="xp-when">juin<br>2026</div>
       <div>
-        <h3 class="xp-title"><a href="/experimental/swisser">Régler la typographie d'un site en déplaçant une ligne, sans écrire de CSS</a></h3>
+        <h3 class="xp-title"><a href="/experimental/swisser">Régler la typographie d'une page à partir de ce qu'on voit</a></h3>
         <p class="xp-by">Swisser · TypeScript, sans framework</p>
-        <p class="xp-venue"><span class="xp-dot pause"></span>Pivot au bout de quatre heures, en pause depuis le 1<sup>er</sup>&nbsp;juin 2026</p>
-        <p class="xp-abstract">Le projet devait composer une page sur une grille de baseline calculée depuis la fonte. Il est devenu un éditeur où l'on tire une ligne verte qui indique la moyenne des fins de ligne, et où le CSS se règle en dessous.</p>
-        <p class="xp-links"><a href="/experimental/swisser">Genèse →</a></p>
+        <p class="xp-venue"><span class="xp-dot pause"></span>Prototype d'un après-midi, en pause depuis le 1<sup>er</sup>&nbsp;juin 2026</p>
+        <p class="xp-abstract">Dans un éditeur de site, on règle du CSS sans voir ce qu'il fait au texte. Ici, on tire une ligne, la moyenne des fins de ligne, et le CSS suit.</p>
+        <p class="xp-links"><a href="/experimental/swisser">Lire →</a><a href="/experimental/contexte/swisser.md">Dossier complet →</a></p>
       </div>
     </article>
 
     <article class="xp-item">
       <div class="xp-when">avr.<br>2026</div>
       <div>
-        <h3 class="xp-title"><a href="/experimental/campagne">Savoir combien de lits sont pris chaque nuit dans la maison de famille</a></h3>
+        <h3 class="xp-title"><a href="/experimental/campagne">Voir combien de couchages sont pris, nuit par nuit, dans une maison de famille</a></h3>
         <p class="xp-by">Campagne · Next.js, Postgres</p>
-        <p class="xp-venue"><span class="xp-dot pause"></span>Première version livrée en avril 2026, suite restée sur une branche</p>
-        <p class="xp-abstract">Une soixantaine de personnes, une maison de 32 couchages, un tableur devenu illisible. Le calendrier montre combien de lits sont pris chaque nuit et laisse la négociation à la famille.</p>
-        <p class="xp-links"><a href="/experimental/campagne">Genèse →</a></p>
+        <p class="xp-venue"><span class="xp-dot pause"></span>Première version livrée le 10 avril 2026, suite restée sur une branche</p>
+        <p class="xp-abstract">Une maison de 32 couchages, une soixantaine de personnes&nbsp;: le calendrier montre combien de lits sont pris chaque nuit, et la famille négocie le reste.</p>
+        <p class="xp-links"><a href="/experimental/campagne">Lire →</a><a href="/experimental/contexte/campagne.md">Dossier complet →</a></p>
       </div>
     </article>
 
     <article class="xp-item">
       <div class="xp-when">avr.<br>2026</div>
       <div>
-        <h3 class="xp-title"><a href="/experimental/commentaire">Annoter un texte à voix haute et lire les réponses d'une IA dans la marge</a></h3>
+        <h3 class="xp-title"><a href="/experimental/commentaire">Ancrer une remarque au passage qu'on lit, et laisser une IA y répondre dans la marge</a></h3>
         <p class="xp-by">Commentaire · app de bureau en Rust (Tauri)</p>
-        <p class="xp-venue"><span class="xp-dot pause"></span>Chaîne complète en 21 heures, arrêtée sur la latence le 17 avril 2026</p>
-        <p class="xp-abstract">On parle en lisant, le commentaire s'accroche au passage, un co-lecteur silencieux répond dans la marge. Tout fonctionne de bout en bout, mais la réponse met 17 secondes là où il en faudrait moins de deux.</p>
-        <p class="xp-links"><a href="/experimental/commentaire">Genèse →</a><a href="https://github.com/gildasfremont/commentaire" target="_blank" rel="noopener">Code →</a></p>
+        <p class="xp-venue"><span class="xp-dot pause"></span>Construit en 21 heures, en pause depuis le 17 avril 2026</p>
+        <p class="xp-abstract">Dans un chat, une remarque se détache du passage qu'elle commente. Ici, on la dit à voix haute, elle s'accroche dans la marge, et une IA y répond, trop lentement pour suivre la lecture.</p>
+        <p class="xp-links"><a href="/experimental/commentaire">Lire →</a><a href="https://github.com/gildasfremont/commentaire" target="_blank" rel="noopener">Code →</a><a href="/experimental/contexte/commentaire.md">Dossier complet →</a></p>
       </div>
     </article>
 
     <article class="xp-item">
       <div class="xp-when">mars<br>2026</div>
       <div>
-        <h3 class="xp-title"><a href="/experimental/disciple">Confier un travail à une équipe d'agents IA sans avoir à les configurer</a></h3>
+        <h3 class="xp-title"><a href="/experimental/disciple">Décrire le travail à faire plutôt que construire un agent</a></h3>
         <p class="xp-by">Disciple · Python, FastAPI</p>
-        <p class="xp-venue"><span class="xp-dot pause"></span>Prototype complet, en pause depuis le 31 mars 2026</p>
-        <p class="xp-abstract">On décrit un travail, pas un agent. Un architecte en fait un plan, un orchestrateur répartit et juge, des agents exécutent et retiennent. 84 commits en dix jours, éprouvés sur des personas simulés.</p>
-        <p class="xp-links"><a href="/experimental/disciple">Genèse →</a></p>
+        <p class="xp-venue"><span class="xp-dot pause"></span>Prototype, en pause depuis le 31 mars 2026</p>
+        <p class="xp-abstract">On décrit un travail&nbsp;; un architecte en fait un plan, un orchestrateur le répartit et juge les livrables, des agents l'exécutent. Testé pendant dix jours sur des personas simulés.</p>
+        <p class="xp-links"><a href="/experimental/disciple">Lire →</a><a href="/experimental/contexte/disciple.md">Dossier complet →</a></p>
       </div>
     </article>
   </section>

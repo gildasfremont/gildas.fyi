@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CallRecorder — Gildas Frémont</title>
-  <meta name="description" content="Un enregistreur d'appels qui se lance seul, garde tout sur le Mac et se laisse interroger par Claude. Deuxième tentative, trois jours.">
+  <meta name="description" content="Garder une trace de ses appels sans penser à lancer l'enregistrement : une app Mac qui enregistre quand une app d'appel prend le micro, transcrit sur place, et que Claude sait lire.">
   <link rel="canonical" href="https://gildas.fyi/experimental/callrecorder">
   <meta property="og:type" content="article">
   <meta property="og:title" content="CallRecorder — Gildas Frémont">
-  <meta property="og:description" content="Un enregistreur d'appels qui se lance seul, garde tout sur le Mac et se laisse interroger par Claude. Deuxième tentative, trois jours.">
+  <meta property="og:description" content="Garder une trace de ses appels sans penser à lancer l'enregistrement : une app Mac qui enregistre quand une app d'appel prend le micro, transcrit sur place, et que Claude sait lire.">
   <meta property="og:url" content="https://gildas.fyi/experimental/callrecorder">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -17,24 +17,40 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
   <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/experimental/contexte/callrecorder.md" title="Dossier complet">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
-.cr-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-.cr-col { min-width: 0; }
-.cr-col + .cr-col { border-left: 1px solid var(--border); padding-left: 1.25rem; }
-.cr-track { margin: 0.55rem 0; }
-.cr-track b { display: block; font-weight: 400; font-size: 12px; color: var(--light); margin-bottom: 0.2rem; }
+.cr-trip { margin: 2rem 0 !important; padding: 1.25rem; border: 1px solid var(--border); border-radius: 10px; background: var(--white); }
+.cr-zones { display: grid; grid-template-columns: 1.35fr 1fr; gap: 1.25rem; }
+.cr-zone > .xp-kicker { padding-bottom: 0.45rem; margin-bottom: 0.8rem; border-bottom: 2px solid var(--black); }
+.cr-zone.after > .xp-kicker { border-bottom-color: rgb(var(--xp-live)); }
+.cr-zone .quote { display: block; font-size: 12px; color: var(--light); margin: -0.5rem 0 0.8rem; font-style: italic; }
+.cr-ev { font-size: 12.5px; color: var(--mid); margin: 0.2rem 0; }
+.cr-ev b { color: var(--black); font-weight: 600; }
+.cr-track { margin: 0.5rem 0; }
+.cr-track small { display: block; font-size: 11px; color: var(--light); margin-bottom: 0.15rem; font-family: var(--xp-mono); }
 .cr-wave { display: flex; align-items: center; gap: 2px; height: 22px; }
 .cr-wave i { flex: 1; min-width: 1px; border-radius: 1px; background: var(--black); }
 .cr-them .cr-wave i { background: rgb(var(--xp-live)); }
-.cr-film { height: 22px; border-radius: 2px; background: repeating-linear-gradient(90deg, var(--subtle) 0 10px, var(--white) 10px 12px); }
-.cr-snaps { height: 22px; display: flex; align-items: center; justify-content: space-between; }
-.cr-snaps i { width: 9px; height: 13px; border: 1px solid var(--light); border-radius: 1px; }
-.cr-deps { list-style: none; margin-top: 0.9rem; padding-top: 0.6rem; border-top: 1px dashed var(--border); font-size: 13px; color: var(--mid); }
-.cr-deps li::before { content: '+ '; color: var(--light); }
-@media (max-width: 600px) {
-  .cr-cols { grid-template-columns: 1fr; }
-  .cr-col + .cr-col { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1rem; }
+.cr-snaps { display: flex; justify-content: space-between; height: 18px; align-items: center; }
+.cr-snaps i { width: 10px; height: 13px; border: 1px solid var(--light); border-radius: 1px; }
+.cr-steps { list-style: none; counter-reset: s; }
+.cr-steps li { counter-increment: s; position: relative; padding: 0 0 0.75rem 1.6rem; font-size: 13px; color: var(--mid); line-height: 1.5; }
+.cr-steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 1.15rem; height: 1.15rem; border-radius: 50%; border: 1px solid rgb(var(--xp-live)); color: rgb(var(--xp-live)); font-size: 10.5px; display: flex; align-items: center; justify-content: center; }
+.cr-steps b { color: var(--black); font-weight: 600; }
+.cr-shot img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.cr-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+.cr-pair figure { margin: 0 !important; }
+.cr-minus { margin: 1.5rem 0 2rem !important; border-top: 1px solid var(--border); }
+.cr-minus .row { display: grid; grid-template-columns: 1fr 1.6rem 1fr; gap: 0.6rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.cr-minus .old { color: var(--light); text-decoration: line-through; text-decoration-color: rgba(var(--xp-red), .7); }
+.cr-minus .arr { color: var(--light); text-align: center; }
+.cr-minus .new { color: var(--black); }
+.cr-minus .head { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); padding: 0.5rem 0 0.3rem; border-bottom: 1px solid var(--border); }
+@media (max-width: 640px) {
+  .cr-zones, .cr-pair { grid-template-columns: 1fr; }
+  .cr-minus .row { grid-template-columns: 1fr; gap: 0.1rem; }
+  .cr-minus .arr { display: none; }
 }
 </style>
 </head>
@@ -51,148 +67,94 @@
 
   <article>
     <header class="article-page-header">
-      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · octobre 2026</p>
-      <h1>CallRecorder</h1>
-      <p class="article-page-subtitle">Enregistrer et transcrire ses appels sur Mac, sans rien lancer</p>
-      <p class="article-meta">22 au 24 octobre 2026 · Swift · écrit avec Claude Code · <a href="https://gildasfremont.github.io/callrecorder-site/" target="_blank" rel="noopener">page de téléchargement</a></p>
+      <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · octobre 2026</p>
+      <h1>Garder une trace de ses appels sans penser à lancer l'enregistrement</h1>
+      <p class="article-page-subtitle">Une app Mac qui enregistre quand une app d'appel prend le micro, transcrit sur place, et que Claude sait lire</p>
+      <p class="article-meta">22 au 24 octobre 2026, version 0.3.1 publiée · Swift · écrit avec Claude Code · <a href="https://gildasfremont.github.io/callrecorder-site/" target="_blank" rel="noopener">page de téléchargement</a> · <a href="/experimental/contexte/callrecorder.md">dossier complet (Markdown)</a></p>
     </header>
-
-    <div class="xp-thesis">
-      <span class="xp-thesis-label">Le pari</span>
-      <p>Un enregistreur d'appels peut se lancer seul dès qu'une app prend le micro, sans agenda, sans pilote audio et sans bouton, garder le son et la transcription sur le Mac, et rendre ces conversations lisibles par Claude. Le tout dans une app qu'on installe sans être développeur.</p>
-    </div>
-
-    <div class="xp-facts">
-      <div class="xp-fact"><b>3 jours</b><span>du premier fichier à la version publique</span></div>
-      <div class="xp-fact"><b>85</b><span>commits</span></div>
-      <div class="xp-fact"><b>5&nbsp;050</b><span>lignes de Swift</span></div>
-      <div class="xp-fact"><b>8</b><span>apps d'appel reconnues</span></div>
-    </div>
 
     <div class="article-body">
 
-      <h2>Genèse</h2>
+      <p>Pour retrouver ce qui s'est dit dans un appel, il faut l'avoir enregistré, et pour l'avoir enregistré, il faut y avoir pensé avant que la conversation commence. Ma première tentative, meet-recorder, prévenait cinq minutes avant chaque visio de l'agenda, mais il fallait encore cliquer pour lancer l'enregistrement, et l'installer demandait un pilote audio virtuel, un projet Google Cloud et une clé OpenAI. Je l'ai archivée en avril. CallRecorder repart du même besoin, avec une règle&nbsp;: ne rien demander pendant l'appel.</p>
 
-      <p>Le premier essai s'appelait meet-recorder. Écrit en Python avant avril 2026, il interrogeait Google Agenda toutes les minutes et proposait d'enregistrer cinq minutes avant chaque visio. Il capturait quatre flux avec ffmpeg&nbsp;: le micro, le son du Mac à travers BlackHole, une vidéo de l'écran entier et la webcam. La transcription passait par l'API Whisper d'OpenAI.</p>
-
-      <p>Pour savoir qui parle, il cherchait, une image par seconde, le contour bleu que Google Meet dessine autour de la personne qui a la parole. L'écran était découpé en trois colonnes fixes, et la colonne qui s'allumait donnait l'orateur.</p>
-
-      <p>Il ne tournait que chez son auteur, qui devait installer Homebrew, créer à la main un appareil audio multi-sorties dans les réglages du Mac, configurer un projet Google Cloud pour lire l'agenda et fournir une clé OpenAI. Il a été archivé le 8&nbsp;avril 2026.</p>
-
-      <p>Six mois plus tard, CallRecorder repart de tout ce qu'on peut retirer. L'agenda, parce que macOS signale quand une app prend le micro. BlackHole, parce qu'un «&nbsp;process tap&nbsp;» capte le son d'une seule application. La vidéo, parce que deux pistes audio séparent déjà ma voix de celle des autres. Le cloud pour la transcription, parce que whisper.cpp tourne sur la puce du Mac.</p>
-
-      <figure class="xp-figure">
-        <div class="cr-cols">
-          <div class="cr-col">
-            <span class="xp-label">meet-recorder · avant avril 2026</span>
-            <div class="cr-track"><b>Micro</b><div class="cr-wave" data-seed="1"></div></div>
-            <div class="cr-track"><b>Tout le son du Mac, via BlackHole</b><div class="cr-wave" data-seed="2"></div></div>
-            <div class="cr-track"><b>Écran entier, 15 images par seconde</b><div class="cr-film"></div></div>
-            <div class="cr-track"><b>Webcam, 720p</b><div class="cr-film"></div></div>
-            <ul class="cr-deps"><li>Homebrew et ffmpeg</li><li>BlackHole et un appareil multi-sorties</li><li>Un projet Google Cloud</li><li>Une clé OpenAI</li></ul>
+      <figure class="cr-trip">
+        <div class="cr-zones">
+          <div class="cr-zone">
+            <span class="xp-kicker">Pendant l'appel</span>
+            <span class="quote">«&nbsp;automatique, bête, fiable&nbsp;»</span>
+            <p class="cr-ev"><b>Zoom prend le micro</b>&nbsp;: l'enregistrement démarre.</p>
+            <div class="cr-track"><small>me.m4a · mon micro</small><div class="cr-wave" data-turns="me"></div></div>
+            <div class="cr-track cr-them"><small>them.m4a · le son de l'app d'appel, rien d'autre</small><div class="cr-wave" data-turns="them"></div></div>
+            <div class="cr-track"><small>une capture de la fenêtre toutes les 30 s</small><div class="cr-snaps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <p class="cr-ev"><b>Zoom libère le micro</b>&nbsp;: l'enregistrement s'arrête.</p>
           </div>
-          <div class="cr-col">
-            <span class="xp-label">CallRecorder · octobre 2026</span>
-            <div class="cr-track"><b>me.m4a · mon micro</b><div class="cr-wave" data-turns="me"></div></div>
-            <div class="cr-track cr-them"><b>them.m4a · le son de l'app d'appel, rien d'autre</b><div class="cr-wave" data-turns="them"></div></div>
-            <div class="cr-track"><b>Une capture de la fenêtre d'appel toutes les 30 secondes</b><div class="cr-snaps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-            <ul class="cr-deps"><li>Un .dmg, ou une ligne dans le terminal</li><li>Un appel de test pour donner les autorisations</li></ul>
+          <div class="cr-zone after">
+            <span class="xp-kicker">Après</span>
+            <span class="quote">«&nbsp;à la demande, pipeline extensible&nbsp;»</span>
+            <ol class="cr-steps">
+              <li><b>Transcription</b> par Whisper, sur le Mac. Les deux pistes suffisent à écrire «&nbsp;moi&nbsp;» et «&nbsp;les autres&nbsp;».</li>
+              <li><b>Qualification</b> par Claude&nbsp;: un titre, les participants, le vocabulaire à donner à Whisper, à partir des captures, de l'agenda et de Gmail lus sans rien modifier. Un rendez-vous n'est rattaché que sur une preuve.</li>
+              <li><b>Retrouver l'appel</b> dans la fenêtre Appels, avec la commande <code>calls</code>, ou en le demandant à Claude par un serveur MCP.</li>
+            </ol>
           </div>
         </div>
-        <figcaption>Ce qui est enregistré pendant un appel, avant et après. Les deux pistes de CallRecorder alternent&nbsp;: quand je parle, l'autre piste se tait. La transcription peut ainsi écrire «&nbsp;moi&nbsp;» et «&nbsp;les autres&nbsp;» sans analyser les voix.</figcaption>
+        <figcaption>Les deux temps séparés par la spécification, et leurs mots. Les deux pistes alternent&nbsp;: quand je parle, l'autre se tait. Zoom sert d'exemple&nbsp;; la version 0.3.1 reconnaît aussi Teams, Meet dans le navigateur, FaceTime, WhatsApp, Slack, Webex et Loom.</figcaption>
       </figure>
 
-      <h2>Essais et erreurs</h2>
+      <p>La spécification dit «&nbsp;usage personnel, tout reste sur la machine&nbsp;». L'audio, la transcription et le journal d'usage ne quittent pas le Mac&nbsp;; la qualification par Claude, avec l'abonnement claude.ai, est l'exception. Chaque appel est un dossier, avec ses deux pistes, son contexte et sa transcription, qu'on peut ouvrir, copier ou supprimer à la main. Seules les apps d'une liste autorisée déclenchent quelque chose&nbsp;: Siri ou la dictée prennent le micro sans que rien ne démarre.</p>
 
-      <ul class="xp-trials">
-        <li class="xp-trial">
-          <span class="xp-verdict dropped">Retiré</span>
-          <div>
-            <h3>Le micro traité par macOS, pour retirer l'écho</h3>
-            <p>Ajouté à 19&nbsp;h&nbsp;34, retiré à 19&nbsp;h&nbsp;41. Le traitement de la voix de macOS coupe la capture du son des autres apps, étouffe le micro, et ne retire pas l'écho qu'elles produisent.</p>
-            <p class="xp-proof">23 oct. · 964e0dc → 8ef9423</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict dropped">Reporté</span>
-          <div>
-            <h3>Reconnaître chaque interlocuteur</h3>
-            <p>Le contour bleu ne marchait que sur Meet et sur une grille fixe. La première version s'en tient à «&nbsp;moi&nbsp;» et «&nbsp;les autres&nbsp;», que les deux pistes donnent déjà. L'idée du contour reste une piste pour séparer plusieurs voix sur la piste des autres.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict kept">Gardé</span>
-          <div>
-            <h3>Un appel de test au lieu d'un assistant pas à pas</h3>
-            <p>Le premier assistant demandait toutes les autorisations d'un coup, sans contexte. Le second lance un faux appel, et macOS les demande au moment où elles servent, comme le font Zoom ou Meet.</p>
-            <p class="xp-proof">22-23 oct. · 80a4a57 → 1eb016f</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict open">En suspens</span>
-          <div>
-            <h3>Signer l'app</h3>
-            <p>Sans compte Apple Developer, l'app n'est pas notarisée et macOS la bloque au premier lancement. La signature du .dmg a été abandonnée, et la fenêtre d'installation explique comment passer outre. Elle a connu 24 versions en une journée.</p>
-            <p class="xp-proof">22 oct. · 51a1022</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict kept">Gardé</span>
-          <div>
-            <h3>Laisser Claude qualifier l'appel</h3>
-            <p>Après l'appel, Claude consulte l'agenda et les mails en lecture seule, ainsi que les captures de la fenêtre, pour trouver un titre, les participants et le vocabulaire à donner à Whisper. Il n'a le droit de rattacher un rendez-vous que sur une preuve.</p>
-          </div>
-        </li>
-      </ul>
+      <figure class="cr-shot">
+        <img src="/img/experimental/callrecorder-appels.jpg" alt="La fenêtre Appels : une liste d'appels avec titre, participants, date, durée, app et statut" width="1600" height="676" loading="lazy">
+        <figcaption>La fenêtre Appels. Les titres et les participants viennent de la qualification par Claude. Les appels de cette capture sont fictifs, générés pour la page de téléchargement.</figcaption>
+      </figure>
 
-      <h2>Chronologie</h2>
+      <h2>Ce qu'il a fallu retirer</h2>
 
-      <ol class="xp-timeline">
-        <li><time>avant avr.</time><span>meet-recorder en Python&nbsp;: agenda, BlackHole, quatre flux, API OpenAI.</span></li>
-        <li class="k-fail"><time>8 avr.</time><span>Archivé.</span></li>
-        <li class="k-gap"><time></time><span>Six mois sans enregistreur.</span></li>
-        <li><time>22 oct., 13 h</time><span>Spécification et premier code Swift.</span></li>
-        <li class="k-ship"><time>22 oct., 22 h</time><span>Premier commit, déjà complet&nbsp;: enregistrement, transcription, qualification par Claude, serveur MCP.</span></li>
-        <li class="k-fail"><time>22 oct., 23 h</time><span>Installation en une ligne. La signature du .dmg est abandonnée.</span></li>
-        <li class="k-pivot"><time>23 oct., 0 h 39</time><span>L'assistant est refait autour d'un appel de test.</span></li>
-        <li><time>23 oct.</time><span>24 versions de la fenêtre d'installation.</span></li>
-        <li class="k-fail"><time>23 oct., 19 h</time><span>Le micro anti-écho, essayé puis retiré sept minutes plus tard.</span></li>
-        <li><time>23 oct., 23 h</time><span>Journal d'usage local et commande <code>calls usage</code>.</span></li>
-        <li class="k-ship"><time>24 oct., 20 h</time><span>Distribution publique&nbsp;: page de téléchargement, mises à jour automatiques, versions 0.3.0 puis 0.3.1.</span></li>
-        <li><time>24 oct., 20 h</time><span>Slack, Webex et Loom reconnus.</span></li>
-      </ol>
-      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>abandon</span></p>
+      <p>meet-recorder ne tournait que chez moi. CallRecorder s'est construit en retirant ce qui l'en empêchait.</p>
 
-      <h2>Ce que ça a donné</h2>
+      <div class="cr-minus">
+        <div class="row head"><span>meet-recorder, avant avril</span><span></span><span>CallRecorder, octobre</span></div>
+        <div class="row"><span class="old">Google Agenda interrogé chaque minute</span><span class="arr">→</span><span class="new">un événement de macOS quand une app prend le micro</span></div>
+        <div class="row"><span class="old">BlackHole et un appareil audio créé à la main</span><span class="arr">→</span><span class="new">le son de la seule app d'appel, capté directement</span></div>
+        <div class="row"><span class="old">l'écran entier et la webcam, filmés</span><span class="arr">→</span><span class="new">une capture de la fenêtre toutes les 30 secondes</span></div>
+        <div class="row"><span class="old">l'API Whisper d'OpenAI et sa clé</span><span class="arr">→</span><span class="new">whisper.cpp, sur la puce du Mac</span></div>
+        <div class="row"><span class="old">le contour bleu de Google Meet, cherché image par image</span><span class="arr">→</span><span class="new">deux pistes, «&nbsp;moi&nbsp;» et «&nbsp;les autres&nbsp;»</span></div>
+        <div class="row"><span class="old">Homebrew, ffmpeg, Python, un projet Google Cloud</span><span class="arr">→</span><span class="new">un .dmg, ou une ligne dans le terminal</span></div>
+      </div>
 
-      <p>L'app est publique depuis le 24&nbsp;octobre 2026. Elle reconnaît Zoom, Teams, Meet dans le navigateur, FaceTime, WhatsApp, Slack, Webex et Loom, sur les Mac Apple Silicon. Le code reste privé&nbsp;; la page, les binaires et les mises à jour sont publics.</p>
+      <p>Le contour bleu n'a pas disparu pour autant. meet-recorder découpait l'écran en trois colonnes fixes et cherchait, une image par seconde, la vignette que Meet entoure quand quelqu'un parle. La spécification de CallRecorder reprend l'idée pour une version 2, sans modèle lourd&nbsp;: Zoom, Teams et Meet entourent la personne qui parle et affichent son nom dans sa vignette, et lire ce cadre et ce nom à l'écran suffirait à attribuer chaque phrase de la piste des autres.</p>
 
-      <p>Elle n'a pour l'instant servi qu'à des appels de test&nbsp;: six enregistrements en trois jours, aucun utilisateur extérieur connu. Le journal d'usage ajouté le 23&nbsp;octobre comptera la suite, les appels captés, ratés, transcrits et relus, sans rien envoyer hors du Mac.</p>
+      <h2>Trois jours, dont un pour l'installation</h2>
 
-      <ul class="xp-deliverables">
-        <li><span>App dans la barre des menus</span><span>.dmg de 4&nbsp;Mo</span></li>
-        <li><span>Commande <code>calls</code></span><span>list, transcribe, keep, delete, doctor, usage</span></li>
-        <li><span>Serveur MCP pour Claude</span><span>8 outils</span></li>
-        <li><span><a href="https://gildasfremont.github.io/callrecorder-site/" target="_blank" rel="noopener">Page de téléchargement</a></span><span>publique</span></li>
-      </ul>
+      <p>Le premier fichier date du 22&nbsp;octobre à 13&nbsp;h&nbsp;20, et le premier commit, à 22&nbsp;h&nbsp;19, contient déjà l'enregistrement, la transcription, la qualification et le serveur MCP. Il porte le numéro 0.2.0&nbsp;: la version 0.1 n'a existé que sur le disque, pendant ces neuf heures.</p>
+
+      <p>Le 23 a surtout servi à l'installation. Le premier assistant demandait toutes les autorisations d'un coup, sans dire pourquoi. Le second lance un faux appel, et macOS demande chaque autorisation au moment où elle sert, comme pendant un vrai appel. Sans compte Apple Developer, l'app ne peut pas être notarisée&nbsp;: macOS la bloque au premier lancement, et la fenêtre d'installation explique comment passer outre. Elle a connu 24 versions dans la journée. Le même jour, à 19&nbsp;h&nbsp;34, un traitement anti-écho de macOS a été ajouté au micro, et retiré à 19&nbsp;h&nbsp;41&nbsp;: il coupait la capture du son des autres apps et étouffait le micro, sans retirer l'écho.</p>
+
+      <div class="cr-pair">
+        <figure class="cr-shot">
+          <img src="/img/experimental/callrecorder-08-appel-conversation.jpg" alt="L'appel de test : deux vignettes, Vous et Interlocuteur de test, et un compteur d'enregistrement" width="1400" height="1059" loading="lazy">
+          <figcaption>L'appel de test de l'assistant.</figcaption>
+        </figure>
+        <figure class="cr-shot">
+          <img src="/img/experimental/callrecorder-10-transcription-resultat.jpg" alt="La transcription de l'appel de test, avec les répliques horodatées de Vous et de l'Interlocuteur" width="1400" height="1059" loading="lazy">
+          <figcaption>Sa transcription. L'interlocuteur demande un prénom et le temps qu'il fait&nbsp;; la réponse enregistrée est «&nbsp;Gildas, et il fait très beau.&nbsp;»</figcaption>
+        </figure>
+      </div>
+
+      <p>La version 0.3.1 est publique depuis le 24&nbsp;octobre, pour les Mac Apple Silicon sous macOS&nbsp;15 ou plus récent, avec des mises à jour automatiques que l'utilisateur accepte. Le code reste privé. Six appels de test ont été enregistrés en trois jours, et aucun utilisateur extérieur n'est connu&nbsp;; le journal d'usage local, ajouté le 23, comptera la suite.</p>
 
     </div>
   </article>
 <script>
 (function(){
-  // Deux pistes en alternance : quand l'une parle, l'autre se tait.
   var turns = [[0,9,'me'],[9,21,'them'],[21,27,'me'],[27,40,'them'],[40,52,'me'],[52,64,'them']];
   function rnd(s){ return function(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
   document.querySelectorAll('.cr-wave').forEach(function(el){
-    var r = rnd(+el.dataset.seed || (el.dataset.turns === 'me' ? 3 : 7));
+    var r = rnd(el.dataset.turns === 'me' ? 3 : 7);
     for (var i = 0; i < 64; i++) {
-      var on = true;
-      if (el.dataset.turns) {
-        on = turns.some(function(t){ return i >= t[0] && i < t[1] && t[2] === el.dataset.turns; });
-      }
-      var h = on ? 20 + r() * 80 : 4;
+      var on = turns.some(function(t){ return i >= t[0] && i < t[1] && t[2] === el.dataset.turns; });
       var bar = document.createElement('i');
-      bar.style.height = h + '%';
+      bar.style.height = (on ? 20 + r() * 80 : 4) + '%';
       if (!on) bar.style.opacity = '.25';
       el.appendChild(bar);
     }

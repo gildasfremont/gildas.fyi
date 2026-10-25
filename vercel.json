@@ -145,5 +145,25 @@
       "destination": "/en/vous-navez-pas-besoin-dun-pm",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/experimental/contexte/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/experimental/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    }
   ]
 }

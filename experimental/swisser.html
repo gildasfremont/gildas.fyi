@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Swisser — Gildas Frémont</title>
-  <meta name="description" content="Régler la typographie d'un site en tirant une ligne verte, la moyenne des fins de ligne. Un pivot au bout de quatre heures.">
+  <meta name="description" content="Régler la typographie d'une page à partir de ce qu'on voit : on tire une ligne verte, la moyenne des fins de ligne, et le CSS suit. Un prototype d'un après-midi.">
   <link rel="canonical" href="https://gildas.fyi/experimental/swisser">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Swisser — Gildas Frémont">
-  <meta property="og:description" content="Régler la typographie d'un site en tirant une ligne verte, la moyenne des fins de ligne. Un pivot au bout de quatre heures.">
+  <meta property="og:description" content="Régler la typographie d'une page à partir de ce qu'on voit : on tire une ligne verte, la moyenne des fins de ligne, et le CSS suit. Un prototype d'un après-midi.">
   <meta property="og:url" content="https://gildas.fyi/experimental/swisser">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -17,19 +17,34 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
   <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/experimental/contexte/swisser.md" title="Dossier complet">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
-.sw-stage { position: relative; padding: 1.75rem 0 0.5rem; user-select: none; }
-.sw-text { position: relative; font-size: 17px; line-height: 26px; color: var(--dark); padding-right: 0; hyphens: auto; -webkit-hyphens: auto; }
+.sw-stage { position: relative; padding: 2.2rem 1.4rem 1.2rem; border: 1px solid var(--border); border-radius: 8px; background: var(--white); user-select: none; }
+.sw-text { position: relative; font-size: 17px; line-height: 26px; color: var(--dark); hyphens: auto; -webkit-hyphens: auto; margin: 0 !important; }
 .sw-text.grid { background-image: repeating-linear-gradient(to bottom, transparent 0 25px, rgba(var(--xp-red), .35) 25px 26px); }
-.sw-line { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: rgb(var(--xp-live)); cursor: ew-resize; touch-action: none; }
-.sw-line::before { content: ''; position: absolute; inset: 0 -10px; }
+.sw-line { position: absolute; top: 0.7rem; bottom: 0.7rem; width: 2px; margin-left: -1px; background: rgb(var(--xp-live)); cursor: ew-resize; touch-action: none; }
+.sw-line::before { content: ''; position: absolute; inset: 0 -12px; }
 .sw-line::after { content: attr(data-label); position: absolute; top: -1.35rem; left: 50%; transform: translateX(-50%); font-size: 11px; color: rgb(var(--xp-live)); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.sw-ends i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: rgba(var(--xp-live), .45); margin: -2.5px 0 0 -2.5px; pointer-events: none; }
-.sw-tools { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; margin-top: 1rem; font-size: 13px; color: var(--mid); }
+.sw-ends i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: rgba(var(--xp-live), .5); margin: -2.5px 0 0 -2.5px; pointer-events: none; }
+.sw-tools { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; margin-top: 0.8rem; font-size: 13px; color: var(--mid); }
 .sw-tools button { font: inherit; font-size: 12px; padding: 0.15rem 0.6rem; border: 1px solid var(--border); border-radius: 3px; background: var(--white); color: var(--dark); cursor: pointer; }
 .sw-tools button[aria-pressed="true"] { border-color: rgb(var(--xp-red)); color: rgb(var(--xp-red)); }
-.sw-tools code { font-family: var(--xp-mono); font-size: 12px; color: var(--light); }
+.sw-tools code { color: var(--light); }
+.sw-afternoon { position: relative; margin: 2.4rem 0 3rem; height: 40px; }
+.sw-afternoon .seg { position: absolute; top: 10px; height: 20px; border-radius: 2px; }
+.sw-afternoon .a { background: rgba(var(--xp-red), .22); }
+.sw-afternoon .b { background: rgba(var(--xp-live), .28); }
+.sw-afternoon .pv { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--black); }
+.sw-afternoon span { position: absolute; font-size: 12px; color: var(--mid); white-space: nowrap; }
+.sw-afternoon span.t { top: 44px; color: var(--light); font-variant-numeric: tabular-nums; }
+.sw-afternoon span.l { top: -20px; }
+.sw-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0 2rem; max-width: 36em; }
+.sw-two figure { margin: 0 !important; }
+.sw-two svg { display: block; width: 100%; height: auto; background: var(--white); border: 1px solid var(--border); border-radius: 6px; }
+.sw-two figcaption b { display: block; font-weight: 600; color: var(--black); }
+.sw-two .wrong figcaption b { color: rgb(var(--xp-red)); }
+@media (max-width: 600px) { .sw-afternoon span.l { display: none; } }
 </style>
 </head>
 <body>
@@ -45,96 +60,74 @@
 
   <article>
     <header class="article-page-header">
-      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · juin 2026</p>
-      <h1>Swisser</h1>
-      <p class="article-page-subtitle">Régler la typographie d'un site en déplaçant une ligne, sans écrire de CSS</p>
-      <p class="article-meta">1<sup>er</sup>&nbsp;juin 2026, de 14&nbsp;h à 18&nbsp;h&nbsp;30 · TypeScript, Vite · écrit avec Claude Code · prototype local</p>
+      <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · 1<sup>er</sup>&nbsp;juin 2026</p>
+      <h1>Régler la typographie d'une page à partir de ce qu'on voit</h1>
+      <p class="article-page-subtitle">On tire une ligne, la moyenne des fins de ligne, et le CSS suit</p>
+      <p class="article-meta">Prototype local d'un après-midi, en pause · TypeScript, Vite, sans framework · écrit avec Claude Code · <a href="/experimental/contexte/swisser.md">dossier complet (Markdown)</a></p>
     </header>
-
-    <div class="xp-thesis">
-      <span class="xp-thesis-label">Le pari, en deux temps</span>
-      <p>D'abord&nbsp;: une mise en page typographique stricte peut sortir de deux choses seulement, un Markdown et une fonte, avec une grille de baseline calculée depuis les métriques de la fonte. Puis, quatre heures plus tard&nbsp;: on règle la typographie d'un vrai site en tirant une ligne verte, la moyenne des fins de ligne, et le CSS suit en dessous.</p>
-    </div>
-
-    <div class="xp-facts">
-      <div class="xp-fact"><b>4 h 20</b><span>de travail, en un après-midi</span></div>
-      <div class="xp-fact"><b>1 pivot</b><span>à 15 h 46</span></div>
-      <div class="xp-fact"><b>6</b><span>fichiers supprimés au pivot</span></div>
-      <div class="xp-fact"><b>~1&nbsp;100</b><span>lignes après le pivot</span></div>
-    </div>
 
     <div class="article-body">
 
-      <h2>La ligne verte, essayez-la</h2>
+      <p>Un typographe juge un paragraphe à sa marge droite&nbsp;: les fins de ligne se répartissent autour d'une position moyenne, et cette moyenne se règle en jouant sur la mesure, le corps et l'interlignage. Dans un éditeur de site, on règle des propriétés CSS, marges, largeurs, tailles, sans voir ce qu'elles font à cette marge. Swisser propose de régler directement ce qu'on voit.</p>
 
-      <figure class="xp-figure">
+      <figure>
         <div class="sw-stage">
-          <p class="sw-text" lang="fr">Un paragraphe bien composé se reconnaît au dessin de sa marge droite. Les fins de ligne s'y répartissent autour d'une position moyenne, sans dents ni trous, et l'œil revient au début de la ligne suivante sans effort. Les typographes règlent cette moyenne en jouant sur la mesure, le corps et l'interlignage. Dans un éditeur de site, on règle des propriétés CSS sans voir ce qu'elles produisent. Dans Swisser, on attrape la moyenne et on la déplace.</p>
+          <p class="sw-text" lang="fr">Un paragraphe bien composé se reconnaît au dessin de sa marge droite. Les fins de ligne s'y répartissent autour d'une position moyenne, sans dents ni trous, et l'œil revient au début de la ligne suivante sans effort. Les typographes règlent cette moyenne en jouant sur la mesure, le corps et l'interlignage. Dans un éditeur de site, on règle des propriétés CSS sans voir ce qu'elles produisent. Ici, on attrape la moyenne et on la déplace.</p>
           <div class="sw-ends"></div>
           <div class="sw-line" role="slider" aria-label="Moyenne des fins de ligne" tabindex="0"></div>
         </div>
         <div class="sw-tools">
-          <button type="button" class="sw-grid" aria-pressed="false">Grille de baseline</button>
-          <span>La ligne se tire à la souris ou aux flèches du clavier.</span>
+          <span>Tirez la ligne verte, à la souris ou aux flèches du clavier.</span>
           <code class="sw-css"></code>
+          <button type="button" class="sw-grid" aria-pressed="false">Grille de la première idée</button>
         </div>
-        <figcaption>Les points verts marquent la fin de chaque ligne, et la ligne verte indique leur moyenne. En la tirant, on change la largeur du paragraphe, et la moyenne se recalcule après le rendu réel du navigateur. Le bouton affiche en rouge la grille de baseline de la première version.</figcaption>
+        <figcaption>Les points marquent les fins de ligne, la ligne verte leur moyenne, recalculée après chaque rendu du navigateur. Comme dans le prototype, la ligne ne pilote que la marge intérieure droite du paragraphe&nbsp;; le CSS correspondant s'affiche à côté.</figcaption>
       </figure>
 
-      <h2>Genèse</h2>
+      <h2>Un pivot à 15 h 46</h2>
 
-      <p>La première version suivait un cahier des charges précis&nbsp;: un document Markdown sémantique, une fonte en .woff2, et un moteur qui lit les métriques de la fonte (hauteur d'x, hauteur des capitales, ascendantes, descendantes) pour en tirer une grille de baseline exacte. Le moteur comparait ensuite, en recouvrement, la grille déclarée en rouge et la grille mesurée en vert, à trois largeurs d'écran.</p>
+      <div class="sw-afternoon" aria-hidden="true">
+        <div class="seg a" style="left:0;width:38.5%"></div>
+        <div class="pv" style="left:38.5%"></div>
+        <div class="seg b" style="left:40.8%;width:59.2%"></div>
+        <span class="l" style="left:0">Composer une page à partir d'une fonte</span>
+        <span class="l" style="left:40.8%">Régler une page qui existe</span>
+        <span class="t" style="left:0">14 h 06</span>
+        <span class="t" style="left:38.5%;transform:translateX(-50%)">15 h 46</span>
+        <span class="t" style="right:0">18 h 26</span>
+      </div>
 
-      <p>Cette première étape tournait à 14&nbsp;h&nbsp;27, et je l'ai abandonnée à 15&nbsp;h&nbsp;46 parce que ce n'était pas ce que je voulais. La version suivante ne compose plus de page&nbsp;: elle part d'un site qui existe déjà.</p>
+      <p>La première idée partait de l'autre bout&nbsp;: un document Markdown et une fonte. Le moteur lisait les métriques de la fonte, hauteur d'x, hauteur des capitales, ascendantes, descendantes, en tirait une grille de lignes de base, et la comparait au texte affiché par le navigateur, à trois largeurs d'écran. Le bouton de la démonstration superpose une grille de ce genre. À 14&nbsp;h&nbsp;27, elle tournait.</p>
 
-      <h2>Essais et erreurs</h2>
+      <p>Ce n'était pas ce que je cherchais à régler. À 15&nbsp;h&nbsp;46, le pivot est consigné dans la mémoire du projet et six fichiers sont supprimés, du calcul de la grille à la lecture de la fonte. La nouvelle version part d'une page web existante, enregistrée puis collée ou déposée dans l'éditeur, parce qu'un site distant refuse de s'afficher dans un cadre. Le projet s'était passé de framework dès le départ, pour mesurer le rendu réel et recaler le recouvrement au pixel près.</p>
 
-      <ul class="xp-trials">
-        <li class="xp-trial">
-          <span class="xp-verdict dropped">Mal lu</span>
-          <div>
-            <h3>«&nbsp;Une ligne verte horizontale&nbsp;»</h3>
-            <p>Le cahier des charges demandait une ligne horizontale, alors que la moyenne des fins de ligne se place à la verticale. Plutôt que de demander, Claude a inventé un compromis, un segment horizontal dont l'extrémité droite portait la moyenne, et c'était faux. La règle qu'il en a tirée dans sa mémoire du projet&nbsp;: quand le mot et la fonction se contredisent, suivre la fonction.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict dropped">Abandonné</span>
-          <div>
-            <h3>Le moteur de composition</h3>
-            <p>Six fichiers supprimés au pivot&nbsp;: le calcul de la grille, le rendu Markdown, la lecture de la fonte, l'overlay, les types, le document de démonstration. La lecture des métriques de fonte n'a plus d'usage quand on part d'un site existant.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict kept">Contourné</span>
-          <div>
-            <h3>Ouvrir un vrai site dans l'éditeur</h3>
-            <p>Charger un site distant dans un cadre est bloqué par ses propres en-têtes de sécurité. L'éditeur prend donc un fichier HTML enregistré ou collé, et le rend dans un cadre local.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict open">Provisoire</span>
-          <div>
-            <h3>Ce que la ligne pilote vraiment</h3>
-            <p>Pour l'instant, tirer la ligne ne change que la marge intérieure droite, comme dans la démonstration ci-dessus. La vraie cible combine marge intérieure, marge extérieure et mesure en caractères. La mémoire du projet le note comme provisoire.</p>
-          </div>
-        </li>
-      </ul>
+      <h2>La ligne était verticale</h2>
 
-      <h2>Chronologie</h2>
+      <p>Le cahier des charges parlait d'une «&nbsp;ligne verte horizontale&nbsp;», et décrivait en même temps une moyenne de fins de ligne, qui ne peut être que verticale. Claude a voulu satisfaire les deux.</p>
 
-      <ol class="xp-timeline">
-        <li><time>14 h 06</time><span>Projet créé, sans framework.</span></li>
-        <li class="k-ship"><time>14 h 27</time><span>Étape 1&nbsp;: Markdown et fonte en entrée, grille calculée, recouvrement à trois largeurs.</span></li>
-        <li class="k-fail"><time>15 h 46</time><span>Pivot. Le moteur de composition est abandonné.</span></li>
-        <li class="k-pivot"><time>15 h 52</time><span>Un vrai site enregistré sert de terrain d'essai.</span></li>
-        <li class="k-ship"><time>18 h 26</time><span>L'éditeur&nbsp;: dix zones détectées, sélection, panneau, ligne verte qu'on tire.</span></li>
-        <li class="k-gap"><time>depuis</time><span>En pause.</span></li>
-      </ol>
-      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>abandon</span></p>
+      <div class="sw-two">
+        <figure class="wrong">
+          <svg viewBox="0 0 220 150" role="img" aria-label="Un paragraphe et un segment vert horizontal sous le texte, dont l'extrémité droite marque la moyenne">
+            <g fill="#c8ccc6"><rect x="16" y="18" width="170" height="7" rx="2"/><rect x="16" y="34" width="150" height="7" rx="2"/><rect x="16" y="50" width="178" height="7" rx="2"/><rect x="16" y="66" width="140" height="7" rx="2"/><rect x="16" y="82" width="166" height="7" rx="2"/><rect x="16" y="98" width="96" height="7" rx="2"/></g>
+            <line x1="16" y1="124" x2="161" y2="124" stroke="rgb(40,160,90)" stroke-width="3"/><circle cx="161" cy="124" r="4" fill="rgb(40,160,90)"/>
+          </svg>
+          <figcaption><b>Ce que Claude a fait</b>Un segment horizontal dont l'extrémité droite porte la moyenne.</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 220 150" role="img" aria-label="Le même paragraphe, avec un point à chaque fin de ligne et une ligne verte verticale à leur moyenne">
+            <g fill="#c8ccc6"><rect x="16" y="18" width="170" height="7" rx="2"/><rect x="16" y="34" width="150" height="7" rx="2"/><rect x="16" y="50" width="178" height="7" rx="2"/><rect x="16" y="66" width="140" height="7" rx="2"/><rect x="16" y="82" width="166" height="7" rx="2"/><rect x="16" y="98" width="96" height="7" rx="2"/></g>
+            <g fill="rgba(40,160,90,.55)"><circle cx="186" cy="21.5" r="3"/><circle cx="166" cy="37.5" r="3"/><circle cx="194" cy="53.5" r="3"/><circle cx="156" cy="69.5" r="3"/><circle cx="182" cy="85.5" r="3"/></g>
+            <line x1="177" y1="8" x2="177" y2="138" stroke="rgb(40,160,90)" stroke-width="3"/>
+          </svg>
+          <figcaption><b>Ce qui était décrit</b>Une ligne verticale à la moyenne des fins de ligne.</figcaption>
+        </figure>
+      </div>
 
-      <h2>Ce que ça a donné</h2>
+      <p>Le compromis était faux. La règle que Claude en a tirée est restée dans la mémoire du projet&nbsp;: quand le mot et la fonction se contredisent, suivre la fonction.</p>
 
-      <p>Un prototype local qui fonctionne sur une page d'exemple&nbsp;: dix zones, sélection, panneau de réglage, ligne qu'on tire. Restent à faire l'export du CSS, la détection des zones sur des sites réels et le chargement de leurs ressources. Le projet n'a pas bougé depuis.</p>
+      <h2>Où le prototype s'arrête</h2>
+
+      <p>À 18&nbsp;h&nbsp;26, l'éditeur repérait dix zones de texte sur la page d'exemple, permettait d'en choisir une et de tirer sa ligne. Le réglage ne pilote encore que la marge intérieure droite, alors que la cible combine marges intérieure et extérieure et mesure en caractères. L'export du CSS, la détection sur des sites réels et le chargement de leurs ressources restent à faire. Le prototype n'a pas bougé depuis cet après-midi-là.</p>
 
     </div>
   </article>
@@ -146,8 +139,8 @@
   var pad = 60;
   function measure(){
     var r = document.createRange(); r.selectNodeContents(p);
-    var rects = Array.prototype.slice.call(r.getClientRects()), byTop = {};
-    rects.forEach(function(x){ if (x.width < 1) return; var k = Math.round(x.top); byTop[k] = Math.max(byTop[k] || 0, x.right); });
+    var byTop = {};
+    Array.prototype.forEach.call(r.getClientRects(), function(x){ if (x.width < 1) return; var k = Math.round(x.top); byTop[k] = Math.max(byTop[k] || 0, x.right); });
     var s = stage.getBoundingClientRect(), tops = Object.keys(byTop).map(Number).sort(function(a,b){ return a - b; });
     dots.innerHTML = '';
     var ends = tops.slice(0, -1).map(function(t){
@@ -157,11 +150,10 @@
     });
     var mean = ends.reduce(function(a,b){ return a + b; }, 0) / Math.max(ends.length, 1);
     line.style.left = mean + 'px';
-    line.dataset.label = Math.round(mean) + ' px';
+    line.dataset.label = 'moyenne ' + Math.round(mean) + ' px';
     css.textContent = 'padding-right: ' + Math.round(pad) + 'px';
-    return mean;
   }
-  function setPad(v){ pad = Math.max(0, Math.min(stage.clientWidth * 0.6, v)); p.style.paddingRight = pad + 'px'; measure(); }
+  function setPad(v){ pad = Math.max(0, Math.min(p.clientWidth * 0.6, v)); p.style.paddingRight = pad + 'px'; measure(); }
   var startX = 0, startPad = 0, dragging = false;
   line.addEventListener('pointerdown', function(e){ dragging = true; startX = e.clientX; startPad = pad; line.setPointerCapture(e.pointerId); });
   line.addEventListener('pointermove', function(e){ if (dragging) setPad(startPad - (e.clientX - startX)); });

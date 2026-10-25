@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Campagne — Gildas Frémont</title>
-  <meta name="description" content="Remplacer le tableur d'une maison de famille par un calendrier qui montre combien de lits sont pris chaque nuit, et laisser la négociation à la famille.">
+  <meta name="description" content="Voir combien de couchages sont pris chaque nuit dans une maison de famille de 32 lits, et laisser la négociation des dates à la famille.">
   <link rel="canonical" href="https://gildas.fyi/experimental/campagne">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Campagne — Gildas Frémont">
-  <meta property="og:description" content="Remplacer le tableur d'une maison de famille par un calendrier qui montre combien de lits sont pris chaque nuit, et laisser la négociation à la famille.">
+  <meta property="og:description" content="Voir combien de couchages sont pris chaque nuit dans une maison de famille de 32 lits, et laisser la négociation des dates à la famille.">
   <meta property="og:url" content="https://gildas.fyi/experimental/campagne">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -17,20 +17,35 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
   <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/experimental/contexte/campagne.md" title="Dossier complet">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
+.ca-wrap { margin: 2rem 0 !important; display: grid; grid-template-columns: 1fr 13rem; gap: 1.25rem; align-items: start; }
 .ca-month { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
-.ca-month b { font-weight: 400; font-size: 11px; color: var(--light); text-align: center; padding-bottom: 0.2rem; }
-.ca-day { aspect-ratio: 1 / 0.8; border-radius: 3px; padding: 3px 4px; font-size: 10px; line-height: 1.1; display: flex; flex-direction: column; justify-content: space-between; background: var(--bg); color: var(--light); }
-.ca-day span:last-child { font-size: 13px; font-weight: 600; color: var(--black); text-align: right; font-variant-numeric: tabular-nums; }
+.ca-month .dow { font-size: 11px; color: var(--light); text-align: center; padding-bottom: 0.2rem; }
+.ca-day { aspect-ratio: 1 / 0.82; border: none; border-radius: 4px; padding: 3px 5px; font: inherit; font-size: 10px; line-height: 1.1; display: flex; flex-direction: column; justify-content: space-between; text-align: left; cursor: pointer; background: var(--bg); color: var(--light); outline-offset: 1px; }
+.ca-day b { font-size: 14px; font-weight: 600; color: var(--black); text-align: right; font-variant-numeric: tabular-nums; }
 .ca-day.l1 { background: rgba(var(--xp-live), .14); }
-.ca-day.l2 { background: rgba(var(--xp-pause), .22); }
-.ca-day.l3 { background: rgba(var(--xp-red), .22); }
+.ca-day.l2 { background: rgba(var(--xp-pause), .24); }
+.ca-day.l3 { background: rgba(var(--xp-red), .24); }
 .ca-day.l4 { background: rgb(var(--xp-red)); color: var(--white); }
-.ca-day.l4 span:last-child { color: var(--white); }
-.ca-day.empty { background: transparent; }
-.ca-key { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: 12px; color: var(--mid); margin-top: 0.75rem; }
+.ca-day.l4 b { color: var(--white); }
+.ca-day.sel { box-shadow: inset 0 0 0 2px var(--black); }
+.ca-day.empty { background: transparent; cursor: default; }
+.ca-side { border: 1px solid var(--border); border-radius: 8px; background: var(--white); padding: 0.8rem 0.9rem; font-size: 13px; color: var(--mid); }
+.ca-side .n { font-size: 26px; font-weight: 600; color: var(--black); font-variant-numeric: tabular-nums; }
+.ca-side .n small { font-size: 13px; font-weight: 400; color: var(--light); }
+.ca-side ul { list-style: none; margin-top: 0.6rem; }
+.ca-side li { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.25rem 0; border-top: 1px solid var(--border); font-size: 12.5px; }
+.ca-side li span:last-child { color: var(--black); font-variant-numeric: tabular-nums; }
+.ca-side .verdict { margin-top: 0.6rem; font-size: 12px; color: var(--light); line-height: 1.45; }
+.ca-key { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: 12px; color: var(--mid); margin-top: 0.7rem; }
 .ca-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.3rem; vertical-align: -1px; }
+.ca-file { margin: 1.5rem 0 2rem !important; max-width: 34rem; border: 1px solid var(--border); border-radius: 6px; background: var(--white); overflow: hidden; }
+.ca-file .nm { font-family: var(--xp-mono); font-size: 11.5px; color: var(--light); padding: 0.45rem 0.8rem; border-bottom: 1px solid var(--border); background: var(--bg); }
+.ca-file pre { font-family: var(--xp-mono); font-size: 12.5px; line-height: 1.75; color: var(--dark); padding: 0.7rem 0.8rem; white-space: pre-wrap; margin: 0; }
+.ca-file pre em { font-style: normal; color: var(--light); }
+@media (max-width: 640px) { .ca-wrap { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -46,96 +61,82 @@
 
   <article>
     <header class="article-page-header">
-      <p class="xp-crumb"><a href="/experimental">Expérimental</a> · avril 2026</p>
-      <h1>Campagne</h1>
-      <p class="article-page-subtitle">Savoir combien de lits sont pris chaque nuit dans la maison de famille</p>
-      <p class="article-meta">10 avril au 8 mai 2026 · Next.js, Postgres · écrit avec Claude Code · usage familial</p>
+      <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · avril et mai 2026</p>
+      <h1>Voir combien de couchages sont pris, nuit par nuit, dans une maison de famille</h1>
+      <p class="article-page-subtitle">Un calendrier qui montre le remplissage et laisse la famille décider</p>
+      <p class="article-meta">10 avril au 8 mai 2026 · Next.js, Postgres · écrit avec Claude Code · usage familial · <a href="/experimental/contexte/campagne.md">dossier complet (Markdown)</a></p>
     </header>
-
-    <div class="xp-thesis">
-      <span class="xp-thesis-label">Le pari</span>
-      <p>Un tableur familial qui ne remplit plus sa fonction peut être remplacé par un calendrier sur téléphone, sans compte ni mot de passe, où chacun pose ses dates et voit combien de lits sont pris chaque nuit. L'app montre&nbsp;; la négociation reste entre les gens.</p>
-    </div>
-
-    <div class="xp-facts">
-      <div class="xp-fact"><b>~60</b><span>membres, répartis en 8 branches</span></div>
-      <div class="xp-fact"><b>32</b><span>couchages</span></div>
-      <div class="xp-fact"><b>3</b><span>seuils&nbsp;: 17, 27, 32</span></div>
-      <div class="xp-fact"><b>48</b><span>commits, dont la moitié jamais fusionnée</span></div>
-    </div>
 
     <div class="article-body">
 
-      <h2>Genèse</h2>
+      <p>La maison compte trente-deux couchages, et une soixantaine de personnes, réparties en huit branches de la famille, s'y succèdent. Elles s'organisaient dans un Google Sheet qui avait accumulé les doublons et les lignes sans dates, et qui ne répondait pas à la seule question utile avant de poser ses dates&nbsp;: combien de lits sont déjà pris cette nuit-là.</p>
 
-      <p>Une maison de famille, une soixantaine de personnes qui s'y succèdent, et un Google Sheet pour s'organiser. Avec le temps, le tableur avait accumulé des doublons, des lignes sans dates, et ne donnait aucune vue de l'occupation.</p>
-
-      <p>La spécification demandait de montrer, pour chaque nuit, le nombre de couchages occupés, avec des seuils de couleur. Pas de réservation, pas de validation, pas de compte. Si une nuit déborde, la famille en parle, comme avant, mais en voyant le problème.</p>
-
-      <figure class="xp-figure">
-        <span class="xp-label">Un mois d'été · données fictives</span>
-        <div class="ca-month"></div>
-        <div class="ca-key"><span><i style="background:rgba(var(--xp-live),.14)"></i>jusqu'à 17</span><span><i style="background:rgba(var(--xp-pause),.22)"></i>jusqu'à 27</span><span><i style="background:rgba(var(--xp-red),.22)"></i>jusqu'à 32</span><span><i style="background:rgb(var(--xp-red))"></i>au-delà de la capacité</span></div>
-        <figcaption>Le chiffre de chaque case est le nombre de lits pris cette nuit-là. Le calendrier montre où ça coince et laisse la famille décider qui cède sa place.</figcaption>
+      <figure>
+        <div class="ca-wrap">
+          <div>
+            <div class="ca-month" id="ca-month"></div>
+            <div class="ca-key"><span><i style="background:rgba(var(--xp-live),.14)"></i>jusqu'à 17</span><span><i style="background:rgba(var(--xp-pause),.24)"></i>jusqu'à 27</span><span><i style="background:rgba(var(--xp-red),.24)"></i>jusqu'à 32</span><span><i style="background:rgb(var(--xp-red))"></i>plus que de lits</span></div>
+          </div>
+          <div class="ca-side" id="ca-side" aria-live="polite"></div>
+        </div>
+        <figcaption>Un mois d'été redessiné, avec des séjours fictifs. Chaque case donne le nombre de couchages pris la nuit qui commence ce jour-là, coloré selon les seuils de l'app. Touchez une nuit pour voir les séjours qui la remplissent.</figcaption>
       </figure>
 
-      <h2>Essais et erreurs</h2>
+      <p>Chacun pose ses dates depuis son téléphone, sans compte ni mot de passe&nbsp;: l'identité est une simple préférence gardée sur l'appareil. Quand une nuit déborde, l'app le montre et s'arrête là. La spécification le dit en une phrase&nbsp;: la négociation se fait en famille, hors de l'app.</p>
 
-      <ul class="xp-trials">
-        <li class="xp-trial">
-          <span class="xp-verdict dropped">Corrigé</span>
-          <div>
-            <h3>Des prénoms inventés dans les données de départ</h3>
-            <p>La première version préremplie contenait des membres de la famille qui n'existaient pas&nbsp;: Claude avait ajouté des noms à la liste. Ils ont été retirés le soir même, et la règle «&nbsp;ne jamais inventer de données, s'en tenir à la spécification&nbsp;» est entrée dans les consignes du projet. On la retrouve ensuite, sous d'autres mots, dans les consignes d'autres projets.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict open">Non fusionné</span>
-          <div>
-            <h3>Une base de données, puis le stockage du navigateur</h3>
-            <p>En mai, une session de Claude a remplacé la base Postgres par le stockage local du téléphone. Le commit lui-même en notait la conséquence&nbsp;: plus aucun partage entre appareils ni entre personnes, ce qui annulait l'intérêt du calendrier. La branche, avec ses 24 commits, n'a jamais été fusionnée.</p>
-          </div>
-        </li>
-        <li class="xp-trial">
-          <span class="xp-verdict open">Non fusionné</span>
-          <div>
-            <h3>Affecter les chambres</h3>
-            <p>Sur la même branche&nbsp;: une vue par jour, des compteurs par branche familiale, un sélecteur de dates façon réservation de vol, et une page pour attribuer les chambres. On s'approche là de l'arbitrage que la spécification laissait à la famille.</p>
-          </div>
-        </li>
-      </ul>
+      <h2>Dix-sept minutes, et de faux prénoms</h2>
 
-      <h2>Chronologie</h2>
+      <p>La spécification a été écrite le 10&nbsp;avril à 16&nbsp;h&nbsp;40. À 16&nbsp;h&nbsp;57, Claude Code livrait une première version complète&nbsp;: vue par mois et par semaine, saisie des séjours, seuils colorés à 17, 27 et 32 couchages. La gestion des membres est venue le lendemain.</p>
 
-      <ol class="xp-timeline">
-        <li><time>10 avr., 16 h 40</time><span>Spécification.</span></li>
-        <li class="k-ship"><time>10 avr., 16 h 57</time><span>Première version complète, dix-sept minutes plus tard.</span></li>
-        <li class="k-fail"><time>10 avr., 21 h 22</time><span>Les prénoms inventés sont retirés.</span></li>
-        <li><time>10 avr., soir</time><span>Tous les membres affichés, légende des seuils, consignes de travail pour Claude.</span></li>
-        <li class="k-ship"><time>11 avr.</time><span>Gestion des membres, corrections sur téléphone.</span></li>
-        <li class="k-pivot"><time>8 mai</time><span>24 commits sur une branche&nbsp;: stockage local, vue par jour, chambres. Jamais fusionnée.</span></li>
-      </ol>
-      <p class="xp-legend"><span><i class="k-ship"></i>livré</span><span><i class="k-pivot"></i>pivot</span><span><i class="k-fail"></i>abandon</span></p>
+      <p>Elle avait un défaut que l'écran ne montrait pas&nbsp;: pour compléter les données de départ, Claude avait ajouté des membres de la famille qui n'existent pas. Le correctif qui les retire a été écrit à 17&nbsp;h&nbsp;53. À 21&nbsp;h&nbsp;44, le projet recevait son fichier de consignes pour Claude, avec cette section.</p>
 
-      <h2>Ce que ça a donné</h2>
+      <figure class="ca-file">
+        <div class="nm">CLAUDE.md · Principes</div>
+<pre><em>-</em> Ne jamais inventer de données : s'en tenir au spec
+<em>-</em> Si une info manque, demander plutôt qu'improviser
+<em>-</em> Ne pas contredire ce que l'utilisateur voit dans son UI
+<em>-</em> Réfléchir avant d'agir, pas l'inverse
+<em>-</em> Ne pas ajouter de fonctionnalités non demandées</pre>
+      </figure>
 
-      <p>La version de la spécification a été livrée en deux jours&nbsp;: vue par mois et par semaine, saisie des séjours, identité retenue sur le téléphone, seuils colorés. La suite est restée sur une branche, et l'état de la version en ligne est à revérifier.</p>
+      <h2>La suite, restée sur une branche</h2>
+
+      <p>Le 8&nbsp;mai, une session de Claude a poussé 24 commits sur une autre branche. Elle ajoutait une vue par jour, des compteurs par branche familiale, un sélecteur de dates façon réservation de vol, et la page d'affectation des chambres que la spécification prévoyait pour un second temps, avec une alerte quand une chambre est surchargée. Elle remplaçait aussi la base de données par le stockage du navigateur, et le message du commit en notait lui-même la conséquence&nbsp;: plus de partage entre appareils ni entre personnes. La branche n'a pas été fusionnée, et rien dans le dépôt n'en donne la raison.</p>
+
+      <p>Au 24&nbsp;octobre, l'API de la version en ligne répondait en erreur, ce qui reste à vérifier. L'usage de l'app n'a jamais été mesuré.</p>
 
     </div>
   </article>
 <script>
 (function(){
-  var m = document.querySelector('.ca-month');
-  if (!m) return;
-  ['lun.','mar.','mer.','jeu.','ven.','sam.','dim.'].forEach(function(d){ var b = document.createElement('b'); b.textContent = d; m.appendChild(b); });
-  var beds = [6,6,9,14,22,24,11, 8,8,8,12,19,26,25, 14,16,18,24,31,34,29, 27,27,28,30,33,31,22, 15,12,7];
-  for (var i = 0; i < 1; i++) { var e = document.createElement('div'); e.className = 'ca-day empty'; m.appendChild(e); }
-  beds.forEach(function(n, i){
-    var d = document.createElement('div');
-    d.className = 'ca-day ' + (n > 32 ? 'l4' : n > 27 ? 'l3' : n > 17 ? 'l2' : 'l1');
-    d.innerHTML = '<span>' + (i + 1) + '</span><span>' + n + '</span>';
-    m.appendChild(d);
-  });
+  var month = document.getElementById('ca-month'), side = document.getElementById('ca-side');
+  if (!month) return;
+  // Séjours fictifs : [branche, arrivée, départ, personnes]. Les nuits vont de l'arrivée à la veille du départ.
+  var stays = [['Branche A',1,9,6],['Branche B',3,11,7],['Branche C',5,8,5],['Branche D',10,18,8],['Branche E',12,16,9],['Branche F',15,22,7],['Branche G',18,24,9],['Branche H',19,23,6],['Branche C',20,23,9],['Branche A',21,28,5],['Branche E',25,30,9],['Branche B',28,32,4]];
+  function on(n){ return stays.filter(function(s){ return n >= s[1] && n < s[2]; }); }
+  function beds(n){ return on(n).reduce(function(a,s){ return a + s[3]; }, 0); }
+  function lvl(b){ return b > 32 ? 'l4' : b > 27 ? 'l3' : b > 17 ? 'l2' : 'l1'; }
+  ['lun.','mar.','mer.','jeu.','ven.','sam.','dim.'].forEach(function(d){ var e = document.createElement('span'); e.className = 'dow'; e.textContent = d; month.appendChild(e); });
+  var e0 = document.createElement('span'); e0.className = 'ca-day empty'; month.appendChild(e0);
+  for (var n = 1; n <= 31; n++) {
+    var b = beds(n), d = document.createElement('button');
+    d.type = 'button'; d.className = 'ca-day ' + lvl(b); d.dataset.n = n;
+    d.innerHTML = '<span>' + n + '</span><b>' + b + '</b>';
+    d.setAttribute('aria-label', 'Nuit du ' + n + ', ' + b + ' couchages');
+    month.appendChild(d);
+  }
+  function show(n){
+    month.querySelectorAll('.sel').forEach(function(x){ x.classList.remove('sel'); });
+    month.querySelector('[data-n="' + n + '"]').classList.add('sel');
+    var list = on(n), b = beds(n);
+    var v = b > 32 ? 'Il manque ' + (b - 32) + ' lit' + (b - 32 > 1 ? 's' : '') + '. L\'app ne dit pas qui cède sa place.' : b > 27 ? 'La maison est presque pleine.' : b > 17 ? 'Il reste de la place.' : 'La maison est calme.';
+    side.innerHTML = '<span class="xp-kicker">Nuit du ' + n + '</span><div class="n">' + b + ' <small>/ 32 couchages</small></div><ul>' +
+      list.map(function(s){ return '<li><span>' + s[0] + ' · du ' + s[1] + ' au ' + s[2] + '</span><span>' + s[3] + '</span></li>'; }).join('') +
+      '</ul><p class="verdict">' + v + '</p>';
+  }
+  month.addEventListener('click', function(e){ var d = e.target.closest('.ca-day'); if (d && d.dataset.n) show(+d.dataset.n); });
+  var worst = 1; for (var k = 1; k <= 31; k++) if (beds(k) > beds(worst)) worst = k;
+  show(worst);
 })();
 </script>
 
