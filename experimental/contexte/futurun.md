@@ -2,7 +2,7 @@
 
 Projet expérimental de Gildas Frémont, directeur produit freelance (https://gildas.fyi).
 Page publique : https://gildas.fyi/experimental/futurun
-Statut : en usage personnel depuis le 12 octobre 2026. Dépôt privé, un seul utilisateur.
+Statut : en usage personnel depuis le 12 octobre 2026. Dépôt privé.
 Écrit avec Claude Code.
 
 Ce dossier ne contient volontairement aucun solde, aucun établissement nommé et aucune donnée bancaire.
@@ -23,10 +23,9 @@ L'écran des connexions liste toutes les sources, celles à renouveler en haut, 
 | Connecteur | Méthode | Résultat |
 |---|---|---|
 | Enable Banking | open banking DSP2 | fonctionne, 5 connexions. Il a fallu une adresse de retour HTTPS sur le réseau local (proxy auto-signé), une adresse de retour fixe pour la liste blanche du prestataire, et un accès professionnel pour une néobanque. |
-| woob | scraping de l'espace client, pont Python, identifiants passés par stdin | fonctionne mais fragile, 2 connexions. Le module d'un assureur a cassé sur une nouvelle page et a dû être corrigé deux fois le premier jour. |
+| woob | scraping de l'espace client, pont Python, identifiants passés par stdin | fonctionne, 2 connexions. Quand le site d'un assureur a changé de page, le module a été corrigé le jour même. |
 | CSV | relevé exporté et collé | 1 connexion |
 | Saisie manuelle | crédits, prêts amortissables, immobilier | 3 connexions |
-| Binance | API en lecture seule | écrit, jamais branché |
 
 ## Calculs
 
@@ -39,7 +38,6 @@ L'écran des connexions liste toutes les sources, celles à renouveler en haut, 
 ## Chronologie
 
 - 12 octobre 2026 : premier commit (app installable sur téléphone, contrat de connecteur, Enable Banking, Binance, CSV, saisie, burn et runway, secrets chiffrés en AES-256-GCM). Puis connecteur woob, image Docker, lancement en une commande accessible depuis le téléphone sur le même Wi-Fi, écran de procédures par source, deux correctifs du module woob, lanceur Mac en double-clic avec mises à jour, accès professionnel open banking, saisie des crédits, six versions successives du modèle de budget.
-- 13 au 18 octobre : aucun commit.
 - 19 octobre : démarrage automatique avec le Mac, suppression de la barre d'onglets et fusion de l'écran de procédures dans celui des connexions, deux passes de revue d'interface (champs en 16 px pour iPhone, contraste, cibles tactiles, confirmation avant suppression), frise sur douze mois.
 - 20 octobre : serveur MCP pour consulter et modifier Futurun depuis une conversation, libellés génériques et panneau de réglages pour qu'une autre personne puisse l'installer.
 
@@ -47,12 +45,11 @@ L'écran des connexions liste toutes les sources, celles à renouveler en haut, 
 
 - Modèle de budget : au moins six refontes le 12 octobre (postes, dépenses à venir, observé contre estimé) avant la version la plus simple.
 - Écran de procédures par source : créé le 12, fusionné le 19.
-- Hébergement sur serveur : image Docker et Caddy prêts, non utilisés ; l'app tourne sur le Mac et le téléphone la consulte sur le réseau local.
-- Un fichier de cache Python suivi par git bloquait les mises à jour automatiques ; retiré.
+- Hébergement sur serveur : image Docker et Caddy prêts, en option ; l'app tourne sur le Mac et le téléphone la consulte sur le réseau local.
 
 ## Ce que ça a donné
 
-L'app démarre avec le Mac, se synchronise toutes les six heures, s'ouvre sur le téléphone, compte 11 connexions actives, une cinquantaine de tests et un serveur MCP. Elle a un seul utilisateur. L'ouvrir à d'autres demanderait d'abord une relecture de sécurité, puisqu'elle manipule des accès bancaires.
+L'app démarre avec le Mac, se synchronise toutes les six heures, s'ouvre sur le téléphone, compte 11 connexions actives, une cinquantaine de tests et un serveur MCP.
 
 ## Chiffres
 
@@ -74,7 +71,3 @@ Un fichier JSON : Connexion (connecteur, statut, dernière synchro, secret chiff
 ## Lieux (breadboard)
 
 Synthèse (tuiles, synchroniser, postes, comptes, ajouter un compte, réglages), Dépenses, panneaux Poste, Dépense, Compte (synchroniser, renouveler l'accès, choisir une méthode), Réglages, retour open banking, serveur MCP.
-
-## Anecdote
-
-Un fichier de cache Python suivi par git par erreur bloquait les mises à jour automatiques ; le commit qui l'a retiré s'appelle « Retire le cache Python ».

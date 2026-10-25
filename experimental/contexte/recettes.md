@@ -3,7 +3,7 @@
 Projet expérimental de Gildas Frémont, directeur produit freelance (https://gildas.fyi).
 Page publique : https://gildas.fyi/experimental/recettes
 App en ligne : https://recettes-gilt.vercel.app
-Statut : en ligne depuis le 30 juin 2026, inchangée depuis. Dépôt privé.
+Statut : en ligne depuis le 30 juin 2026. Dépôt privé.
 Écrit avec Claude Code.
 
 ## Le pari
@@ -41,7 +41,7 @@ HTML, CSS et JavaScript sans dépendance, avec un petit routeur par `#hash`. Les
 
 ## Chiffres
 
-12 commits, tous le 30 juin 2026. Environ 29 Ko de JavaScript, 68 Ko de données de recettes. Aucune mesure d'usage.
+12 commits, tous le 30 juin 2026. Environ 29 Ko de JavaScript, 68 Ko de données de recettes.
 
 ## Principes (page « Principes » de l'app)
 

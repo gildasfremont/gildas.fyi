@@ -183,3 +183,5 @@
 
 .xp-intro a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--subtle); }
 .xp-intro a:hover { color: var(--black); }
+
+.xp-dot.proto { --c: 31,95,153; }

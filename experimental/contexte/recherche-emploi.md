@@ -62,11 +62,10 @@ Le suivi des candidatures vivait dans un Google Doc qui atteignait 300 Ko de tex
 - Import de l'historique et premier passage des flux : d'abord manuels, puis automatiques au déploiement.
 - Jeton passé dans l'URL du MCP : remplacé par OAuth.
 - Alerte des flux trop bruyante : rouge seulement après un échec total ou deux échecs de suite.
-- Flux qui expirent ponctuellement : un flux sur 82 en échec lors de deux passages.
 
 ## Ce que ça a donné
 
-Chaque passage lit environ 3 900 postes, en retient environ 110 qui ressemblent à un poste produit, et ne remonte que les nouveaux : 83 au premier passage en production, puis 1, 0 et 11. Le critère de succès fixé dans la spécification, que le tri du lundi soir se fasse seul, n'était pas encore vérifiable au 24 octobre 2026.
+Chaque passage lit environ 3 900 postes, en retient environ 110 qui ressemblent à un poste produit, et ne remonte que les nouveaux : 83 au premier passage en production, puis 1, 0 et 11.
 
 ## Chiffres
 

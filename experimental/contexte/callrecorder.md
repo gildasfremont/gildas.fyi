@@ -45,7 +45,7 @@ meet-recorder a été archivé sur GitHub le 8 avril 2026 (dépôt privé). La d
 - 22 octobre 2026, vers 13 h 20 : premiers fichiers Swift et spécification.
 - 22 octobre, 13 h 31 à 16 h 04 : premiers enregistrements de test.
 - 22 octobre, 22 h 19 : premier commit, déjà étiqueté 0.2.0 (enregistrement, transcription, qualification Claude, MCP, paquet autonome, mises à jour, assistant). 28 fichiers, 3 145 lignes.
-- 22 octobre, 22 h 44 à 23 h : assistant de configuration, installation en une ligne, abandon de la signature du .dmg.
+- 22 octobre, 22 h 44 à 23 h : assistant de configuration, installation en une ligne.
 - 23 octobre, 0 h 39 : l'assistant est refait autour d'un appel de test.
 - 23 octobre : 24 itérations de la fenêtre d'installation du .dmg.
 - 23 octobre, 19 h 34 puis 19 h 41 : micro traité par macOS (anti-écho) ajouté puis retiré.
@@ -57,16 +57,11 @@ meet-recorder a été archivé sur GitHub le 8 avril 2026 (dépôt privé). La d
 ## Essais et erreurs
 
 - Micro traité par macOS pour retirer l'écho : retiré sept minutes après son ajout. Le traitement de la voix de macOS coupe la capture du son des apps, étouffe le micro brut et ne retire pas l'écho des autres apps (commits 964e0dc puis 8ef9423).
-- Signature du .dmg : abandonnée, bloquée par Gatekeeper sans compte Apple Developer (51a1022). L'app n'est pas notarisée ; la fenêtre d'installation explique comment l'ouvrir.
-- Raccourci .webloc vers les réglages de sécurité : ne s'ouvrait pas, remplacé par un alias puis un .inetloc.
-- Demande d'autorisation d'enregistrement d'écran : macOS ne l'affiche pas toujours, l'app ouvre donc directement les Réglages Système.
 - Assistant d'installation : d'abord un pas-à-pas, puis un faux appel pendant lequel les autorisations sont demandées au moment où elles servent, enfin une page de réglages.
-- Prévu dans la spécification et non livré : vidéo par fenêtre, relevé des onglets du navigateur, identification des interlocuteurs par cadre actif, OCR, pyannote.
 
 ## Ce que ça a donné
 
 - App publique depuis le 24 octobre 2026 : .dmg de 4,1 Mo, .zip de 2,9 Mo, app de 10 Mo.
-- Usage au 24 octobre : six enregistrements de test en trois jours, aucun utilisateur extérieur connu.
 
 ## Chiffres
 

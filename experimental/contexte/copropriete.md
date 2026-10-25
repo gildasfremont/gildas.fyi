@@ -56,7 +56,6 @@ Un script exporte une liste blanche de fichiers vers un dépôt partagé, et blo
 - 3 octobre : la méthode de calcul en six étapes.
 - 4-6 octobre : refonte de la trésorerie (appelé, reçu, écart par enveloppe).
 - 7 octobre : journée de 58 commits. Constat : l'eau répartie par l'ancien syndic égale les factures du distributeur sur 2017-2025.
-- 8-18 octobre : aucun commit.
 - 19-20 octobre : dépôt partagé avec les copropriétaires, calendrier exporté en .ics, protocole nettoyé de ce qui ne se pratiquait pas.
 - 21 octobre : dernier commit à date.
 
@@ -64,16 +63,13 @@ Un script exporte une liste blanche de fichiers vers un dépôt partagé, et blo
 
 - File de commandes GitHub déposées par les conversations et jouées par un script sur le Mac : mise en place le 24 septembre, abandonnée le 25. Les conversations lancent git et gh directement.
 - Issues à plat : restructurées en arbre le 25 septembre.
-- Dépôt séparé pour les tâches concernant l'outil : ouvert le 1er octobre, jamais utilisé, abandonné le 20.
 - Conversation « tour de contrôle » chargée de surveiller l'avancement, et miroir des fiches dans un projet Claude : retirés le 20 octobre ; la page des contrôles montre les retards.
 - Version du site réservée au conseil syndical avec noms masqués : abandonnée pour une version unique.
 - Section « Caisse » : supprimée le 2 octobre, ses pages réparties ailleurs.
-- OCR tesseract en anglais sur des pièces françaises : à relire ; un contrôle signale les situations OCR qui ne s'équilibrent pas.
-- Exercices 2017 à 2022 : extractions automatiques non encore toutes vérifiées.
 
 ## Ce que ça a donné
 
-Un site en lecture seule, 15 fiches de connaissance, une centaine de fichiers comptables, 20 courriers, un dossier de réclamation, 8 fiches de chantier, un dossier d'assemblée générale, un calendrier et un dépôt partagé. L'usage du site par les autres copropriétaires n'est pas mesuré.
+Un site en lecture seule, 15 fiches de connaissance, une centaine de fichiers comptables, 20 courriers, un dossier de réclamation, 8 fiches de chantier, un dossier d'assemblée générale, un calendrier et un dépôt partagé.
 
 ## Chiffres
 
@@ -101,4 +97,3 @@ Trésorerie, Enveloppes, Dépense (avec pièce en panneau), Charges par thème, 
 ## Anecdotes
 
 - Le 7 octobre 2026, journée de 58 commits, l'outil a établi que l'eau répartie par l'ancien syndic égalait exactement les factures du distributeur sur 2017-2025.
-- L'OCR a tourné avec le modèle anglais de tesseract sur des pièces françaises ; un contrôle signale les situations OCR qui ne s'équilibrent pas.

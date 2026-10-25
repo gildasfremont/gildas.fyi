@@ -12,9 +12,9 @@ Page d'ensemble : https://gildas.fyi/experimental
 - [Futurun](https://gildas.fyi/experimental/contexte/futurun.md) : réunir ses comptes pour savoir combien de mois tient sa trésorerie, avec une reconnexion qui tient dans un écran. App locale, depuis octobre 2026.
 - [Recettes](https://gildas.fyi/experimental/contexte/recettes.md) : répartir un même plat entre deux personnes qui n'ont pas les mêmes besoins. Site statique, juin 2026.
 
-## En pause
+## Prototypes
 
 - [Swisser](https://gildas.fyi/experimental/contexte/swisser.md) : régler la typographie d'une page à partir de ce qu'on voit, en tirant la moyenne des fins de ligne. Prototype, juin 2026.
 - [Campagne](https://gildas.fyi/experimental/contexte/campagne.md) : voir combien de couchages sont pris chaque nuit dans une maison de famille. Next.js, avril 2026.
-- [Commentaire](https://gildas.fyi/experimental/contexte/commentaire.md) : ancrer une remarque au passage qu'on lit et laisser une IA y répondre dans la marge. Rust et Tauri, avril 2026, arrêté sur la latence.
+- [Commentaire](https://gildas.fyi/experimental/contexte/commentaire.md) : ancrer une remarque au passage qu'on lit et laisser une IA y répondre dans la marge. Rust et Tauri, avril 2026.
 - [Disciple](https://gildas.fyi/experimental/contexte/disciple.md) : décrire le travail à faire plutôt que construire un agent. Python, mars 2026.

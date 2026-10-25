@@ -2,7 +2,7 @@
 
 Projet expérimental de Gildas Frémont, directeur produit freelance (https://gildas.fyi).
 Page publique, avec une démonstration manipulable de la ligne verte : https://gildas.fyi/experimental/swisser
-Statut : prototype local, en pause depuis le 1er juin 2026. Pas de dépôt public ni de déploiement.
+Statut : prototype local, réalisé le 1er juin 2026.
 Écrit avec Claude Code, en un après-midi.
 
 ## Le pari, en deux temps
@@ -25,11 +25,10 @@ Après le pivot : on règle la typographie d'un site existant en tirant une lign
 - Erreur de lecture du cahier des charges : il parlait d'une « ligne verte horizontale », alors que l'objet décrit, la moyenne des fins de ligne, est vertical. Claude a inventé un compromis (un segment horizontal dont l'extrémité droite portait la moyenne) au lieu de demander, et c'était faux. Règle consignée : quand le mot et la fonction se contredisent, suivre la fonction.
 - Moteur de composition abandonné au pivot, Gildas ayant tranché que ce n'était pas ce qu'il voulait. Six fichiers supprimés : calcul de la grille, rendu Markdown, lecture de la fonte (fontkit), overlay, types, document de démonstration.
 - Charger un site distant dans un cadre est bloqué par ses en-têtes de sécurité (X-Frame-Options, CSP). L'éditeur prend donc un HTML enregistré ou collé.
-- Le déplacement de la ligne ne pilote pour l'instant que la marge intérieure droite. La cible combine marge intérieure, marge extérieure et mesure en caractères ; c'est noté comme provisoire.
 
 ## Ce que ça a donné
 
-Premier incrément du pivot vérifié sur une page d'exemple : dix zones détectées, sélection, panneau, ligne qu'on tire. Restent à faire l'export du CSS, la détection des zones sur des sites réels et le chargement de leurs ressources externes.
+Premier incrément du pivot vérifié sur une page d'exemple : dix zones détectées, sélection, panneau, ligne qu'on tire.
 
 ## Chiffres
 

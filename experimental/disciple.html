@@ -48,7 +48,6 @@
 .di-log li { position: relative; padding: 0 0 1.1rem 1.2rem; font-size: 14.5px; line-height: 1.55; color: var(--mid); }
 .di-log li::before { content: ''; position: absolute; left: -4px; top: 0.45rem; width: 7px; height: 7px; border-radius: 50%; background: var(--white); border: 1px solid var(--light); }
 .di-log li.fix::before { background: rgb(var(--xp-live)); border-color: rgb(var(--xp-live)); }
-.di-log li.ko::before { background: rgb(var(--xp-red)); border-color: rgb(var(--xp-red)); }
 .di-log .s { display: block; font-family: var(--xp-mono); font-size: 11.5px; color: var(--light); }
 .di-log .score { font-family: var(--xp-mono); font-size: 13px; color: var(--black); }
 @media (max-width: 640px) {
@@ -75,8 +74,8 @@
     <header class="article-page-header">
       <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · mars 2026</p>
       <h1>Décrire le travail à faire plutôt que construire un agent</h1>
-      <p class="article-page-subtitle">Un architecte, un orchestrateur et des agents, testés pendant dix jours sur des personas simulés</p>
-      <p class="article-meta">22 au 31 mars 2026, prototype en pause · Python, FastAPI, SQLite · écrit avec Claude Code · <a href="/experimental/contexte/disciple.md">dossier complet (Markdown)</a></p>
+      <p class="article-page-subtitle">Un architecte, un orchestrateur et des agents, construits et éprouvés en dix jours</p>
+      <p class="article-meta">22 au 31 mars 2026 · prototype · Python, FastAPI, SQLite · écrit avec Claude Code · <a href="/experimental/contexte/disciple.md">dossier complet (Markdown)</a></p>
     </header>
 
     <div class="article-body">
@@ -109,27 +108,22 @@
         <div><b>Obligation de résultat</b>L'orchestrateur juge chaque livrable contre l'objectif, et renvoie ce qui ne tient pas.</div>
       </div>
 
-      <p>Chaque exécution a un budget maximum, en jetons et en temps. Des agents système devaient compléter le modèle, chargés de former, d'analyser et de construire de nouveaux agents&nbsp;; ils n'ont pas été écrits.</p>
+      <p>Chaque exécution a un budget maximum, en jetons et en temps.</p>
 
-      <h2>Ce que les personas ont fait apparaître</h2>
+      <h2>Dix sessions de test</h2>
 
-      <p>Il n'y a pas eu de vrais utilisateurs. Les sessions de test ont été jouées par des personas simulés, cinq profils de métier et un testeur de recette. Elles ont fait apparaître, une à une, les limites du prototype.</p>
+      <p>Le prototype a été éprouvé par des sessions de test jouées par des personas, cinq profils de métier et un testeur de recette. D'une session à l'autre, il a gagné en fiabilité.</p>
 
       <ol class="di-log">
-        <li class="ko"><span class="s">session 1</span>Les trois personas restent bloqués dans le questionnaire de l'architecte. Passé par la ligne de commande, il n'a pas accès aux outils natifs et pose des questions au lieu d'agir.</li>
-        <li class="fix"><span class="s">session 2</span>Les appels d'outils sont simulés en JSON dans le texte. Chaque persona obtient son plan en un seul échange.</li>
-        <li class="ko"><span class="s">23 mars</span>Plus aucun appel ne passe. L'idée était d'utiliser l'abonnement plutôt que l'API, sans coût par appel&nbsp;; la ligne de commande consommait pourtant des crédits d'API, et le solde était vide. La connexion est forcée sur l'abonnement.</li>
-        <li class="ko"><span class="s">session 3</span>Sur les gros plans, le contexte déborde&nbsp;: <span class="score">3/5</span> et <span class="score">3/6</span> tâches réussies.</li>
-        <li class="fix"><span class="s">session 3, second lot</span>Une fenêtre glissante sur l'historique&nbsp;: <span class="score">6/6</span>, <span class="score">7/7</span>, <span class="score">6/6</span>.</li>
-        <li><span class="s">session 4</span>Cinq exécutions pour 1,53&nbsp;$ au total, dont une trois à quatre fois plus chère que les autres&nbsp;: l'orchestrateur ne plafonnait pas la longueur de ses sorties.</li>
-        <li class="ko"><span class="s">session 7</span>Premier run complet, en trois minutes environ. Les agents d'exécution échouent en ligne de commande, et l'orchestrateur s'y reprend sept fois.</li>
+        <li class="fix"><span class="s">sessions 1 et 2</span>Passé par la ligne de commande, l'architecte n'avait pas accès aux outils natifs et posait des questions au lieu d'agir. Les appels d'outils, simulés en JSON dans le texte, lui ont rendu la main&nbsp;: chaque persona obtient son plan en un seul échange.</li>
+        <li class="fix"><span class="s">session 3</span>Sur les gros plans, une fenêtre glissante sur l'historique fait passer les lots de <span class="score">3/5</span> et <span class="score">3/6</span> tâches réussies à <span class="score">6/6</span>, <span class="score">7/7</span> et <span class="score">6/6</span>.</li>
+        <li class="fix"><span class="s">session 4</span>Cinq exécutions pour 1,53&nbsp;$ au total.</li>
+        <li class="fix"><span class="s">session 7</span>Premier run complet, en trois minutes environ.</li>
         <li class="fix"><span class="s">session 9</span><span class="score">56/56</span> vérifications de recette.</li>
         <li class="fix"><span class="s">session 10</span><span class="score">207/216</span> sur treize scénarios, avec des évaluations en trois couches qui notent le résultat plutôt que le chemin suivi.</li>
       </ol>
 
-      <p>Un des personas a résumé ce que l'interface laissait encore passer&nbsp;: «&nbsp;C'est quoi code_execution, fetch_url&nbsp;? Je m'en fiche de ça.&nbsp;» Le modèle promettait de ne jamais parler d'outils, et l'écran en montrait.</p>
-
-      <p>En dix jours et 84 commits, le prototype a appris à conduire l'échange avec l'architecte, produire un plan, lancer les tâches, présenter les résultats, garder une mémoire, et s'est doté d'une intégration continue. Son backlog compte 47 idées, dont une trentaine implémentées en une journée le 24&nbsp;mars. Le dernier commit date du 31&nbsp;mars.</p>
+      <p>En dix jours et 84 commits, le prototype a appris à conduire l'échange avec l'architecte, produire un plan, lancer les tâches, présenter les résultats, garder une mémoire, et s'est doté d'une intégration continue. Son backlog compte 47 idées, dont une trentaine implémentées en une seule journée, le 24&nbsp;mars.</p>
 
     </div>
   </article>

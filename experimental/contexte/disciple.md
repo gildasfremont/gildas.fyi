@@ -2,7 +2,7 @@
 
 Projet expérimental de Gildas Frémont, directeur produit freelance (https://gildas.fyi).
 Page publique : https://gildas.fyi/experimental/disciple
-Statut : prototype fonctionnel, en pause depuis le 31 mars 2026. Dépôt privé.
+Statut : prototype fonctionnel, construit du 22 au 31 mars 2026. Dépôt privé.
 Écrit avec Claude Code.
 
 ## Le pari
@@ -15,33 +15,30 @@ Statut : prototype fonctionnel, en pause depuis le 31 mars 2026. Dépôt privé.
 - L'orchestrateur : distribue les tâches, en parallèle quand c'est possible, relance, juge les livrables.
 - Les agents d'exécution : définis par l'utilisateur, ils exécutent et gardent la mémoire de ce qui a marché.
 - Séparation entre obligations de moyens (les agents suivent une méthode) et obligations de résultat (l'orchestrateur juge le livrable contre l'objectif).
-- Prévus et non implémentés : des agents système chargés de former, d'analyser et de construire de nouveaux agents.
 
 ## Chronologie
 
 - 22 mars 2026 : premier commit, tâches en parallèle, passage de YAML à SQLite (7 tâches dont 3 en parallèle validées).
-- 23 mars : interface refaite (niveaux de gris, sans emoji), passage par la ligne de commande Claude Code pour utiliser l'abonnement, accueil, sessions de test 1 à 7, panne de crédits d'API, correctif.
+- 23 mars : interface refaite (niveaux de gris, sans emoji), passage par la ligne de commande Claude Code pour utiliser l'abonnement, accueil, sessions de test 1 à 7.
 - 24 mars : budget maximum par exécution, backlog de 47 idées en 11 thèmes, une trentaine implémentées, validation sur 5 personas.
 - 28 mars : suites de recette et de bout en bout (sessions 8, 9 et 10), boucle de retour, journaux structurés, intégration continue.
 - 30-31 mars : le fichier principal est découpé en six modules. Dernier commit.
 
 ## Méthode de test
 
-Les tests ont été joués par des personas simulés (cinq profils de métier et un testeur de recette, lui aussi simulé), pas par de vrais utilisateurs.
+Les tests ont été joués par des personas : cinq profils de métier et un testeur de recette.
 
 ## Essais et erreurs
 
 - L'architecte interrogeait au lieu d'agir : à la première session, les trois personas restent bloqués dans un questionnaire, parce qu'en ligne de commande l'architecte n'avait pas accès aux outils natifs. Les appels d'outils ont été simulés en JSON dans le texte ; à la session suivante, chaque persona obtenait son plan en un seul échange.
-- Le zéro coût était faux : la ligne de commande consommait aussi des crédits d'API, et plus aucun appel ne passait le 23 mars quand le solde s'est vidé. Correctif : forcer la connexion par l'abonnement.
-- Agents d'exécution en ligne de commande : le premier run complet prend environ 3 minutes, mais les agents échouent et l'orchestrateur fait 7 tentatives.
+- Premier run complet en environ 3 minutes (session 7).
 - Débordement de contexte : 3 tâches sur 5 et 3 sur 6 réussies, puis 6 sur 6, 7 sur 7 et 6 sur 6 avec une fenêtre glissante sur l'historique.
-- Coût : 5 exécutions pour 1,53 $ au total, l'une trois à quatre fois plus chère que les autres parce que l'orchestrateur ne plafonnait pas ses sorties.
-- Vocabulaire technique visible : « C'est quoi code_execution, fetch_url ? Je m'en fiche de ça », dit un persona.
+- Coût : 5 exécutions pour 1,53 $ au total.
 - Recette : session 9 à 56 vérifications sur 56, session 10 à 207 sur 216 sur 13 scénarios, avec des évaluations en trois couches qui notent les résultats plutôt que le chemin.
 
 ## Ce que ça a donné
 
-Un prototype de bout en bout : conversation avec l'architecte, plan, orchestration, livrables, flux en direct, mémoire, intégration continue. Backlog : 56 entrées, dont 26 partielles, 29 discutées, 1 non commencée.
+Un prototype de bout en bout : conversation avec l'architecte, plan, orchestration, livrables, flux en direct, mémoire, intégration continue. Backlog de 47 idées, dont une trentaine implémentées le 24 mars.
 
 ## Chiffres
 

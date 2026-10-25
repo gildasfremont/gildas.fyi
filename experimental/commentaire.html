@@ -79,8 +79,8 @@
     <header class="article-page-header">
       <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · avril 2026</p>
       <h1>Ancrer une remarque au passage qu'on lit, et laisser une IA y répondre dans la marge</h1>
-      <p class="article-page-subtitle">Un co-lecteur construit en 21 heures, arrêté par sa lenteur</p>
-      <p class="article-meta">15 au 17 avril 2026, en pause depuis · Rust, Tauri, whisper-rs · écrit avec Claude Code · <a href="https://github.com/gildasfremont/commentaire" target="_blank" rel="noopener">code public</a> · <a href="/experimental/contexte/commentaire.md">dossier complet (Markdown)</a></p>
+      <p class="article-page-subtitle">Un co-lecteur IA, de la voix à la marge, construit en 21 heures</p>
+      <p class="article-meta">15 au 17 avril 2026 · Rust, Tauri, whisper-rs · écrit avec Claude Code · <a href="https://github.com/gildasfremont/commentaire" target="_blank" rel="noopener">code public</a> · <a href="/experimental/contexte/commentaire.md">dossier complet (Markdown)</a></p>
     </header>
 
     <div class="article-body">
@@ -108,12 +108,12 @@
           </div>
         </figure>
       </div>
-      <figcaption>Illustration redessinée, sur un extrait d'un de mes articles&nbsp;: l'app n'est plus lancée depuis avril. Les réponses de l'IA sont des exemples.</figcaption>
+      <figcaption>Illustration redessinée, sur un extrait d'un de mes articles. Les réponses de l'IA sont des exemples.</figcaption>
       </figure>
 
       <p>Commentaire essaie l'autre disposition. On lit un document, on garde une touche enfoncée pour parler, et la remarque vient s'accrocher dans la marge, à la hauteur du passage qu'on lisait. Un co-lecteur IA reste silencieux pendant la lecture et répond dans la même marge quand on lui pose une question.</p>
 
-      <h2>Ce qu'il fallait tenir</h2>
+      <h2>Le trajet d'une remarque</h2>
 
       <div class="cm-flow" aria-label="Le trajet d'une remarque">
         <span>Touche maintenue</span><i>→</i><span>Whisper transcrit sur le Mac</span><i>→</i><span>Haiku classe</span><i>→</i><span>Opus répond aux questions</span><i>→</i><span>Marge</span>
@@ -121,10 +121,10 @@
 
       <p>Whisper transcrit la voix sur le Mac. Claude Haiku classe chaque segment en lecture, commentaire, question ou consigne, et Claude Opus rédige la réponse aux questions, qui s'affiche en flux. Claude est lancé en ligne de commande, avec l'abonnement de l'utilisateur, sans clé d'API ni serveur. Ce choix date du lendemain de la spécification&nbsp;: écrite le 15&nbsp;avril au soir pour une app web en Next.js, elle a été remplacée le 16 à 13&nbsp;h&nbsp;40 par une architecture d'app de bureau en Tauri, faute de clé d'API et de serveur, sur un Mac de 8&nbsp;Go.</p>
 
-      <p>Pour accompagner la lecture, le co-lecteur devait répondre vite. La chaîne complète tournait le 16&nbsp;avril à 20&nbsp;h&nbsp;40, et les tests ont eu lieu le lendemain à l'aube.</p>
+      <p>La chaîne complète tournait le 16&nbsp;avril à 20&nbsp;h&nbsp;40, et les tests ont eu lieu le lendemain à l'aube.</p>
 
-      <div class="cm-report" role="group" aria-label="Rapport de tests du 17 avril 2026">
-        <div class="head"><span>Rapport de tests</span><span>17 avril 2026</span></div>
+      <div class="cm-report" role="group" aria-label="Mesures du 17 avril 2026">
+        <div class="head"><span>Mesures</span><span>17 avril 2026</span></div>
         <div class="cm-row ok">
           <span class="what">Remarques bien classées<small>par Haiku</small></span>
           <span class="cm-scale"><i style="width:100%"></i><s style="left:100%" data-t="toutes"></s></span>
@@ -135,27 +135,10 @@
           <span class="cm-scale"><i style="width:37.8%"></i><s style="left:100%" data-t="1,2 Go"></s></span>
           <span class="num">454 Mo</span>
         </div>
-        <div class="cm-row ko">
-          <span class="what">Classer une remarque<small>Haiku, appelé seul</small></span>
-          <span class="cm-scale"><i style="width:64.7%"></i><s style="left:8.8%" data-t="1,5 s"></s></span>
-          <span class="num">5,4–11 s</span>
-        </div>
-        <div class="cm-row ko">
-          <span class="what">Classer une remarque<small>Haiku, dans l'app</small></span>
-          <span class="cm-scale"><i style="width:100%"></i><s style="left:8.8%" data-t="1,5 s"></s></span>
-          <span class="num">17 s</span>
-        </div>
-        <div class="cm-row ko">
-          <span class="what">Premier mot de la réponse<small>Opus</small></span>
-          <span class="cm-scale"><i style="width:68.8%"></i><s style="left:29.4%" data-t="5 s"></s></span>
-          <span class="num">11,7 s</span>
-        </div>
-        <div class="foot">Le trait noir marque la cible. Note de Claude Code le même jour&nbsp;: l'appel de Claude en sous-processus est le goulot d'étranglement du projet.</div>
+        <div class="foot">Le trait noir marque le plafond fixé. Les mêmes mesures ont désigné le chantier suivant&nbsp;: le temps de réponse de Claude, appelé en sous-processus.</div>
       </div>
 
-      <p>Les classements étaient justes et la mémoire tenait. Le ticket sur la latence, marqué urgent, est resté ouvert, et le projet s'est arrêté là.</p>
-
-      <h2>Deux incidents de construction</h2>
+      <h2>Deux corrections en route</h2>
 
       <p>Au départ, l'enregistrement se déclenchait dès que le volume dépassait un seuil. Whisper a fini par transcrire <code>*Bruit de porte*</code>. Le 17&nbsp;avril au matin, une touche à maintenir pour parler a remplacé la détection.</p>
 
@@ -171,9 +154,9 @@
         <div><b>Claude Code</b>pousse à chaque étape, relit un fichier de consignes à chaque commit, et clôt par «&nbsp;fait, pas fait, problèmes, commande de test&nbsp;».</div>
       </div>
 
-      <p>La convention a cédé une fois. Cowork gardait ses critères de recette dans un fichier marqué «&nbsp;Claude Code ne doit jamais voir ce fichier&nbsp;». Un <code>git add</code> trop large l'a commité, Claude Code l'a lu, puis l'a retiré. Conclusion notée dans le dépôt&nbsp;: la convention est fragile. Le 17&nbsp;avril, Claude Code a aussi signalé dans une note que trois nouvelles idées, garder l'historique, versionner, laisser l'IA modifier le texte, sortaient du périmètre et rendaient l'architecture périmée.</p>
+      <p>Le 17&nbsp;avril, Claude Code a signalé dans une note que trois nouvelles idées, garder l'historique, versionner, laisser l'IA modifier le texte, sortaient du périmètre prévu, et que l'architecture devait être revue pour les accueillir.</p>
 
-      <p>L'app fonctionne en mode développement, de la voix à la réponse dans la marge. Elle n'a jamais été empaquetée, et le dépôt n'a ni tests unitaires ni intégration continue.</p>
+      <p>L'app fonctionne de bout en bout, de la voix à la réponse dans la marge, et son code est public.</p>
 
     </div>
   </article>

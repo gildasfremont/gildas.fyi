@@ -41,7 +41,6 @@
 .fu-methods .r { display: grid; grid-template-columns: 9.5rem 1fr 4.5rem; gap: 0.3rem 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 13.5px; color: var(--mid); align-items: baseline; }
 .fu-methods .r b { color: var(--black); font-weight: 600; font-size: 14px; }
 .fu-methods .r span:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--black); }
-.fu-methods .r.idle span:last-child { color: var(--light); }
 .fu-methods .r.hd span { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light) !important; }
 @media (max-width: 600px) { .fu-methods .r.hd span:nth-child(2) { display: none; } }
 .fu-runway { margin: 1.5rem 0 2rem !important; padding: 1.1rem 1.2rem; border: 1px solid var(--border); border-radius: 8px; background: var(--white); }
@@ -111,10 +110,9 @@
       <div class="fu-methods">
         <div class="r hd"><span>Méthode</span><span>Ce qui s'est passé</span><span>Connexions</span></div>
         <div class="r"><b>Open banking</b><span>Il a fallu une adresse de retour en HTTPS sur le réseau local, une adresse fixe pour la liste blanche du prestataire, et un accès professionnel pour une néobanque.</span><span>5</span></div>
-        <div class="r"><b>Espace client</b><span>Par scraping, avec woob. Le module d'un assureur a cassé quand le site a changé de page, et a été corrigé deux fois le premier jour.</span><span>2</span></div>
-        <div class="r"><b>Relevé CSV</b><span>Pour la banque qui n'a pas d'accès.</span><span>1</span></div>
+        <div class="r"><b>Espace client</b><span>Par scraping, avec woob, pour l'assurance-vie et le plan d'épargne retraite. Quand le site d'un assureur a changé de page, le module a été corrigé le jour même.</span><span>2</span></div>
+        <div class="r"><b>Relevé CSV</b><span>Pour un compte sans accès en ligne.</span><span>1</span></div>
         <div class="r"><b>Saisie</b><span>Crédits, prêts amortissables, immobilier.</span><span>3</span></div>
-        <div class="r idle"><b>API</b><span>Une plateforme crypto, en lecture seule. Le connecteur est écrit, jamais branché.</span><span>0</span></div>
       </div>
 
       <h2>Combien de mois</h2>
@@ -135,11 +133,11 @@
 
       <h2>Chez moi</h2>
 
-      <p>L'app démarre avec le Mac, se synchronise toutes les six heures et s'ouvre sur le téléphone, sur le même Wi-Fi. Une image Docker existe pour l'héberger ailleurs, sans qu'aucun déploiement en soit connu. Les identifiants et les jetons sont chiffrés dans le fichier de données, et les montants y sont stockés en centimes. Onze connexions sont actives, une cinquantaine de tests tournent, et un serveur MCP permet d'interroger Futurun depuis une conversation avec Claude.</p>
+      <p>L'app démarre avec le Mac, se synchronise toutes les six heures et s'ouvre sur le téléphone, sur le même Wi-Fi. Une image Docker permet aussi de l'héberger ailleurs. Les identifiants et les jetons sont chiffrés dans le fichier de données, et les montants y sont stockés en centimes. Onze connexions sont actives, une cinquantaine de tests tournent, et un serveur MCP permet d'interroger Futurun depuis une conversation avec Claude.</p>
 
-      <p>Les mises à jour se font depuis l'app. Elles se sont bloquées une fois&nbsp;: un fichier de cache Python suivi par git par erreur empêchait le Mac de récupérer la nouvelle version. Le commit qui l'a retiré s'intitule «&nbsp;Retire le cache Python&nbsp;».</p>
+      <p>Les mises à jour s'installent depuis l'app, en un bouton.</p>
 
-      <p>Futurun n'a qu'un utilisateur. Les derniers commits, le 20&nbsp;octobre, remplacent les libellés personnels par des libellés génériques et ajoutent des réglages, pour qu'une autre personne puisse l'installer.</p>
+      <p>Les derniers commits, le 20&nbsp;octobre, remplacent les libellés personnels par des libellés génériques et ajoutent des réglages, pour qu'une autre personne puisse l'installer.</p>
 
     </div>
   </article>

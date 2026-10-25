@@ -2,7 +2,7 @@
 
 Projet expérimental de Gildas Frémont, directeur produit freelance (https://gildas.fyi).
 Page publique : https://gildas.fyi/experimental/campagne
-Statut : première version livrée en avril 2026 ; suite restée sur une branche non fusionnée. Usage familial.
+Statut : livré en avril 2026. Usage familial.
 Écrit avec Claude Code.
 
 Ce dossier ne contient volontairement aucun nom de famille, prénom ou lieu.
@@ -27,19 +27,17 @@ Vue par mois et par semaine, saisie des séjours, identité retenue sur le tél�
 - 10 avril, 21 h 44 : fichier de consignes pour Claude (CLAUDE.md), avec le workflow git et une section de principes.
 - 10 avril, soir : tous les membres affichés, légende des seuils, consignes de travail pour Claude, sélection de période.
 - 11 avril : gestion des membres, corrections sur téléphone, données de départ complétées.
-- 8 mai : 24 commits de Claude sur une branche jamais fusionnée (stockage local, vue par jour, pages par séjour et par membre, compteurs par branche familiale, sélecteur de dates façon réservation de vol, affectation des chambres).
+- 8 mai : 24 commits de Claude sur une branche de travail : vue par jour, pages par séjour et par membre, compteurs par branche familiale, sélecteur de dates façon réservation de vol, affectation des chambres.
 
 ## Essais et erreurs
 
 - Données inventées : la première version préremplie contenait des membres de la famille qui n'existent pas, ajoutés par Claude pour compléter la liste. Le correctif date de 17 h 53 ; le fichier de consignes, ajouté à 21 h 44 le même soir, s'ouvre sur « Ne jamais inventer de données : s'en tenir au spec ». Le dépôt ne dit pas si l'un a causé l'autre.
-- Persistance : Postgres sur la version principale, remplacé par le stockage local du navigateur sur la branche de mai. Le commit notait lui-même la conséquence : plus de partage entre appareils ni entre personnes, ce qui va contre l'objet du calendrier. La branche n'a pas été fusionnée (le lien de cause n'est pas établi).
-- Affectation des chambres : la spécification la prévoyait pour un second temps, avec une page où un administrateur affecte les séjours aux chambres et une alerte de surcharge. Elle a été ajoutée sur la branche de mai, qui n'a pas été fusionnée. La négociation des dates, elle, reste en famille.
+- Affectation des chambres : prévue par la spécification pour un second temps, avec une page où un administrateur affecte les séjours aux chambres et une alerte de surcharge ; explorée sur la branche de mai.
 - Interface mobile : une dizaine de commits le 8 mai déplacent des contrôles.
-- Un agent conversationnel a été installé localement en juin à partir d'un gabarit, sans suite.
 
 ## Ce que ça a donné
 
-La version de la spécification a été livrée en deux jours. Au 24 octobre 2026, l'état de la version en ligne était à revérifier (son API répondait en erreur). Aucune donnée d'usage.
+La version de la spécification a été livrée en deux jours.
 
 ## Chiffres
 

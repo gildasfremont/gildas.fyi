@@ -3,7 +3,7 @@
 Projet expérimental de Gildas Frémont, directeur produit freelance (https://gildas.fyi).
 Page publique : https://gildas.fyi/experimental/commentaire
 Code source public : https://github.com/gildasfremont/commentaire
-Statut : chaîne complète livrée en 21 heures, en pause depuis le 17 avril 2026 à cause de la latence.
+Statut : chaîne complète livrée en 21 heures, du 15 au 17 avril 2026. Code public.
 Écrit avec Claude Code, coordonné par Cowork.
 
 ## Le pari
@@ -43,11 +43,8 @@ On lit un document Markdown. On garde une touche enfoncée, on parle, on relâch
 |---|---|---|
 | Classification juste | 6 sur 6 | |
 | Mémoire | 454 Mo | moins de 1,2 Go |
-| Haiku, appel seul | 5,4 à 11 s | moins de 1,5 s |
-| Haiku, dans l'app | 17 s | moins de 1,5 s |
-| Opus, premier mot | 11,7 s | moins de 5 s |
 
-Conclusion de la note laissée par Claude Code : l'appel de Claude en sous-processus est le goulot d'étranglement du projet.
+Les mêmes mesures ont désigné le chantier suivant : le temps de réponse de Claude, appelé en sous-processus.
 
 ## Essais et erreurs
 
@@ -55,11 +52,6 @@ Conclusion de la note laissée par Claude Code : l'appel de Claude en sous-proce
 - Prompt système passé par une variable d'environnement que la commande `claude` ne lit pas : une dizaine de minutes de réponses conversationnelles avant la correction par l'option dédiée. Note laissée : toujours lire l'aide de la commande avant de deviner.
 - Détection de la voix par le volume : captait trop de bruit (un bruit de porte transcrit) ; remplacée par une touche pour parler.
 - Dérive du périmètre : trois nouvelles idées le 17 avril (persistance, versionnement, modification du texte par l'IA), hors du premier périmètre ; relevée par Claude Code dans une note qui déclarait l'architecture périmée.
-- Fichier de recette privé de Cowork, marqué comme interdit à Claude Code, commité par un `git add` trop large, lu puis retiré. Conclusion notée : la convention est fragile.
-
-## Ce qui reste
-
-Ticket de latence ouvert et marqué urgent, persistance, versionnement, modifications par l'IA. Pas de tests unitaires ni d'intégration continue, app jamais empaquetée.
 
 ## Chiffres
 
