@@ -23,32 +23,10 @@
   <link rel="alternate" type="text/markdown" href="/en/experimental/context/campagne.md" title="Full write-up">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
-.ca-wrap { margin: 2rem 0 !important; display: grid; grid-template-columns: 1fr 13rem; gap: 1.25rem; align-items: start; }
-.ca-month { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
-.ca-month .dow { font-size: 11px; color: var(--light); text-align: center; padding-bottom: 0.2rem; }
-.ca-day { aspect-ratio: 1 / 0.82; border: none; border-radius: 4px; padding: 3px 5px; font: inherit; font-size: 10px; line-height: 1.1; display: flex; flex-direction: column; justify-content: space-between; text-align: left; cursor: pointer; background: var(--bg); color: var(--light); outline-offset: 1px; }
-.ca-day b { font-size: 14px; font-weight: 600; color: var(--black); text-align: right; font-variant-numeric: tabular-nums; }
-.ca-day.l1 { background: rgba(var(--xp-live), .14); }
-.ca-day.l2 { background: rgba(var(--xp-pause), .24); }
-.ca-day.l3 { background: rgba(var(--xp-red), .24); }
-.ca-day.l4 { background: rgb(var(--xp-red)); color: var(--white); }
-.ca-day.l4 b { color: var(--white); }
-.ca-day.sel { box-shadow: inset 0 0 0 2px var(--black); }
-.ca-day.empty { background: transparent; cursor: default; }
-.ca-side { border: 1px solid var(--border); border-radius: 8px; background: var(--white); padding: 0.8rem 0.9rem; font-size: 13px; color: var(--mid); }
-.ca-side .n { font-size: 26px; font-weight: 600; color: var(--black); font-variant-numeric: tabular-nums; }
-.ca-side .n small { font-size: 13px; font-weight: 400; color: var(--light); }
-.ca-side ul { list-style: none; margin-top: 0.6rem; }
-.ca-side li { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.25rem 0; border-top: 1px solid var(--border); font-size: 12.5px; }
-.ca-side li span:last-child { color: var(--black); font-variant-numeric: tabular-nums; }
-.ca-side .verdict { margin-top: 0.6rem; font-size: 12px; color: var(--light); line-height: 1.45; }
-.ca-key { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: 12px; color: var(--mid); margin-top: 0.7rem; }
-.ca-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.3rem; vertical-align: -1px; }
 .ca-file { margin: 1.5rem 0 2rem !important; max-width: 34rem; border: 1px solid var(--border); border-radius: 6px; background: var(--white); overflow: hidden; }
 .ca-file .nm { font-family: var(--xp-mono); font-size: 11.5px; color: var(--light); padding: 0.45rem 0.8rem; border-bottom: 1px solid var(--border); background: var(--bg); }
 .ca-file pre { font-family: var(--xp-mono); font-size: 12.5px; line-height: 1.75; color: var(--dark); padding: 0.7rem 0.8rem; white-space: pre-wrap; margin: 0; }
 .ca-file pre em { font-style: normal; color: var(--light); }
-@media (max-width: 640px) { .ca-wrap { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -74,15 +52,9 @@
 
       <p>The house sleeps thirty-two, and some sixty people from eight branches of the family take turns staying there. They used to organize it in a Google Sheet that had piled up duplicates and rows with no dates, and that couldn't answer the one question that matters before you pick your dates: how many beds are already taken that night.</p>
 
-      <figure>
-        <div class="ca-wrap">
-          <div>
-            <div class="ca-month" id="ca-month"></div>
-            <div class="ca-key"><span><i style="background:rgba(var(--xp-live),.14)"></i>up to 17</span><span><i style="background:rgba(var(--xp-pause),.24)"></i>up to 27</span><span><i style="background:rgba(var(--xp-red),.24)"></i>up to 32</span><span><i style="background:rgb(var(--xp-red))"></i>more people than beds</span></div>
-          </div>
-          <div class="ca-side" id="ca-side" aria-live="polite"></div>
-        </div>
-        <figcaption>A summer month redrawn with made-up stays. Each square shows how many beds are taken on the night that starts that day, colored by the app's thresholds. Tap a night to see the stays that fill it.</figcaption>
+      <figure class="xp-shot">
+        <img src="/img/experimental/campagne-calendrier.jpg" alt="The Campagne calendar in October: one row per family member, one column per day, and at the top the number of beds taken each night, colored by threshold" width="1600" height="1025" loading="lazy">
+        <figcaption>The app, in French, run locally with the family's members and October stays made up for the screenshot. One row per person; at the top, the beds taken each night, colored by threshold. Names are pixelated.</figcaption>
       </figure>
 
       <p>Everyone enters their dates from their phone, with no account and no password: identity is a simple preference kept on the device. When a night overflows, the app shows it, and the family sorts it out. The spec puts it in one sentence: the negotiation happens within the family, outside the app.</p>
@@ -108,39 +80,6 @@
 
     </div>
   </article>
-<script>
-(function(){
-  var month = document.getElementById('ca-month'), side = document.getElementById('ca-side');
-  if (!month) return;
-  // Made-up stays: [branch, arrival, departure, people]. Nights run from arrival to the day before departure.
-  var stays = [['Branch A',1,9,6],['Branch B',3,11,7],['Branch C',5,8,5],['Branch D',10,18,8],['Branch E',12,16,9],['Branch F',15,22,7],['Branch G',18,24,9],['Branch H',19,23,6],['Branch C',20,23,9],['Branch A',21,28,5],['Branch E',25,30,9],['Branch B',28,32,4]];
-  function on(n){ return stays.filter(function(s){ return n >= s[1] && n < s[2]; }); }
-  function beds(n){ return on(n).reduce(function(a,s){ return a + s[3]; }, 0); }
-  function lvl(b){ return b > 32 ? 'l4' : b > 27 ? 'l3' : b > 17 ? 'l2' : 'l1'; }
-  function ord(n){ var s = ['th','st','nd','rd'], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
-  ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(function(d){ var e = document.createElement('span'); e.className = 'dow'; e.textContent = d; month.appendChild(e); });
-  var e0 = document.createElement('span'); e0.className = 'ca-day empty'; month.appendChild(e0);
-  for (var n = 1; n <= 31; n++) {
-    var b = beds(n), d = document.createElement('button');
-    d.type = 'button'; d.className = 'ca-day ' + lvl(b); d.dataset.n = n;
-    d.innerHTML = '<span>' + n + '</span><b>' + b + '</b>';
-    d.setAttribute('aria-label', 'Night of the ' + ord(n) + ', ' + b + ' beds');
-    month.appendChild(d);
-  }
-  function show(n){
-    month.querySelectorAll('.sel').forEach(function(x){ x.classList.remove('sel'); });
-    month.querySelector('[data-n="' + n + '"]').classList.add('sel');
-    var list = on(n), b = beds(n);
-    var v = b > 32 ? (b - 32) + ' bed' + (b - 32 > 1 ? 's' : '') + ' short. The app doesn\'t say who gives up their place.' : b > 27 ? 'The house is almost full.' : b > 17 ? 'There is still room.' : 'The house is quiet.';
-    side.innerHTML = '<span class="xp-kicker">Night of the ' + ord(n) + '</span><div class="n">' + b + ' <small>/ 32 beds</small></div><ul>' +
-      list.map(function(s){ return '<li><span>' + s[0] + ' · ' + ord(s[1]) + ' to ' + ord(s[2]) + '</span><span>' + s[3] + '</span></li>'; }).join('') +
-      '</ul><p class="verdict">' + v + '</p>';
-  }
-  month.addEventListener('click', function(e){ var d = e.target.closest('.ca-day'); if (d && d.dataset.n) show(+d.dataset.n); });
-  var worst = 1; for (var k = 1; k <= 31; k++) if (beds(k) > beds(worst)) worst = k;
-  show(worst);
-})();
-</script>
 
     <nav class="xp-nav">
       <a href="/en/experimental/swisser"><small>← Previous</small>Swisser</a>

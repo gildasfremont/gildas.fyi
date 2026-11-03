@@ -23,30 +23,6 @@
   <link rel="alternate" type="text/markdown" href="/en/experimental/context/copropriete.md" title="Full write-up">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
-.co-sheet { margin: 2rem 0 !important; border: 1px solid var(--border); border-radius: 8px; background: var(--white); overflow: hidden; }
-.co-sheet .bar { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 1rem; background: var(--bg); border-bottom: 1px solid var(--border); font-size: 12px; color: var(--light); }
-.co-fig { padding: 1.1rem 1rem 0.4rem; }
-.co-fig .lbl { font-size: 13px; color: var(--mid); }
-.co-fig .big { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
-.co-fig .big b { font-size: 30px; font-weight: 600; color: var(--black); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
-.co-btn { font: inherit; font-size: 13px; color: #1f5f99; background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(31,95,153,.35); }
-.co-parts { list-style: none; margin: 0.8rem 0 0; padding: 0 1rem; }
-.co-parts[hidden] { display: none; }
-.co-part { border-top: 1px dashed var(--border); padding: 0.55rem 0; }
-.co-part > button { width: 100%; display: flex; justify-content: space-between; gap: 1rem; font: inherit; font-size: 14px; color: var(--dark); background: none; border: none; padding: 0; cursor: pointer; text-align: left; font-variant-numeric: tabular-nums; }
-.co-part > button span:first-child::before { content: '▸ '; color: #1f5f99; font-size: 12px; }
-.co-part.open > button span:first-child::before { content: '▾ '; }
-.co-trail { display: none; margin: 0.5rem 0 0.2rem 1rem; padding-left: 0.8rem; border-left: 2px solid #1f5f99; }
-.co-part.open .co-trail { display: block; }
-.co-trail li { list-style: none; font-size: 12.5px; color: var(--mid); line-height: 1.5; padding: 0.15rem 0; }
-.co-trail li b { display: inline-block; min-width: 5.6rem; font-weight: 500; color: var(--black); }
-.co-trail code { font-size: 11.5px; color: var(--light); }
-.co-check { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin-top: 0.9rem; padding: 0.7rem 1rem; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--mid); }
-.co-check .state { display: inline-flex; align-items: center; gap: 0.4rem; }
-.co-check .state::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: rgb(var(--xp-live)); }
-.co-check.stale .state::before { background: rgb(var(--xp-pause)); }
-.co-check code { font-size: 11.5px; }
-.co-check button { font: inherit; font-size: 12px; padding: 0.15rem 0.6rem; border: 1px solid var(--border); border-radius: 3px; background: var(--white); color: var(--dark); cursor: pointer; margin-left: auto; }
 .co-tree { margin: 1.5rem 0 !important; font-size: 13.5px; }
 .co-node { border: 1px solid var(--border); border-radius: 6px; background: var(--white); padding: 0.55rem 0.75rem; max-width: 22rem; }
 .co-node .xp-kicker { margin-bottom: 0.15rem; }
@@ -89,39 +65,9 @@
 
       <p>After our building changed property managers, the owners' council (a handful of volunteer co-owners, me among them) had to put a figure on a claim against the former manager. What we had was the general ledger the former manager had kept, and the new manager's document portal, with more than a thousand documents. The ledger could be used to compare results, not to establish them. The accounts had to be rebuilt from the documents, in a way that let any co-owner follow a figure back to them.</p>
 
-      <figure>
-        <div class="co-sheet" id="co-sheet">
-          <div class="bar"><span>Cash · sample fiscal year</span><span>made-up amounts</span></div>
-          <div class="co-fig">
-            <span class="lbl">Bank balance at year-end</span>
-            <div class="big"><b>€8,788.33</b><button type="button" class="co-btn" aria-expanded="false">Where does this figure come from?</button></div>
-          </div>
-          <ul class="co-parts" hidden>
-            <li class="co-part"><button type="button"><span>Opening balance</span><span>12,480.00</span></button>
-              <ul class="co-trail">
-                <li><b>Document</b>the previous year's closing bank statement, page 1</li>
-                <li><b>Input</b>one CSV row, with its <code>source</code> column</li>
-              </ul></li>
-            <li class="co-part"><button type="button"><span>Owner contributions received</span><span>+&nbsp;48,210.50</span></button>
-              <ul class="co-trail">
-                <li><b>Documents</b>twelve bank statements, deposit lines</li>
-                <li><b>Input</b>one row per deposit, each with its statement and page</li>
-              </ul></li>
-            <li class="co-part"><button type="button"><span>Matched expenses</span><span>−&nbsp;51,902.17</span></button>
-              <ul class="co-trail">
-                <li><b>Documents</b>92 expense lines, 91 with their invoice, 1 with none</li>
-                <li><b>Matching</b>document by document, line by line</li>
-              </ul></li>
-            <li class="co-part"><button type="button"><span>Method</span><span>&nbsp;</span></button>
-              <ul class="co-trail">
-                <li><b>Calculation</b>a commented <code>calculer…()</code> function that says which source wins</li>
-                <li><b>Cache</b>a script writes the result and its intermediate values</li>
-                <li><b>Check</b>redoes the calculation and compares it with the cache</li>
-              </ul></li>
-          </ul>
-          <div class="co-check"><span class="state">Check: the cache is up to date</span><button type="button" class="co-add">Add a document</button></div>
-        </div>
-        <figcaption>How a figure looks on the site, with made-up amounts. You open it, you see what it is made of, and each part says where it comes from. Add a document to see the check react.</figcaption>
+      <figure class="xp-shot">
+        <img src="/img/experimental/copropriete-exercice.jpg" alt="The 2024 fiscal-year page on the site: spending broken down by envelope, bank, budget, and a legend giving the source of each figure" width="1600" height="1263" loading="lazy">
+        <figcaption>A fiscal-year page on the site, which is in French. Each line breaks down, the note "non arrêtés par le syndic" (not signed off by the property manager) flags what the tool had to infer, and the legend says where each figure comes from: document, line, column. Amounts, names and address pixelated.</figcaption>
       </figure>
 
       <h2>One rule for every figure</h2>
@@ -129,6 +75,11 @@
       <p>On October 3, a commit set the method for every rebuilt figure. Input values go into a CSV, one row per value, with the document, page and account they come from. The calculation lives in a commented function. A script run by hand caches the result along with its intermediate values, and the site reads only that cache: it recalculates nothing. A check redoes the calculation and flags a stale cache, with the command to rerun. A value the tool had to infer for lack of a document is labeled "not signed off by the property manager," and every decision of that kind is recorded in a log.</p>
 
       <p>The checks are 59 rules, rerun on every deployment and every hour: duplicate documents, documents from another building, matching, allocation of charges between units, double entry, freshness of the caches. When one fails, a banner says so on the home page. The double-entry books themselves are rebuilt document by document, without taking anything from the property manager's ledger.</p>
+
+      <figure class="xp-shot">
+        <img src="/img/experimental/copropriete-controles.jpg" alt="The checks page: numbered rules with their number of findings and their status, alert or to review" width="1600" height="1125" loading="lazy">
+        <figcaption>The checks page, with the rules collapsed. The property manager's name and the address are pixelated.</figcaption>
+      </figure>
 
       <h2>A fact goes in a note, an action in an issue</h2>
 
@@ -170,29 +121,17 @@
 
       <p>On October 7, at the end of a 58-commit day, the reconciliation established that the water charges the former manager had allocated among the units added up to the water utility's invoices, for 2017 through 2025.</p>
 
+      <figure class="xp-shot">
+        <img src="/img/experimental/copropriete-eau.jpg" alt="The water page: the building's consumption in cubic meters per day, by billing period, from 2017 to 2026" width="1600" height="1125" loading="lazy">
+        <figcaption>The building's water use, in cubic meters per day for each billing period, from 2017 to 2026. Amounts, utility and address pixelated.</figcaption>
+      </figure>
+
       <p>The site stays private, behind a password. A selection of files, filtered through an allowlist and a script that blocks the export of banned terms, email addresses and phone numbers, was shared with the other co-owners on October 20.</p>
 
     </div>
   </article>
 <script>
 (function(){
-  var sheet = document.getElementById('co-sheet');
-  if (!sheet) return;
-  var btn = sheet.querySelector('.co-btn'), parts = sheet.querySelector('.co-parts');
-  btn.addEventListener('click', function(){
-    var open = parts.hidden; parts.hidden = !open; btn.setAttribute('aria-expanded', open);
-    btn.textContent = open ? 'Close' : 'Where does this figure come from?';
-  });
-  sheet.querySelectorAll('.co-part > button').forEach(function(b){
-    b.addEventListener('click', function(){ b.parentNode.classList.toggle('open'); });
-  });
-  var check = sheet.querySelector('.co-check'), state = check.querySelector('.state'), add = check.querySelector('.co-add'), stale = false;
-  add.addEventListener('click', function(){
-    stale = !stale;
-    check.classList.toggle('stale', stale);
-    state.innerHTML = stale ? 'Check: the cache predates the latest document. Rerun <code>npx tsx scripts/soldes-exercices.ts</code>' : 'Check: the cache is up to date';
-    add.textContent = stale ? 'Rerun the calculation' : 'Add a document';
-  });
   document.querySelectorAll('.co-dots .grid').forEach(function(g){
     var n = +g.dataset.n, miss = +g.dataset.miss;
     for (var i = 0; i < n; i++) { var c = document.createElement('i'); if (i >= n - miss) c.className = 'miss'; g.appendChild(c); }

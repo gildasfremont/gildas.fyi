@@ -23,30 +23,6 @@
   <link rel="alternate" type="text/markdown" href="/experimental/contexte/copropriete.md" title="Dossier complet">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
-.co-sheet { margin: 2rem 0 !important; border: 1px solid var(--border); border-radius: 8px; background: var(--white); overflow: hidden; }
-.co-sheet .bar { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 1rem; background: var(--bg); border-bottom: 1px solid var(--border); font-size: 12px; color: var(--light); }
-.co-fig { padding: 1.1rem 1rem 0.4rem; }
-.co-fig .lbl { font-size: 13px; color: var(--mid); }
-.co-fig .big { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
-.co-fig .big b { font-size: 30px; font-weight: 600; color: var(--black); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
-.co-btn { font: inherit; font-size: 13px; color: #1f5f99; background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(31,95,153,.35); }
-.co-parts { list-style: none; margin: 0.8rem 0 0; padding: 0 1rem; }
-.co-parts[hidden] { display: none; }
-.co-part { border-top: 1px dashed var(--border); padding: 0.55rem 0; }
-.co-part > button { width: 100%; display: flex; justify-content: space-between; gap: 1rem; font: inherit; font-size: 14px; color: var(--dark); background: none; border: none; padding: 0; cursor: pointer; text-align: left; font-variant-numeric: tabular-nums; }
-.co-part > button span:first-child::before { content: '▸ '; color: #1f5f99; font-size: 12px; }
-.co-part.open > button span:first-child::before { content: '▾ '; }
-.co-trail { display: none; margin: 0.5rem 0 0.2rem 1rem; padding-left: 0.8rem; border-left: 2px solid #1f5f99; }
-.co-part.open .co-trail { display: block; }
-.co-trail li { list-style: none; font-size: 12.5px; color: var(--mid); line-height: 1.5; padding: 0.15rem 0; }
-.co-trail li b { display: inline-block; min-width: 5.6rem; font-weight: 500; color: var(--black); }
-.co-trail code { font-size: 11.5px; color: var(--light); }
-.co-check { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin-top: 0.9rem; padding: 0.7rem 1rem; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--mid); }
-.co-check .state { display: inline-flex; align-items: center; gap: 0.4rem; }
-.co-check .state::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: rgb(var(--xp-live)); }
-.co-check.stale .state::before { background: rgb(var(--xp-pause)); }
-.co-check code { font-size: 11.5px; }
-.co-check button { font: inherit; font-size: 12px; padding: 0.15rem 0.6rem; border: 1px solid var(--border); border-radius: 3px; background: var(--white); color: var(--dark); cursor: pointer; margin-left: auto; }
 .co-tree { margin: 1.5rem 0 !important; font-size: 13.5px; }
 .co-node { border: 1px solid var(--border); border-radius: 6px; background: var(--white); padding: 0.55rem 0.75rem; max-width: 22rem; }
 .co-node .xp-kicker { margin-bottom: 0.15rem; }
@@ -89,39 +65,9 @@
 
       <p>Après un changement de syndic, le conseil syndical, des copropriétaires bénévoles dont je fais partie, devait chiffrer une réclamation contre l'ancien. Il restait le grand livre que celui-ci avait tenu, et l'espace documents du nouveau, plus de mille pièces. Le grand livre pouvait servir à comparer des résultats, pas à les établir&nbsp;: il fallait reconstituer les comptes à partir des pièces, et que n'importe quel copropriétaire puisse refaire le chemin d'un chiffre jusqu'à elles.</p>
 
-      <figure>
-        <div class="co-sheet" id="co-sheet">
-          <div class="bar"><span>Trésorerie · exercice d'exemple</span><span>montants fictifs</span></div>
-          <div class="co-fig">
-            <span class="lbl">Solde bancaire à la clôture</span>
-            <div class="big"><b>8&nbsp;788,33&nbsp;€</b><button type="button" class="co-btn" aria-expanded="false">D'où vient ce chiffre&nbsp;?</button></div>
-          </div>
-          <ul class="co-parts" hidden>
-            <li class="co-part"><button type="button"><span>Solde à l'ouverture</span><span>12&nbsp;480,00</span></button>
-              <ul class="co-trail">
-                <li><b>Pièce</b>relevé bancaire de clôture de l'exercice précédent, page 1</li>
-                <li><b>Entrée</b>une ligne de CSV, avec sa colonne <code>source</code></li>
-              </ul></li>
-            <li class="co-part"><button type="button"><span>Appels de fonds encaissés</span><span>+&nbsp;48&nbsp;210,50</span></button>
-              <ul class="co-trail">
-                <li><b>Pièces</b>douze relevés bancaires, lignes d'encaissement</li>
-                <li><b>Entrée</b>une ligne par encaissement, chacune avec son relevé et sa page</li>
-              </ul></li>
-            <li class="co-part"><button type="button"><span>Dépenses pointées</span><span>−&nbsp;51&nbsp;902,17</span></button>
-              <ul class="co-trail">
-                <li><b>Pièces</b>92 lignes de dépense, 91 avec leur facture, 1 sans pièce</li>
-                <li><b>Pointage</b>pièce par pièce, ligne par ligne</li>
-              </ul></li>
-            <li class="co-part"><button type="button"><span>Méthode</span><span>&nbsp;</span></button>
-              <ul class="co-trail">
-                <li><b>Calcul</b>une fonction commentée <code>calculer…()</code> qui dit quelle source prime</li>
-                <li><b>Cache</b>un script écrit le résultat et ses valeurs intermédiaires</li>
-                <li><b>Contrôle</b>refait le calcul et compare au cache</li>
-              </ul></li>
-          </ul>
-          <div class="co-check"><span class="state">Contrôle&nbsp;: le cache est à jour</span><button type="button" class="co-add">Ajouter une pièce</button></div>
-        </div>
-        <figcaption>Comment un chiffre se présente sur le site, avec des montants fictifs. On l'ouvre, on voit ses composantes, et chaque composante dit d'où elle vient. Ajoutez une pièce pour voir le contrôle réagir.</figcaption>
+      <figure class="xp-shot">
+        <img src="/img/experimental/copropriete-exercice.jpg" alt="Page de l'exercice 2024 sur le site : sorties ventilées par enveloppe, banque, budget, et une légende qui donne la source de chaque chiffre" width="1600" height="1263" loading="lazy">
+        <figcaption>La page d'un exercice sur le site. Chaque ligne se ventile, la mention «&nbsp;non arrêtés par le syndic&nbsp;» signale ce que l'outil a dû déduire, et la légende dit d'où vient chaque chiffre&nbsp;: document, ligne, colonne. Montants, noms et adresse pixelisés.</figcaption>
       </figure>
 
       <h2>Une règle pour chaque chiffre</h2>
@@ -129,6 +75,11 @@
       <p>Le 3&nbsp;octobre, un commit a fixé la méthode pour tous les chiffres reconstitués. Les valeurs d'entrée vont dans un CSV, une ligne par valeur, avec le document, la page et le compte dont elles viennent. Le calcul reste dans une fonction commentée. Un script lancé à la main met le résultat en cache, avec ses valeurs intermédiaires, et le site ne lit que ce cache&nbsp;: il ne recalcule rien. Un contrôle refait le calcul et signale un cache périmé, avec la commande à relancer. Une valeur que l'outil a dû déduire, faute de pièce, porte la mention «&nbsp;non arrêté par le syndic&nbsp;», et chaque décision de ce genre est tracée dans un registre.</p>
 
       <p>Les contrôles sont 59 règles, recalculées à chaque déploiement et toutes les heures&nbsp;: doublons de pièces, pièces d'un autre immeuble, pointage, répartition des charges, partie double, fraîcheur des caches. Quand l'une échoue, un bandeau l'annonce sur l'accueil. La partie double elle-même est reconstituée pièce par pièce, sans reprendre le grand livre du syndic.</p>
+
+      <figure class="xp-shot">
+        <img src="/img/experimental/copropriete-controles.jpg" alt="Page des contrôles : règles numérotées avec leur nombre de constats et leur état, alerte ou à regarder" width="1600" height="1125" loading="lazy">
+        <figcaption>La page des contrôles, règles repliées. Le nom du syndic et l'adresse sont pixelisés.</figcaption>
+      </figure>
 
       <h2>Un fait dans une fiche, une action dans une issue</h2>
 
@@ -170,29 +121,17 @@
 
       <p>Le 7&nbsp;octobre, au bout d'une journée de 58 commits, le rapprochement a établi que l'eau répartie par l'ancien syndic entre les lots égalait les factures du distributeur, sur 2017 à 2025.</p>
 
+      <figure class="xp-shot">
+        <img src="/img/experimental/copropriete-eau.jpg" alt="Page de l'eau : consommation de l'immeuble en mètres cubes par jour, par période de facturation, de 2017 à 2026" width="1600" height="1125" loading="lazy">
+        <figcaption>La consommation d'eau de l'immeuble, en mètres cubes par jour pour chaque période de facturation, de 2017 à 2026. Montants, distributeur et adresse pixelisés.</figcaption>
+      </figure>
+
       <p>Le site reste privé, derrière un mot de passe. Une sélection de fichiers, filtrée par une liste blanche et un script qui bloque l'export de termes interdits, d'adresses e-mail et de numéros de téléphone, a été partagée avec les autres copropriétaires le 20&nbsp;octobre.</p>
 
     </div>
   </article>
 <script>
 (function(){
-  var sheet = document.getElementById('co-sheet');
-  if (!sheet) return;
-  var btn = sheet.querySelector('.co-btn'), parts = sheet.querySelector('.co-parts');
-  btn.addEventListener('click', function(){
-    var open = parts.hidden; parts.hidden = !open; btn.setAttribute('aria-expanded', open);
-    btn.textContent = open ? 'Refermer' : 'D\'où vient ce chiffre ?';
-  });
-  sheet.querySelectorAll('.co-part > button').forEach(function(b){
-    b.addEventListener('click', function(){ b.parentNode.classList.toggle('open'); });
-  });
-  var check = sheet.querySelector('.co-check'), state = check.querySelector('.state'), add = check.querySelector('.co-add'), stale = false;
-  add.addEventListener('click', function(){
-    stale = !stale;
-    check.classList.toggle('stale', stale);
-    state.innerHTML = stale ? 'Contrôle&nbsp;: le cache date d\'avant la dernière pièce. Relancer <code>npx tsx scripts/soldes-exercices.ts</code>' : 'Contrôle&nbsp;: le cache est à jour';
-    add.textContent = stale ? 'Relancer le calcul' : 'Ajouter une pièce';
-  });
   document.querySelectorAll('.co-dots .grid').forEach(function(g){
     var n = +g.dataset.n, miss = +g.dataset.miss;
     for (var i = 0; i < n; i++) { var c = document.createElement('i'); if (i >= n - miss) c.className = 'miss'; g.appendChild(c); }

@@ -23,23 +23,6 @@
   <link rel="alternate" type="text/markdown" href="/en/experimental/context/futurun.md" title="Full write-up">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
-.fu-phone { width: min(100%, 360px); margin: 2rem auto 0.6rem; border: 1px solid var(--subtle); border-radius: 22px; background: #f7f8f6; padding: 0.9rem 0.8rem 1rem; box-shadow: 0 12px 30px rgba(0,0,0,.07); }
-.fu-phone .top { display: flex; justify-content: space-between; align-items: baseline; padding: 0 0.3rem 0.7rem; }
-.fu-phone .top b { font-size: 15px; color: var(--black); }
-.fu-phone .top span { font-size: 11px; color: var(--light); }
-.fu-group { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); padding: 0.4rem 0.3rem; }
-.fu-conn { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 0.6rem 0.75rem; margin-bottom: 0.45rem; transition: background .3s; }
-.fu-conn .l1 { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 13.5px; color: var(--black); }
-.fu-conn .l2 { font-size: 11.5px; color: var(--light); margin-top: 0.1rem; }
-.fu-conn .st { font-size: 11.5px; white-space: nowrap; }
-.fu-conn .st::before { content: '●'; margin-right: 0.25rem; }
-.fu-conn.ok .st { color: rgb(var(--xp-live)); }
-.fu-conn.re { border-color: rgba(var(--xp-pause), .7); background: #fffaf2; }
-.fu-conn.re .st { color: rgb(var(--xp-pause)); }
-.fu-form { margin-top: 0.55rem; display: grid; gap: 0.4rem; }
-.fu-form p { font-size: 12px !important; color: var(--mid) !important; margin: 0 !important; line-height: 1.45; }
-.fu-form button { font: inherit; font-size: 13px; padding: 0.4rem 0.6rem; border-radius: 8px; border: none; background: var(--black); color: var(--white); cursor: pointer; }
-.fu-form .field { font-size: 12px; color: var(--light); border: 1px solid var(--border); border-radius: 8px; padding: 0.35rem 0.55rem; background: var(--white); }
 .fu-methods { margin: 1.5rem 0 2rem !important; border-top: 1px solid var(--border); }
 .fu-methods .r { display: grid; grid-template-columns: 9.5rem 1fr 4.5rem; gap: 0.3rem 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 13.5px; color: var(--mid); align-items: baseline; }
 .fu-methods .r b { color: var(--black); font-weight: 600; font-size: 14px; }
@@ -82,30 +65,11 @@
       <p>As a freelancer, the number that matters is how many months your cash can cover. Getting it means pulling together accounts that don't connect the same way: a bank through open banking, a life insurance savings plan and a retirement savings plan through their customer portals, a statement exported by hand, a loan you enter yourself. Each kind of access expires on its own schedule.</p>
 
       <figure>
-        <div class="fu-phone" id="fu-phone">
-          <div class="top"><b>Connections</b><span>made-up accounts</span></div>
-          <div class="fu-group">To renew</div>
-          <div class="fu-renew">
-            <div class="fu-conn re" data-name="Main bank" data-how="open banking">
-              <div class="l1"><span>Main bank</span><span class="st">access expired</span></div>
-              <div class="l2">open banking</div>
-              <div class="fu-form"><p>The consent you gave the bank has expired. It has to be renewed on the bank's side.</p><button type="button">Reconnect to the bank</button></div>
-            </div>
-            <div class="fu-conn re" data-name="Life insurance savings" data-how="customer portal">
-              <div class="l1"><span>Life insurance savings</span><span class="st">login rejected</span></div>
-              <div class="l2">customer portal</div>
-              <div class="fu-form"><span class="field">Username</span><span class="field">Password</span><button type="button">Save and sync</button></div>
-            </div>
-          </div>
-          <div class="fu-group">Up to date</div>
-          <div class="fu-ok">
-            <div class="fu-conn ok"><div class="l1"><span>Online bank</span><span class="st">2 h ago</span></div><div class="l2">open banking</div></div>
-            <div class="fu-conn ok"><div class="l1"><span>Retirement savings plan</span><span class="st">2 h ago</span></div><div class="l2">customer portal</div></div>
-            <div class="fu-conn ok"><div class="l1"><span>Account with no online access</span><span class="st">statement of the 1<sup>st</sup></span></div><div class="l2">pasted CSV statement</div></div>
-            <div class="fu-conn ok"><div class="l1"><span>Mortgage</span><span class="st">entered</span></div><div class="l2">manual entry</div></div>
-          </div>
+        <div class="xp-shots">
+          <span class="xp-shot"><img src="/img/experimental/futurun-ajouter.jpg" alt="Futurun on a phone: the Add an account sheet offers open banking, customer portal, Binance, CSV import and manual entry" width="780" height="1688" loading="lazy"></span>
+          <span class="xp-shot"><img src="/img/experimental/futurun-compte.jpg" alt="The panel of a bank account: open banking method, up to date, synced 5 hours ago, and the steps to connect a bank" width="780" height="1688" loading="lazy"></span>
         </div>
-        <figcaption style="margin-left:auto;margin-right:auto;text-align:center">The connections screen, redrawn with made-up accounts. Access that needs renewing goes to the top, with its form open. Renew one.</figcaption>
+        <figcaption>Futurun on a phone, in French. Left, the method is chosen according to the source when adding an account; right, the panel of an account connected through open banking, with its status and the one-time setup steps. Amounts, runway and institution pixelated.</figcaption>
       </figure>
 
       <p>Futurun puts reconnection at the center. The README states the principle: "one connector per source, each with its own method." All connectors follow the same contract, though. Each returns accounts and transactions, and when access expires, raises the "reconnect needed" error, which moves the source to the top of the screen. The method only changes the shape of the form: a username, a key, a file, or a round trip to the bank.</p>
@@ -144,25 +108,6 @@
 
     </div>
   </article>
-<script>
-(function(){
-  var phone = document.getElementById('fu-phone');
-  if (!phone) return;
-  var ok = phone.querySelector('.fu-ok');
-  phone.querySelectorAll('.fu-renew .fu-conn button').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var c = btn.closest('.fu-conn');
-      c.classList.remove('re'); c.classList.add('ok');
-      c.querySelector('.st').textContent = 'just now';
-      c.querySelector('.fu-form').remove();
-      ok.insertBefore(c, ok.firstChild);
-      if (!phone.querySelector('.fu-renew .fu-conn')) {
-        var g = phone.querySelector('.fu-group'); g.textContent = 'To renew · none';
-      }
-    });
-  });
-})();
-</script>
 
     <nav class="xp-nav">
       <a href="/en/experimental/recherche-emploi"><small>← Previous</small>Job search</a>

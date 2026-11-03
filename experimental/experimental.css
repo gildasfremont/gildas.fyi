@@ -1,6 +1,6 @@
 /* ------------------------------------------------
    Expérimental
-   Commun : typographie, espacements, listing et navigation.
+   Commun : typographie, espacements, cadre des captures, listing et navigation.
    Tout le reste vit dans la page du projet.
    ------------------------------------------------ */
 
@@ -45,6 +45,17 @@
 .xp-kicker a:hover { color: var(--mid); }
 
 .xp-crumb { margin-bottom: 0.4rem; }
+
+/* ---------- Captures d'écran ---------- */
+
+.xp-shot img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.xp-shot.narrow { max-width: 14rem; }
+.xp-shots { display: grid; grid-template-columns: repeat(2, minmax(0, 15rem)); gap: 1.25rem; align-items: start; }
+.xp-shots .xp-shot { display: block; }
+
+@media (max-width: 600px) {
+  .xp-shots { grid-template-columns: 1fr; }
+}
 
 /* ---------- Listing ---------- */
 

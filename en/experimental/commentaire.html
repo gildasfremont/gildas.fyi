@@ -23,19 +23,6 @@
   <link rel="alternate" type="text/markdown" href="/en/experimental/context/commentaire.md" title="Full write-up">
   <link rel="stylesheet" href="/experimental/experimental.css">
   <style>
-.cm-versus { display: grid; grid-template-columns: 1fr 1.7fr; gap: 1rem; }
-.cm-pane { border: 1px solid var(--border); border-radius: 8px; background: var(--white); padding: 1rem; }
-.cm-pane > .xp-kicker { margin-bottom: 0.8rem; }
-.cm-bubble { font-size: 13px; line-height: 1.5; color: var(--dark); padding: 0.5rem 0.65rem; border-radius: 10px; margin-bottom: 0.55rem; max-width: 92%; }
-.cm-bubble.me { background: #eef1ec; margin-left: auto; border-bottom-right-radius: 3px; }
-.cm-bubble.ai { background: var(--bg); border: 1px solid var(--border); border-bottom-left-radius: 3px; }
-.cm-bubble q { display: block; quotes: none; font-size: 12px; color: var(--light); border-left: 2px solid var(--subtle); padding-left: 0.45rem; margin-bottom: 0.3rem; }
-.cm-doc { display: grid; grid-template-columns: 1fr 9.5rem; gap: 1rem; }
-.cm-doc .txt { font-size: 14px; line-height: 1.75; color: var(--mid); margin: 0 !important; }
-.cm-doc mark { background: rgba(var(--xp-pause), .2); color: var(--black); border-bottom: 1px solid rgb(var(--xp-pause)); }
-.cm-note { border-left: 2px solid rgb(var(--xp-pause)); padding: 0.1rem 0 0.1rem 0.5rem; margin-bottom: 0.65rem; font-size: 12.5px; color: var(--mid); line-height: 1.45; }
-.cm-note.ai { border-left-color: var(--black); }
-.cm-note small { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); }
 .cm-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 1.5rem 0 2rem; font-size: 13px; color: var(--mid); }
 .cm-flow span { border: 1px solid var(--border); border-radius: 99px; padding: 0.2rem 0.7rem; background: var(--white); }
 .cm-flow i { font-style: normal; color: var(--light); }
@@ -60,7 +47,7 @@
 .cm-relay div + div { border-left: 1px solid var(--border); }
 .cm-relay b { display: block; font-size: 14px; color: var(--black); margin-bottom: 0.2rem; }
 @media (max-width: 700px) {
-  .cm-versus, .cm-doc, .cm-relay { grid-template-columns: 1fr; }
+  .cm-relay { grid-template-columns: 1fr; }
   .cm-relay div + div { border-left: none; border-top: 1px solid var(--border); }
   .cm-row { grid-template-columns: 1fr 5.5rem; }
   .cm-row .cm-scale { grid-column: 1 / -1; grid-row: 2; margin-top: 1rem; }
@@ -90,31 +77,12 @@
 
       <p>To discuss a text with an AI in a chat, you copy the passage, wait for the answer, then copy the next passage. The conversation grows into a long thread, while each remark belongs to a specific spot in the text, and you end up losing track of which paragraph an answer was about.</p>
 
-      <figure>
-      <div class="cm-versus">
-        <figure class="cm-pane" style="margin:0">
-          <span class="xp-kicker">In a chat</span>
-          <div class="cm-bubble me"><q>what prevents the tool from working as its users expect</q>Too abstract, this needs an example.</div>
-          <div class="cm-bubble ai">You could cite a concrete case, such as…</div>
-          <div class="cm-bubble me"><q>standard design mistakes</q>Which ones?</div>
-          <div class="cm-bubble ai">The next paragraph describes several…</div>
-        </figure>
-        <figure class="cm-pane" style="margin:0">
-          <span class="xp-kicker">In the margin</span>
-          <div class="cm-doc">
-            <p class="txt">The diagnosis does not address business decisions or functional coverage. It addresses <mark>what prevents the tool from working as its users expect</mark>, and the reasons why that persists. The analysis reveals five categories of dysfunctions that, taken individually, look like <mark>standard design mistakes</mark>.</p>
-            <div>
-              <div class="cm-note"><small>said out loud</small>"Too abstract, this needs an example."</div>
-              <div class="cm-note"><small>said out loud · question</small>"Which ones?"</div>
-              <div class="cm-note ai"><small>answer</small>The kanban in the next paragraph is one.</div>
-            </div>
-          </div>
-        </figure>
-      </div>
-      <figcaption>A redrawn illustration, on an excerpt from one of my articles. The AI's answers are examples.</figcaption>
-      </figure>
-
       <p>Commentaire tries the other layout. You read a document, hold down a key to speak, and the remark attaches itself in the margin, level with the passage you were reading. An AI co-reader stays silent while you read and answers in the same margin when you ask it a question.</p>
+
+      <figure class="xp-shot">
+        <img src="/img/experimental/commentaire-marge.jpg" alt="The Commentaire app: a text on the left, and in the margin a comment and a question attached to their paragraphs, with Opus's answer" width="1600" height="1000" loading="lazy">
+        <figcaption>The app's interface, in French, loaded from its public code with the repository's test essay. With no compiled engine, the remarks and Opus's answer are sent by hand, in the engine's format.</figcaption>
+      </figure>
 
       <h2>How a remark travels</h2>
 
