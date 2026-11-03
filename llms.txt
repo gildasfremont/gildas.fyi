@@ -18,10 +18,6 @@ Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équi
 - monbanquet.fr (directeur produit, 2017–2019) — Traiteur en ligne. Outil commercial : devis sur-mesure en 30 min vs. plusieurs jours. Funnel d'acquisition +50 %. Racheté par B2B Food Group (2020).
 - zoneadsl.com (directeur produit, 2019–2020) — 1,2 M visiteurs/mois. Refonte des parcours d'acquisition et du CMS. Architecture d'information encore utilisée aujourd'hui. Racheté par hipto (2026).
 
-## Portfolio
-- Eight product cases and a side project (EN) : https://gildas.fyi/en/portfolio
-- Huit cas produit et un projet perso (FR) : https://gildas.fyi/portfolio
-
 ## Projets expérimentaux
 Outils construits avec Claude Code pour ses propres problèmes, chacun avec un dossier complet en Markdown. Index : https://gildas.fyi/experimental/llms.txt (en anglais : https://gildas.fyi/en/experimental/llms.txt)
 - CallRecorder, enregistrer et transcrire ses appels sur Mac : https://gildas.fyi/experimental/contexte/callrecorder.md
