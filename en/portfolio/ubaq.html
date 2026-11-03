@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UBAQ, auditing a healthcare compliance product — Gildas Frémont</title>
+  <meta name="description" content="Five interviews and a review of the application, with no tests and no analytics. The interface defects were the symptoms of an organisation: solutions handed down instead of problems, a roadmap driven by migrations, no product expertise.">
+  <link rel="canonical" href="https://gildas.fyi/en/portfolio/ubaq">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/ubaq">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/ubaq">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/ubaq">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="UBAQ, auditing a healthcare compliance product — Gildas Frémont">
+  <meta property="og:description" content="Five interviews and a review of the application, with no tests and no analytics. The interface defects were the symptoms of an organisation: solutions handed down instead of problems, a roadmap driven by migrations, no product expertise.">
+  <meta property="og:url" content="https://gildas.fyi/en/portfolio/ubaq">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_GB">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.ub-gap { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0 2rem; max-width: 40em; }
+.ub-gap > div { border-top: 2px solid var(--black); padding-top: 0.5rem; }
+.ub-gap > div + div { border-top-color: rgb(var(--pf-accent)); }
+.ub-gap b { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); margin-bottom: 0.5rem; font-weight: 500; }
+.ub-gap ul { list-style: none; margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--dark); }
+.ub-gap li span { color: var(--light); font-size: 13px; }
+.ub-loop { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 1rem 0 1.75rem; font-size: 14px; color: var(--mid); }
+.ub-loop span { border: 1px solid var(--border); border-radius: 99px; padding: 0.25rem 0.75rem; background: var(--white); color: var(--dark); }
+.ub-loop i { font-style: normal; color: var(--light); }
+.ub-reg { margin: 1.25rem 0 2rem; max-width: 42em; border-top: 1px solid var(--border); }
+.ub-reg div { display: grid; grid-template-columns: 8rem 1fr 1fr; gap: 0.6rem 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.45; color: var(--mid); }
+.ub-reg div b { color: var(--black); font-weight: 600; }
+.ub-reg div.hd span { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); }
+.ub-reg div em { font-style: normal; color: var(--light); }
+.ub-rule { margin: 1.5rem 0 2rem; max-width: 36em; padding-left: 1rem; border-left: 2px solid rgb(var(--pf-accent)); }
+.ub-rule p { margin: 0 !important; font-size: 17px !important; color: var(--black) !important; }
+@media (max-width: 600px) { .ub-gap { grid-template-columns: 1fr; } .ub-reg div { grid-template-columns: 1fr; gap: 0.15rem; } .ub-reg div.hd { display: none; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-ubaq">
+
+  <nav class="lang-toggle">
+    <a href="/en/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/en/portfolio">Portfolio</a> · UBAQ, June 2025</p>
+      <h1>Five interviews to find, behind the interface of a healthcare compliance software that resisted every fix, the organisation that produced it</h1>
+      <p class="article-page-subtitle">The audit of NTU, UBAQ's platform for declaring ties of interest between pharmaceutical companies and healthcare professionals</p>
+      <p class="article-meta">Product audit, then support for the team on execution · assignment via Grandwork · <a href="/en/audit-ubaq-methode">the article that details the method</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>UBAQ sells compliance software to the healthcare industry. NTU handles the transparency of ties of interest between pharmaceutical companies and healthcare professionals, under the French law regulating benefits in kind. Compliance software is bought because the law requires it, and kept if the people who use it every day recognise their work in it. Customers were migrating from the old product to an interface that made their lives harder, the team could feel the interface working against them, and several fixes had not held. The brief fitted in one sentence: understand what is wrong, and say what to do.</p>
+
+      <h2>Five interviews, no tests</h2>
+
+      <p>The reflex would have been user tests and analytics. On a niche B2B product with few active users, the quantitative signal is mostly noise, and tests would have confirmed symptoms the team already saw. I chose five internal interviews with different profiles, and my own review of the application in the staging environment. The interviews cross what people believe the tool does with the constraints its builders were working under: that gap is where the blind spots live. The cost: a diagnosis with no figure to set against a disagreement.</p>
+
+      <h2>What the interface showed</h2>
+
+      <div class="ub-gap">
+        <div>
+          <b>What users think in</b>
+          <ul><li>Expenses</li><li>Customers</li><li>Events, donations, contracts, <span>kept separate</span></li></ul>
+        </div>
+        <div>
+          <b>What the system showed them</b>
+          <ul><li>A single object, “manifestation”</li><li>Three concepts lumped together</li><li>A kanban with no flow</li><li>A menu that changes with the data</li></ul>
+        </div>
+      </div>
+
+      <p>The technical model had been simplified at the expense of the mental model of the people who use it every day. The rest of the list is of the same order: a kanban with no drag and drop and non-linear stages, a table in disguise that promises a flow it does not show, forms that mix four kinds of information on a single screen, dense through a refusal to choose.</p>
+
+      <h2>Why it held</h2>
+
+      <p>Each of these points could have been fixed on its own. The useful question was why the kanban was in that state when the team knew it was failing. The interviews led back to the mechanisms. The team received solutions to build, never problems to solve. The roadmap was driven by customer migrations, churn managed one case at a time. With no product expertise in the room, each feature landed where it was cheapest to build.</p>
+
+      <div class="ub-loop"><span>A quick fix</span><i>→</i><span>More complexity</span><i>→</i><span>More pressure</span><i>→</i><span>A quicker fix</span><i>↺</i></div>
+
+      <h2>Three registers, not one</h2>
+
+      <p>An audit that stops at the interface produces a list of fixes, useful and fragile: if the conditions that produced the problems persist, they come back in other forms within a few months.</p>
+
+      <div class="ub-reg">
+        <div class="hd"><span>Register</span><span>What it changes</span><span>Why not on its own</span></div>
+        <div><b>Interface</b><span>Objects that match the business concepts, a view built for the real flow, stable navigation, forms split up.</span><em>Repainting a wall whose foundations are moving.</em></div>
+        <div><b>Skills</b><span>UX and product expertise, hired, borrowed or grown.</span><em>Better diagnosis of problems nobody has time to deal with.</em></div>
+        <div><b>Process</b><span>A prioritisation framework, a way out of reactive mode, protected time for coherence.</span><em>A framework nobody has time to apply stays a document.</em></div>
+      </div>
+
+      <h2>What came of it</h2>
+
+      <p>The two-level diagnosis, the recommendations on three registers, then the corrective mockups and a roadmap reviewed with the team. The navigation overhaul started from those recommendations, and the support continued through execution. The team got out of emergency mode.</p>
+
+      <div class="ub-rule"><p>An interface problem that has survived several fixes is an organisational problem.</p></div>
+
+      <p>That is a delicate thing to say to a sponsor who commissioned an interface diagnosis. What followed showed it was the most useful lever: the team could make different trade-offs because it had words for what was stuck. The corrective mockups belong to the client: this page has no screens.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/en/portfolio/roles"><small>← Previous</small>Admin roles</a>
+      <a class="next" href="/en/portfolio/luko"><small>Next →</small>Luko</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

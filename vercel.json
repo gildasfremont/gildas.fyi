@@ -64,6 +64,10 @@
       "destination": "/en/experimental/index"
     },
     {
+      "source": "/en/portfolio",
+      "destination": "/en/portfolio/index"
+    },
+    {
       "source": "/en/:slug",
       "destination": "/articles/:slug-en"
     }

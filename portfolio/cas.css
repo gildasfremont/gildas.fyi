@@ -1,0 +1,104 @@
+/* ------------------------------------------------
+   Portfolio, une page par cas
+   Commun : typographie, espacements, cadre des pièces, navigation.
+   Tout le reste vit dans la page du cas.
+   ------------------------------------------------ */
+
+:root {
+  --pf-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --pf-accent: 242,123,63;
+}
+
+.pf-page .article-body > p,
+.pf-page .article-body > ul,
+.pf-page .article-body > ol { font-size: 16px; line-height: 1.65; max-width: 36em; }
+.pf-page .article-body > p { margin-bottom: 1rem; }
+.pf-page .article-body > ul,
+.pf-page .article-body > ol { margin: 0 0 1rem 1.2em; }
+.pf-page .article-body > ul li,
+.pf-page .article-body > ol li { margin-bottom: 0.35rem; }
+.pf-page .article-body h2 { margin: 2.5rem 0 0.75rem; }
+.pf-page .article-body figure { margin: 2rem 0; }
+.pf-page .article-body figcaption { font-size: 13px; color: var(--light); font-weight: 300; line-height: 1.5; margin-top: 0.6rem; max-width: 40em; }
+.pf-page code { font-family: var(--pf-mono); font-size: 0.85em; }
+
+.pf-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--light);
+  font-variation-settings: 'GEOM' 0;
+}
+.pf-kicker a { color: inherit; text-decoration: none; }
+.pf-kicker a:hover { color: var(--mid); }
+.pf-crumb { margin-bottom: 0.4rem; }
+
+/* Pièces : exports bruts, captures */
+.pf-piece img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); background: var(--white); }
+.pf-piece.narrow { max-width: 22rem; }
+.pf-piece.note img { padding: 0.6rem 0.8rem; background: #f4f4f3; }
+
+/* Navigation entre cas */
+.pf-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+}
+.pf-nav a { color: var(--mid); text-decoration: none; }
+.pf-nav a:hover { color: var(--black); }
+.pf-nav small { display: block; font-size: 11px; color: var(--light); letter-spacing: 0.08em; text-transform: uppercase; }
+.pf-nav .next { text-align: right; margin-left: auto; }
+
+/* ---------- Listing ---------- */
+
+.pf-intro { font-size: 16px; color: var(--mid); max-width: 34em; margin-top: 0.5rem; }
+.pf-intro a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--subtle); }
+.pf-intro a:hover { color: var(--black); }
+
+.pf-group { margin-top: 2.5rem; }
+.pf-group-title {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--light);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+  font-variation-settings: 'GEOM' 0;
+}
+
+.pf-item {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 0 1rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.pf-item:last-child { border-bottom: none; }
+.pf-when { font-size: 0.7rem; font-weight: 300; color: var(--light); line-height: 1.35; padding-top: 0.15rem; }
+.pf-title { font-size: 0.8rem; font-weight: 600; line-height: 1.35; font-variation-settings: 'GEOM' 0; letter-spacing: -0.005em; }
+.pf-title a { color: var(--black); text-decoration: none; }
+.pf-title a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--subtle); }
+.pf-by { font-size: 0.6rem; color: var(--mid); margin-top: 0.2rem; }
+.pf-proof { font-size: 0.6rem; font-style: italic; color: var(--light); margin-top: 0.05rem; display: flex; align-items: baseline; gap: 0.35rem; }
+.pf-dot { display: inline-block; width: 0.4rem; height: 0.4rem; border-radius: 50%; flex-shrink: 0; transform: translateY(-0.05rem); background: rgb(var(--pf-accent)); }
+.pf-dot.none { background: var(--subtle); }
+.pf-abstract { font-size: 0.62rem; font-weight: 300; color: var(--mid); line-height: 1.6; margin-top: 0.5rem; max-width: 32em; }
+.pf-links { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; margin-top: 0.55rem; font-size: 0.55rem; font-weight: 500; font-variation-settings: 'GEOM' 0; }
+.pf-links a { color: var(--dark); text-decoration: none; }
+.pf-links a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+@media (max-width: 600px) {
+  .pf-item { grid-template-columns: 1fr; }
+  .pf-when { margin-bottom: 0.2rem; }
+  .pf-when br { display: none; }
+  .pf-when span { margin-left: 0.3em; }
+}

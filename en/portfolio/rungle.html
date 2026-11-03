@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rungle, writing a constraint in plain language and running it — Gildas Frémont</title>
+  <meta name="description" content="A decision-support SaaS for the supply chain, built on a constraint solver: the rule is written as a sentence, its translation for the solver appears underneath. Stopped in early 2026, for lack of a pilot customer.">
+  <link rel="canonical" href="https://gildas.fyi/en/portfolio/rungle">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/rungle">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/rungle">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/rungle">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Rungle, writing a constraint in plain language and running it — Gildas Frémont">
+  <meta property="og:description" content="A decision-support SaaS for the supply chain, built on a constraint solver: the rule is written as a sentence, its translation for the solver appears underneath. Stopped in early 2026, for lack of a pilot customer.">
+  <meta property="og:url" content="https://gildas.fyi/en/portfolio/rungle">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_GB">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.ru-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; margin: 2rem 0 !important; }
+.ru-pair figure { margin: 0 !important; }
+.ru-rule { margin: 1.5rem 0 2rem; max-width: 36em; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.ru-rule div { padding: 0.8rem 1rem; font-size: 15px; line-height: 1.5; }
+.ru-rule .fr { color: var(--black); font-size: 17px; }
+.ru-rule .mz { font-family: var(--pf-mono); font-size: 13px; color: var(--dark); background: var(--bg); border-top: 1px solid var(--border); }
+.ru-rule .pm { color: var(--mid); border-top: 1px dashed var(--border); font-size: 13.5px; }
+.ru-four { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin: 1.25rem 0 2rem; max-width: 40em; }
+.ru-four div { border-top: 2px solid var(--black); padding-top: 0.45rem; font-size: 14px; line-height: 1.45; color: var(--mid); }
+.ru-four b { display: block; color: var(--black); font-weight: 600; font-size: 15px; }
+.ru-stop { margin: 1.5rem 0 2rem; max-width: 36em; padding-left: 1rem; border-left: 2px solid rgb(var(--pf-accent)); }
+.ru-stop p { margin: 0 !important; font-size: 17px !important; color: var(--black) !important; }
+@media (max-width: 600px) { .ru-pair { grid-template-columns: 1fr; } .ru-four { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-rungle">
+
+  <nav class="lang-toggle">
+    <a href="/en/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/en/portfolio">Portfolio</a> · Rungle, 2025 and 2026</p>
+      <h1>A decision tool for the supply chain, where the constraint is written as a sentence and its translation for the solver appears underneath</h1>
+      <p class="article-page-subtitle">Rungle, a decision-support tool for the supply chain, and the stopping criterion set before starting</p>
+      <p class="article-meta">Late 2025 to early 2026 · co-founder and product manager, with an operations research engineer · my own product, run alongside a client</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>Stock is cash tied up, and in most companies it is decided in Excel. Rungle set out to answer three questions about a multi-tier network: where the stock is, where it should be, when to move it. Behind it, a constraint solver. In front, the problem with this kind of product: constrained optimisation is an engineer's subject, and the people who know the real constraints are planners. As long as the rule has to be written by a solver specialist, the product never leaves the lab.</p>
+
+      <h2>The rule, and its translation underneath</h2>
+
+      <figure class="pf-piece narrow" style="max-width:36rem">
+        <img src="/img/portfolio/rungle-regle.jpg" alt="The rule editor: the sentence “An harbour cannot be more than 110% full”, underneath a rephrasing, its MiniZinc translation and the linked parameters, Boats and Harbours" width="700" height="710" loading="lazy">
+        <figcaption>The rule editor, on the working board. The example is a harbour and its boats; the real case was warehouses and pallets.</figcaption>
+      </figure>
+
+      <div class="ru-rule">
+        <div class="fr">A harbour cannot be more than 110% full.</div>
+        <div class="mz">Sum(harbour.boats.size) &lt; harbour.capacity</div>
+        <div class="pm">Parameters involved: Boats, size and home harbour · Harbours, capacity and boats.</div>
+      </div>
+
+      <p>The user writes the rule the way they would say it. Just underneath, the interface shows what the solver understood, in its own language, with the parameters the sentence calls on. The user keeps control of the translation: if it is wrong, they see it before running anything. The language model is there to formalise the rule and to explain the recommendation. The decision itself stays computed and verifiable.</p>
+
+      <h2>The model before the screens</h2>
+
+      <p>Anything that can be written in a rule has to exist in the model. Four notions are enough.</p>
+
+      <div class="ru-four">
+        <div><b>Entities</b>What gets moved or transformed. A product, an order, a batch.</div>
+        <div><b>Resources</b>What is used to do it. A machine, a lorry, an operator.</div>
+        <div><b>Activities</b>The processes that act on entities. Assemble, transport, store.</div>
+        <div><b>Events</b>The state changes that start or interrupt an activity.</div>
+      </div>
+
+      <div class="ru-pair">
+        <figure class="pf-piece">
+          <img src="/img/portfolio/rungle-ressources.jpg" alt="The resource editor: Boats and Harbour with their parameters, the form for adding a parameter with its type, domain, value to optimise and rules" width="1240" height="940" loading="lazy">
+          <figcaption>Resources and their parameters. Each parameter has a type, a domain, and can be the value to optimise.</figcaption>
+        </figure>
+        <figure class="pf-piece narrow note">
+          <img src="/img/portfolio/rungle-schema.jpg" alt="The four domain definitions and the SQL schema: Entity, Flow, Ressource, Allocation, Trigger, Activity, Event" width="560" height="1120" loading="lazy">
+          <figcaption>The four definitions and the data schema, laid out next to the screens on the same board.</figcaption>
+        </figure>
+      </div>
+
+      <h2>The running application</h2>
+
+      <figure class="pf-piece">
+        <img src="/img/portfolio/rungle-app.jpg" alt="A capture of the application: scenario cards for France, 500 scenarios over 12 weeks, with margin, loss, days of stock, stock-outs" width="1400" height="760" loading="lazy">
+        <figcaption>The application running locally: scenario cards, five hundred scenarios over twelve weeks, with margin, loss, days of stock and stock-out rate. Sample data.</figcaption>
+      </figure>
+
+      <h2>What the field taught</h2>
+
+      <p>“SKU” does not mean the same thing to different teams within the same company. A brand selling on several marketplaces cannot arbitrate its stock between them, because the policies and promotion windows differ. Forecasts are assumptions, and they are better treated as such, signed, than as data.</p>
+
+      <h2>The stopping criterion</h2>
+
+      <div class="ru-stop"><p>A pilot customer signed by the end of January 2026, or we stop.</p></div>
+
+      <p>The criterion was set before starting, by the two of us, so that we would not have to decide it at the moment it would hurt. At the end of January, no pilot customer. Rungle stopped in early 2026.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/en/portfolio/navigation"><small>← Previous</small>Suite navigation</a>
+      <a class="next" href="/en/portfolio/chunk"><small>Next →</small>Chunk</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

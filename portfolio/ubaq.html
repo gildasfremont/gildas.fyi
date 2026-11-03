@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UBAQ, l'audit d'un produit de conformité santé — Gildas Frémont</title>
+  <meta name="description" content="Cinq entretiens et une revue de l'application, sans tests ni analytics. Les défauts d'interface étaient les symptômes d'une organisation : des solutions reçues au lieu de problèmes, une roadmap tirée par les migrations, pas d'expertise produit.">
+  <link rel="canonical" href="https://gildas.fyi/portfolio/ubaq">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/ubaq">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/ubaq">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/ubaq">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="UBAQ, l'audit d'un produit de conformité santé — Gildas Frémont">
+  <meta property="og:description" content="Cinq entretiens et une revue de l'application, sans tests ni analytics. Les défauts d'interface étaient les symptômes d'une organisation : des solutions reçues au lieu de problèmes, une roadmap tirée par les migrations, pas d'expertise produit.">
+  <meta property="og:url" content="https://gildas.fyi/portfolio/ubaq">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.ub-gap { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0 2rem; max-width: 40em; }
+.ub-gap > div { border-top: 2px solid var(--black); padding-top: 0.5rem; }
+.ub-gap > div + div { border-top-color: rgb(var(--pf-accent)); }
+.ub-gap b { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); margin-bottom: 0.5rem; font-weight: 500; }
+.ub-gap ul { list-style: none; margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--dark); }
+.ub-gap li span { color: var(--light); font-size: 13px; }
+.ub-loop { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 1rem 0 1.75rem; font-size: 14px; color: var(--mid); }
+.ub-loop span { border: 1px solid var(--border); border-radius: 99px; padding: 0.25rem 0.75rem; background: var(--white); color: var(--dark); }
+.ub-loop i { font-style: normal; color: var(--light); }
+.ub-reg { margin: 1.25rem 0 2rem; max-width: 42em; border-top: 1px solid var(--border); }
+.ub-reg div { display: grid; grid-template-columns: 8rem 1fr 1fr; gap: 0.6rem 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.45; color: var(--mid); }
+.ub-reg div b { color: var(--black); font-weight: 600; }
+.ub-reg div.hd span { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); }
+.ub-reg div em { font-style: normal; color: var(--light); }
+.ub-rule { margin: 1.5rem 0 2rem; max-width: 36em; padding-left: 1rem; border-left: 2px solid rgb(var(--pf-accent)); }
+.ub-rule p { margin: 0 !important; font-size: 17px !important; color: var(--black) !important; }
+@media (max-width: 600px) { .ub-gap { grid-template-columns: 1fr; } .ub-reg div { grid-template-columns: 1fr; gap: 0.15rem; } .ub-reg div.hd { display: none; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-ubaq">
+
+  <nav class="lang-toggle">
+    <a href="/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/portfolio">Portfolio</a> · UBAQ, juin 2025</p>
+      <h1>Cinq entretiens pour trouver, derrière l'interface d'un logiciel de conformité santé qui résistait aux correctifs, l'organisation qui la produisait</h1>
+      <p class="article-page-subtitle">L'audit de NTU, la plateforme d'UBAQ qui déclare les liens d'intérêt entre laboratoires et professionnels de santé</p>
+      <p class="article-meta">Audit produit, puis accompagnement de l'équipe sur l'exécution · mission via Grandwork · <a href="/audit-ubaq-methode">l'article qui en détaille la méthode</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>UBAQ vend des logiciels de conformité aux industriels de la santé. NTU gère la transparence des liens d'intérêt entre laboratoires et professionnels de santé, dans le cadre de la loi d'encadrement des avantages. Un logiciel de conformité est acheté parce que la loi l'impose, et gardé si les gens qui l'utilisent tous les jours y retrouvent leur travail. Les clients migraient depuis l'ancien produit vers une interface qui leur compliquait la vie, l'équipe sentait l'interface travailler contre elle, et plusieurs correctifs n'avaient pas tenu. Le cadrage tenait en une phrase&nbsp;: comprendre ce qui ne va pas, et dire quoi faire.</p>
+
+      <h2>Cinq entretiens, pas de tests</h2>
+
+      <p>Le réflexe aurait été des tests utilisateurs et les analytics. Sur un produit B2B de niche avec peu d'utilisateurs actifs, le signal quantitatif est surtout du bruit, et les tests auraient confirmé des symptômes que l'équipe voyait déjà. J'ai choisi cinq entretiens internes avec des profils différents, et ma propre revue de l'application en recette. Les entretiens croisent ce que les gens croient que l'outil fait avec les contraintes sous lesquelles ses constructeurs travaillaient&nbsp;: c'est dans cet écart que se logent les angles morts. Le coût&nbsp;: un diagnostic sans chiffre à opposer à un désaccord.</p>
+
+      <h2>Ce que l'interface montrait</h2>
+
+      <div class="ub-gap">
+        <div>
+          <b>Ce que pensent les utilisateurs</b>
+          <ul><li>Des dépenses</li><li>Des clients</li><li>Des événements, des dons, des contrats, <span>gardés séparés</span></li></ul>
+        </div>
+        <div>
+          <b>Ce que le système leur montrait</b>
+          <ul><li>Un seul objet, «&nbsp;manifestation&nbsp;»</li><li>Trois concepts regroupés</li><li>Un kanban sans flux</li><li>Un menu qui change avec les données</li></ul>
+        </div>
+      </div>
+
+      <p>Le modèle technique avait été simplifié au détriment du modèle mental de ceux qui l'utilisent tous les jours. Le reste de la liste est du même ordre&nbsp;: un kanban sans glisser-déposer et à étapes non linéaires, un tableau déguisé qui promet un flux qu'il ne montre pas, des formulaires qui mélangent quatre types d'information sur un seul écran, denses par refus de choisir.</p>
+
+      <h2>Pourquoi ça a tenu</h2>
+
+      <p>Chacun de ces points aurait pu être corrigé seul. La question utile était pourquoi le kanban était dans cet état alors que l'équipe le savait défaillant. Les entretiens ont remonté aux mécanismes. L'équipe recevait des solutions à construire, jamais des problèmes à résoudre. La roadmap était pilotée par la migration des clients, une gestion du churn au coup par coup. Sans expertise produit dans la pièce, chaque fonctionnalité atterrissait là où elle était la moins chère à construire.</p>
+
+      <div class="ub-loop"><span>Un correctif rapide</span><i>→</i><span>De la complexité en plus</span><i>→</i><span>De la pression en plus</span><i>→</i><span>Un correctif plus rapide</span><i>↺</i></div>
+
+      <h2>Trois registres, pas un</h2>
+
+      <p>Un audit qui s'arrête à l'interface produit une liste de corrections, utile et fragile&nbsp;: si les conditions qui ont produit les problèmes persistent, ils reviennent sous d'autres formes en quelques mois.</p>
+
+      <div class="ub-reg">
+        <div class="hd"><span>Registre</span><span>Ce que ça change</span><span>Pourquoi pas seul</span></div>
+        <div><b>Interface</b><span>Des objets qui correspondent aux concepts métier, une vue construite pour le vrai flux, une navigation stable, des formulaires dégroupés.</span><em>Repeindre un mur dont les fondations bougent.</em></div>
+        <div><b>Compétences</b><span>De l'expertise UX et produit, recrutée, empruntée ou développée.</span><em>Mieux diagnostiquer des problèmes que personne n'a le temps de traiter.</em></div>
+        <div><b>Process</b><span>Un cadre de priorisation, une sortie du mode réactif, du temps protégé pour la cohérence.</span><em>Un cadre que personne n'a le temps d'appliquer reste un document.</em></div>
+      </div>
+
+      <h2>Ce que ça a donné</h2>
+
+      <p>Le diagnostic à deux niveaux, les recommandations sur trois registres, puis les maquettes de correction et une roadmap revue avec l'équipe. La refonte de la navigation a démarré sur ces recommandations, et l'accompagnement s'est prolongé sur l'exécution. L'équipe est sortie du mode urgence.</p>
+
+      <div class="ub-rule"><p>Un problème d'interface qui a survécu à plusieurs correctifs est un problème d'organisation.</p></div>
+
+      <p>C'est délicat à dire à un commanditaire qui a commandé un diagnostic d'interface. La suite a montré que c'était le levier le plus utile&nbsp;: l'équipe a pu arbitrer autrement parce qu'elle avait des mots pour nommer ce qui coinçait. Les maquettes de correction appartiennent au client&nbsp;: cette page n'a pas d'écran.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/portfolio/roles"><small>← Précédent</small>Rôles admin</a>
+      <a class="next" href="/portfolio/luko"><small>Suivant →</small>Luko</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucca Formation, off-catalogue requests — Gildas Frémont</title>
+  <meta name="description" content="An employee requests a training course that is not in the catalogue: the decision tree written next to each screen, a state model, and a modal removed along the way.">
+  <link rel="canonical" href="https://gildas.fyi/en/portfolio/formation">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/formation">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/formation">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/formation">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Lucca Formation, off-catalogue requests — Gildas Frémont">
+  <meta property="og:description" content="An employee requests a training course that is not in the catalogue: the decision tree written next to each screen, a state model, and a modal removed along the way.">
+  <meta property="og:url" content="https://gildas.fyi/en/portfolio/formation">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_GB">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.fo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; margin: 2rem 0 !important; }
+.fo-pair figure { margin: 0 !important; }
+.fo-tree { margin: 1.5rem 0 2rem !important; max-width: 36em; border-left: 2px solid rgb(var(--pf-accent)); padding-left: 1rem; }
+.fo-tree p { margin: 0 0 0.5rem !important; font-size: 15px !important; }
+.fo-tree ul { list-style: none; margin: 0 0 0.75rem 1rem; font-size: 15px; color: var(--mid); line-height: 1.6; }
+.fo-tree ul li::before { content: '→ '; color: var(--light); }
+.fo-tree b { color: var(--black); font-weight: 600; }
+.fo-states { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 1rem 0 0.5rem; font-size: 14px; color: var(--dark); }
+.fo-states span { border: 1px solid var(--border); border-radius: 4px; padding: 0.3rem 0.7rem; background: #ece6fb; }
+.fo-states i { font-style: normal; color: var(--light); }
+@media (max-width: 600px) { .fo-pair { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-formation">
+
+  <nav class="lang-toggle">
+    <a href="/en/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/en/portfolio">Portfolio</a> · Lucca Formation, 2023 and 2025</p>
+      <h1>An off-catalogue training request: the decision tree written next to each screen, and a modal removed from a flow that was already designed</h1>
+      <p class="article-page-subtitle">Off-catalogue training requests at Lucca: four outcomes for one request, a state model, one screen fewer</p>
+      <p class="article-meta">Design support in 2023, redesign of the flow in February 2025 · fractional product director at Lucca</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>An employee can request a training course that is not in their company's catalogue. The training manager then has to decide: accept it as it is, attach it to a course that already exists, create a new one, or refuse. Each branch has different consequences for the training plan and the budget, and the product's screens mixed them up.</p>
+
+      <h2>The decision tree, written next to the screens</h2>
+
+      <p>Rather than redesigning, I put the real screens on a board, the list of requests, the detail of a request, the acceptance and edit modals, and wrote next to each one what can be done there at that moment.</p>
+
+      <div class="fo-pair">
+        <figure class="pf-piece">
+          <img src="/img/portfolio/formation-menus.jpg" alt="Two context menus of a request, with entries struck through, and below them the rewritten entries" width="460" height="420" loading="lazy">
+          <figcaption>The menus of a request, as they were. The struck-through entries are the ones that disappear or change name.</figcaption>
+        </figure>
+        <figure class="pf-piece note">
+          <img src="/img/portfolio/formation-arbres.jpg" alt="The options for an off-catalogue request written out as text: add the proposed course, choose an existing course, accept, refuse, cancel" width="820" height="420" loading="lazy">
+          <figcaption>The same options, written out in plain words, for an off-catalogue request. Three versions, left to right, down to the one that fits in two choices.</figcaption>
+        </figure>
+      </div>
+
+      <div class="fo-tree">
+        <p><b>An off-catalogue request comes in.</b> To be accepted, it has to be attached to a course in the catalogue.</p>
+        <ul>
+          <li>Add the proposed course to the catalogue, then accept.</li>
+          <li>Choose an existing course, then accept.</li>
+          <li>Refuse.</li>
+        </ul>
+        <p>In every case, the request then lands among the requests to process, like those that come from the catalogue.</p>
+      </div>
+
+      <h2>Four objects, not two</h2>
+
+      <p>The product spoke of “requests” and “courses”. What happens in reality fits in four states, and this model is what made it possible to simplify the screens.</p>
+
+      <div class="fo-pair">
+        <figure class="pf-piece note">
+          <img src="/img/portfolio/formation-etats.jpg" alt="The board's state model: wish, enrolment request, course, enrolment" width="360" height="480" loading="lazy">
+          <figcaption>The state model, as it is on the board.</figcaption>
+        </figure>
+        <div>
+          <div class="fo-states"><span>Wish</span><i>what the employee expresses</i></div>
+          <div class="fo-states"><span>Course</span><i>what exists in the catalogue</i></div>
+          <div class="fo-states"><span>Enrolment request</span><i>a wish attached to a course</i></div>
+          <div class="fo-states"><span>Enrolment</span><i>an accepted request</i></div>
+          <p>An off-catalogue wish is not a request: it becomes one when a course exists to carry it. Until that link is made, no screen needs to offer “accept”.</p>
+        </div>
+      </div>
+
+      <h2>The modal removed</h2>
+
+      <figure class="pf-piece">
+        <img src="/img/portfolio/formation-modale.jpg" alt="The Accept requests modal, which asks which training plan to add the requests to, and the annotation: this modal is not needed" width="1000" height="240" loading="lazy">
+        <figcaption>The board annotation, as it is: “This modal is not needed. The training plans can be shown in the assignment interface.”</figcaption>
+      </figure>
+
+      <p>To accept a request, the product opened a window asking which training plan to file it under. The information fits in the assignment screen itself: the window was removed. It is a correction made along the way, on a flow that was already designed, and it is how I work most often: remove before adding.</p>
+
+      <h2>What remains of it</h2>
+
+      <p>The final deliverable on the customer side bears another product manager's name: the upstream work is mine, the clean-up is their team's. The screens and data on this page come from Lucca's demo instance.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/en/portfolio/impersonation"><small>← Previous</small>Impersonation</a>
+      <a class="next" href="/en/portfolio/navigation"><small>Next →</small>Suite navigation</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

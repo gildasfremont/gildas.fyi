@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synaxe, du ticket de pesée à la facture — Gildas Frémont</title>
+  <meta name="description" content="Un produit vendu comme une surcouche de capteurs, repositionné en outil de gestion et de conformité pour les carrières : cinq rôles, un modèle, et la chaîne du voyage à la facture, livrée avec deux développeurs.">
+  <link rel="canonical" href="https://gildas.fyi/portfolio/synaxe">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/synaxe">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/synaxe">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/synaxe">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Synaxe, du ticket de pesée à la facture — Gildas Frémont">
+  <meta property="og:description" content="Un produit vendu comme une surcouche de capteurs, repositionné en outil de gestion et de conformité pour les carrières : cinq rôles, un modèle, et la chaîne du voyage à la facture, livrée avec deux développeurs.">
+  <meta property="og:url" content="https://gildas.fyi/portfolio/synaxe">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.sy-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 1.25rem 0 1.75rem; font-size: 14px; color: var(--mid); }
+.sy-chain span { border: 1px solid var(--border); border-radius: 99px; padding: 0.25rem 0.75rem; background: var(--white); color: var(--dark); }
+.sy-chain i { font-style: normal; color: var(--light); }
+.sy-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; margin: 2rem 0 !important; }
+.sy-pair figure { margin: 0 !important; }
+.sy-quote { margin: 1.5rem 0 2rem; max-width: 36em; padding-left: 1rem; border-left: 2px solid rgb(var(--pf-accent)); }
+.sy-quote p { margin: 0 0 0.6rem !important; font-size: 15px !important; line-height: 1.55 !important; }
+.sy-quote small { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); margin-bottom: 0.15rem; }
+.sy-before { display: grid; grid-template-columns: 7rem 1fr 1fr; gap: 0.5rem 1rem; margin: 1.25rem 0 2rem; max-width: 40em; font-size: 14.5px; line-height: 1.5; }
+.sy-before > span { color: var(--light); }
+.sy-before > div { color: var(--mid); }
+.sy-before > div.after { color: var(--black); }
+.sy-before .hd { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+.sy-q { list-style: none; margin: 1rem 0 1.75rem !important; max-width: 36em; }
+.sy-q li { font-size: 15px; color: var(--dark); padding: 0.4rem 0; border-top: 1px solid var(--border); margin: 0 !important; }
+.sy-q li:last-child { border-bottom: 1px solid var(--border); }
+@media (max-width: 600px) { .sy-pair { grid-template-columns: 1fr; } .sy-before { grid-template-columns: 1fr; } .sy-before > span { margin-top: 0.4rem; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-synaxe">
+
+  <nav class="lang-toggle">
+    <a href="/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/portfolio">Portfolio</a> · Synaxe, décembre 2023 à août 2024</p>
+      <h1>Pour les carrières, du ticket de pesée à la facture&nbsp;: un produit capteurs repositionné en outil de conformité, et la chaîne livrée avec deux développeurs</h1>
+      <p class="article-page-subtitle">Dune, la suite de Synaxe pour les carrières et les centrales</p>
+      <p class="article-meta">Un audit, puis huit factures sur neuf mois · CPO à temps partagé · entretiens, modèle de données, maquettes, spécifications, livraison</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>Synaxe édite Dune, un logiciel pour les exploitants de carrières, de centrales à béton et de centrales à enrobés. Il se vendait comme une surcouche de capteurs sur les camions&nbsp;: savoir ce que le camion transporte et où il est. Les exploitants que j'ai interrogés parlaient d'autre chose. Ils déplacent des matériaux, dont des déchets, sous des obligations qui s'empilent, et leur difficulté n'était pas de mesurer ce qu'ils font mais de le prouver après coup. Un site qui ne peut pas déposer ses déclarations ne peut plus rien recevoir. La conformité a une ligne budgétaire chez le client&nbsp;; de meilleurs chiffres n'en ont pas.</p>
+
+      <div class="sy-before">
+        <span></span><div class="hd">Tel que vendu</div><div class="hd">Tel que repositionné</div>
+        <span>Produit</span><div>Une surcouche de capteurs sur les camions.</div><div class="after">Un outil de gestion et de conformité pour les sites.</div>
+        <span>Problème</span><div>Technique&nbsp;: la donnée n'est pas capturée.</div><div class="after">Réglementaire&nbsp;: la donnée existe et ne peut pas devenir une preuve.</div>
+        <span>Valeur</span><div>De meilleurs chiffres.</div><div class="after">Une facture juste et un dossier défendable quand l'inspecteur arrive.</div>
+      </div>
+
+      <h2>Cinq rôles, un bon de commande qui circule</h2>
+
+      <figure class="pf-piece note">
+        <img src="/img/portfolio/dune-roles.jpg" alt="Les cinq rôles écrits à la main sur le board : commercial, gars du chantier, transporteur, agent de bascule, comptable, et ce que chacun tient, du contrat à la facture" width="1140" height="720" loading="lazy">
+        <figcaption>Le premier board de la recherche, tel quel. Le commercial tient le contrat, le gars du chantier le bon de commande, l'agent de bascule la livraison, le comptable la facture. Et les questions qui ont décidé du modèle.</figcaption>
+      </figure>
+
+      <ul class="sy-q">
+        <li>Le prix est-il connu au moment de la commande&nbsp;? Si non, au moment de la livraison&nbsp;?</li>
+        <li>Les factures sont-elles validées par les commerciaux&nbsp;?</li>
+      </ul>
+
+      <p>Ces deux questions ont fait sortir le contrat de la commande. Le contrat est la grille de prix d'un client sur une période, la commande est ce qu'il faut livrer. Le prix peut n'être connu qu'à la facture.</p>
+
+      <h2>Le modèle</h2>
+
+      <div class="sy-chain"><span>Client</span><i>→</i><span>Contrat</span><i>→</i><span>Appel à livrer</span><i>→</i><span>Voyage, pesées</span><i>→</i><span>Livraison</span><i>→</i><span>Facture</span></div>
+
+      <figure class="pf-piece">
+        <img src="/img/portfolio/dune-modele.jpg" alt="Le modèle de données de la facturation : client, contrat avec ses dates et ses prix unitaires, commande, entrée-sortie avec camion et transporteur, livraison avec les quantités livrées, facture qui somme les livraisons" width="1568" height="490" loading="lazy">
+        <figcaption>Le modèle, tel quel dans le fichier. Le contrat porte les prix, la commande les quantités, le voyage les pesées, et la facture somme les livraisons.</figcaption>
+      </figure>
+
+      <figure class="pf-piece note">
+        <img src="/img/portfolio/dune-liens.jpg" alt="Les notes de raisonnement : un appel à livrer n'a pas besoin d'être lié à un chantier, si on facture des voyages on retrouve la quantité, le chantier, le client et le contrat avec le prix à appliquer" width="1568" height="664" loading="lazy">
+        <figcaption>Le raisonnement qui ferme le modèle&nbsp;: si on facture des voyages, chaque facture retrouve la quantité, le chantier, le client et le contrat, donc le prix. Un voyage sans chantier en crée un.</figcaption>
+      </figure>
+
+      <p>Le prix du transport, la plus grosse part du coût des granulats, dépend du jour, de la distance, de l'accès au chantier et du nombre de tours que fait le camion. Impossible à calculer juste. La réponse retenue, dans les commentaires du fichier avec le développeur&nbsp;: un champ à remplir à la commande, modifiable à la facture, et le calcul laissé aux commerciaux.</p>
+
+      <h2>Les écrans, dans l'ordre de la chaîne</h2>
+
+      <figure class="pf-piece note">
+        <img src="/img/portfolio/dune-etapes.jpg" alt="Les étapes de mise en place : création d'un client, d'un chantier, d'un contrat, des appels à livrer, puis le suivi par voyage, les pesées, les camions, le transporteur, puis la facturation des voyages" width="1568" height="296" loading="lazy">
+        <figcaption>Les étapes, dans l'ordre où un site les parcourt.</figcaption>
+      </figure>
+
+      <div class="sy-pair">
+        <figure class="pf-piece">
+          <img src="/img/portfolio/dune-appel.jpg" alt="Un appel à livrer : référence, numéro de commande client, client, produits à livrer avec prévu et réalisé, période de livraison, voyages effectués par transporteur" width="795" height="350" loading="lazy">
+          <figcaption>L'appel à livrer, ce qu'il reste à livrer sur une commande, et les voyages déjà faits.</figcaption>
+        </figure>
+        <figure class="pf-piece">
+          <img src="/img/portfolio/dune-voyage-panneau.jpg" alt="Un camion sur site et le panneau de création du voyage : appel à livrer, type de livraison, chantier, produits avec quantités prévues et livrées" width="896" height="560" loading="lazy">
+          <figcaption>Le camion est sur site, pesé à l'entrée. Le voyage se rattache à un appel à livrer.</figcaption>
+        </figure>
+      </div>
+
+      <div class="sy-pair">
+        <figure class="pf-piece">
+          <img src="/img/portfolio/dune-entree.jpg" alt="L'écran d'une entrée à facturer : entrée sud à 17 h 30 avec 48 tonnes, sortie nord à 17 h 49 avec 28 tonnes, poids net 10 tonnes, chargement, produits et bouton Facturer" width="896" height="560" loading="lazy">
+          <figcaption>Le camion est ressorti. Le poids net vient des deux pesées, et le bouton Facturer clôt la chaîne.</figcaption>
+        </figure>
+        <figure class="pf-piece">
+          <img src="/img/portfolio/dune-facture.jpg" alt="La facture d'un client, par chantier : chaque produit avec ses voyages dépliés, le prix unitaire, les tonnes et le total" width="600" height="660" loading="lazy">
+          <figcaption>La facture d'un client, par chantier. Chaque ligne de produit se déplie sur ses voyages.</figcaption>
+        </figure>
+      </div>
+
+      <p>Toutes les données de ces écrans sont des données de test.</p>
+
+      <h2>La conformité déchets</h2>
+
+      <p>Le second outil suit les déchets qui entrent sur un site&nbsp;: la déclaration d'acceptation préalable, avec le producteur, le transporteur, l'origine et la destination, et les deux façons de la signer, à la main ou électroniquement. Le fichier contient le service en ligne de l'État capturé, le formulaire reconstruit champ par champ et le circuit des signatures. Je ne montre pas ces écrans&nbsp;: ils reproduisent un formulaire administratif.</p>
+
+      <h2>Ce que ça a donné</h2>
+
+      <p>Les deux outils sont en production chez des clients, parmi lesquels des groupes du secteur, et ont amené de nouveaux contrats et des renouvellements. Le repositionnement est un choix des fondateurs, que j'ai argumenté à partir des entretiens. Ce qui a compté, c'est moins la présentation du repositionnement que les deux outils qui tournaient à la fin.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/portfolio/conformite-pharma"><small>← Précédent</small>Audit conformité pharma</a>
+      <a class="next" href="/portfolio/ornikar"><small>Suivant →</small>Ornikar</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

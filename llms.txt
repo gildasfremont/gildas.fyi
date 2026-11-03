@@ -18,6 +18,24 @@ Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équi
 - monbanquet.fr (directeur produit, 2017–2019) — Traiteur en ligne. Outil commercial : devis sur-mesure en 30 min vs. plusieurs jours. Funnel d'acquisition +50 %. Racheté par B2B Food Group (2020).
 - zoneadsl.com (directeur produit, 2019–2020) — 1,2 M visiteurs/mois. Refonte des parcours d'acquisition et du CMS. Architecture d'information encore utilisée aujourd'hui. Racheté par hipto (2026).
 
+## Portfolio
+Quinze cas de travail produit, 2014 à 2026, une page par cas avec les pièces qui en restent. Listing : https://gildas.fyi/portfolio (en anglais : https://gildas.fyi/en/portfolio)
+- Écrire les règles de l'impersonation, le mécanisme par lequel un administrateur agit au nom d'un salarié, que dix-huit produits RH utilisaient sans les connaître : https://gildas.fyi/portfolio/impersonation
+- Une demande de formation hors catalogue : l'arbre des choix écrit à côté de chaque écran, et une modale retirée d'un parcours déjà dessiné : https://gildas.fyi/portfolio/formation
+- Le menu d'une suite RH de dix-huit produits, traité comme un système et non comme une liste : https://gildas.fyi/portfolio/navigation
+- Un outil de décision pour la supply chain, où la contrainte s'écrit en une phrase et sa traduction pour le solveur s'affiche en dessous : https://gildas.fyi/portfolio/rungle
+- Une place de marché pour les tranches de marbre : un marché qu'on ne connaît pas, posé en quatre équations avant le premier écran : https://gildas.fyi/portfolio/chunk
+- Sept jours pour cartographier les six obligations légales que couvre un logiciel de conformité pharmaceutique, et dire au client que son problème n'était pas l'interface : https://gildas.fyi/portfolio/conformite-pharma
+- Pour les carrières, du ticket de pesée à la facture : un produit capteurs repositionné en outil de conformité, et la chaîne livrée avec deux développeurs : https://gildas.fyi/portfolio/synaxe
+- Inscrire les candidats au permis à la main dans quatre-vingt-seize préfectures, pour apprendre les règles avant de les coder : https://gildas.fyi/portfolio/ornikar
+- Dans un groupe de quatorze carrières, normaliser mille noms de pierres avant de choisir le moindre outil, pour qu'un prix de vente découle enfin d'un coût : https://gildas.fyi/portfolio/guinet
+- Chez un traiteur en ligne, mettre la marge et la charge des cuisines dans le générateur de devis, pour qu'un commercial ne promette plus l'impossible : https://gildas.fyi/portfolio/monbanquet
+- Un module de revue de salaires : vingt vues demandées par de vrais clients, trois gardées, une par moment de la campagne : https://gildas.fyi/portfolio/revue-salaires
+- Dans un logiciel RH, garder le moteur de permissions et changer le modèle mental : un rôle principal par personne, des accès complémentaires pour les exceptions : https://gildas.fyi/portfolio/roles
+- Cinq entretiens pour trouver, derrière l'interface d'un logiciel de conformité santé qui résistait aux correctifs, l'organisation qui la produisait : https://gildas.fyi/portfolio/ubaq
+- Refaire l'espace client de mon assureur à partir d'une seule règle, et garder la vente croisée comme une fonctionnalité : https://gildas.fyi/portfolio/luko
+- Repositionner un cabinet de recrutement vers les dirigeants, en prototypant le site avec les vraies données du cabinet : https://gildas.fyi/portfolio/getpro
+
 ## Projets expérimentaux
 Outils construits avec Claude Code pour ses propres problèmes, chacun avec un dossier complet en Markdown. Index : https://gildas.fyi/experimental/llms.txt (en anglais : https://gildas.fyi/en/experimental/llms.txt)
 - CallRecorder, enregistrer et transcrire ses appels sur Mac : https://gildas.fyi/experimental/contexte/callrecorder.md

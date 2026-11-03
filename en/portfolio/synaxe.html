@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synaxe, from weighbridge ticket to invoice — Gildas Frémont</title>
+  <meta name="description" content="A product sold as a layer over sensors, repositioned as a management and compliance tool for quarries: five roles, one model, and the chain from trip to invoice, delivered with two developers.">
+  <link rel="canonical" href="https://gildas.fyi/en/portfolio/synaxe">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/synaxe">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/synaxe">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/synaxe">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Synaxe, from weighbridge ticket to invoice — Gildas Frémont">
+  <meta property="og:description" content="A product sold as a layer over sensors, repositioned as a management and compliance tool for quarries: five roles, one model, and the chain from trip to invoice, delivered with two developers.">
+  <meta property="og:url" content="https://gildas.fyi/en/portfolio/synaxe">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_GB">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.sy-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 1.25rem 0 1.75rem; font-size: 14px; color: var(--mid); }
+.sy-chain span { border: 1px solid var(--border); border-radius: 99px; padding: 0.25rem 0.75rem; background: var(--white); color: var(--dark); }
+.sy-chain i { font-style: normal; color: var(--light); }
+.sy-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; margin: 2rem 0 !important; }
+.sy-pair figure { margin: 0 !important; }
+.sy-quote { margin: 1.5rem 0 2rem; max-width: 36em; padding-left: 1rem; border-left: 2px solid rgb(var(--pf-accent)); }
+.sy-quote p { margin: 0 0 0.6rem !important; font-size: 15px !important; line-height: 1.55 !important; }
+.sy-quote small { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); margin-bottom: 0.15rem; }
+.sy-before { display: grid; grid-template-columns: 7rem 1fr 1fr; gap: 0.5rem 1rem; margin: 1.25rem 0 2rem; max-width: 40em; font-size: 14.5px; line-height: 1.5; }
+.sy-before > span { color: var(--light); }
+.sy-before > div { color: var(--mid); }
+.sy-before > div.after { color: var(--black); }
+.sy-before .hd { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+.sy-q { list-style: none; margin: 1rem 0 1.75rem !important; max-width: 36em; }
+.sy-q li { font-size: 15px; color: var(--dark); padding: 0.4rem 0; border-top: 1px solid var(--border); margin: 0 !important; }
+.sy-q li:last-child { border-bottom: 1px solid var(--border); }
+@media (max-width: 600px) { .sy-pair { grid-template-columns: 1fr; } .sy-before { grid-template-columns: 1fr; } .sy-before > span { margin-top: 0.4rem; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-synaxe">
+
+  <nav class="lang-toggle">
+    <a href="/en/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/en/portfolio">Portfolio</a> · Synaxe, December 2023 to August 2024</p>
+      <h1>For quarries, from weighbridge ticket to invoice: a sensor product repositioned as a compliance tool, and the chain delivered with two developers</h1>
+      <p class="article-page-subtitle">Dune, the Synaxe suite for quarries and concrete plants</p>
+      <p class="article-meta">An audit, then eight invoices over nine months · fractional CPO · interviews, data model, mockups, specifications, delivery</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>Synaxe publishes Dune, software for operators of quarries, concrete plants and asphalt plants. It was sold as a layer over sensors on the trucks: knowing what the truck carries and where it is. The operators I interviewed talked about something else. They move materials, waste among them, under obligations that keep piling up, and their difficulty was not measuring what they do but proving it afterwards. A site that cannot file its declarations can no longer receive anything. Compliance has a budget line at the customer's; better figures do not.</p>
+
+      <div class="sy-before">
+        <span></span><div class="hd">As sold</div><div class="hd">As repositioned</div>
+        <span>Product</span><div>A layer over sensors on the trucks.</div><div class="after">A management and compliance tool for the sites.</div>
+        <span>Problem</span><div>Technical: the data is not captured.</div><div class="after">Regulatory: the data exists and cannot become evidence.</div>
+        <span>Value</span><div>Better figures.</div><div class="after">A correct invoice and a defensible file when the inspector arrives.</div>
+      </div>
+
+      <h2>Five roles, one purchase order passing between them</h2>
+
+      <figure class="pf-piece note">
+        <img src="/img/portfolio/dune-roles.jpg" alt="The five roles handwritten on the board: salesperson, site worker, haulier, weighbridge operator, accountant, and what each one holds, from contract to invoice" width="1140" height="720" loading="lazy">
+        <figcaption>The first research board, as it was. The salesperson holds the contract, the site worker the purchase order, the weighbridge operator the delivery, the accountant the invoice. And the questions that decided the model.</figcaption>
+      </figure>
+
+      <ul class="sy-q">
+        <li>Is the price known at the time of the order? If not, at the time of delivery?</li>
+        <li>Are invoices validated by the sales team?</li>
+      </ul>
+
+      <p>These two questions separated the contract from the order. The contract is a customer's price list over a period; the order is what has to be delivered. The price may not be known until the invoice.</p>
+
+      <h2>The model</h2>
+
+      <div class="sy-chain"><span>Customer</span><i>→</i><span>Contract</span><i>→</i><span>Delivery call-off</span><i>→</i><span>Trip, weighings</span><i>→</i><span>Delivery</span><i>→</i><span>Invoice</span></div>
+
+      <figure class="pf-piece">
+        <img src="/img/portfolio/dune-modele.jpg" alt="The invoicing data model: customer, contract with its dates and unit prices, order, entry and exit with truck and haulier, delivery with quantities delivered, invoice summing the deliveries" width="1568" height="490" loading="lazy">
+        <figcaption>The model, as it is in the file. The contract carries the prices, the order the quantities, the trip the weighings, and the invoice sums the deliveries.</figcaption>
+      </figure>
+
+      <figure class="pf-piece note">
+        <img src="/img/portfolio/dune-liens.jpg" alt="The reasoning notes: a delivery call-off does not need to be linked to a site, if we invoice trips we recover the quantity, the site, the customer and the contract with the price to apply" width="1568" height="664" loading="lazy">
+        <figcaption>The reasoning that closes the model: if we invoice trips, every invoice recovers the quantity, the site, the customer and the contract, hence the price. A trip without a site creates one.</figcaption>
+      </figure>
+
+      <p>The price of haulage, the largest share of the cost of aggregates, depends on the day, the distance, access to the site and the number of round trips the truck makes. Impossible to calculate correctly. The answer we settled on, in the file's comments with the developer: a field filled in at the order, editable at the invoice, and the calculation left to the sales team.</p>
+
+      <h2>The screens, in the order of the chain</h2>
+
+      <figure class="pf-piece note">
+        <img src="/img/portfolio/dune-etapes.jpg" alt="The setup steps: creating a customer, a site, a contract, the delivery call-offs, then tracking by trip, the weighings, the trucks, the haulier, then invoicing the trips" width="1568" height="296" loading="lazy">
+        <figcaption>The steps, in the order a site goes through them.</figcaption>
+      </figure>
+
+      <div class="sy-pair">
+        <figure class="pf-piece">
+          <img src="/img/portfolio/dune-appel.jpg" alt="A delivery call-off: reference, customer order number, customer, products to deliver with planned and actual, delivery period, trips made by haulier" width="795" height="350" loading="lazy">
+          <figcaption>The delivery call-off, what remains to be delivered on an order, and the trips already made.</figcaption>
+        </figure>
+        <figure class="pf-piece">
+          <img src="/img/portfolio/dune-voyage-panneau.jpg" alt="A truck on site and the trip creation panel: delivery call-off, delivery type, site, products with planned and delivered quantities" width="896" height="560" loading="lazy">
+          <figcaption>The truck is on site, weighed on entry. The trip is attached to a delivery call-off.</figcaption>
+        </figure>
+      </div>
+
+      <div class="sy-pair">
+        <figure class="pf-piece">
+          <img src="/img/portfolio/dune-entree.jpg" alt="The screen of an entry to be invoiced: south entry at 17:30 with 48 tonnes, north exit at 17:49 with 28 tonnes, net weight 10 tonnes, loading, products and an Invoice button" width="896" height="560" loading="lazy">
+          <figcaption>The truck has left. The net weight comes from the two weighings, and the Invoice button closes the chain.</figcaption>
+        </figure>
+        <figure class="pf-piece">
+          <img src="/img/portfolio/dune-facture.jpg" alt="A customer's invoice, by site: each product with its trips unfolded, the unit price, the tonnes and the total" width="600" height="660" loading="lazy">
+          <figcaption>A customer's invoice, by site. Each product line unfolds into its trips.</figcaption>
+        </figure>
+      </div>
+
+      <p>All the data in these screens is test data.</p>
+
+      <h2>Waste compliance</h2>
+
+      <p>The second tool tracks the waste entering a site: the prior acceptance declaration, with the producer, the haulier, the origin and the destination, and the two ways of signing it, by hand or electronically. The file contains the captured government online service, the form rebuilt field by field and the signature circuit. I am not showing these screens: they reproduce an administrative form.</p>
+
+      <h2>What came of it</h2>
+
+      <p>Both tools are in production at customers, including groups in the sector, and have brought in new contracts and renewals. The repositioning was the founders' decision, which I argued for from the interviews. What counted was less the presentation of the repositioning than the two tools that were running at the end.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/en/portfolio/conformite-pharma"><small>← Previous</small>Pharma compliance audit</a>
+      <a class="next" href="/en/portfolio/ornikar"><small>Next →</small>Ornikar</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'audit d'un produit de conformité pharma — Gildas Frémont</title>
+  <meta name="description" content="Sept jours pour cartographier six obligations légales, qui agit, sur quoi, quand, par quel moyen et quel texte l'impose, et dire au client que son problème n'était pas l'interface.">
+  <link rel="canonical" href="https://gildas.fyi/portfolio/conformite-pharma">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/conformite-pharma">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/conformite-pharma">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/conformite-pharma">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="L'audit d'un produit de conformité pharma — Gildas Frémont">
+  <meta property="og:description" content="Sept jours pour cartographier six obligations légales, qui agit, sur quoi, quand, par quel moyen et quel texte l'impose, et dire au client que son problème n'était pas l'interface.">
+  <meta property="og:url" content="https://gildas.fyi/portfolio/conformite-pharma">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.cf-six { list-style: none; margin: 1.25rem 0 2rem 0 !important; max-width: 42em !important; counter-reset: w; }
+.cf-six li { display: grid; grid-template-columns: 1.4rem 8rem 1fr; gap: 0.6rem; padding: 0.5rem 0; border-top: 1px solid var(--border); font-size: 15px; line-height: 1.5; color: var(--mid); margin: 0 !important; }
+.cf-six li:last-child { border-bottom: 1px solid var(--border); }
+.cf-six li::before { counter-increment: w; content: counter(w); font-family: var(--pf-mono); font-size: 12px; color: var(--light); padding-top: 0.15rem; }
+.cf-six b { color: var(--black); font-weight: 600; }
+.cf-six i { font-style: normal; color: var(--light); }
+.cf-cols { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0 1.5rem; }
+.cf-cols span { font-size: 14px; color: var(--dark); border: 1px solid var(--border); border-radius: 99px; padding: 0.25rem 0.75rem; background: var(--white); }
+.cf-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; margin: 2rem 0 !important; }
+.cf-pair figure { margin: 0 !important; }
+.cf-eq { margin: 1.5rem 0 2rem; max-width: 36em; padding-left: 1rem; border-left: 2px solid rgb(var(--pf-accent)); }
+.cf-eq p { margin: 0 0 0.3rem !important; font-size: 17px !important; color: var(--black) !important; }
+@media (max-width: 600px) { .cf-pair { grid-template-columns: 1fr; } .cf-six li { grid-template-columns: 1.6rem 1fr; } .cf-six li span:last-child { grid-column: 2; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-conformite-pharma">
+
+  <nav class="lang-toggle">
+    <a href="/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/portfolio">Portfolio</a> · Audit, mai à septembre 2025</p>
+      <h1>Sept jours pour cartographier les six obligations légales que couvre un logiciel de conformité pharmaceutique, et dire au client que son problème n'était pas l'interface</h1>
+      <p class="article-page-subtitle">L'audit d'un logiciel de conformité pour les laboratoires pharmaceutiques</p>
+      <p class="article-meta">Cinq jours d'audit, entretiens, revue de l'interface et rapport, puis deux jours d'accompagnement produit · mission via Grandwork · le client n'est pas nommé</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>L'éditeur vend un logiciel de conformité aux laboratoires pharmaceutiques. Le produit doit couvrir des obligations qui ne se négocient pas, chacune avec son échéance, son format et son texte de référence. L'équipe, elle, avançait sans designer expérimenté, et avec un product owner qui ne connaissait pas bien le produit tel que le marketing le vendait. On m'a demandé un audit de l'interface.</p>
+
+      <h2>Six workflows, ligne à ligne</h2>
+
+      <p>J'ai commencé par reconstituer ce que le logiciel doit faire faire, obligation par obligation, avec cinq colonnes.</p>
+
+      <div class="cf-cols"><span>Qui agit</span><span>Sur quoi</span><span>À quel moment</span><span>Par quel moyen</span><span>Quel texte l'impose</span></div>
+
+      <ul class="cf-six">
+        <li><b>Pré-autorisation</b><span>Un avantage envisagé doit être validé avant l'événement, du demandeur à la compliance puis à l'Ordre. <i>Décret 2020-730.</i></span></li>
+        <li><b>Signature électronique</b><span>La convention déjà autorisée est signée par un circuit qualifié, horodaté. <i>Règlement eIDAS.</i></span></li>
+        <li><b>Enregistrement des dépenses</b><span>Chaque ligne de coût, saisie pendant ou juste après l'événement, contrôlée par des seuils et des plafonds. <i>Décret 2020-730 et arrêté de typologie.</i></span></li>
+        <li><b>Déclaration Transparence-Santé</b><span>Deux fois par an, avant le 1<sup>er</sup> mars et le 1<sup>er</sup> septembre, un export XML conforme au schéma du portail. <i>Loi Bertrand et décrets.</i></span></li>
+        <li><b>Disclosure EFPIA</b><span>Une fois par an, avant le 30 juin, les transferts de valeur de l'année agrégés et publiés. <i>Code EFPIA.</i></span></li>
+        <li><b>Journal et rétention</b><span>Chaque action journalisée, conservée cinq ans, purgée à échéance. <i>RGPD et Sapin II.</i></span></li>
+      </ul>
+
+      <div class="cf-pair">
+        <figure class="pf-piece">
+          <img src="/img/portfolio/conformite-workflows.jpg" alt="Le tableau des six workflows réglementaires : numéro, workflow, qui, quoi, quand, comment" width="760" height="455" loading="lazy">
+          <figcaption>Le premier tableau du board&nbsp;: qui, quoi, quand, comment, pour chacun des six workflows.</figcaption>
+        </figure>
+        <figure class="pf-piece">
+          <img src="/img/portfolio/conformite-etapes.jpg" alt="Le second tableau : pour chaque workflow, quand il démarre, ses étapes clés avec leurs statuts, et le texte qui l'impose" width="640" height="445" loading="lazy">
+          <figcaption>Le second&nbsp;: ce qui déclenche chaque workflow, ses étapes avec leurs statuts, et le texte qui l'impose.</figcaption>
+        </figure>
+      </div>
+
+      <p>Ces deux tableaux sont le livrable que l'équipe n'avait pas. Avant eux, personne ne pouvait dire d'un écran s'il servait une obligation ou s'il était là par habitude.</p>
+
+      <h2>L'application en face</h2>
+
+      <figure class="pf-piece narrow" style="max-width:34rem">
+        <img src="/img/portfolio/conformite-archi.jpg" alt="Un croquis de l'architecture de l'application : le menu, la liste des événements avec type, lieu, date et statut, la fiche d'un événement avec ses participants, prévisionnel et réel, et les actions, émargement, invité, dépense, contrôle" width="900" height="820" loading="lazy">
+        <figcaption>L'architecture de l'application, croquée en face des workflows&nbsp;: la liste des événements, la fiche avec ses participants et son prévisionnel contre son réel, les quatre actions qui en partent.</figcaption>
+      </figure>
+
+      <p>Une fois les obligations d'un côté et les écrans de l'autre, le diagnostic s'est écrit presque seul. Le problème n'était pas l'interface. C'était que personne dans l'équipe ne tenait la carte des obligations que le produit vendu était censé couvrir, et que le produit se construisait fonctionnalité par fonctionnalité, à la demande.</p>
+
+      <h2>La migration, en équation</h2>
+
+      <div class="cf-eq">
+        <p>Une migration, c'est de l'acquisition.</p>
+        <p>Une migration, c'est aussi de la charge mentale, de la dette conceptuelle, et plus de soixante pour cent des coûts.</p>
+      </div>
+
+      <p>L'éditeur migrait ses clients vers une nouvelle version. Les deux phrases du board disent ce que l'équipe n'avait pas posé&nbsp;: la migration est le moment où un client peut partir, donc elle se traite comme une vente, et elle coûte à l'équipe plus que tout le reste tant qu'elle dure.</p>
+
+      <h2>Ce qu'on ne sait pas</h2>
+
+      <p>Ce que le client a fait du diagnostic. L'audit a été suivi de deux jours d'accompagnement produit, et je n'ai pas de mesure au-delà. Le diagnostic d'équipe, qui fait partie du rapport, reste entre le client et moi.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/portfolio/chunk"><small>← Précédent</small>Chunk</a>
+      <a class="next" href="/portfolio/synaxe"><small>Suivant →</small>Synaxe</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

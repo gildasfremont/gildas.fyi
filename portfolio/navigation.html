@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucca, la navigation d'une suite de dix-huit produits — Gildas Frémont</title>
+  <meta name="description" content="Le menu de la suite Lucca traité comme un système : six zones, trois états, et la question de ce qui reste visible quand un client n'utilise que trois produits sur dix-huit.">
+  <link rel="canonical" href="https://gildas.fyi/portfolio/navigation">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/navigation">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/navigation">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/navigation">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Lucca, la navigation d'une suite de dix-huit produits — Gildas Frémont">
+  <meta property="og:description" content="Le menu de la suite Lucca traité comme un système : six zones, trois états, et la question de ce qui reste visible quand un client n'utilise que trois produits sur dix-huit.">
+  <meta property="og:url" content="https://gildas.fyi/portfolio/navigation">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.nv-states { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0 !important; }
+.nv-states figure { margin: 0 !important; }
+.nv-states figcaption { margin-top: 0.5rem; }
+.nv-zones { list-style: none; margin: 1.25rem 0 2rem !important; max-width: 36em; }
+.nv-zones li { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; padding: 0.45rem 0; border-top: 1px solid var(--border); font-size: 15px; line-height: 1.5; color: var(--mid); margin: 0 !important; }
+.nv-zones li:last-child { border-bottom: 1px solid var(--border); }
+.nv-zones b { color: var(--black); font-weight: 600; }
+.nv-count { display: flex; align-items: baseline; gap: 0.8rem; margin: 1.5rem 0; }
+.nv-count b { font-size: 40px; font-weight: 600; color: var(--black); letter-spacing: -0.02em; line-height: 1; }
+.nv-count span { font-size: 15px; color: var(--mid); max-width: 24em; line-height: 1.5; }
+@media (max-width: 600px) {
+  .nv-states { grid-template-columns: 1fr; }
+  .nv-zones li { grid-template-columns: 1fr; gap: 0.1rem; }
+}
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-navigation">
+
+  <nav class="lang-toggle">
+    <a href="/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/portfolio">Portfolio</a> · Lucca, 2023 et 2025</p>
+      <h1>Le menu d'une suite RH de dix-huit produits, traité comme un système et non comme une liste</h1>
+      <p class="article-page-subtitle">Six zones, trois états, et ce qui reste visible quand un client n'utilise que trois produits</p>
+      <p class="article-meta">Menu et sitemap dans le design system en 2023, app switcher en juin 2025 · directeur produit à temps partagé chez Lucca</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>Lucca vend une suite. Un client n'achète pas dix-huit produits d'un coup, il en ajoute au fil des années, et chaque ajout allonge le menu. La navigation est le seul endroit où toute la suite se voit d'un coup, pour l'utilisateur qui cherche son produit comme pour le commercial qui veut en vendre un de plus. Chaque équipe produit défend sa propre entrée.</p>
+
+      <div class="nv-count"><b>18</b><span>solutions dans une colonne, de l'accueil à l'assistant paie, avec les pastilles de notification de six d'entre elles.</span></div>
+
+      <h2>Six zones</h2>
+
+      <p>J'ai découpé le menu en zones, chacune avec un rôle, avant de dessiner le moindre état.</p>
+
+      <ul class="nv-zones">
+        <li><b>Contrôle</b><span>Le logo, et le bouton qui replie ou déplie le menu.</span></li>
+        <li><b>Recherche et tri</b><span>Chercher dans Lucca, d'où qu'on soit.</span></li>
+        <li><b>Notifications</b><span>Les pastilles, portées par les solutions qui en ont.</span></li>
+        <li><b>Options et solutions</b><span>La liste des produits, la place de chacun dans l'ensemble.</span></li>
+        <li><b>Paramètres généraux</b><span>Plateforme et paramètres, à part des paramètres de chaque solution.</span></li>
+        <li><b>Profil</b><span>L'utilisateur connecté, en bas.</span></li>
+      </ul>
+
+      <h2>Trois états</h2>
+
+      <div class="nv-states">
+        <figure class="pf-piece">
+          <img src="/img/portfolio/navigation-a.jpg" alt="Le menu déplié de la suite Lucca, annoté par zones : contrôle, recherche et tri, notifications, options et solutions, paramètres généraux" width="560" height="548" loading="lazy">
+          <figcaption>Déplié. Toute la suite, avec les notifications.</figcaption>
+        </figure>
+        <figure class="pf-piece">
+          <img src="/img/portfolio/navigation-b.jpg" alt="Le menu replié en colonne d'icônes, avec le panneau de la solution Office ouvert à côté, annoté" width="560" height="600" loading="lazy">
+          <figcaption>Replié, une solution ouverte. La colonne d'icônes reste, la solution prend la place.</figcaption>
+        </figure>
+        <figure class="pf-piece">
+          <img src="/img/portfolio/navigation-c.jpg" alt="Le menu replié avec le tooltip Recrutement affiché au survol d'une icône, et les pastilles de notification sur les icônes" width="560" height="600" loading="lazy">
+          <figcaption>Replié, au survol. Le tooltip donne le nom, les pastilles suivent les icônes.</figcaption>
+        </figure>
+      </div>
+
+      <p>Les trois états viennent de la planche d'origine, annotée zone par zone. Le menu est un composant du design system, donc chaque solution l'hérite sans le redessiner&nbsp;: la place d'un nouveau produit est décidée une fois, à l'endroit où toutes les équipes la voient.</p>
+
+      <h2>Deux passages, à deux ans d'intervalle</h2>
+
+      <p>Le menu et le sitemap ont été faits en 2023, dans le cadre du design system. L'app switcher, le passage d'une solution à l'autre depuis l'état replié, est venu en juin 2025. Entre les deux, la suite avait grandi, et la question était restée la même&nbsp;: laquelle des dix-huit solutions mérite d'être visible sans clic quand un client n'en utilise que trois.</p>
+
+      <h2>Ce qu'on ne sait pas</h2>
+
+      <p>Pas d'effet mesuré. Le menu est en production chez Lucca, les écrans de cette page sont ceux de la planche de travail, pas des captures de l'instance.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/portfolio/formation"><small>← Précédent</small>Formation hors catalogue</a>
+      <a class="next" href="/portfolio/rungle"><small>Suivant →</small>Rungle</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

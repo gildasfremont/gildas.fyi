@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucca, impersonation — Gildas Frémont</title>
+  <meta name="description" content="Seven days in March 2025 to write the rules of a mechanism that eighteen products in the Lucca suite were using without knowing them: an inventory, a three-sentence framing, ten interface rules.">
+  <link rel="canonical" href="https://gildas.fyi/en/portfolio/impersonation">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/impersonation">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/impersonation">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/impersonation">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Lucca, impersonation — Gildas Frémont">
+  <meta property="og:description" content="Seven days in March 2025 to write the rules of a mechanism that eighteen products in the Lucca suite were using without knowing them: an inventory, a three-sentence framing, ten interface rules.">
+  <meta property="og:url" content="https://gildas.fyi/en/portfolio/impersonation">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_GB">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.im-frame { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin: 1.5rem 0 2rem; max-width: 40em; }
+.im-frame div { font-size: 15px; line-height: 1.5; color: var(--mid); border-top: 2px solid var(--black); padding-top: 0.5rem; }
+.im-frame div + div { border-top-color: rgb(var(--pf-accent)); }
+.im-frame b { display: block; color: var(--black); font-weight: 600; font-size: 16px; margin-bottom: 0.15rem; }
+.im-frame .dont { border-top-color: var(--subtle); grid-column: 1 / -1; }
+.im-rules { list-style: none; margin: 1.25rem 0 2rem !important; max-width: 38em; counter-reset: r; }
+.im-rules li { position: relative; padding: 0.45rem 0 0.45rem 2.2rem; border-top: 1px solid var(--border); font-size: 15px; line-height: 1.5; color: var(--dark); margin: 0 !important; }
+.im-rules li:last-child { border-bottom: 1px solid var(--border); }
+.im-rules li::before { counter-increment: r; content: counter(r); position: absolute; left: 0.2rem; top: 0.5rem; font-family: var(--pf-mono); font-size: 12px; color: var(--light); }
+.im-rules li em { font-style: normal; color: var(--light); }
+.im-inv { display: grid; grid-template-columns: 11rem 1fr; gap: 1.25rem; align-items: start; margin: 2rem 0 !important; }
+.im-inv .pf-piece img { max-width: 11rem; }
+.im-inv ul { list-style: none; margin: 0; font-size: 15px; line-height: 1.7; color: var(--mid); columns: 2; column-gap: 1.5rem; }
+.im-why { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0 2rem; }
+.im-why span { font-size: 14px; color: var(--dark); border: 1px solid var(--border); border-radius: 99px; padding: 0.25rem 0.75rem; background: var(--white); }
+@media (max-width: 600px) {
+  .im-frame { grid-template-columns: 1fr; }
+  .im-inv { grid-template-columns: 1fr; }
+  .im-inv .pf-piece img { max-width: 9rem; }
+  .im-inv ul { columns: 1; }
+}
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-impersonation">
+
+  <nav class="lang-toggle">
+    <a href="/en/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/en/portfolio">Portfolio</a> · Lucca, March 2025</p>
+      <h1>Writing the rules of impersonation, the mechanism by which an administrator acts on behalf of an employee, which eighteen HR products were using without knowing them</h1>
+      <p class="article-page-subtitle">Impersonation at Lucca: an inventory, a three-sentence framing, ten interface rules</p>
+      <p class="article-meta">March 2025 · seven billed days · fractional product director at Lucca since 2023 · <a href="/en/impersonation-pattern">the article that came out of it</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>In HR software, an employee's view is often opened by someone else: a manager who approves, an assistant who enters a director's leave, an administrator looking for a setting. Lucca has handled this case since its first products through impersonation: you pick an employee and the screen becomes theirs, with no separate administration view. In 2025 the suite had eighteen products, each with its own team, and the mechanism was applied everywhere without any written rule saying what it requires. I had seven days to write one.</p>
+
+      <h2>The inventory</h2>
+
+      <figure class="im-inv">
+        <span class="pf-piece"><img src="/img/portfolio/impersonation-inventaire.jpg" alt="Fifteen screenshots from the Lucca suite, shrunk and blurred" width="732" height="1000" loading="lazy"></span>
+        <div>
+          <ul>
+            <li>Leave</li><li>Expense reports</li><li>Timesheets</li><li>Reviews</li><li>Objectives</li><li>Skills</li><li>Training</li><li>HR file</li>
+          </ul>
+          <figcaption>The starting point of the board: some fifteen screenshots of the screens where a user acts for another, one product after the other. The screenshots show the customer's interfaces with user names: they are shrunk and blurred here, and the list alongside says what they cover.</figcaption>
+        </div>
+      </figure>
+
+      <p>The same person picker, the same gestures, and from one product to the next, differences nobody had decided: the mode was more or less visible, getting back to one's own screen more or less easy, the page title changed or did not.</p>
+
+      <h2>The framing, in three sentences</h2>
+
+      <figure class="pf-piece note">
+        <img src="/img/portfolio/impersonation-notes.jpg" alt="The board notes: the three-line framing, the misuse of the word, the ten interface rules and the expected benefits" width="1600" height="771" loading="lazy">
+        <figcaption>The board notes, as they are. On the left, the framing then the interface rules; on the right, what is gained.</figcaption>
+      </figure>
+
+      <p>Three sentences fix what impersonation is at Lucca, and above all what it is not. The right to impersonate is carried by roles, so there is nothing to invent: the question “who can see for whom” is already settled elsewhere. Impersonating gives read access, and nothing else. The audit trail does not depend on the mode: it is handled by permissions and stays independent.</p>
+
+      <p>My first note on the subject: the word comes from computing, and it is a misuse of language. In English, to impersonate means to take on someone's identity. Here nobody takes anyone's identity: you look at someone else's screen, and every action stays signed by the person who did it.</p>
+
+      <h2>What belongs to the interface, what belongs to roles</h2>
+
+      <figure class="pf-piece note narrow" style="max-width:34rem">
+        <img src="/img/portfolio/impersonation-regles.jpg" alt="The board's decision notes: view as belongs to the interface, edit on behalf of belongs to roles, no alternative interface for managers, history as a sub-pattern of the audit trail, the naming rule for menus" width="1240" height="613" loading="lazy">
+      </figure>
+
+      <div class="im-frame">
+        <div><b>“View as”</b>An interface question. This is what the pattern covers.</div>
+        <div><b>“Edit on behalf of”</b>A question of roles and permissions. Outside the pattern.</div>
+        <div class="dont"><b>Don't</b>No alternative interface for managers. A manager sees what their team member sees, in the same screen, or does not see it.</div>
+      </div>
+
+      <p>This split settles most of the cases the teams were asking about. If the question is “can I act in someone's place”, the answer is in the roles. The history of what was done for someone becomes a sub-pattern of the audit trail, not a feature of impersonation.</p>
+
+      <h2>Ten interface rules</h2>
+
+      <ol class="im-rules">
+        <li>Use the space on focus.</li>
+        <li>Show the mode more clearly.</li>
+        <li>Return to the normal state easily.</li>
+        <li>The audit trail is fundamental for actions.</li>
+        <li>Transparency about who sees what.</li>
+        <li>Understand the scope and the permission.</li>
+        <li>The mode affects the page title.</li>
+        <li>Link with the workflow: the home is the dashboard, so the start of the workflow.</li>
+        <li>Only on pages centred on an employee. <em>The HR Core is centred on records, not on the employee: it is excluded.</em></li>
+        <li>Name menus after the resource, its status or the action. <em>No more “My leave” when the screen may be someone else's.</em></li>
+      </ol>
+
+      <p>The rules are written so that every team in the suite can apply them without me. They say what the interface must be, clear, transparent, easy to leave, without drawing the screen.</p>
+
+      <h2>What is gained</h2>
+
+      <div class="im-why">
+        <span>No more pointless navigation views</span>
+        <span>Simpler navigation</span>
+        <span>Less code</span>
+        <span>Internal support without a test database</span>
+      </div>
+
+      <p>The last point is the one support was waiting for: to understand what a customer sees, viewing as them is enough, instead of reproducing their case on a test database.</p>
+
+      <h2>What we do not know</h2>
+
+      <p>The board dates from March 2025 and the pattern was handed to the teams. I have no measure of what it has changed since: a pattern is judged over years, by the number of administration screens that never get built. A design file named Impersonation appeared in Lucca's cross-functional team the same year; that it takes up this framing is plausible, not verified.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/en/portfolio"><small>← All cases</small>Portfolio</a>
+      <a class="next" href="/en/portfolio/formation"><small>Next →</small>Off-catalogue training</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -89,6 +89,86 @@
     <loc>https://gildas.fyi/en/vous-navez-pas-besoin-dun-pm</loc>
   </url>
   <url>
+    <loc>https://gildas.fyi/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/impersonation</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/impersonation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/impersonation"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/formation</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/formation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/formation"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/navigation</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/navigation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/navigation"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/rungle</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/rungle"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/rungle"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/chunk</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/chunk"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/chunk"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/conformite-pharma</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/conformite-pharma"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/conformite-pharma"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/synaxe</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/synaxe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/synaxe"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/ornikar</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/ornikar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/ornikar"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/guinet</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/guinet"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/guinet"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/monbanquet</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/monbanquet"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/monbanquet"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/revue-salaires</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/revue-salaires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/revue-salaires"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/roles</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/roles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/roles"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/ubaq</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/ubaq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/ubaq"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/luko</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/luko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/luko"/>
+  </url>
+  <url>
+    <loc>https://gildas.fyi/portfolio/getpro</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/getpro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/getpro"/>
+  </url>
+  <url>
     <loc>https://gildas.fyi/experimental</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental"/>

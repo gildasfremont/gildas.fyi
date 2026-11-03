@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucca, l'administration des rôles — Gildas Frémont</title>
+  <meta name="description" content="Un modèle de permissions qui pouvait tout représenter, et un administrateur qui devait le reconstruire dans sa tête. Garder le moteur, changer le modèle mental : un rôle principal, des accès complémentaires, une criticité qui change le comportement de l'interface.">
+  <link rel="canonical" href="https://gildas.fyi/portfolio/roles">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/roles">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/roles">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/roles">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Lucca, l'administration des rôles — Gildas Frémont">
+  <meta property="og:description" content="Un modèle de permissions qui pouvait tout représenter, et un administrateur qui devait le reconstruire dans sa tête. Garder le moteur, changer le modèle mental : un rôle principal, des accès complémentaires, une criticité qui change le comportement de l'interface.">
+  <meta property="og:url" content="https://gildas.fyi/portfolio/roles">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.ro-moments { list-style: none; margin: 1.25rem 0 2rem !important; max-width: 40em; }
+.ro-moments li { display: grid; grid-template-columns: 11rem 1fr; gap: 0.6rem 1rem; padding: 0.5rem 0; border-top: 1px solid var(--border); font-size: 15px; line-height: 1.5; color: var(--mid); margin: 0 !important; }
+.ro-moments li:last-child { border-bottom: 1px solid var(--border); }
+.ro-moments b { color: var(--black); font-weight: 600; }
+.ro-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.25rem 0 2rem; max-width: 40em; }
+.ro-two > div { border-top: 2px solid var(--black); padding-top: 0.5rem; font-size: 14.5px; line-height: 1.5; color: var(--mid); }
+.ro-two > div + div { border-top-color: rgb(var(--pf-accent)); }
+.ro-two b { display: block; font-size: 16px; color: var(--black); font-weight: 600; margin-bottom: 0.2rem; }
+.ro-crit { margin: 1.25rem 0 2rem; max-width: 42em; border-top: 1px solid var(--border); }
+.ro-crit div { display: grid; grid-template-columns: 10rem 1fr 1fr; gap: 0.6rem 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.45; color: var(--mid); }
+.ro-crit div b { color: var(--black); font-weight: 600; }
+.ro-crit div.hd span { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); }
+.ro-crit div em { font-style: normal; color: var(--black); }
+.ro-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 1rem 0 1.75rem; font-size: 14px; color: var(--mid); }
+.ro-steps span { border: 1px solid var(--border); border-radius: 99px; padding: 0.25rem 0.75rem; background: var(--white); color: var(--dark); }
+.ro-steps i { font-style: normal; color: var(--light); }
+.ro-rule { margin: 1.5rem 0 2rem; max-width: 36em; padding-left: 1rem; border-left: 2px solid rgb(var(--pf-accent)); }
+.ro-rule p { margin: 0 !important; font-size: 17px !important; color: var(--black) !important; }
+@media (max-width: 600px) { .ro-moments li { grid-template-columns: 1fr; gap: 0.1rem; } .ro-two { grid-template-columns: 1fr; } .ro-crit div { grid-template-columns: 1fr; gap: 0.15rem; } .ro-crit div.hd { display: none; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-roles">
+
+  <nav class="lang-toggle">
+    <a href="/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/portfolio">Portfolio</a> · Lucca, avril à juillet 2025</p>
+      <h1>Dans un logiciel RH, garder le moteur de permissions et changer le modèle mental&nbsp;: un rôle principal par personne, des accès complémentaires pour les exceptions</h1>
+      <p class="article-page-subtitle">La refonte de l'administration des rôles chez Lucca, écrite avec une task force Produit et Customer Success, pour un usage en 2026</p>
+      <p class="article-meta">Recherche et refonte en avril, roadshow interne en juin, design en juillet 2025 · cadrage, modélisation fonctionnelle, architecture d'usage cible · directeur produit à temps partagé</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>Dans un logiciel RH, l'accès à une donnée n'est pas un oui ou un non. La même opération peut être autorisée sur soi, sur son équipe, sur un département, sur plusieurs entités légales ou sur toute l'entreprise. Le modèle de Lucca représentait tout cela, du cas simple aux configurations multi-applications, temporaires ou sensibles. Sa souplesse débordait sur l'administrateur&nbsp;: pour configurer, il devait reconstruire le modèle dans sa tête. Le brief était de simplifier l'écran des rôles.</p>
+
+      <h2>Cinq moments où le modèle faisait mal</h2>
+
+      <p>Le mémo du Customer Success décrivait les irritants moment par moment. J'ai cherché le problème dans le cycle de vie d'un client plutôt que dans l'écran.</p>
+
+      <ul class="ro-moments">
+        <li><b>À la création d'une instance</b><span>Il faut une doctrine, et il n'y en avait pas.</span></li>
+        <li><b>À l'ajout d'une application</b><span>Intégrer ses permissions dans les rôles existants était assez fastidieux pour qu'on crée à la place un rôle par utilisateur. Chaque application vendue ajoutait de la dette de configuration&nbsp;: le coût du cross-sell.</span></li>
+        <li><b>Au remplacement d'un salarié</b><span>Il faut un objet d'exception, et le seul disponible ressemblait à un rôle normal.</span></li>
+        <li><b>À l'arrivée d'un membre du CSE</b><span>Même chose&nbsp;: une exception sans objet pour la porter.</span></li>
+        <li><b>À l'audit</b><span>«&nbsp;Pourquoi cette personne voit-elle cette donnée&nbsp;?&nbsp;» coûtait plus cher à répondre que la configuration n'avait coûté à faire.</span></li>
+      </ul>
+
+      <p>Un chiffre du Customer Success a donné la cible&nbsp;: dans à peu près neuf cas sur dix, un utilisateur aurait eu besoin d'un seul rôle. Le chemin nominal se conçoit donc autour d'un seul rôle, et les exceptions à côté.</p>
+
+      <h2>Le modèle, en deux objets</h2>
+
+      <figure class="pf-piece note narrow" style="max-width:34rem">
+        <img src="/img/portfolio/roles-note.jpg" alt="Une note FigJam en deux colonnes : rôle principal, avec les permissions Lucca et par solution, affecté à un groupe, un par utilisateur ; rôle secondaire, permission complémentaire par solution par dessus le rôle principal" width="1250" height="760" loading="lazy">
+        <figcaption>La note d'une page qui pose le modèle à deux niveaux, dans mes brouillons, antérieure à la refonte. Elle se termine par deux questions, dont celle du périmètre, «&nbsp;mes collaborateurs supervisés&nbsp;?&nbsp;», restée ouverte jusqu'à elle.</figcaption>
+      </figure>
+
+      <div class="ro-two">
+        <div><b>Le rôle principal</b>La fonction normale d'un salarié. Un par personne. Les permissions ne définissent pas le rôle&nbsp;: c'est la fonction qui définit les permissions nécessaires. Tous les managers partagent un rôle Manager.</div>
+        <div><b>Les accès complémentaires</b>Les situations temporaires, exceptionnelles ou à petite population. Un manager qui gère les notes de frais reçoit un accès en plus, pas un rôle «&nbsp;Manager avec frais&nbsp;».</div>
+      </div>
+
+      <p>Les objets techniques restent les mêmes, donc la migration reste abordable sur des milliers d'instances. Ce qui change, c'est à quoi sert chacun, et un attribut nouveau&nbsp;: la criticité.</p>
+
+      <h2>Une friction proportionnelle au risque</h2>
+
+      <p>Le libellé d'une permission décrivait une action, pas tout ce à quoi elle ouvrait l'accès&nbsp;: une permission pouvait sembler juste pour un besoin métier et exposer des données personnelles. Plutôt qu'espérer que l'administrateur s'en souvienne, l'interface change de comportement avec le risque.</p>
+
+      <div class="ro-crit">
+        <div class="hd"><span>Criticité</span><span>Ce que ça couvre</span><span>Comportement</span></div>
+        <div><b>Par défaut</b><span>Les permissions ordinaires de l'usage quotidien.</span><em>Ajoutée en une étape.</em></div>
+        <div><b>Supervision</b><span>Les données non sensibles de son équipe.</span><em>Ajoutée en une étape.</em></div>
+        <div><b>Sensible</b><span>Des données personnelles ou sensibles.</span><em>Friction dans un rôle non critique.</em></div>
+        <div><b>Gestion</b><span>Des données de gestion à conséquences réelles.</span><em>Rôles critiques seulement.</em></div>
+        <div><b>Configuration système</b><span>Des actions qui changent le fonctionnement de l'instance.</span><em>Friction même dans un rôle critique.</em></div>
+      </div>
+
+      <p>Les garde-fous suivent l'effet d'une action, pas l'écran par lequel on arrive&nbsp;: un import CSV passe les mêmes validations que l'action équivalente dans l'interface, sinon l'écran est sûr et le système ne l'est pas. Les configurations historiques dont la criticité ne peut pas être déduite restent en «&nbsp;inconnu&nbsp;», moins confortable qu'une classification automatique, mais la seule qui ne fasse pas mentir le système.</p>
+
+      <h2>Installer une application sans créer de dette</h2>
+
+      <div class="ro-steps"><span>Accès temporaires pour l'installation</span><i>→</i><span>Configurer, tester</span><i>→</i><span>Le client valide</span><i>→</i><span>Fusion dans les rôles principaux</span><i>→</i><span>Nettoyage</span></div>
+
+      <p>Et l'investigation se retourne&nbsp;: une vue des habilitations qui part d'une personne et remonte aux sources de ses droits, des journaux lisibles par utilisateur, par rôle et par permission, un diagnostic qui signale les grandes populations exposées et les rôles quasi redondants.</p>
+
+      <h2>Ce que ça a donné</h2>
+
+      <div class="ro-rule"><p>Une vision et une doctrine écrites en 2025, pour un usage en 2026.</p></div>
+
+      <p>L'architecture d'usage cible, le guide des rôles écrit à trois avec la task force, partagé entre le Produit, le Customer Success et les clients, les wireframes des parcours de friction et de la vue des habilitations, et la stratégie de migration. Le roadshow interne de juin l'a présenté aux équipes. Deux points restaient ouverts à la fin de mon intervention&nbsp;: la découverte du module de diagnostic, et le traitement des rôles à criticité inconnue. Les mesures sont définies, pas encore relevées&nbsp;: la part d'utilisateurs avec un seul rôle principal, les accès temporaires encore présents après une mise en production, le temps pour répondre à «&nbsp;pourquoi ce droit&nbsp;».</p>
+
+      <p>Les livrables de la refonte appartiennent à Lucca. La seule pièce de mes fichiers est la note ci-dessus.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/portfolio/revue-salaires"><small>← Précédent</small>Revue de salaires</a>
+      <a class="next" href="/portfolio/ubaq"><small>Suivant →</small>UBAQ</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

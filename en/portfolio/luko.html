@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luko, an unsolicited redesign — Gildas Frémont</title>
+  <meta name="description" content="An insurer's customer area redone on my own initiative, with Claude, in a few hours, from one rule: a policyholder logs in to get a document or report a claim. Cross-selling stays, the banners go. Live prototype.">
+  <link rel="canonical" href="https://gildas.fyi/en/portfolio/luko">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/luko">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/luko">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/luko">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Luko, an unsolicited redesign — Gildas Frémont">
+  <meta property="og:description" content="An insurer's customer area redone on my own initiative, with Claude, in a few hours, from one rule: a policyholder logs in to get a document or report a claim. Cross-selling stays, the banners go. Live prototype.">
+  <meta property="og:url" content="https://gildas.fyi/en/portfolio/luko">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_GB">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.lk-rule { margin: 1.5rem 0 2rem; max-width: 36em; padding-left: 1rem; border-left: 2px solid rgb(var(--pf-accent)); }
+.lk-rule p { margin: 0 !important; font-size: 17px !important; color: var(--black) !important; }
+.lk-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.25rem 0 2rem; max-width: 42em; }
+.lk-three div { border-top: 2px solid var(--black); padding-top: 0.45rem; font-size: 14px; line-height: 1.5; color: var(--mid); }
+.lk-three b { display: block; color: var(--black); font-weight: 600; font-size: 15px; }
+.lk-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; margin: 2rem 0 !important; }
+.lk-pair figure { margin: 0 !important; }
+.lk-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 1rem 0 1.25rem; font-size: 14px; color: var(--mid); }
+.lk-steps span { border: 1px solid var(--border); border-radius: 99px; padding: 0.25rem 0.75rem; background: var(--white); color: var(--dark); }
+.lk-steps i { font-style: normal; color: var(--light); }
+.lk-count { display: flex; align-items: baseline; gap: 1rem; margin: 1rem 0 1.25rem; }
+.lk-count b { font-size: 34px; font-weight: 600; color: var(--black); letter-spacing: -0.02em; line-height: 1; }
+.lk-count i { font-style: normal; font-size: 22px; color: var(--light); }
+.lk-count span { font-size: 14px; color: var(--mid); }
+@media (max-width: 600px) { .lk-three, .lk-pair { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-luko">
+
+  <nav class="lang-toggle">
+    <a href="/en/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/en/portfolio">Portfolio</a> · Personal project, March 2026</p>
+      <h1>Redoing my insurer's customer area from a single rule, and keeping cross-selling as a feature</h1>
+      <p class="article-page-subtitle">An unsolicited redesign of Luko by Allianz Direct, built with Claude in a few hours, with a live prototype</p>
+      <p class="article-meta">March 2026 · a Luko customer for years · <a href="https://dist-neon-delta-32.vercel.app" target="_blank" rel="noopener">the prototype</a> · <a href="/en/etude-de-cas-luko">the full case study</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>One day I needed a civil liability certificate. I had to open the policy, find the right accordion, work out the certificate types, then generate the document. Unsolicited redesigns were a fashion ten years ago, and rightly criticised: designing without the product's real constraints is too easy. This one is here because it is the only work in this portfolio whose screens belong to me, and because it shows what I do when nobody is paying me.</p>
+
+      <h2>Three observations</h2>
+
+      <div class="lk-three">
+        <div><b>Positioning</b>A management tool and an acquisition channel mixed together with no hierarchy, selling before serving, to people who came to be served.</div>
+        <div><b>Trust</b>A chat that switches to English when it crashes, near-empty pages slow to load, a 503 error in plain text on refresh.</div>
+        <div><b>Hierarchy</b>Documents in three places, the newsletter more visible than the policies, a travel banner even inside the certificate form.</div>
+      </div>
+
+      <figure class="pf-piece">
+        <img src="/img/luko-original.jpg" alt="The Luko customer area as it exists today" width="1440" height="1600" loading="lazy">
+        <figcaption>The customer area as it is. Allianz Travel banner at the top, newsletter invitation before the policies, documents spread across three blocks written like marketing pages.</figcaption>
+      </figure>
+
+      <h2>The rule</h2>
+
+      <div class="lk-rule"><p>A policyholder logs in to get a document or report a claim.</p></div>
+
+      <p>Everything that does not serve those two things goes. Except the offer, which stays whole and changes form: a “Get covered” section on the home page, Travel and Car with what each one covers, at the same level as the policies, in place of the banners and an “add a policy” button that promised nothing. Showing the offer is showing the service: a policyholder who finds out he can cover his trip in the same place gains as much as the insurer. That is the difference between an advertisement and a feature.</p>
+
+      <figure class="pf-piece">
+        <img src="/img/luko-redesign.jpg" alt="Home page of the redesigned customer area" width="1440" height="681" loading="lazy">
+        <figcaption>The prototype after three iterations. Certificates and claims first. Policies as cards with address and price. A “Get covered” section where the banners used to be.</figcaption>
+      </figure>
+
+      <h2>Two journeys, rebuilt end to end</h2>
+
+      <p>Reporting a claim meant first finding the right policy, then a link buried in its sub-menus: the user is expected to think in policy numbers rather than about the problem he has. The redesign starts from the problem, on the home page.</p>
+
+      <div class="lk-steps"><span>The property</span><i>→</i><span>The type</span><i>→</i><span>The details</span><i>→</i><span>The photos</span><i>→</i><span>Confirmation</span></div>
+
+      <p>For the certificate, one click from the home page, the choice of policy, and the four types visible at once, civil liability, school, venue hire, holiday rental, each with its use case. One click downloads.</p>
+
+      <div class="lk-count"><b>5</b><i>→</i><b>3</b><span>interactions to get a certificate, with no scrolling and no accordion.</span></div>
+
+      <div class="lk-pair">
+        <figure class="pf-piece">
+          <img src="/img/luko-sinistre.jpg" alt="Claim wizard, step one: the user picks the property, the stepper shows the remaining steps" width="1440" height="541" loading="lazy">
+          <figcaption>Claim, step one: the property. The stepper shows what is left.</figcaption>
+        </figure>
+        <figure class="pf-piece">
+          <img src="/img/luko-attestation.jpg" alt="Certificate types after choosing the policy, each as a card with its use case and a download icon" width="1440" height="561" loading="lazy">
+          <figcaption>The certificate types, each with its use case.</figcaption>
+        </figure>
+      </div>
+
+      <figure class="pf-piece">
+        <img src="/img/luko-detail-contrat.jpg" alt="Policy view: address and status at the top, certificate cards, document list, cover and payment in accordions" width="1440" height="1425" loading="lazy">
+        <figcaption>The policy view. The Documents tab is gone: certificates, documents, cover and payment sit on the page of the policy they belong to. Navigation goes from three tabs to none.</figcaption>
+      </figure>
+
+      <h2>What it is worth</h2>
+
+      <p>An unsolicited redesign ignores the constraints I do not know: legal display obligations, the insurer's information system, whatever the banners may bring in. It is a line of reasoning with screens, to be checked against those constraints before it becomes a product. I talked about it with a former member of the Luko team, who confirmed the diagnosis: after the acquisition by Allianz Direct, product decisions had become hard to get built. The audit, the three iterations and the screens were produced with Claude in one short session, from the rule set out beforehand.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/en/portfolio/ubaq"><small>← Previous</small>UBAQ</a>
+      <a class="next" href="/en/portfolio/getpro"><small>Next →</small>GetPro</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Download CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

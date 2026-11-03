@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chunk, entrer dans le marché de la pierre — Gildas Frémont</title>
+  <meta name="description" content="Une thèse de marché en quatre équations, un POC de marketplace de tranches de marbre, et l'arrêt : les vendeurs n'avaient pas intérêt à partager leur stock et leurs prix.">
+  <link rel="canonical" href="https://gildas.fyi/portfolio/chunk">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/portfolio/chunk">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/portfolio/chunk">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/portfolio/chunk">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Chunk, entrer dans le marché de la pierre — Gildas Frémont">
+  <meta property="og:description" content="Une thèse de marché en quatre équations, un POC de marketplace de tranches de marbre, et l'arrêt : les vendeurs n'avaient pas intérêt à partager leur stock et leurs prix.">
+  <meta property="og:url" content="https://gildas.fyi/portfolio/chunk">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/portfolio/cas.css">
+  <style>
+.ck-eq { list-style: none; margin: 1.5rem 0 2rem !important; max-width: 30em; }
+.ck-eq li { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.6rem; align-items: baseline; padding: 0.5rem 0; border-top: 1px solid var(--border); font-size: 16px; color: var(--black); margin: 0 !important; }
+.ck-eq li:last-child { border-bottom: 1px solid var(--border); }
+.ck-eq li span:first-child { text-align: right; color: var(--mid); }
+.ck-eq li i { font-style: normal; color: var(--light); font-family: var(--pf-mono); }
+.ck-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; margin: 2rem 0 !important; }
+.ck-pair figure { margin: 0 !important; }
+.ck-trio { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 1.25rem; align-items: start; margin: 2rem 0 !important; }
+.ck-trio figure { margin: 0 !important; }
+.ck-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin: 1.25rem 0 2rem; max-width: 40em; }
+.ck-steps div { border-top: 2px solid var(--black); padding-top: 0.45rem; font-size: 14px; line-height: 1.5; color: var(--mid); }
+.ck-steps b { display: block; color: var(--black); font-weight: 600; font-size: 15px; }
+.ck-stop { margin: 1.5rem 0 2rem; max-width: 36em; padding-left: 1rem; border-left: 2px solid rgb(var(--pf-accent)); }
+.ck-stop p { margin: 0 !important; font-size: 17px !important; color: var(--black) !important; }
+@media (max-width: 600px) { .ck-pair, .ck-trio, .ck-steps { grid-template-columns: 1fr; } .ck-eq li { grid-template-columns: 1fr; gap: 0.1rem; } .ck-eq li span:first-child { text-align: left; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page pf-page pf-chunk">
+
+  <nav class="lang-toggle">
+    <a href="/portfolio">← Portfolio</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="pf-kicker pf-crumb"><a href="/portfolio">Portfolio</a> · Mineral Expertise, 2020 et 2021</p>
+      <h1>Une place de marché pour les tranches de marbre&nbsp;: un marché qu'on ne connaît pas, posé en quatre équations avant le premier écran</h1>
+      <p class="article-page-subtitle">Chunk, une place de marché pour les tranches de marbre, et pourquoi elle s'est arrêtée à l'outil de stock</p>
+      <p class="article-meta">Automne 2020 à 2021 · cofondateur et CPO, en joint venture avec Mineral Expertise · première mission en indépendant</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>Une tranche de marbre est une pièce unique&nbsp;: deux tranches du même bloc n'ont pas le même veinage, et un acheteur se déplace jusqu'au dépôt pour choisir la sienne. Mineral Expertise, qui vend du marbre haut de gamme à des architectes, des hôtels et des chantiers de yachts, m'a proposé de cofonder une place de marché pour ces tranches. Je ne connaissais ni le métier de la pierre, ni ses circuits, ni ses acheteurs.</p>
+
+      <h2>La thèse, en quatre équations</h2>
+
+      <p>Avant de dessiner, j'ai écrit ce que le projet supposait, sous la forme d'une chaîne d'équivalences. Elle se dit à voix haute en quatre phrases, et elle explique pourquoi le premier produit à construire n'était pas la place de marché.</p>
+
+      <ul class="ck-eq">
+        <li><span>un scan</span><i>=</i><span>une tranche en ligne</span></li>
+        <li><span>des tranches en ligne</span><i>=</i><span>un inventaire en ligne</span></li>
+        <li><span>un inventaire et des prix</span><i>=</i><span>un catalogue</span></li>
+        <li><span>des catalogues</span><i>=</i><span>une place de marché</span></li>
+      </ul>
+
+      <div class="ck-trio">
+        <figure class="pf-piece note">
+          <img src="/img/portfolio/chunk-plan.jpg" alt="Le plan en trois étapes du board : gestion d'inventaire et scan, plateforme d'inventaire et images faciles vers une place de marché, puis transactions, logistique et intégration" width="540" height="380" loading="lazy">
+          <figcaption>Le plan en trois étapes, tel quel sur le board&nbsp;: l'inventaire d'abord, la place de marché ensuite, les transactions et la logistique en dernier.</figcaption>
+        </figure>
+        <figure class="pf-piece note">
+          <img src="/img/portfolio/chunk-marche.jpg" alt="Les deux versants du marché : côté pierres, carrières, revendeurs internationaux, revendeurs locaux, poseurs ; côté projets, poseurs, paysagistes, architectes, artisans" width="330" height="390" loading="lazy">
+          <figcaption>Les deux versants. Les poseurs sont des deux côtés.</figcaption>
+        </figure>
+        <figure class="pf-piece note">
+          <img src="/img/portfolio/chunk-frictions.jpg" alt="Les frictions notées : devis intraçables, images longues à produire et pénibles à partager, temps perdu en phase de découverte, disponibilité jamais partagée en temps réel" width="590" height="200" loading="lazy">
+          <figcaption>Les quatre frictions relevées sur le terrain.</figcaption>
+        </figure>
+      </div>
+
+      <div class="ck-steps">
+        <div><b>1. L'inventaire</b>Un outil de stock branché sur les scanners, qui sert un vendeur avant le premier acheteur.</div>
+        <div><b>2. La place de marché</b>Les inventaires réunis, avec des images faciles à produire et à partager.</div>
+        <div><b>3. Les transactions</b>Le paiement, la logistique, l'intégration chez les vendeurs.</div>
+      </div>
+
+      <p>Les six premiers mois ont été du terrain&nbsp;: visites de dépôts, grilles tarifaires, presse professionnelle, et un tableau de suivi des commandes construit pour une usine à Lyon, machine par machine. Le terrain a confirmé le problème&nbsp;: autour d'une même tranche, le scanner, WhatsApp, les tableurs de production et les devis en PDF détenaient chacun une partie de l'information, et aucun ne la transmettait aux autres.</p>
+
+      <h2>Le POC</h2>
+
+      <div class="ck-pair">
+        <figure class="pf-piece">
+          <img src="/img/chunk/poc-results.png" alt="Résultats de recherche Chunk, par lot : prix au mètre carré, nombre de tranches, minimum de commande et ville de stockage" width="1152" height="1240" loading="lazy">
+          <figcaption>La recherche, côté acheteur. Les résultats par lot, avec le prix au mètre carré, le minimum de commande et le lieu de stockage. Une option regroupe une même pierre vendue sous plusieurs noms. Vendeurs fictifs.</figcaption>
+        </figure>
+        <figure class="pf-piece">
+          <img src="/img/chunk/scan-bundle.png" alt="Outil vendeur Chunk : un lot de huit tranches de Statuario avec leurs dimensions et un lien partageable par tranche" width="1440" height="1284" loading="lazy">
+          <figcaption>L'outil côté vendeur, construit sur les exports du scanner. Un lot avec ses dimensions réelles, un lien à partager dans WhatsApp par tranche, et un sticker à QR code pour rattacher les photos prises hors scanner.</figcaption>
+        </figure>
+      </div>
+
+      <div class="ck-pair">
+        <figure class="pf-piece">
+          <img src="/img/chunk/poc-block.png" alt="Fiche de bloc Chunk : photo de la tranche, prix au mètre carré, choix de la plage de tranches, frais Chunk, options de livraison, téléchargements et disponibilité chez d'autres fournisseurs" width="898" height="2000" loading="lazy">
+          <figcaption>La fiche d'un bloc. Une plage de tranches contiguës, la part déjà réservée, les téléchargements Autocad et HD, et le modèle de rémunération mis en discussion&nbsp;: une commission de 5&nbsp;%, le stockage à 7&nbsp;€ par jour.</figcaption>
+        </figure>
+        <div>
+          <figure class="pf-piece narrow" style="max-width:16rem">
+            <img src="/img/chunk/scan-retronesting.png" alt="Écran de retro-nesting : saisie des formes d'un plan en centimètres, épaisseur, quantité et choix entre moindre perte et prix au centimètre carré" width="472" height="632" loading="lazy">
+            <figcaption>Le retro-nesting renverse la recherche&nbsp;: partir des formes d'un plan pour trouver les tranches qui minimisent la perte ou le prix.</figcaption>
+          </figure>
+          <figure class="pf-piece note" style="margin-top:1.25rem !important">
+            <img src="/img/portfolio/chunk-boucle.jpg" alt="Le parcours d'un projet de pierre, du board : découverte de la pierre, choix de la tranche, calepinage, pose, en regard de la conception du projet" width="520" height="460" loading="lazy">
+            <figcaption>Le parcours d'un projet, sur le board. Les deux cercles en gras, découvrir la pierre puis choisir la tranche, sont les deux moments de vente&nbsp;: le premier est long et n'aboutit pas toujours, le second est rapide mais échoue quand la tranche est déjà partie.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <p>Le modèle de données partait des exports d'un scanner du marché, avec leurs trois mesures, extérieure, commerciale, intérieure, et le contour de la tranche. Une idée en marge&nbsp;: le sticker posé sur la tranche porte déjà des mires d'alignement et des pastilles de couleur, donc une simple photo avec lui dans le cadre peut donner les vraies dimensions et la teinte, là où un scanner coûte vingt à trente mille euros.</p>
+
+      <h2>L'arrêt</h2>
+
+      <div class="ck-stop"><p>Une place de marché utile suppose que les vendeurs partagent leur stock et leurs prix. Leur activité repose en partie sur la maîtrise de cette information.</p></div>
+
+      <p>Le terrain avait confirmé le problème et montré la difficulté de la solution. Le commerce de la pierre tient à la relation entre un vendeur et son client, et rendre le stock et les conditions visibles aux autres réduit le contrôle du vendeur sur cette relation. Des outils de commercialisation de tranches existaient déjà sans avoir déplacé ces habitudes. J'ai arrêté la piste de la place de marché, et l'équipe est passée au projet suivant dans la même filière, <a href="/portfolio/guinet">Guinet-Derriaz</a>. Ce que l'exploration a établi, ce n'est pas qu'une place de marché de la pierre est impossible, c'est que la nôtre dépendait d'un changement de comportement commercial que rien ne permettait de tenir pour acquis.</p>
+
+    </div>
+  </article>
+
+    <nav class="pf-nav">
+      <a href="/portfolio/rungle"><small>← Précédent</small>Rungle</a>
+      <a class="next" href="/portfolio/conformite-pharma"><small>Suivant →</small>Audit conformité pharma</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas" data-d="hey.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
