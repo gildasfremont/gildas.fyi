@@ -1278,7 +1278,7 @@ footer {
   .contact-tel { font-size: 0; }
   .contact-tel::after { content: '+33 6 60 24 71 71'; font-size: 0.58rem; }
   .contact-email { font-size: 0; }
-  .contact-email::after { content: 'gildas@hey.com'; font-size: 0.58rem; }
+  .contact-email::after { content: 'gildas.fremont@gmail.com'; font-size: 0.58rem; }
   footer a[href*="linkedin"] { font-size: 0; }
   footer a[href*="linkedin"]::after { content: 'linkedin.com/in/gildasfremont'; font-size: 0.58rem; }
   footer a[href*="x.com"] { font-size: 0; }
