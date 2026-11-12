@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plateaux de Londres — Gildas Frémont</title>
+  <meta name="description" content="A map of the filming locations of 29 TV shows set in London: where the scene takes place in the story, where it was actually shot, and what the place plays on screen.">
+  <link rel="canonical" href="https://gildas.fyi/en/experimental/plateaux-de-londres">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/plateaux-de-londres">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/plateaux-de-londres">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/plateaux-de-londres">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Plateaux de Londres — Gildas Frémont">
+  <meta property="og:description" content="A map of the filming locations of 29 TV shows set in London: where the scene takes place in the story, where it was actually shot, and what the place plays on screen.">
+  <meta property="og:url" content="https://gildas.fyi/en/experimental/plateaux-de-londres">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/en/experimental/context/plateaux-de-londres.md" title="Full write-up">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.pl-roles { margin: 2rem 0 !important; padding: 1.25rem; border: 1px solid var(--border); border-radius: 10px; background: var(--white); max-width: 40rem; }
+.pl-roles > .xp-kicker { padding-bottom: 0.45rem; border-bottom: 2px solid var(--black); }
+.pl-real { --c: 26,29,26; }
+.pl-inv { --c: 150,90,0; }
+.pl-std { --c: 25,120,65; }
+.pl-row { display: grid; grid-template-columns: 6.5rem 1fr auto; gap: 0.9rem; align-items: baseline; padding: 0.7rem 0; border-bottom: 1px solid var(--border); }
+.pl-row .se { font-family: var(--xp-mono); font-size: 11.5px; color: var(--light); }
+.pl-row .pl { font-size: 14px; color: var(--black); line-height: 1.45; }
+.pl-row .pl small { display: block; font-size: 12.5px; color: var(--light); margin-top: 0.15rem; }
+.pl-tag { font-family: var(--xp-mono); font-size: 11px; padding: 0.1rem 0.45rem; border-radius: 4px; border: 1px solid rgb(var(--c)); color: rgb(var(--c)); white-space: nowrap; }
+.pl-total { margin-top: 1.1rem; }
+.pl-total > small { display: block; font-size: 11px; color: var(--light); font-family: var(--xp-mono); margin-bottom: 0.4rem; }
+.pl-bar { display: flex; gap: 2px; height: 24px; border-radius: 4px; overflow: hidden; }
+.pl-bar i { display: flex; align-items: center; padding-left: 0.45rem; font-style: normal; font-family: var(--xp-mono); font-size: 11px; color: #fff; background: rgb(var(--c)); min-width: 0; }
+.pl-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin-top: 0.5rem; font-size: 12px; color: var(--mid); }
+.pl-legend span::before { content: ""; display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 2px; background: rgb(var(--c)); margin-right: 0.35rem; transform: translateY(0.05rem); }
+@media (max-width: 640px) {
+  .pl-row { grid-template-columns: 1fr auto; gap: 0.2rem 0.6rem; }
+  .pl-row .se { grid-column: 1 / -1; }
+}
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-plateaux">
+
+  <nav class="lang-toggle">
+    <a href="/en/experimental">← Experimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · November 2026</p>
+      <h1>Finding where a show was filmed in London, and what each place plays on screen</h1>
+      <p class="article-page-subtitle">A map of 432 filming locations from 29 shows, with a source for every scene</p>
+      <p class="article-meta">November 12, 2026, in one day · static site, Leaflet · built with Claude Code · <a href="https://plateaux-de-londres.vercel.app" target="_blank" rel="noopener">the site (in French)</a> · <a href="/en/experimental/context/plateaux-de-londres.md">full write-up (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>The same London building can play three parts in three shows. Tate Modern is itself in Killing Eve, a made-up gallery in Fleabag, and police headquarters in Bodyguard. Plateaux de Londres (French for "London sets") brings together the filming locations of 29 shows set in London, from Sherlock to MobLand, and tells you for each one where the scene takes place in the story, where it was actually shot, and which other shows have been there.</p>
+
+      <figure class="pl-roles">
+        <span class="xp-kicker">Tate Modern, Bankside</span>
+        <div class="pl-row"><span class="se">Killing Eve</span><span class="pl">Tate Modern<small>Konstantin meets Villanelle there, mid staring contest with a living statue.</small></span><span class="pl-tag pl-real">real place</span></div>
+        <div class="pl-row"><span class="se">Fleabag</span><span class="pl">The "sexhibition" gallery<small>Her godmother's private view, where Fleabag finds out she's been invited as a waitress.</small></span><span class="pl-tag pl-inv">made up</span></div>
+        <div class="pl-row"><span class="se">Bodyguard</span><span class="pl">Met headquarters<small>Tate Modern stands in for New Scotland Yard, where David gets his assignments.</small></span><span class="pl-tag pl-std">stand-in</span></div>
+        <div class="pl-total">
+          <small>The 495 parts played by 432 places, across the site</small>
+          <div class="pl-bar"><i class="pl-real" style="flex:205">205</i><i class="pl-inv" style="flex:216">216</i><i class="pl-std" style="flex:74">74</i></div>
+          <div class="pl-legend"><span class="pl-real">the place plays itself</span><span class="pl-inv">a made-up place</span><span class="pl-std">another real place</span></div>
+        </div>
+        <figcaption>A place plays one part in each show it appears in. Tate Modern's three parts as the site describes them, then the count across all 29 shows.</figcaption>
+      </figure>
+
+      <p>On the home page map, 48 places belong to more than one show. The Old Royal Naval College in Greenwich has five: it plays Regency London's streets in Bridgerton, Buckingham Palace in The Crown, and, in Slow Horses, MI5 headquarters, which the story puts in Regent's Park.</p>
+
+      <figure class="xp-shot">
+        <img src="/img/experimental/plateaux-accueil.jpg" alt="The Plateaux de Londres home page: the list of shows with their logo, network and number of locations, and a map of London and the surrounding counties covered in coloured dots" width="1600" height="1000" loading="lazy">
+        <figcaption>The home page in production: the best-known shows first, and one colour per show on the map. The locations spill out of London into the country houses of the surrounding counties.</figcaption>
+      </figure>
+
+      <h2>Buckingham Palace, played by five places</h2>
+
+      <p>None of the 29 shows films Buckingham Palace itself. Five other places play it, in The Crown and Bridgerton. Lancaster House, 390 metres away, is one of them: it's Buckingham Palace in The Crown, Queen Charlotte's residence in Bridgerton, and the Palace of Versailles in McMafia, which spared the production a shoot in France. On each location page, a dotted line links the filming spot to the place it plays.</p>
+
+      <figure class="xp-shot">
+        <img src="/img/experimental/plateaux-lancaster-house.jpg" alt="The Lancaster House page: a photo of the building, Street View, then one box per show with the place's name in the story, its part, the episodes and a watch button; on the right, the map with a dotted line to Buckingham Palace" width="1600" height="1000" loading="lazy">
+        <figcaption>The Lancaster House page. For each show, the place's name in the story, its part, the episodes, and a button that opens the episode on Netflix when it's known. The dotted line leads to Buckingham Palace.</figcaption>
+      </figure>
+
+      <h2>A source for every scene</h2>
+
+      <p>The site hosts no stills from the shows, which are under copyright. It gives the moment, season and episode, and a link to the streaming service; for eight Netflix shows, the link opens the episode itself. The photos of the places come from Wikipedia and Wikimedia Commons, under free licences.</p>
+
+      <p>The first rule Claude was given is not to make anything up. Every scene cites a source Claude actually read, the episode stays blank when the source doesn't give it, and coordinates come from Wikipedia or OpenStreetMap, never from a guess. As a result, 289 of the 754 scenes have an episode number, and none has a timestamp yet, because no source gives one. The most cited sources are findthatlocation, Atlas of Wonders and Time Out.</p>
+
+      <p>Only one scene has no link. In MobLand, a pub renamed The Rose and Crown has the frontage of the Prince's Head in Richmond, the same pub that plays the Crown &amp; Anchor in Ted Lasso. No guide or article I could find says so; I recognised it on screen, and the scene is marked "Seen on screen by the site's author".</p>
+
+      <h2>One day, thirty-nine pull requests</h2>
+
+      <p>The first commit is from 10:01 on November 12 and already holds the map of eight shows: 138 locations and 225 scenes, gathered by four agents working on two shows each. Three minutes later, a handover prompt passes the project to Claude Code on the web, with its rules and seven workstreams in order of priority. They move forward in parallel on separate branches, and by 11:06 the site covers 23 shows and 357 locations.</p>
+
+      <p>The afternoon goes into the interface. At 16:13, headings switch to Canal Bold Romain, a typeface I supplied. At 17:37 it has to be reined in: in this Canal+ font, some characters are logos (the middle dot prints CANAL+) and accented capitals lose their accents. Only the characters that render properly stay in Canal; the rest fall back to Outfit. In between, feedback from a "busy CEO" test put the map on phones, moved the best-known shows to the top and added a big button to watch the episode, and a QA report made search ignore accents.</p>
+
+      <p>The evening brings six more shows, from Black Mirror to Peep Show, the real places played by others, and the Prince's Head scene. The last commit, at 20:23, is the day's 39th pull request. Still to do: timestamps for the scenes, 49 missing photos, and a pass through Reddit, which Claude's environment can't reach, for eight shows including MobLand and Slow Horses.</p>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/en/experimental"><small>← All projects</small>Experimental</a>
+      <a class="next" href="/en/experimental/callrecorder"><small>Next →</small>CallRecorder</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/resume-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Resume ↓</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas.fremont" data-d="gmail.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

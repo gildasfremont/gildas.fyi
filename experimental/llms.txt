@@ -7,6 +7,7 @@ Version anglaise de cet index : https://gildas.fyi/en/experimental/llms.txt
 
 ## En usage
 
+- [Plateaux de Londres](https://gildas.fyi/experimental/contexte/plateaux-de-londres.md) : retrouver où une série a été tournée à Londres et ce que chaque lieu y joue (lui-même, un lieu inventé ou un autre lieu réel), chaque scène citant sa source. Site statique, en ligne depuis le 12 novembre 2026.
 - [CallRecorder](https://gildas.fyi/experimental/contexte/callrecorder.md) : garder une trace de ses appels sans penser à lancer l'enregistrement. App macOS en Swift, version 0.3.5 publiée le 25 octobre 2026.
 - [Comptes de copropriété](https://gildas.fyi/experimental/contexte/copropriete.md) : pouvoir vérifier les comptes d'une copropriété à partir des pièces du syndic, chaque chiffre renvoyant à ses sources. Next.js, outil privé, depuis septembre 2026.
 - [Recherche d'emploi](https://gildas.fyi/experimental/contexte/recherche-emploi.md) : laisser Claude faire le travail de fond d'une recherche d'emploi et garder la décision : une base de connaissances sourcée et un outil de suivi qui ne calcule rien. Next.js et MCP, depuis octobre 2026.
