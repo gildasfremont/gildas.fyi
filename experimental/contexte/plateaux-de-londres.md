@@ -9,7 +9,7 @@ Version anglaise : https://gildas.fyi/en/experimental/context/plateaux-de-londre
 
 ## Le pari
 
-Une carte peut réunir les lieux de tournage de toutes les séries qui se passent à Londres et dire, pour chaque lieu, où la scène se passe dans l'histoire, où elle a été tournée, et quelles autres séries ont utilisé le même endroit. À condition que chaque scène cite une source lue et que rien ne soit inventé, ni un épisode, ni des coordonnées.
+Une carte peut réunir les lieux de tournage de toutes les séries qui se passent à Londres et dire, pour chaque scène, où elle se situe dans l'histoire, où elle a été tournée, et quelles autres séries ont utilisé le même endroit. À condition que chaque scène cite une source lue et que rien ne soit inventé, ni un épisode, ni des coordonnées.
 
 ## Ce que fait le site
 
@@ -48,11 +48,11 @@ Sur le site : 205 rôles réels, 216 inventés, 74 doublures, soit 495 rôles po
 - 17 h 53 : anecdotes « Le saviez-vous ? » sur la fiche lieu.
 - 18 h 21 : 6 nouvelles séries (Black Mirror, You, Misfits, Luther, Peep Show, The Night Manager), lieux ajoutés à quatre séries, 24 anecdotes sourcées ; 29 séries, 425 lieux.
 - 18 h 29 : sur téléphone, carte agrandissable en plein écran.
-- 19 h 13 à 19 h 39 : fil d'Ariane, recherche classée et tolérante, puis cinq versions de la fiche lieu en seize minutes (rôle en accroche, fiche technique, sections).
+- 19 h 13 à 19 h 39 : fil d'Ariane, recherche qui classe les résultats et tolère les approximations, puis cinq versions de la fiche lieu en seize minutes (rôle en accroche, fiche technique, sections).
 - 19 h 57 : lieux réels joués par d'autres.
 - 20 h 04 : MobLand, 7 lieux ajoutés ; Killing Eve, Syon House.
 - 20 h 21 : MobLand, The Prince's Head en témoignage direct.
-- 20 h 23 : dernier commit, la 39e pull request de la journée.
+- 20 h 23 : dernier commit, qui fusionne la 39e pull request de la journée.
 
 ## Essais et erreurs
 

@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recherche d'emploi — Gildas Frémont</title>
-  <meta name="description" content="Laisser Claude faire le travail de fond d'une recherche d'emploi, repérer, évaluer, tenir le fil, et garder pour moi la décision et l'envoi.">
+  <meta name="description" content="Laisser Claude faire le travail de fond d'une recherche d'emploi (repérer, évaluer, tenir le fil) et garder pour moi la décision et l'envoi.">
   <link rel="canonical" href="https://gildas.fyi/experimental/recherche-emploi">
   <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/recherche-emploi">
   <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/recherche-emploi">
   <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/recherche-emploi">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Recherche d'emploi — Gildas Frémont">
-  <meta property="og:description" content="Laisser Claude faire le travail de fond d'une recherche d'emploi, repérer, évaluer, tenir le fil, et garder pour moi la décision et l'envoi.">
+  <meta property="og:description" content="Laisser Claude faire le travail de fond d'une recherche d'emploi (repérer, évaluer, tenir le fil) et garder pour moi la décision et l'envoi.">
   <meta property="og:url" content="https://gildas.fyi/experimental/recherche-emploi">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -99,19 +99,19 @@
 
     <div class="article-body">
 
-      <p>Au bout d'un mois, le suivi de mes candidatures tenait dans un Google Doc de 300&nbsp;Ko, avec des lignes d'offre de 1&nbsp;500 caractères. Plus personne ne pouvait le lire, moi compris. Le travail de fond d'une recherche d'emploi, repérer les offres, les évaluer, tenir le fil des échanges, préparer les candidatures, peut revenir à Claude. Il me fallait un endroit où il puisse le faire, et où je voie en quelques secondes ce qui demande mon attention.</p>
+      <p>Au bout d'un mois, le suivi de mes candidatures tenait dans un Google Doc de 300&nbsp;Ko, avec des lignes d'offre de 1&nbsp;500 caractères. Plus personne ne pouvait le lire, moi compris. Le travail de fond d'une recherche d'emploi (repérer les offres, les évaluer, tenir le fil des échanges, préparer les candidatures) peut revenir à Claude. Il me fallait un endroit où il puisse le faire, et où je voie en quelques secondes ce qui demande mon attention.</p>
 
       <figure class="je-lanes">
         <div class="je-head"><span>L'outil</span><span class="c">Claude</span><span class="m">Moi</span></div>
-        <div class="je-step"><div class="je-card o" data-n="1"><span class="who">L'outil</span>Chaque matin, lit 82 flux publics d'offres. Une offre nouvelle arrive <span class="st">à trier</span>.</div></div>
+        <div class="je-step"><div class="je-card o" data-n="1"><span class="who">L'outil</span>Chaque matin, lit 82 flux publics d'offres. Une nouvelle offre arrive dans la file <span class="st">à trier</span>.</div></div>
         <div class="je-step"><div class="je-card c" data-n="2"><span class="who">Claude</span>Qualifie l'offre&nbsp;: liste, tier S, A ou B, voie d'entrée, note d'adéquation. Une évaluation écrite, jamais un score calculé.</div></div>
         <div class="je-step"><div class="je-card m" data-n="3"><span class="who">Moi</span>Dans la Sélection, retiens l'offre ou l'écarte.</div></div>
-        <div class="je-step"><div class="je-card c" data-n="4"><span class="who">Claude</span>Prépare la candidature à partir de la base de connaissances, pose une question quand un fait manque. L'offre passe <span class="st">prête à envoyer</span>.</div></div>
+        <div class="je-step"><div class="je-card c" data-n="4"><span class="who">Claude</span>Prépare la candidature à partir de la base de connaissances, pose une question quand un fait manque. L'offre passe au statut <span class="st">prête à envoyer</span>.</div></div>
         <div class="je-step"><div class="je-card m" data-n="5"><span class="who">Moi</span>Relis, puis envoie moi-même. Rien ne part de l'outil.</div></div>
-        <div class="je-step"><div class="je-card c" data-n="6"><span class="who">Claude</span>Tient le fil&nbsp;: échanges, étapes du recrutement annoncé, tâches, rendez-vous de l'agenda.</div></div>
+        <div class="je-step"><div class="je-card c" data-n="6"><span class="who">Claude</span>Tient le fil&nbsp;: échanges, étapes annoncées du recrutement, tâches, rendez-vous de l'agenda.</div></div>
         <div class="je-step"><div class="je-card o" data-n="7"><span class="who">L'outil</span>Signale l'offre si elle disparaît de son flux.</div></div>
         <div class="je-step"><div class="je-card m" data-n="8"><span class="who">Moi</span>La vue <span class="st">Aujourd'hui</span> dit ce qui m'attend.</div></div>
-        <figcaption>Le parcours d'une offre, sans nom d'entreprise. Claude passe par un serveur MCP, une soixantaine d'opérations, et moi par l'interface web&nbsp;; les deux reposent sur les mêmes services, et chaque écriture est signée par son auteur.</figcaption>
+        <figcaption>Le parcours d'une offre, sans nom d'entreprise. Claude passe par un serveur MCP qui expose une soixantaine d'opérations, et moi par l'interface web&nbsp;; les deux reposent sur les mêmes services, et chaque écriture est signée par son auteur.</figcaption>
       </figure>
 
       <p>La spécification de l'outil posait deux règles. Un humain doit pouvoir faire tout ce qu'un agent fait, et inversement. Et l'outil prépare, j'envoie&nbsp;: il ne calcule pas de score, n'embarque pas d'IA et n'envoie jamais de message.</p>
@@ -123,12 +123,12 @@
 
       <h2>Pour que Claude n'invente rien</h2>
 
-      <p>Avant l'outil, il y a eu une mémoire. Depuis le 17&nbsp;septembre, un dépôt de fichiers texte rassemble mon profil, mes expériences, des fiches sur les entreprises où j'ai travaillé, des recommandations et une méthode d'écriture. Quand je demande un CV, un message ou la préparation d'un entretien, Claude cherche d'abord là et cite ses fichiers. Chaque fait y porte l'un de trois statuts.</p>
+      <p>Avant l'outil, il y a eu une mémoire. Depuis le 17&nbsp;septembre, un dépôt de fichiers texte rassemble mon profil, mes expériences, des fiches sur les entreprises où j'ai travaillé, des recommandations et une méthode d'écriture. Quand je demande un CV, un message ou la préparation d'un entretien, Claude cherche d'abord là et cite ses fichiers. Chaque fait y porte l'un des trois statuts suivants.</p>
 
       <div class="je-fact">
         <span class="ok">Établi</span><span>Dit par moi ou sourcé. Utilisable tel quel.</span>
         <span class="tbc">À confirmer</span><span>Extrapolation plausible, jamais validée. Utilisable seulement en le signalant.</span>
-        <span class="gap">Trou</span><span>Information manquante. Claude pose la question au lieu de combler.</span>
+        <span class="gap">Trou</span><span>Information manquante. Claude pose la question au lieu de le combler.</span>
       </div>
 
       <h2>Un outil essayé, un autre construit, le même jour</h2>
@@ -146,19 +146,19 @@
 
       <p>Le 20&nbsp;octobre au matin, j'ai installé JobSync, un outil libre de suivi de candidatures. Claude y a importé 118 offres. Je l'ai quitté six heures plus tard&nbsp;: son IA intégrée évaluait elle-même les offres, alors que je voulais confier ce rôle à Claude, et il ne suivait ni les échanges ni les étapes annoncées par les employeurs. La spécification de mon propre outil était écrite à 17&nbsp;h&nbsp;17. À 18&nbsp;h&nbsp;42, Claude Code livrait une première version complète, avec l'API, le serveur MCP, la lecture des flux et l'import de tout l'historique. Elle était fusionnée à 23&nbsp;h.</p>
 
-      <h2>La veille</h2>
+      <h2>La veille des offres</h2>
 
       <figure class="je-funnel">
         <div class="lv"><b>82</b><div>flux publics d'offres, sur huit types d'ATS&nbsp;: Ashby, Greenhouse, Lever, Teamtailor, SmartRecruiters, Workable, Recruitee, Personio</div></div>
         <div class="lv"><b>~3&nbsp;900</b><div>postes lus à chaque passage</div></div>
         <div class="lv"><b>~110</b><div>ressemblent à un poste produit</div></div>
-        <div class="je-days">Seuls les nouveaux remontent à trier&nbsp;: <span>21 oct. <b>83</b></span><span>puis <b>1</b></span><span><b>0</b></span><span><b>11</b></span></div>
+        <div class="je-days">Seuls les nouveaux sont à trier&nbsp;: <span>21 oct. <b>83</b></span><span>puis <b>1</b></span><span><b>0</b></span><span><b>11</b></span></div>
         <figcaption>Le premier passage en production, le 21&nbsp;octobre au soir, a fait remonter 83 offres, puis 1, 0 et 11 les jours suivants. Un passage dure de 3 à 45 secondes.</figcaption>
       </figure>
 
       <h2>Des réponses à la taille d'un agent</h2>
 
-      <p>Un agent lit tout ce qu'on lui renvoie. Les premières réponses du serveur MCP étaient trop lourdes pour lui. Elles ont été compactées, mesures à l'appui.</p>
+      <p>Un agent lit tout ce qu'on lui renvoie, et les premières réponses du serveur MCP étaient trop lourdes pour lui&nbsp;: elles ont été compactées, mesures à l'appui.</p>
 
       <div class="je-sizes">
         <span>Le pipeline</span><span class="bar"><i class="before" style="width:100%"></i><i class="after" style="width:30.3%"></i><em style="left:30.3%">142 → 43 Ko</em></span>
