@@ -28,7 +28,7 @@ Vue par mois et par semaine, saisie des séjours, identité retenue sur le tél�
 - 10 avril, 21 h 44 : fichier de consignes pour Claude (CLAUDE.md), avec le workflow git et une section de principes.
 - 10 avril, soir : tous les membres affichés, légende des seuils, consignes de travail pour Claude, sélection de période.
 - 11 avril : gestion des membres, corrections sur téléphone, données de départ complétées.
-- 8 mai : 24 commits de Claude sur une branche de travail : vue par jour, pages par séjour et par membre, compteurs par branche familiale, sélecteur de dates façon réservation de vol, affectation des chambres.
+- 8 mai : 24 commits de Claude sur une branche de travail (vue par jour, pages par séjour et par membre, compteurs par branche familiale, sélecteur de dates façon réservation de vol, affectation des chambres).
 
 ## Essais et erreurs
 

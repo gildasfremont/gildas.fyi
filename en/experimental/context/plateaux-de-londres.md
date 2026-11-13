@@ -11,7 +11,7 @@ French version of this write-up: https://gildas.fyi/experimental/contexte/platea
 
 ## The bet
 
-A single map can bring together the filming locations of every show set in London and tell you, for each place, where the scene happens in the story, where it was actually shot, and which other shows used the same spot. Provided every scene cites a source that was actually read, and nothing is made up: not an episode, not a set of coordinates.
+A single map can bring together the filming locations of every show set in London and tell you, for each scene, where it's set in the story, where it was actually shot, and which other shows used the same spot. Provided every scene cites a source that was actually read, and nothing is made up: not an episode, not a set of coordinates.
 
 ## What the site does
 
@@ -54,7 +54,7 @@ Across the site: 205 real, 216 made up, 74 stand-ins, so 495 parts for 432 place
 - 19:57: real places played by others.
 - 20:04: MobLand, 7 locations added; Killing Eve, Syon House.
 - 20:21: MobLand, the Prince's Head as a first-hand sighting.
-- 20:23: last commit, the day's 39th pull request.
+- 20:23: last commit, merging the day's 39th pull request.
 
 ## Trial and error
 

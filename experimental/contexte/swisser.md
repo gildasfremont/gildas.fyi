@@ -8,9 +8,9 @@ Version anglaise : https://gildas.fyi/en/experimental/context/swisser.md
 
 ## Le pari, en deux temps
 
-Première version : une mise en page typographique stricte peut sortir de deux choses seulement, un document Markdown sémantique et une fonte, avec une grille de baseline calculée depuis les métriques de la fonte (OS/2 : unités par em, hauteur d'x, hauteur des capitales, ascendantes, descendantes) et comparée en recouvrement à la grille réellement rendue.
+Première version : une mise en page typographique stricte peut sortir de deux choses seulement, un document Markdown sémantique et une fonte, avec une grille de lignes de base calculée à partir des métriques de la fonte (OS/2 : unités par em, hauteur d'x, hauteur des capitales, ascendantes, descendantes) et superposée, pour comparaison, à la grille que rend le navigateur.
 
-Après le pivot : on règle la typographie d'un site existant en tirant une ligne verte, la moyenne des fins de ligne visuelles d'un bloc de texte, et le CSS se résout en dessous.
+Après le pivot : on règle la typographie d'un site existant en tirant une ligne verte, la moyenne des fins de ligne visuelles d'un bloc de texte, et le CSS s'en déduit.
 
 ## Chronologie (1er juin 2026)
 
@@ -33,11 +33,11 @@ Premier incrément du pivot vérifié sur une page d'exemple : dix zones détect
 
 ## Chiffres
 
-Environ 4 h 20 de travail. Environ 1 100 lignes après le pivot. Stack : Vite 6, TypeScript, SVG pour le recouvrement.
+Environ 4 h 20 de travail. Environ 1 100 lignes après le pivot. Stack : Vite 6, TypeScript, SVG pour la superposition.
 
 ## Principes
 
 - Quand le mot et la fonction se contredisent dans une spécification, suivre la fonction.
 - Pas de framework, pour mesurer après le rendu réel et recaler au pixel.
-- Une seule source pour la fonte : le navigateur la décode pour peindre, la bibliothèque la lit pour calculer.
+- Une seule source pour la fonte : le navigateur la décode pour afficher le texte, la bibliothèque la lit pour calculer.
 - On règle ce qu'on voit (la moyenne des fins de ligne), le CSS suit.

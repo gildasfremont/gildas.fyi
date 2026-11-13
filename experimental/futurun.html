@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Futurun — Gildas Frémont</title>
-  <meta name="description" content="Réunir des comptes qui se connectent tous différemment pour savoir combien de mois tient sa trésorerie, et faire tenir la reconnexion dans un seul écran.">
+  <meta name="description" content="Réunir des comptes qui se connectent tous différemment pour savoir combien de mois tient sa trésorerie, et ramener la reconnexion à un seul écran.">
   <link rel="canonical" href="https://gildas.fyi/experimental/futurun">
   <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/futurun">
   <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/futurun">
   <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/futurun">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Futurun — Gildas Frémont">
-  <meta property="og:description" content="Réunir des comptes qui se connectent tous différemment pour savoir combien de mois tient sa trésorerie, et faire tenir la reconnexion dans un seul écran.">
+  <meta property="og:description" content="Réunir des comptes qui se connectent tous différemment pour savoir combien de mois tient sa trésorerie, et ramener la reconnexion à un seul écran.">
   <meta property="og:url" content="https://gildas.fyi/experimental/futurun">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -69,10 +69,10 @@
           <span class="xp-shot"><img src="/img/experimental/futurun-ajouter.jpg" alt="Futurun sur téléphone : la fiche Ajouter un compte propose open banking, espace client, Binance, import CSV et saisie manuelle" width="780" height="1688" loading="lazy"></span>
           <span class="xp-shot"><img src="/img/experimental/futurun-compte.jpg" alt="Le panneau d'un compte bancaire : méthode open banking, à jour, synchronisé il y a 5 h, et les étapes pour brancher une banque" width="780" height="1688" loading="lazy"></span>
         </div>
-        <figcaption>Futurun sur téléphone. À gauche, la méthode se choisit selon la source au moment d'ajouter un compte&nbsp;; à droite, le panneau d'un compte branché par open banking, avec son état et la procédure à suivre une fois. Montants, durée et établissement pixelisés.</figcaption>
+        <figcaption>Futurun sur téléphone. À gauche, la méthode se choisit selon la source au moment d'ajouter un compte&nbsp;; à droite, le panneau d'un compte branché par open banking, avec son état et la procédure à suivre une seule fois. Montants, durée et établissement pixelisés.</figcaption>
       </figure>
 
-      <p>Futurun met la reconnexion au centre. Le README pose le principe&nbsp;: «&nbsp;un connecteur par source, chacun avec sa méthode&nbsp;». Tous les connecteurs suivent pourtant le même contrat. Chacun renvoie des comptes et des transactions, et, quand l'accès expire, lève l'erreur «&nbsp;il faut se reconnecter&nbsp;», qui fait passer la source en tête de l'écran. La méthode change seulement la forme du formulaire&nbsp;: un identifiant, une clé, un fichier, ou un aller-retour vers la banque.</p>
+      <p>Futurun met la reconnexion au centre. Le README pose le principe&nbsp;: «&nbsp;un connecteur par source, chacun avec sa méthode&nbsp;». Tous les connecteurs suivent pourtant le même contrat&nbsp;: chacun renvoie des comptes et des transactions, et, quand l'accès expire, lève l'erreur «&nbsp;il faut se reconnecter&nbsp;», qui fait passer la source en tête de l'écran. La méthode ne change que la forme du formulaire&nbsp;: un identifiant, une clé, un fichier, ou un aller-retour vers la banque.</p>
 
       <div class="fu-methods">
         <div class="r hd"><span>Méthode</span><span>Ce qui s'est passé</span><span>Connexions</span></div>
@@ -96,15 +96,15 @@
         </div>
       </div>
 
-      <p>Le budget a été refait six fois le premier jour, en ajoutant chaque fois une notion, postes, dépenses à venir, observé contre estimé. Dans la dernière version, une dépense se réduit à un nom et un montant, avec une fréquence et une durée si besoin.</p>
+      <p>Le budget a été refait six fois le premier jour, en ajoutant chaque fois une notion (postes, dépenses à venir, observé contre estimé). Dans la dernière version, une dépense se réduit à un nom et un montant, avec une fréquence et une durée si besoin.</p>
 
       <h2>Chez moi</h2>
 
-      <p>L'app démarre avec le Mac, se synchronise toutes les six heures et s'ouvre sur le téléphone, sur le même Wi-Fi. Une image Docker permet aussi de l'héberger ailleurs. Les identifiants et les jetons sont chiffrés dans le fichier de données, et les montants y sont stockés en centimes. Onze connexions sont actives, une cinquantaine de tests tournent, et un serveur MCP permet d'interroger Futurun depuis une conversation avec Claude.</p>
+      <p>L'app démarre avec le Mac, se synchronise toutes les six heures et s'ouvre sur le téléphone connecté au même Wi-Fi. Une image Docker permet aussi de l'héberger ailleurs. Les identifiants et les jetons sont chiffrés dans le fichier de données, et les montants y sont stockés en centimes. Onze connexions sont actives, une cinquantaine de tests tournent, et un serveur MCP permet d'interroger Futurun depuis une conversation avec Claude.</p>
 
-      <p>Les mises à jour s'installent depuis l'app, en un bouton.</p>
+      <p>Les mises à jour s'installent depuis l'app, d'un seul bouton.</p>
 
-      <p>Les derniers commits, le 20&nbsp;octobre, remplacent les libellés personnels par des libellés génériques et ajoutent des réglages, pour qu'une autre personne puisse l'installer.</p>
+      <p>Les derniers commits, le 20&nbsp;octobre, remplacent les libellés personnels par des libellés génériques et ajoutent des réglages, pour qu'une autre personne puisse installer l'app.</p>
 
     </div>
   </article>

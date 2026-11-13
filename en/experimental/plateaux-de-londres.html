@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plateaux de Londres — Gildas Frémont</title>
-  <meta name="description" content="A map of the filming locations of 29 TV shows set in London: where the scene takes place in the story, where it was actually shot, and what the place plays on screen.">
+  <meta name="description" content="A map of the filming locations of 29 TV shows set in London: for each scene, where it's set in the story, where it was actually shot, and the part the place plays on screen.">
   <link rel="canonical" href="https://gildas.fyi/en/experimental/plateaux-de-londres">
   <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/plateaux-de-londres">
   <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/plateaux-de-londres">
   <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/plateaux-de-londres">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Plateaux de Londres — Gildas Frémont">
-  <meta property="og:description" content="A map of the filming locations of 29 TV shows set in London: where the scene takes place in the story, where it was actually shot, and what the place plays on screen.">
+  <meta property="og:description" content="A map of the filming locations of 29 TV shows set in London: for each scene, where it's set in the story, where it was actually shot, and the part the place plays on screen.">
   <meta property="og:url" content="https://gildas.fyi/en/experimental/plateaux-de-londres">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="en_US">
@@ -59,14 +59,14 @@
   <article>
     <header class="article-page-header">
       <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · November 2026</p>
-      <h1>Finding where a show was filmed in London, and what each place plays on screen</h1>
+      <h1>Finding where a show was filmed in London, and the part each place plays on screen</h1>
       <p class="article-page-subtitle">A map of 432 filming locations from 29 shows, with a source for every scene</p>
       <p class="article-meta">November 12, 2026, in one day · static site, Leaflet · built with Claude Code · <a href="https://plateaux-de-londres.vercel.app" target="_blank" rel="noopener">the site (in French)</a> · <a href="/en/experimental/context/plateaux-de-londres.md">full write-up (Markdown)</a></p>
     </header>
 
     <div class="article-body">
 
-      <p>The same London building can play three parts in three shows. Tate Modern is itself in Killing Eve, a made-up gallery in Fleabag, and police headquarters in Bodyguard. Plateaux de Londres (French for "London sets") brings together the filming locations of 29 shows set in London, from Sherlock to MobLand, and tells you for each one where the scene takes place in the story, where it was actually shot, and which other shows have been there.</p>
+      <p>The same London building can play three parts in three shows. Tate Modern is itself in Killing Eve, a made-up gallery in Fleabag, and police headquarters in Bodyguard. Plateaux de Londres (French for "London sets") brings together the filming locations of 29 shows set in London, from Sherlock to MobLand, and tells you, for each scene, where it's set in the story, where it was actually shot, and which other shows filmed at the same spot.</p>
 
       <figure class="pl-roles">
         <span class="xp-kicker">Tate Modern, Bankside</span>
@@ -103,7 +103,7 @@
 
       <p>The first rule Claude was given is not to make anything up. Every scene cites a source Claude actually read, the episode stays blank when the source doesn't give it, and coordinates come from Wikipedia or OpenStreetMap, never from a guess. As a result, 289 of the 754 scenes have an episode number, and none has a timestamp yet, because no source gives one. The most cited sources are findthatlocation, Atlas of Wonders and Time Out.</p>
 
-      <p>Only one scene has no link. In MobLand, a pub renamed The Rose and Crown has the frontage of the Prince's Head in Richmond, the same pub that plays the Crown &amp; Anchor in Ted Lasso. No guide or article I could find says so; I recognised it on screen, and the scene is marked "Seen on screen by the site's author".</p>
+      <p>Only one scene has no source link. In MobLand, a pub renamed The Rose and Crown has the frontage of the Prince's Head in Richmond, the same pub that plays the Crown &amp; Anchor in Ted Lasso. No guide or article I could find says so; I recognised it on screen, and the scene is marked "Seen on screen by the site's author".</p>
 
       <h2>One day, thirty-nine pull requests</h2>
 
@@ -111,7 +111,7 @@
 
       <p>The afternoon goes into the interface. At 16:13, headings switch to Canal Bold Romain, a typeface I supplied. At 17:37 it has to be reined in: in this Canal+ font, some characters are logos (the middle dot prints CANAL+) and accented capitals lose their accents. Only the characters that render properly stay in Canal; the rest fall back to Outfit. In between, feedback from a "busy CEO" test put the map on phones, moved the best-known shows to the top and added a big button to watch the episode, and a QA report made search ignore accents.</p>
 
-      <p>The evening brings six more shows, from Black Mirror to Peep Show, the real places played by others, and the Prince's Head scene. The last commit, at 20:23, is the day's 39th pull request. Still to do: timestamps for the scenes, 49 missing photos, and a pass through Reddit, which Claude's environment can't reach, for eight shows including MobLand and Slow Horses.</p>
+      <p>The evening brings six more shows, from Black Mirror to Peep Show, the real places played by others, and the Prince's Head scene. The last commit, at 20:23, merges the day's 39th pull request. Still to do: timestamps for the scenes, 49 missing photos, and a pass through Reddit, which Claude's environment can't reach, for eight shows including MobLand and Slow Horses.</p>
 
     </div>
   </article>

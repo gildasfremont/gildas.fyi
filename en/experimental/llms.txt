@@ -6,7 +6,7 @@ Overview page: https://gildas.fyi/en/experimental
 
 ## In use
 
-- [Plateaux de Londres](https://gildas.fyi/en/experimental/context/plateaux-de-londres.md): finding where a show was filmed in London and what each place plays on screen (itself, a made-up place or another real place), with a source for every scene. Static site, live since November 12, 2026.
+- [Plateaux de Londres](https://gildas.fyi/en/experimental/context/plateaux-de-londres.md): finding where a show was filmed in London, and the part each place plays on screen (itself, a made-up place or another real place), with a source for every scene. Static site, live since November 12, 2026.
 - [CallRecorder](https://gildas.fyi/en/experimental/context/callrecorder.md): keeping a record of your calls without having to remember to hit record. macOS app in Swift, version 0.3.5 released October 25, 2026.
 - [Condominium accounts](https://gildas.fyi/en/experimental/context/copropriete.md): being able to check a condominium's accounts against the property manager's documents, every figure leading back to its sources. Next.js, private tool, since September 2026.
 - [Job search](https://gildas.fyi/en/experimental/context/recherche-emploi.md): letting Claude do the legwork of a job search and keeping the decisions, with a sourced knowledge base and a tracking tool that computes nothing. Next.js and MCP, since October 2026.

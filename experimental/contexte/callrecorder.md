@@ -22,7 +22,7 @@ Un enregistreur d'appels peut se lancer seul dès qu'une app prend le micro, san
 - Se pilote par une commande `calls` (list, show, transcribe, keep, delete, doctor, usage, update, mcp) et par un serveur MCP en stdio qui expose 8 outils : list_calls, get_call, get_call_context, transcribe_call, read_transcript, keep_call, delete_call, usage_report.
 - Garde un journal d'usage local (appels captés, ratés, transcrits, relus) qui n'est envoyé nulle part.
 - Pendant l'installation, envoie à Gildas un journal de fonctionnement où le nom et les dossiers sont masqués, sans audio ni transcription. L'envoi se décoche dans la configuration et s'arrête de lui-même après le premier appel transcrit.
-- Se met à jour une fois par jour depuis un `latest.json` public, avec vérification SHA-256 et du certificat, et n'installe qu'avec l'accord de l'utilisateur. Se relance ensuite par un relais détaché, en trois essais dont le résultat est noté dans le journal.
+- Se met à jour une fois par jour depuis un `latest.json` public, avec vérification de l'empreinte SHA-256 et du certificat, et n'installe qu'avec l'accord de l'utilisateur. Se relance ensuite par un relais détaché, en trois essais dont le résultat est noté dans le journal.
 
 Apps reconnues : Zoom, Microsoft Teams, Google Meet (Chrome, Safari, Edge…), FaceTime, WhatsApp, Slack, Webex, Loom. Mac Apple Silicon, macOS 15 minimum.
 
@@ -59,7 +59,7 @@ meet-recorder a été archivé sur GitHub le 8 avril 2026 (dépôt privé). La d
 - 24 octobre, 20 h 56 à 21 h 24 : relance après « Quitter et rouvrir » et après une mise à jour par un même relais détaché, en trois essais. Releases v0.3.2 (relance fiable après l'autorisation de l'écran) et v0.3.3 (relance fiable après une mise à jour).
 - 25 octobre : premier test d'installation par une autre personne, sur son Mac, en visio.
 - 25 octobre, 12 h 16 : panneau d'aide accroché sous Réglages Système.
-- 25 octobre, 12 h 40 : corrections issues du test. L'assistant demande de quitter et rouvrir Claude, qui ne relit sa configuration qu'au démarrage, revient au premier plan tant qu'il n'est pas terminé, et le journal d'installation est envoyé. Sur l'image du .dmg, l'encadré « Ouvrir quand même » est redessiné comme une capture, et l'icône Confidentialité est signalée comme cliquable.
+- 25 octobre, 12 h 40 : corrections issues du test. L'assistant revient au premier plan tant qu'il n'est pas terminé et demande de quitter et rouvrir Claude, qui ne relit sa configuration qu'au démarrage ; le journal d'installation est envoyé. Sur l'image du .dmg, l'encadré « Ouvrir quand même » est redessiné comme une capture, et l'icône Confidentialité est signalée comme cliquable.
 - 25 octobre, 13 h 04 : répliques recomposées aux pauses, vocabulaire valable pour tout l'appel, un seul Whisper à la fois, captures limitées à l'onglet de l'appel.
 - 25 octobre, 13 h 07 puis 13 h 38 : releases v0.3.4 et v0.3.5.
 
@@ -84,7 +84,7 @@ meet-recorder a été archivé sur GitHub le 8 avril 2026 (dépôt privé). La d
 
 - « Usage personnel, tout reste sur la machine » (spécification). Deux exceptions, toutes deux facultatives : la qualification passe par Claude, avec l'abonnement claude.ai ; pendant l'installation, un journal de fonctionnement masqué est envoyé à Gildas.
 - Deux temps séparés : l'enregistrement, « automatique, bête, fiable », et le traitement, « à la demande, pipeline extensible ».
-- Seules les apps d'une liste autorisée déclenchent l'enregistrement ; Siri et la dictée ne déclenchent rien.
+- Seules les apps d'une liste blanche déclenchent l'enregistrement ; Siri et la dictée ne déclenchent rien.
 - « On ne récupère jamais les flux vidéo internes de l'app, seulement ce qu'elle affiche. »
 - Claude ne rattache un appel à un rendez-vous que sur une preuve.
 - L'app rappelle de prévenir ses interlocuteurs que l'appel est enregistré.
@@ -103,5 +103,5 @@ Pas de base de données : un dossier par appel dans `~/CallRecordings/<date>_<ap
 
 ## Anecdotes
 
-- L'appel de test demande le prénom et le temps qu'il fait ; la transcription de démonstration répond « Gildas, et il fait très beau. »
+- L'appel de test demande le prénom et le temps qu'il fait ; dans la transcription de démonstration, la réponse est « Gildas, et il fait très beau. »
 - Le premier commit est déjà numéroté 0.2.0 : la version 0.1 n'a existé que sur le disque pendant neuf heures.

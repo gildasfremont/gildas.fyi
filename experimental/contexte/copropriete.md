@@ -10,7 +10,7 @@ Ce dossier décrit la méthode et le déroulé. Il ne contient volontairement au
 
 ## Le pari
 
-Un conseil syndical bénévole peut reconstituer seul, à partir des pièces brutes du syndic, des comptes que n'importe quel copropriétaire peut vérifier, et suivre les actions à mener, à condition que chaque chiffre soit calculé depuis des sources citées, mis en cache et recontrôlé automatiquement, et que chaque action soit une issue GitHub.
+Un conseil syndical bénévole peut reconstituer seul, à partir des pièces brutes du syndic, des comptes que n'importe quel copropriétaire peut vérifier, et suivre les actions à mener, à condition que chaque chiffre soit calculé à partir de sources citées, mis en cache et recontrôlé automatiquement, et que chaque action soit une issue GitHub.
 
 ## Contexte
 
@@ -85,7 +85,7 @@ Un site en lecture seule, 15 fiches de connaissance, une centaine de fichiers co
 - Une valeur déduite porte la mention « non arrêté par le syndic » ; chaque décision de reconstitution est tracée.
 - Le site ne recalcule rien : il lit des caches qu'un contrôle vérifie.
 - Le tableau de suivi se déduit des issues ; les jalons ne servent qu'aux échéances réelles.
-- Le site est en lecture seule ; les actions vivent dans GitHub.
+- Le site est en lecture seule ; les actions se gèrent dans GitHub.
 
 ## Modèle de données (simplifié)
 
