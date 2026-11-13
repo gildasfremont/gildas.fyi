@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plateaux de Londres — Gildas Frémont</title>
+  <meta name="description" content="Une carte des lieux de tournage de 29 séries qui se passent à Londres : où la scène se passe dans l'histoire, où elle a été tournée, et ce que le lieu joue à l'écran.">
+  <link rel="canonical" href="https://gildas.fyi/experimental/plateaux-de-londres">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/plateaux-de-londres">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/plateaux-de-londres">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/plateaux-de-londres">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Plateaux de Londres — Gildas Frémont">
+  <meta property="og:description" content="Une carte des lieux de tournage de 29 séries qui se passent à Londres : où la scène se passe dans l'histoire, où elle a été tournée, et ce que le lieu joue à l'écran.">
+  <meta property="og:url" content="https://gildas.fyi/experimental/plateaux-de-londres">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/experimental/contexte/plateaux-de-londres.md" title="Dossier complet">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.pl-roles { margin: 2rem 0 !important; padding: 1.25rem; border: 1px solid var(--border); border-radius: 10px; background: var(--white); max-width: 40rem; }
+.pl-roles > .xp-kicker { padding-bottom: 0.45rem; border-bottom: 2px solid var(--black); }
+.pl-real { --c: 26,29,26; }
+.pl-inv { --c: 150,90,0; }
+.pl-std { --c: 25,120,65; }
+.pl-row { display: grid; grid-template-columns: 6.5rem 1fr auto; gap: 0.9rem; align-items: baseline; padding: 0.7rem 0; border-bottom: 1px solid var(--border); }
+.pl-row .se { font-family: var(--xp-mono); font-size: 11.5px; color: var(--light); }
+.pl-row .pl { font-size: 14px; color: var(--black); line-height: 1.45; }
+.pl-row .pl small { display: block; font-size: 12.5px; color: var(--light); margin-top: 0.15rem; }
+.pl-tag { font-family: var(--xp-mono); font-size: 11px; padding: 0.1rem 0.45rem; border-radius: 4px; border: 1px solid rgb(var(--c)); color: rgb(var(--c)); white-space: nowrap; }
+.pl-total { margin-top: 1.1rem; }
+.pl-total > small { display: block; font-size: 11px; color: var(--light); font-family: var(--xp-mono); margin-bottom: 0.4rem; }
+.pl-bar { display: flex; gap: 2px; height: 24px; border-radius: 4px; overflow: hidden; }
+.pl-bar i { display: flex; align-items: center; padding-left: 0.45rem; font-style: normal; font-family: var(--xp-mono); font-size: 11px; color: #fff; background: rgb(var(--c)); min-width: 0; }
+.pl-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin-top: 0.5rem; font-size: 12px; color: var(--mid); }
+.pl-legend span::before { content: ""; display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 2px; background: rgb(var(--c)); margin-right: 0.35rem; transform: translateY(0.05rem); }
+@media (max-width: 640px) {
+  .pl-row { grid-template-columns: 1fr auto; gap: 0.2rem 0.6rem; }
+  .pl-row .se { grid-column: 1 / -1; }
+}
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-plateaux">
+
+  <nav class="lang-toggle">
+    <a href="/experimental">← Expérimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · novembre 2026</p>
+      <h1>Retrouver où une série a été tournée à Londres, et ce que chaque lieu y joue</h1>
+      <p class="article-page-subtitle">Une carte de 432 lieux de tournage de 29 séries, où chaque scène cite sa source</p>
+      <p class="article-meta">12 novembre 2026, en une journée · site statique, Leaflet · écrit avec Claude Code · <a href="https://plateaux-de-londres.vercel.app" target="_blank" rel="noopener">le site</a> · <a href="/experimental/contexte/plateaux-de-londres.md">dossier complet (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>Un même bâtiment de Londres peut tenir trois rôles dans trois séries. La Tate Modern est elle-même dans Killing Eve, une galerie inventée dans Fleabag, et le siège de la police dans Bodyguard. Plateaux de Londres réunit les lieux de tournage de 29 séries qui se passent à Londres, de Sherlock à MobLand, et dit pour chacun où la scène se passe dans l'histoire, où elle a été tournée, et quelles autres séries y sont passées.</p>
+
+      <figure class="pl-roles">
+        <span class="xp-kicker">Tate Modern, Bankside</span>
+        <div class="pl-row"><span class="se">Killing Eve</span><span class="pl">Tate Modern<small>Konstantin y retrouve Villanelle, en plein concours de regard avec une statue vivante.</small></span><span class="pl-tag pl-real">lieu réel</span></div>
+        <div class="pl-row"><span class="se">Fleabag</span><span class="pl">La galerie de la «&nbsp;sexhibition&nbsp;»<small>Le vernissage de la marraine, où Fleabag découvre qu'elle est invitée comme serveuse.</small></span><span class="pl-tag pl-inv">lieu inventé</span></div>
+        <div class="pl-row"><span class="se">Bodyguard</span><span class="pl">Le siège de la Met<small>La Tate joue New Scotland Yard&nbsp;: David y reçoit ses missions.</small></span><span class="pl-tag pl-std">doublure</span></div>
+        <div class="pl-total">
+          <small>Les 495 rôles des 432 lieux, sur tout le site</small>
+          <div class="pl-bar"><i class="pl-real" style="flex:205">205</i><i class="pl-inv" style="flex:216">216</i><i class="pl-std" style="flex:74">74</i></div>
+          <div class="pl-legend"><span class="pl-real">le lieu est lui-même</span><span class="pl-inv">un lieu inventé</span><span class="pl-std">un autre lieu réel</span></div>
+        </div>
+        <figcaption>Un lieu tient un rôle par série où il apparaît. Les trois rôles de la Tate Modern, tels que les décrit le site, puis le décompte sur les 29 séries.</figcaption>
+      </figure>
+
+      <p>Sur la carte de l'accueil, 48 lieux appartiennent à plusieurs séries. L'Old Royal Naval College de Greenwich en compte cinq&nbsp;: il joue les rues de Londres sous la Régence dans Bridgerton, Buckingham Palace dans The Crown, et le siège du MI5, que l'histoire place à Regent's Park, dans Slow Horses.</p>
+
+      <figure class="xp-shot">
+        <img src="/img/experimental/plateaux-accueil.jpg" alt="L'accueil de Plateaux de Londres : la liste des séries avec leur logo, leur plateforme et leur nombre de lieux, et une carte de Londres et des comtés voisins couverte de points de couleur" width="1600" height="1000" loading="lazy">
+        <figcaption>L'accueil du site en production&nbsp;: les séries les plus connues en tête, et sur la carte une couleur par série. Les lieux débordent de Londres jusqu'aux demeures des comtés voisins.</figcaption>
+      </figure>
+
+      <h2>Buckingham Palace, joué par cinq lieux</h2>
+
+      <p>Buckingham Palace n'est filmé dans aucune des 29 séries&nbsp;: cinq autres lieux le jouent, dans The Crown et Bridgerton. Lancaster House, à 390 mètres, en est un. Il fait Buckingham Palace dans The Crown, la résidence de la reine Charlotte dans Bridgerton, et le château de Versailles dans McMafia, ce qui évite à la production un tournage en France. Sur la fiche, une ligne pointillée relie le lieu de tournage au lieu qu'il joue.</p>
+
+      <figure class="xp-shot">
+        <img src="/img/experimental/plateaux-lancaster-house.jpg" alt="La fiche de Lancaster House : une photo du bâtiment, Street View, puis un encadré par série avec le nom du lieu dans l'histoire, son rôle, les épisodes et un bouton pour regarder ; à droite, la carte avec une ligne pointillée vers Buckingham Palace" width="1600" height="1000" loading="lazy">
+        <figcaption>La fiche de Lancaster House. Pour chaque série, le nom du lieu dans l'histoire, son rôle, les épisodes, et un bouton qui ouvre l'épisode sur Netflix quand il est connu. La ligne pointillée mène à Buckingham Palace.</figcaption>
+      </figure>
+
+      <h2>Une source par scène</h2>
+
+      <p>Le site n'héberge aucune image des séries, qui sont sous droits. Il donne le moment, saison et épisode, et un lien vers la plateforme&nbsp;; pour huit séries de Netflix, le lien ouvre l'épisode lui-même. Les photos des lieux viennent de Wikipedia et de Wikimedia Commons, sous licence libre.</p>
+
+      <p>La première règle donnée à Claude est de ne rien inventer&nbsp;: chaque scène cite une source qu'il a lue, l'épisode reste vide quand la source ne le donne pas, et les coordonnées viennent de Wikipedia ou d'OpenStreetMap, jamais d'une estimation. Du coup, 289 scènes sur 754 ont un numéro d'épisode, et aucune n'a encore de minute, faute de source qui la donne. Les sources les plus citées sont findthatlocation, Atlas of Wonders et Time Out.</p>
+
+      <p>Une seule scène n'a pas de lien. Dans MobLand, un pub rebaptisé The Rose and Crown a la façade du Prince's Head, à Richmond, celui qui joue le Crown &amp; Anchor de Ted Lasso. Aucun guide ni article trouvé ne le dit&nbsp;; je l'ai reconnu à l'écran, et la scène porte la mention «&nbsp;Vu à l'écran par l'auteur du site&nbsp;».</p>
+
+      <h2>Une journée, trente-neuf pull requests</h2>
+
+      <p>Le premier commit date du 12&nbsp;novembre à 10&nbsp;h&nbsp;01 et contient déjà la carte de huit séries, 138 lieux et 225 scènes recueillis par quatre agents, deux séries chacun. Trois minutes plus tard, un prompt de reprise confie le projet à Claude Code sur le web, avec ses règles et sept chantiers par ordre de priorité. Ils avancent en parallèle sur des branches séparées, et à 11&nbsp;h&nbsp;06 le site compte 23 séries et 357 lieux.</p>
+
+      <p>L'après-midi va à l'interface. À 16&nbsp;h&nbsp;13, les titres passent en Canal Bold Romain, une police que j'ai fournie. À 17&nbsp;h&nbsp;37, il faut la restreindre&nbsp;: dans cette police de Canal+, certains caractères sont des logos, le point médian affiche CANAL+, et les capitales accentuées perdent leur accent. Seuls les caractères qui s'affichent correctement restent en Canal, les autres passent en Outfit. Entre-temps, les retours d'un test «&nbsp;CEO pressé&nbsp;» ont mis la carte sur téléphone, les séries connues en tête et un grand bouton pour regarder l'épisode, et un rapport de QA a rendu la recherche insensible aux accents.</p>
+
+      <p>Le soir arrivent six séries de plus, de Black Mirror à Peep Show, les lieux réels joués par d'autres, et la scène du Prince's Head. Le dernier commit, à 20&nbsp;h&nbsp;23, est la 39<sup>e</sup> pull request de la journée. Restent à faire les minutes des scènes, 49 photos manquantes, et la lecture de Reddit, fermé à l'environnement de Claude, pour huit séries dont MobLand et Slow Horses.</p>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/experimental"><small>← Tous les projets</small>Expérimental</a>
+      <a class="next" href="/experimental/callrecorder"><small>Suivant →</small>CallRecorder</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas.fremont" data-d="gmail.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

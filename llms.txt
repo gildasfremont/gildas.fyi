@@ -38,6 +38,7 @@ Quinze cas de travail produit, 2014 à 2026, une page par cas avec les pièces q
 
 ## Projets expérimentaux
 Outils construits avec Claude Code pour ses propres problèmes, chacun avec un dossier complet en Markdown. Index : https://gildas.fyi/experimental/llms.txt (en anglais : https://gildas.fyi/en/experimental/llms.txt)
+- Plateaux de Londres, lieux de tournage des séries londoniennes : https://gildas.fyi/experimental/contexte/plateaux-de-londres.md
 - CallRecorder, enregistrer et transcrire ses appels sur Mac : https://gildas.fyi/experimental/contexte/callrecorder.md
 - Comptes de copropriété reconstitués et vérifiables : https://gildas.fyi/experimental/contexte/copropriete.md
 - Recherche d'emploi tenue par Claude : https://gildas.fyi/experimental/contexte/recherche-emploi.md
