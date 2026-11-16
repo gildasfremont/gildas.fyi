@@ -41,7 +41,15 @@
 .gd-order li:last-child { border-bottom: 1px solid var(--border); }
 .gd-order li::before { counter-increment: s; content: counter(s); position: absolute; left: 0.2rem; top: 0.55rem; font-family: var(--pf-mono); font-size: 12px; color: var(--light); }
 .gd-order li em { font-style: normal; color: var(--light); }
-@media (max-width: 600px) { .gd-two { grid-template-columns: 1fr; } }
+.gd-map { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.25rem 0 0.5rem; }
+.gd-map > div { border-top: 2px solid var(--black); padding-top: 0.5rem; }
+.gd-map b { display: block; font-size: 14px; color: var(--black); font-weight: 600; }
+.gd-map small { display: block; font-size: 11px; color: var(--light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.gd-map ul { list-style: none; margin: 0 0 0.5rem; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+.gd-map li { margin: 0 0 0.2rem; }
+.gd-map li.act { display: inline-block; margin: 0.15rem 0.2rem 0.15rem 0; padding: 0.1rem 0.55rem; border: 1px solid var(--border); border-radius: 99px; background: var(--white); color: var(--dark); font-size: 12.5px; }
+.gd-map-note { font-size: 13px !important; color: var(--light); font-weight: 300; line-height: 1.5 !important; margin: 0 0 2rem !important; max-width: 40em !important; }
+@media (max-width: 600px) { .gd-two { grid-template-columns: 1fr; } .gd-map { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -100,9 +108,66 @@
 
       <p>Les outils que les équipes attendaient sont arrivés en dernier. Un outil construit sur quatre versions du catalogue aurait échoué au premier désaccord entre deux équipes, et renvoyé tout le monde aux tableurs. J'ai dû tenir cet ordre devant des gens qui voulaient voir quelque chose.</p>
 
+      <h2>Du devis à la palette, le parcours posé sur une carte</h2>
+
+      <p>Une pièce reste de cette année-là&nbsp;: la carte des écrans et des actions, dessinée en mai 2022. Une opportunité devient un devis, le devis un bon de commande. Les produits du bon de commande, avec leurs plus-values, se déclinent en éléments. Les éléments partent en production avec leurs fiches, puis se rangent en palettes, avec leurs fiches de colisage.</p>
+
+      <figure class="pf-piece">
+        <img src="/img/portfolio/guinet-parcours.jpg" alt="Une carte en blocs violets et bleus : en bas à gauche, liste des opportunités, liste des devis, liste des bons de commande ; à gauche, les produits d'un devis avec leurs plus-values et l'action « convertir devis en bon de commande » ; au centre, les produits puis les éléments du bon de commande, avec « générer les éléments », « envoyer en production » et « générer les fiches de production » ; à droite, les palettes et « imprimer fiches de colisage »" width="1600" height="1078" loading="lazy">
+        <figcaption>La carte du parcours, du devis à la palette. Export brut d'un FigJam de mai 2022, transcrit ci-dessous.</figcaption>
+      </figure>
+
+      <div class="gd-map">
+        <div>
+          <small>Devis</small>
+          <b>Produits</b>
+          <ul>
+            <li>Liste de produits</li>
+            <li>Créer, modifier, voir un produit</li>
+            <li>Créer, modifier les plus-values</li>
+            <li class="act">Envoyer dans le document</li>
+            <li class="act">Convertir le devis en bon de commande</li>
+          </ul>
+        </div>
+        <div>
+          <small>Bon de commande</small>
+          <b>Produits</b>
+          <ul>
+            <li>Liste de produits</li>
+            <li>Créer, modifier, voir un produit</li>
+            <li>Créer, modifier les plus-values</li>
+            <li class="act">Envoyer dans le document</li>
+            <li class="act">Générer les éléments</li>
+            <li class="act">Importer une liste d'éléments</li>
+          </ul>
+        </div>
+        <div>
+          <small>Bon de commande</small>
+          <b>Éléments</b>
+          <ul>
+            <li>Liste d'éléments</li>
+            <li>Créer, modifier, voir un élément</li>
+            <li>Créer, modifier les plus-values</li>
+            <li class="act">Envoyer en production</li>
+            <li class="act">Générer les fiches de production</li>
+          </ul>
+        </div>
+        <div>
+          <small>Bon de commande</small>
+          <b>Palettes</b>
+          <ul>
+            <li>Liste des palettes</li>
+            <li>Créer, modifier une palette</li>
+            <li>Ajouter, supprimer un élément ou une quantité</li>
+            <li class="act">Imprimer les fiches de colisage</li>
+          </ul>
+        </div>
+      </div>
+      <p class="gd-map-note">Ce que dit la carte, zone par zone&nbsp;: les écrans en clair, les actions en pastille. En entrée, trois listes qui s'enchaînent&nbsp;: opportunités, devis, bons de commande.</p>
+
       <h2>Ce que ça a donné</h2>
 
-      <p>Au bout de l'année, le groupe chiffrait, suivait ses commandes et livrait depuis un référentiel partagé au lieu d'une douzaine de fichiers privés. Les commerciaux, les opérations et les carrières travaillaient sur la même donnée. Je n'ai pas de mesure de la marge ou des erreurs de production après la mission. Le référentiel et les processus vivaient dans Excel et Airtable&nbsp;: il n'y a pas d'écran à montrer, et les cinq attributs ci-dessus sont ceux dont je me souviens.</p>
+      <p>Au bout de l'année, le groupe chiffrait, suivait ses commandes et livrait depuis un référentiel partagé au lieu d'une douzaine de fichiers privés. Les commerciaux, les opérations et les carrières travaillaient sur la même donnée. Je n'ai pas de mesure de la marge ou des erreurs de production après la mission. Le référentiel et les processus vivaient dans Excel et Airtable&nbsp;: il n'y a pas d'écran de l'outil à montrer, seulement cette carte, et les cinq attributs ci-dessus sont ceux dont je me souviens.</p>
 
       <p>Le groupe est le second client de la filière de la pierre, après <a href="/portfolio/chunk">Chunk</a>, qui m'y avait mis en contact.</p>
 

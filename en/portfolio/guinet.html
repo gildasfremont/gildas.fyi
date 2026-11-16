@@ -41,7 +41,15 @@
 .gd-order li:last-child { border-bottom: 1px solid var(--border); }
 .gd-order li::before { counter-increment: s; content: counter(s); position: absolute; left: 0.2rem; top: 0.55rem; font-family: var(--pf-mono); font-size: 12px; color: var(--light); }
 .gd-order li em { font-style: normal; color: var(--light); }
-@media (max-width: 600px) { .gd-two { grid-template-columns: 1fr; } }
+.gd-map { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.25rem 0 0.5rem; }
+.gd-map > div { border-top: 2px solid var(--black); padding-top: 0.5rem; }
+.gd-map b { display: block; font-size: 14px; color: var(--black); font-weight: 600; }
+.gd-map small { display: block; font-size: 11px; color: var(--light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.gd-map ul { list-style: none; margin: 0 0 0.5rem; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+.gd-map li { margin: 0 0 0.2rem; }
+.gd-map li.act { display: inline-block; margin: 0.15rem 0.2rem 0.15rem 0; padding: 0.1rem 0.55rem; border: 1px solid var(--border); border-radius: 99px; background: var(--white); color: var(--dark); font-size: 12.5px; }
+.gd-map-note { font-size: 13px !important; color: var(--light); font-weight: 300; line-height: 1.5 !important; margin: 0 0 2rem !important; max-width: 40em !important; }
+@media (max-width: 600px) { .gd-two { grid-template-columns: 1fr; } .gd-map { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -100,9 +108,66 @@
 
       <p>The tools the teams were waiting for came last. A tool built on four versions of the catalogue would have failed at the first disagreement between two teams, and sent everyone back to their spreadsheets. I had to hold this order in front of people who wanted to see something.</p>
 
+      <h2>From quote to pallet, the journey laid out on a map</h2>
+
+      <p>One piece remains from that year: the map of screens and actions, drawn in May 2022. An opportunity becomes a quote, the quote a purchase order. The products of the purchase order, with their surcharges, break down into elements. The elements go to production with their sheets, then are grouped onto pallets, with their packing sheets.</p>
+
+      <figure class="pf-piece">
+        <img src="/img/portfolio/guinet-parcours.jpg" alt="A map of purple and blue blocks, in French: bottom left, list of opportunities, list of quotes, list of purchase orders; on the left, the products of a quote with their surcharges and the action “convert quote into purchase order”; in the centre, the products then the elements of the purchase order, with “generate the elements”, “send to production” and “generate the production sheets”; on the right, the pallets and “print packing sheets”" width="1600" height="1078" loading="lazy">
+        <figcaption>The map of the journey, from quote to pallet. Raw export of a FigJam board from May 2022, transcribed below.</figcaption>
+      </figure>
+
+      <div class="gd-map">
+        <div>
+          <small>Quote</small>
+          <b>Products</b>
+          <ul>
+            <li>List of products</li>
+            <li>Create, edit, view a product</li>
+            <li>Create, edit surcharges</li>
+            <li class="act">Send into the document</li>
+            <li class="act">Convert the quote into a purchase order</li>
+          </ul>
+        </div>
+        <div>
+          <small>Purchase order</small>
+          <b>Products</b>
+          <ul>
+            <li>List of products</li>
+            <li>Create, edit, view a product</li>
+            <li>Create, edit surcharges</li>
+            <li class="act">Send into the document</li>
+            <li class="act">Generate the elements</li>
+            <li class="act">Import a list of elements</li>
+          </ul>
+        </div>
+        <div>
+          <small>Purchase order</small>
+          <b>Elements</b>
+          <ul>
+            <li>List of elements</li>
+            <li>Create, edit, view an element</li>
+            <li>Create, edit surcharges</li>
+            <li class="act">Send to production</li>
+            <li class="act">Generate the production sheets</li>
+          </ul>
+        </div>
+        <div>
+          <small>Purchase order</small>
+          <b>Pallets</b>
+          <ul>
+            <li>List of pallets</li>
+            <li>Create, edit a pallet</li>
+            <li>Add, remove an element or a quantity</li>
+            <li class="act">Print the packing sheets</li>
+          </ul>
+        </div>
+      </div>
+      <p class="gd-map-note">What the map says, zone by zone: screens in plain text, actions as pills. At the entrance, three lists in a chain: opportunities, quotes, purchase orders.</p>
+
       <h2>What came of it</h2>
 
-      <p>By the end of the year, the group was quoting, tracking its orders and delivering from shared reference data instead of a dozen private files. Sales, operations and the quarries were working on the same data. I have no measure of margin or production errors after the engagement. The reference data and the processes lived in Excel and Airtable: there is no screen to show, and the five attributes above are the ones I remember.</p>
+      <p>By the end of the year, the group was quoting, tracking its orders and delivering from shared reference data instead of a dozen private files. Sales, operations and the quarries were working on the same data. I have no measure of margin or production errors after the engagement. The reference data and the processes lived in Excel and Airtable: there is no screen of the tool to show, only this map, and the five attributes above are the ones I remember.</p>
 
       <p>The group is the second customer from the stone industry, after <a href="/en/portfolio/chunk">Chunk</a>, which had put me in touch.</p>
 

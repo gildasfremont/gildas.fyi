@@ -65,12 +65,14 @@ Ordre proposé pour la refonte : par richesse de la matière, les cas les mieux 
 - Fiche : `ornikar-candidat-libre.md`.
 - Fabriqué : `ornikar-inscription-candidat-libre.svg`, les trois temps et la grille des 96 services. À valider par Gildas ; le pied de page dit que c'est une reconstitution.
 - Page : le texte actuel est proche de la fiche. Le schéma n'est pas une pièce d'époque ; il illustre bien les trois temps. À garder si Gildas le valide, sinon rien.
+- 16 novembre : une pièce d'époque trouvée dans l'Internet Archive, `ornikar.com/delais` au 17 juillet 2016, le délai moyen de convocation par département. Posée dans la page (`img/portfolio/ornikar-delais.jpg`). À confirmer par Gildas : la page date-t-elle de son passage, et vient-elle de ce que le support avait appris.
 
 ## 11. Guinet-Derriaz 1912
 - Portfolio : 6 000 caractères. Logo seul.
 - Fiche : `guinet-derriaz-catalogue.md`. Un point de marge = 100 k€ = le budget de la mission.
 - Fabriqué : `guinet-derriaz-reference-produit.svg`, la même pièce vue du commerce et de la carrière, puis la référence normalisée. Les cinq attributs (pierre, sélection, épaisseur, finition, format) sont une extrapolation à valider.
 - Page : le schéma vaut la peine si les attributs sont justes. Sinon, la page tient sur l'équation de marge et l'ordre du travail (catalogue, Excel et Airtable, puis éditeurs), sans image.
+- 16 novembre : une pièce d'époque trouvée dans les brouillons GrandWork, un FigJam sans titre du 5 mai 2022 (`8qEJqcu9qVm06QJOxcL8RL`) : la carte opportunités → devis → bon de commande → éléments → production → palettes. Posée dans la page (`img/portfolio/guinet-parcours.jpg`). Attribution à Guinet confirmée par Gildas le 16 novembre. Les libellés étant illisibles à la taille de la page, la carte est transcrite en HTML sous l'image. Autre candidat non utilisé : `clhUPStiZVcUD7WbWOnLLx` (25 mai 2022), une capture d'un outil de déclaration de production « Complete / Discarded » et trois variantes redessinées, contexte inconnu. Les brouillons GrandWork comptent 98 fichiers, pas 25 ; deux contiennent des documents personnels, à ne jamais ouvrir pour le portfolio (`xW2IDeIQiYKR4cIiRCr4Ky`, `5W1HW2M5lJkqemYAeGgm4X`).
 
 ## 12. monbanquet.fr
 - Portfolio : 5 300 caractères. Logo seul.
@@ -78,6 +80,7 @@ Ordre proposé pour la refonte : par richesse de la matière, les cas les mieux 
 - Fabriqué : `monbanquet-tunnel-de-devis.svg`, avant / après. Les étapes du tunnel ne sont pas nommées, faute de source.
 - Page : le schéma reste abstrait tant que les étapes n'ont pas de nom. À valider ou à laisser de côté.
 - Question à Gildas : les cinq étapes du tunnel, de mémoire.
+- 16 novembre : le site de 2019 est dans l'Internet Archive. Accueil du 11 mai 2019 et première page du tunnel (`/demande/format`, 23 août 2019) posés dans la page. Le HTML archivé liste dix-neuf pages sous `/demande` : debut, format, date, convives, participants, duree, adresse, regime, boissons, options, budget, budget-specifique, code-promo, societe, noms, email, phone, source, merci. Leur ordre n'est pas dans l'archive, et seule `format` s'y affiche. Le site catalogue de 2017 (`/menu.html?event=…`) est archivé mais ne s'affiche plus. À confirmer par Gildas : que ce tunnel est bien le sien, et le rapport entre « devis sous 3 heures » (promesse de l'accueil) et les trente minutes.
 
 ## 13. UBAQ
 - Portfolio : 7 900 caractères, audit à deux niveaux. Logo seul.
@@ -97,6 +100,8 @@ Ordre proposé pour la refonte : par richesse de la matière, les cas les mieux 
 
 ## Hors liste
 - Cross-sell PLG chez Lucca (février 2025) : trois fichiers Figma, non rendus en image. Un cas possible de plus (« Insight » → « Focus solution » → produit). À exporter si Gildas le veut.
+- 16 novembre : exporté et monté en seizième cas, `/portfolio/cross-sell`. Trois pièces : la première version (« MacBook Air - 1 » du fichier de travail, sept produits sur une page, réduite et floutée parce qu'elle cite des noms de clients), « Insight » et « Focus solution » (fichier propre). Captures du produit et avatars pixelisés. Le texte ne dit que ce que les fichiers montrent ; la phrase « la page redevenait un catalogue » est une lecture de Claude, à valider. Le compte gmail a servi ; le second compte Figma (identifiant 1348557591660142353, côté GrandWork) n'a pas été ouvert.
+- 16 novembre, suite : dans Chrome, Figma n'est connecté qu'au compte gmail. Recherche « ubaq », « ntu », « revue de salaires », « administration des rôles » sur tous ses espaces : aucun fichier d'UBAQ, de la revue de salaires ni de la refonte des rôles. Gildas a confirmé que ses « deux comptes » sont les deux espaces du même login, GrandWork et Lucca : Figma est donc épuisé, et ces pièces sont hors de Figma ou n'existent pas.
 - Exploration staffing : interne, aucune facture. Non.
 
 ## Décisions attendues

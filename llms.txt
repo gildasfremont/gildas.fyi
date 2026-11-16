@@ -19,10 +19,11 @@ Il trouve le vrai problème, conçoit la bonne solution et la livre avec l'équi
 - zoneadsl.com (directeur produit, 2019–2020) — 1,2 M visiteurs/mois. Refonte des parcours d'acquisition et du CMS. Architecture d'information encore utilisée aujourd'hui. Racheté par hipto (2026).
 
 ## Portfolio
-Quinze cas de travail produit, 2014 à 2026, une page par cas avec les pièces qui en restent. Listing : https://gildas.fyi/portfolio (en anglais : https://gildas.fyi/en/portfolio)
+Seize cas de travail produit, 2014 à 2026, une page par cas avec les pièces qui en restent. Listing : https://gildas.fyi/portfolio (en anglais : https://gildas.fyi/en/portfolio)
 - Écrire les règles de l'impersonation, le mécanisme par lequel un administrateur agit au nom d'un salarié, que dix-huit produits RH utilisaient sans les connaître : https://gildas.fyi/portfolio/impersonation
 - Une demande de formation hors catalogue : l'arbre des choix écrit à côté de chaque écran, et une modale retirée d'un parcours déjà dessiné : https://gildas.fyi/portfolio/formation
 - Le menu d'une suite RH de dix-huit produits, traité comme un système et non comme une liste : https://gildas.fyi/portfolio/navigation
+- Vendre le produit suivant d'une suite RH en partant d'un chiffre du client, son turnover, plutôt que du catalogue : https://gildas.fyi/portfolio/cross-sell
 - Un outil de décision pour la supply chain, où la contrainte s'écrit en une phrase et sa traduction pour le solveur s'affiche en dessous : https://gildas.fyi/portfolio/rungle
 - Une place de marché pour les tranches de marbre : un marché qu'on ne connaît pas, posé en quatre équations avant le premier écran : https://gildas.fyi/portfolio/chunk
 - Sept jours pour cartographier les six obligations légales que couvre un logiciel de conformité pharmaceutique, et dire au client que son problème n'était pas l'interface : https://gildas.fyi/portfolio/conformite-pharma
