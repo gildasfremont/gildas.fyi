@@ -1,0 +1,8 @@
+# Fichiers de travail, pas le site
+/.claude
+/context
+/CLAUDE.md
+/ecriture.skill
+/generate-pdf.mjs
+/generate-og.mjs
+/.env*
