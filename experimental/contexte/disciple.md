@@ -15,7 +15,7 @@ Version anglaise : https://gildas.fyi/en/experimental/context/disciple.md
 - L'architecte : pose les questions utiles et produit le plan.
 - L'orchestrateur : distribue les tâches, en parallèle quand c'est possible, relance, juge les livrables.
 - Les agents d'exécution : définis par l'utilisateur, ils exécutent et gardent la mémoire de ce qui a marché.
-- Séparation entre obligations de moyens (les agents suivent une méthode) et obligations de résultat (l'orchestrateur juge le livrable contre l'objectif).
+- Séparation entre obligations de moyens (les agents suivent une méthode) et obligations de résultat (l'orchestrateur juge le livrable au regard de l'objectif).
 
 ## Chronologie
 
@@ -31,8 +31,8 @@ Les tests ont été joués par des personas : cinq profils de métier et un test
 
 ## Essais et erreurs
 
-- L'architecte interrogeait au lieu d'agir : à la première session, les trois personas restent bloqués dans un questionnaire, parce qu'en ligne de commande l'architecte n'avait pas accès aux outils natifs. Les appels d'outils ont été simulés en JSON dans le texte ; à la session suivante, chaque persona obtenait son plan en un seul échange.
-- Premier run complet en environ 3 minutes (session 7).
+- L'architecte interrogeait au lieu d'agir : à la première session, les trois personas restaient bloqués dans un questionnaire, parce qu'en ligne de commande l'architecte n'avait pas accès aux outils natifs. Les appels d'outils ont été simulés en JSON dans le texte ; à la session suivante, chaque persona obtenait son plan en un seul échange.
+- Première exécution complète en environ 3 minutes (session 7).
 - Débordement de contexte : 3 tâches sur 5 et 3 sur 6 réussies, puis 6 sur 6, 7 sur 7 et 6 sur 6 avec une fenêtre glissante sur l'historique.
 - Coût : 5 exécutions pour 1,53 $ au total.
 - Recette : session 9 à 56 vérifications sur 56, session 10 à 207 sur 216 sur 13 scénarios, avec des évaluations en trois couches qui notent les résultats plutôt que le chemin.

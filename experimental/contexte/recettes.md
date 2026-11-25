@@ -21,14 +21,14 @@ Un livre de recettes rangé dans un Google Doc peut devenir en une journée une 
 
 ## Architecture
 
-HTML, CSS et JavaScript sans dépendance, avec un petit routeur par `#hash`. Les recettes vivent dans `recipes.json` et le reste du contenu dans `content.json`, chargés au lancement. Déploiement automatique sur Vercel à chaque push.
+HTML, CSS et JavaScript sans dépendance, avec un petit routeur par `#hash`. Les recettes sont dans `recipes.json` et le reste du contenu dans `content.json`, chargés au lancement. Déploiement automatique sur Vercel à chaque push.
 
 ## Chronologie (30 juin 2026)
 
 - 2 h 17 : premier commit, le site statique.
 - 2 h 39 : accords « ça va avec ».
 - 9 h 02 à 9 h 21 : profils réglables, doggybag, boissons ; les recettes passent en JSON éditable.
-- 9 h 47 à 10 h 16 : les profils ne vivent plus que dans les recettes ; composeur du repas.
+- 9 h 47 à 10 h 16 : les profils ne se trouvent plus que dans les recettes ; composeur du repas.
 - 17 h 49 à 18 h 13 : profils par critères objectifs et équation de Mifflin-St Jeor, savoir-faire et courses fondus dans les recettes, interface épurée, barre flottante.
 
 ## Essais et erreurs

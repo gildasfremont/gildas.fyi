@@ -10,7 +10,7 @@ Ce dossier décrit le mécanisme. Il ne contient volontairement aucun nom d'entr
 
 ## Le pari
 
-Un agent (Claude) peut faire le travail de fond d'une recherche d'emploi, repérer les offres, les évaluer, tenir le fil des échanges et préparer les candidatures, s'il dispose de deux choses : une base de connaissances sourcée qu'il consulte avant d'écrire, et un registre conçu pour qu'il le remplisse et que l'humain le lise. Principe de l'outil : Claude remplit, Gildas lit, l'outil ne calcule rien.
+Un agent, Claude, peut faire le travail de fond d'une recherche d'emploi (repérer les offres, les évaluer, tenir le fil des échanges et préparer les candidatures) s'il dispose de deux choses : une base de connaissances sourcée qu'il consulte avant d'écrire, et un registre conçu pour qu'il le remplisse et que l'humain le lise. Principe de l'outil : Claude remplit, Gildas lit, l'outil ne calcule rien.
 
 ## Première brique : la base de connaissances (depuis le 17 septembre 2026)
 
@@ -20,13 +20,13 @@ Chaque fait porte un statut :
 
 - Établi : dit par Gildas ou sourcé. Utilisable tel quel.
 - À confirmer : extrapolation plausible, jamais validée. Utilisable seulement en le signalant.
-- Trou : information manquante. L'agent pose la question au lieu de combler.
+- Trou : information manquante. L'agent pose la question au lieu de le combler.
 
 Quand Gildas demande un CV, un message ou une préparation d'entretien, Claude cherche d'abord dans la base, cite ses fichiers et n'invente aucun fait.
 
 ## Ce qui précédait l'outil
 
-Le suivi des candidatures vivait dans un Google Doc qui atteignait 300 Ko de texte, avec des lignes d'offre de 1 500 caractères, et que plus personne ne pouvait lire.
+Le suivi des candidatures tenait dans un Google Doc qui atteignait 300 Ko de texte, avec des lignes d'offre de 1 500 caractères, et que plus personne ne pouvait lire.
 
 ## Le 20 octobre 2026 : JobSync essayé, puis l'outil construit
 
@@ -41,7 +41,7 @@ Le suivi des candidatures vivait dans un Google Doc qui atteignait 300 Ko de tex
 
 - Trois portes sur la même couche de services : une interface web pour Gildas, une API REST documentée en OpenAPI et un serveur MCP pour l'agent (une soixantaine d'opérations).
 - Écritures rejouables sans doublon, journal par auteur (Gildas, l'agent, les tâches planifiées). L'outil n'envoie aucun message ni candidature.
-- Lecture quotidienne de 82 flux publics d'offres sur 8 types d'ATS : Ashby, Greenhouse, Lever, Teamtailor, SmartRecruiters, Workable, Recruitee, Personio. Agenda Google en lecture seule, filtré des rendez-vous personnels.
+- Lecture quotidienne de 82 flux publics d'offres sur 8 types d'ATS : Ashby, Greenhouse, Lever, Teamtailor, SmartRecruiters, Workable, Recruitee, Personio. Agenda Google en lecture seule, sans les rendez-vous personnels.
 - Interface : une vue du jour, un pipeline avec une charge par colonne, une sélection, cinq entrées de navigation.
 - Connexion de l'agent par OAuth 2.1 depuis claude.ai.
 

@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Disciple — Gildas Frémont</title>
-  <meta name="description" content="Décrire le travail à faire plutôt que construire un agent : un architecte en tire un plan, un orchestrateur le répartit et juge, des agents l'exécutent. Un prototype de dix jours, testé sur des personas simulés.">
+  <meta name="description" content="Décrire le travail à faire plutôt que construire un agent : un architecte en tire un plan, un orchestrateur le répartit et juge, des agents l'exécutent. Un prototype de dix jours, testé par des personas simulés.">
   <link rel="canonical" href="https://gildas.fyi/experimental/disciple">
   <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/disciple">
   <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/disciple">
   <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/disciple">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Disciple — Gildas Frémont">
-  <meta property="og:description" content="Décrire le travail à faire plutôt que construire un agent : un architecte en tire un plan, un orchestrateur le répartit et juge, des agents l'exécutent. Un prototype de dix jours, testé sur des personas simulés.">
+  <meta property="og:description" content="Décrire le travail à faire plutôt que construire un agent : un architecte en tire un plan, un orchestrateur le répartit et juge, des agents l'exécutent. Un prototype de dix jours, testé par des personas simulés.">
   <meta property="og:url" content="https://gildas.fyi/experimental/disciple">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -96,7 +96,7 @@
       <p>Les plateformes d'agents commencent en général par faire construire un agent, avec son prompt, ses outils et ses droits. Disciple part du travail lui-même&nbsp;: on le décrit, et le reste s'organise en trois niveaux.</p>
 
       <figure class="di-seq">
-        <div class="di-actors"><span>Vous<small>décrit le travail</small></span><span>Architecte<small>fait le plan</small></span><span>Orchestrateur<small>répartit, juge</small></span><span>Agents<small>exécutent</small></span></div>
+        <div class="di-actors"><span>Vous<small>décrivez le travail</small></span><span>Architecte<small>fait le plan</small></span><span>Orchestrateur<small>répartit, juge</small></span><span>Agents<small>exécutent</small></span></div>
         <div class="di-body">
           <div class="di-life"><i></i><i></i><i></i><i></i></div>
           <div class="di-msg"><div class="di-arrow r" style="grid-column:1 / 3;margin-left:12.5%;margin-right:12.5%"><em><span>«&nbsp;Une note mensuelle sur les prix de nos concurrents&nbsp;»</span></em></div></div>
@@ -108,19 +108,19 @@
           <div class="di-msg"><span class="di-self" style="grid-column:4">ce qui a marché, gardé en mémoire</span></div>
           <div class="di-msg"><div class="di-arrow l" style="grid-column:1 / 4;margin-left:12.5%;margin-right:12.5%"><em><span>le résultat, à valider ou à évaluer</span></em></div></div>
         </div>
-        <figcaption>Le trajet d'un travail dans le modèle de Disciple, sur un exemple inventé. L'utilisateur ne voit que l'échange avec l'architecte et le résultat&nbsp;; les agents d'exécution sont définis par lui, mais il n'a pas à leur parler.</figcaption>
+        <figcaption>Le trajet d'un travail dans le modèle de Disciple, sur un exemple inventé. L'utilisateur ne voit que l'échange avec l'architecte et le résultat&nbsp;; il définit les agents d'exécution, mais n'a pas à leur parler.</figcaption>
       </figure>
 
       <div class="di-split">
         <div><b>Obligation de moyens</b>Les agents d'exécution suivent une méthode et retiennent, d'une exécution à l'autre, leurs forces et leurs faiblesses.</div>
-        <div><b>Obligation de résultat</b>L'orchestrateur juge chaque livrable contre l'objectif, et renvoie ce qui ne tient pas.</div>
+        <div><b>Obligation de résultat</b>L'orchestrateur confronte chaque livrable à l'objectif et renvoie ce qui ne tient pas.</div>
       </div>
 
       <p>Chaque exécution a un budget maximum, en jetons et en temps.</p>
 
       <h2>Dix sessions de test</h2>
 
-      <p>Le prototype a été éprouvé par des sessions de test jouées par des personas, cinq profils de métier et un testeur de recette. D'une session à l'autre, il a gagné en fiabilité.</p>
+      <p>Des personas (cinq profils de métier et un testeur de recette) ont joué les sessions de test, et d'une session à l'autre, le prototype a gagné en fiabilité.</p>
 
       <figure class="xp-shot narrow">
         <img src="/img/experimental/disciple-personas.jpg" alt="L'écran de connexion de Disciple : cinq profils de démonstration, chacun avec un métier" width="967" height="1600" loading="lazy">
@@ -128,10 +128,10 @@
       </figure>
 
       <ol class="di-log">
-        <li class="fix"><span class="s">sessions 1 et 2</span>Passé par la ligne de commande, l'architecte n'avait pas accès aux outils natifs et posait des questions au lieu d'agir. Les appels d'outils, simulés en JSON dans le texte, lui ont rendu la main&nbsp;: chaque persona obtient son plan en un seul échange.</li>
+        <li class="fix"><span class="s">sessions 1 et 2</span>Lancé en ligne de commande, l'architecte n'avait pas accès aux outils natifs et posait des questions au lieu d'agir. Les appels d'outils, simulés en JSON dans le texte, lui ont rendu la main&nbsp;: chaque persona obtient son plan en un seul échange.</li>
         <li class="fix"><span class="s">session 3</span>Sur les gros plans, une fenêtre glissante sur l'historique fait passer les lots de <span class="score">3/5</span> et <span class="score">3/6</span> tâches réussies à <span class="score">6/6</span>, <span class="score">7/7</span> et <span class="score">6/6</span>.</li>
         <li class="fix"><span class="s">session 4</span>Cinq exécutions pour 1,53&nbsp;$ au total.</li>
-        <li class="fix"><span class="s">session 7</span>Premier run complet, en trois minutes environ.</li>
+        <li class="fix"><span class="s">session 7</span>Première exécution complète, en trois minutes environ.</li>
         <li class="fix"><span class="s">session 9</span><span class="score">56/56</span> vérifications de recette.</li>
         <li class="fix"><span class="s">session 10</span><span class="score">207/216</span> sur treize scénarios, avec des évaluations en trois couches qui notent le résultat plutôt que le chemin suivi.</li>
       </ol>

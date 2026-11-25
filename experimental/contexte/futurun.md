@@ -38,7 +38,7 @@ L'écran des connexions liste toutes les sources, celles à renouveler en haut, 
 
 ## Chronologie
 
-- 12 octobre 2026 : premier commit (app installable sur téléphone, contrat de connecteur, Enable Banking, Binance, CSV, saisie, burn et runway, secrets chiffrés en AES-256-GCM). Puis connecteur woob, image Docker, lancement en une commande accessible depuis le téléphone sur le même Wi-Fi, écran de procédures par source, deux correctifs du module woob, lanceur Mac en double-clic avec mises à jour, accès professionnel open banking, saisie des crédits, six versions successives du modèle de budget.
+- 12 octobre 2026 : premier commit (app installable sur téléphone, contrat de connecteur, Enable Banking, Binance, CSV, saisie, burn et runway, secrets chiffrés en AES-256-GCM). Puis connecteur woob, image Docker, lancement en une commande, avec un accès depuis le téléphone sur le même Wi-Fi, écran de procédures par source, deux correctifs du module woob, lanceur Mac en double-clic avec mises à jour, accès professionnel open banking, saisie des crédits, six versions successives du modèle de budget.
 - 19 octobre : démarrage automatique avec le Mac, suppression de la barre d'onglets et fusion de l'écran de procédures dans celui des connexions, deux passes de revue d'interface (champs en 16 px pour iPhone, contraste, cibles tactiles, confirmation avant suppression), frise sur douze mois.
 - 20 octobre : serveur MCP pour consulter et modifier Futurun depuis une conversation, libellés génériques et panneau de réglages pour qu'une autre personne puisse l'installer.
 
