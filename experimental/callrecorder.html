@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CallRecorder — Gildas Frémont</title>
-  <meta name="description" content="Garder une trace de ses appels sans penser à lancer l'enregistrement : une app Mac qui enregistre quand une app d'appel prend le micro, transcrit sur place, et que Claude sait lire.">
+  <meta name="description" content="Garder une trace de ses appels sans penser à lancer l'enregistrement : une app Mac qui enregistre seule, transcrit sur place, et dont les agents IA lisent la mémoire.">
   <link rel="canonical" href="https://gildas.fyi/experimental/callrecorder">
   <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/callrecorder">
   <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/callrecorder">
   <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/callrecorder">
   <meta property="og:type" content="article">
   <meta property="og:title" content="CallRecorder — Gildas Frémont">
-  <meta property="og:description" content="Garder une trace de ses appels sans penser à lancer l'enregistrement : une app Mac qui enregistre quand une app d'appel prend le micro, transcrit sur place, et que Claude sait lire.">
+  <meta property="og:description" content="Garder une trace de ses appels sans penser à lancer l'enregistrement : une app Mac qui enregistre seule, transcrit sur place, et dont les agents IA lisent la mémoire.">
   <meta property="og:url" content="https://gildas.fyi/experimental/callrecorder">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="fr_FR">
@@ -70,10 +70,10 @@
 
   <article>
     <header class="article-page-header">
-      <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · octobre 2026</p>
+      <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · octobre et novembre 2026</p>
       <h1>Garder une trace de ses appels sans penser à lancer l'enregistrement</h1>
-      <p class="article-page-subtitle">Une app Mac qui enregistre quand une app d'appel prend le micro, transcrit sur place, et que Claude sait lire</p>
-      <p class="article-meta">22 au 25 octobre 2026, version 0.3.5 publiée · Swift · écrit avec Claude Code · <a href="https://gildasfremont.github.io/callrecorder-site/" target="_blank" rel="noopener">page de téléchargement</a> · <a href="/experimental/contexte/callrecorder.md">dossier complet (Markdown)</a></p>
+      <p class="article-page-subtitle">Une app Mac qui enregistre seule, transcrit sur place, et dont les agents IA lisent la mémoire</p>
+      <p class="article-meta">Depuis le 22 octobre 2026, version 0.30.0 publiée le 21 novembre · Swift et Kotlin · écrit avec Claude Code · <a href="https://gildasfremont.github.io/callrecorder/" target="_blank" rel="noopener">page de téléchargement</a> · <a href="/experimental/contexte/callrecorder.md">dossier complet (Markdown)</a></p>
     </header>
 
     <div class="article-body">
@@ -147,6 +147,21 @@
       <p>L'app est publique depuis le 24&nbsp;octobre, pour les Mac Apple Silicon sous macOS&nbsp;15 ou plus récent, avec des mises à jour automatiques que l'utilisateur accepte.</p>
 
       <p>Le lendemain, une première personne l'a installée sur son Mac, en visio. Deux choses l'ont ralentie&nbsp;: Claude Desktop ne relit sa configuration qu'au démarrage, et rien ne le disait&nbsp;; sur l'image du .dmg, l'encadré «&nbsp;Ouvrir quand même&nbsp;» ressemblait à un vrai bouton. La version 0.3.4, publiée le jour même, demande de relancer Claude et redessine l'encadré comme une capture d'écran. La 0.3.5 suit une demi-heure plus tard.</p>
+
+      <h2>Un mois plus tard, une mémoire plutôt qu'un enregistreur</h2>
+
+      <p>Le projet n'a pas ralenti après la première version&nbsp;: le 25 novembre, il compte plus de 2&nbsp;400 commits, et la version 0.30.0 est sortie le 21. Le 27 octobre, Whisper a quitté l'interface&nbsp;: sur le Mac récent, la transcription d'Apple, relue ensuite par Claude, faisait aussi bien. Le 1er novembre, l'objet a changé de nom. «&nbsp;Je veux pas que ça devienne un assistant IA. C'est juste une mémoire.&nbsp;» Un manifeste l'a écrit dans le quart d'heure&nbsp;: l'app retient et permet de retrouver, elle ne résume pas, ne rappelle rien et n'agit pas à ma place. Les agents que j'utilise déjà, Claude ou Codex, viennent y chercher ce dont ils ont besoin.</p>
+
+      <figure class="cr-shot">
+        <img src="/img/experimental/callrecorder-enregistrements.jpg" alt="La fenêtre de CallRecorder en novembre : une réunion ouverte, ses captures d'écran, les répliques horodatées de chaque participant et un lecteur audio" width="1600" height="988" loading="lazy">
+        <figcaption>Une réunion ouverte dans la fenêtre de la version 0.29&nbsp;: les captures prises pendant l'appel, les répliques de chacun, le son. Les personnes et la réunion sont fictives, inventées pour la page de téléchargement.</figcaption>
+      </figure>
+
+      <p>Ce qui s'enregistre s'est élargi en quatre temps&nbsp;: les appels, puis toute conversation (une réunion autour d'une table, une note dictée avec fn&nbsp;+&nbsp;D), puis la journée entière. Une app Android, née le 1er novembre et aujourd'hui en bêta, enregistre les appels du téléphone et, si on le lui demande, ce qu'elle entend autour de soi&nbsp;: ces heures-là vont au Journal des écoutes, d'où l'on tire un moment à garder. Les voix sont séparées et reconnues d'un appel à l'autre, et le serveur MCP retrouve un passage dit avec d'autres mots que ceux qu'on cherche.</p>
+
+      <p>Une mémoire de conversations parle aussi de ceux qui n'ont rien installé. Quand quelqu'un dit «&nbsp;ne m'enregistre pas&nbsp;» ou «&nbsp;entre nous&nbsp;», l'app le note, sans rien couper&nbsp;: la réserve est montrée aux agents avant qu'ils citent ou transmettent l'appel. Des groupes d'appels peuvent être fermés aux agents, qui ne les voient jamais, et ce que la relecture déduit (un nom corrigé, un participant trouvé dans l'agenda) reste marqué comme une déduction. Depuis la 0.30.0, l'app s'installe en la demandant à son IA, ou entièrement en local, sans que rien ne quitte le Mac.</p>
+
+      <p>La façon de travailler a changé autant que l'app. Plusieurs conversations de Claude Code avancent en même temps, chacune dans son dossier et sa branche, après deux accidents où l'une avait emporté le travail d'une autre. Une session en lance d'autres la nuit, et la plupart des règles du projet portent une date et l'incident qui les a fait naître. Mes demandes font dix mots en médiane&nbsp;: le reste est écrit dans les fichiers que les sessions relisent.</p>
 
     </div>
   </article>

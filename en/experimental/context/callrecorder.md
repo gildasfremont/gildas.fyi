@@ -2,8 +2,8 @@
 
 An experimental project by Gildas Frémont, freelance product director (https://gildas.fyi).
 Public page: https://gildas.fyi/en/experimental/callrecorder
-Download page (in French): https://gildasfremont.github.io/callrecorder-site/
-Status: version 0.3.5 released October 25, 2026; the app has been public since October 24. Private source code, public binaries and page.
+Download page (in French): https://gildasfremont.github.io/callrecorder/
+Status: version 0.30.0 released November 21, 2026; the app has been public since October 24; the Android app is in beta. Private source code, public binaries and page. This write-up first covers the first four days (up to 0.3.5), then the month that followed (section "Since 0.3.5").
 Built with Claude Code (commits co-signed by Claude).
 French version of this write-up: https://gildas.fyi/experimental/contexte/callrecorder.md
 
@@ -11,7 +11,7 @@ French version of this write-up: https://gildas.fyi/experimental/contexte/callre
 
 A call recorder can start on its own as soon as an app takes the microphone, with no calendar, no virtual audio driver and no button; keep the audio and the transcript on the Mac; and make those conversations readable by Claude through an MCP server. All of it in a native app that someone who is not a developer can install.
 
-## What the tool does
+## What the tool does (as of version 0.3.5)
 
 - Detects, through a CoreAudio event, that an allowed calling app has taken the microphone, and starts recording without polling.
 - Records two AAC tracks at 32 kb/s: `me.m4a` (the microphone) and `them.m4a` (the calling app's audio alone, captured with a "process tap").
@@ -76,9 +76,57 @@ meet-recorder was archived on GitHub on April 8, 2026 (private repository). Dete
 
 ## Numbers
 
+At version 0.3.5 (October 25):
+
 - 93 commits up to version 0.3.5: 16 on October 22, 2026, 64 on the 23rd, 8 on the 24th, 5 on the 25th.
 - About 5,450 lines of Swift in 20 files at version 0.3.5, 1,961 of them for the setup assistant.
 - Stack: Swift 6, CoreAudio, AVFoundation, AppKit, ScreenCaptureKit, Vision, ServiceManagement, whisper.cpp, shell scripts.
+
+As of November 25: more than 2,400 commits in 35 days, nearly all co-signed by Claude; about 72,000 lines of Swift, 12,000 of Kotlin and 41,000 of Python in the repository (counted November 24); more than 800 Swift tests and 170 Kotlin tests.
+
+## Since 0.3.5: a memory rather than a recorder
+
+From October 26 to November 25, 2026, the project kept going every day. As of November 25: more than 2,400 commits on the main branch, more than forty public releases, the latest being 0.30.0 (November 21).
+
+### The course
+
+- October 27: Whisper leaves the interface. Apple's transcription (macOS 26), proofread by Claude, does just as well; whisper.cpp stays for older Macs.
+- November 1: "I don't want it to turn into an AI assistant. It's just a memory." The manifesto is written within a quarter of an hour. CallRecorder remembers and lets you find things again; it doesn't summarize, doesn't remind you of anything, doesn't act on the user's behalf. The agents the user picks (Claude, Codex…) draw from it over MCP.
+- Principles from the manifesto: every piece of information keeps its source (the call, the time of the line, the person, the screenshot); what is inferred stays separate from what was said; an inference never becomes a source, even when repeated; nothing is overwritten; the memory stays on the Mac, in open files.
+
+### What gets recorded
+
+The scope widened four times: calls, any conversation, the whole day, the day as the only view.
+
+- Calls, on their own, as in October (Zoom, Teams, Meet and video calls in a browser, FaceTime, WhatsApp, Slack, Webex, Loom, the iPhone via Continuity).
+- Meetings around a table, started by hand.
+- Dictated notes: fn + D in any app.
+- An Android app (Kotlin), born on November 1 after a faulty release fixed in 80 minutes, now in beta: it records at the press of a button, on calendar events or continuously, and sends to the Mac as soon as it reaches it.
+- The Listening Journal: what the phone heard around the user while listening, cut into moments; a moment can become a recording.
+- During a call or meeting: what happens on the Mac (apps, pages, downloads, never keystrokes), read only on request.
+
+### Finding things again
+
+- Each recording has a class: meeting, memo, or hidden (nothing to read). Nothing is deleted; what is empty is hidden, with its reason.
+- Voices are separated and recognized; the user's voice becomes "Me". People are tracked from one call to the next (rename, merge).
+- The `calls` MCP server grew: search by words and by meaning (`search_calls`), people, groups, excerpts, activity log, reservations.
+- Since 0.30.0, the app installs from your AI (Claude, Claude Code or Codex), or entirely locally, with nothing leaving the Mac.
+
+### The people who aren't there
+
+- Reservations voiced during a call ("don't record me", "between us") are detected and noted, without cutting anything: an agent sees them before quoting, summarizing or passing on. The user decides.
+- Groups of calls can be closed to agents: neither the proofreading nor any agent sees them.
+- GDPR is an acknowledged, tracked gap with its own issue; what's missing before selling is listed (price, license, Apple signing, consent).
+
+### The way of working
+
+- November 1 and 2: two accidents where one Claude Code conversation swept away another's work in the shared folder. Since then: one topic, one branch, one folder.
+- November 4: GitHub Actions dropped (quota used up in four days); everything compiles on the Mac, one build at a time. A PR written in the cloud goes through a "bridge" that builds it on the Mac.
+- Night of November 4 to 5: the first night without Gildas, with sessions launched by a session; the first automated tests.
+- November 6: shipping to the main branch without asking. Gildas's "Yes, commit" becomes rare.
+- Most of the project's rules carry a date and the incident that gave rise to them. A rule and a script stop a release when a piece of text Gildas removed comes back.
+- Gildas's requests are ten words long at the median; the rest is in the files the sessions reread.
+- What goes public (site, release notes) says nothing of what is said in the recordings, nor the settings and measurements.
 
 ## Principles
 
@@ -89,11 +137,11 @@ meet-recorder was archived on GitHub on April 8, 2026 (private repository). Dete
 - Claude matches a call to a meeting only on evidence.
 - The app reminds you to tell the other people on the call that it is being recorded.
 
-## How a call is stored on disk
+## How a call is stored on disk (October)
 
 No database: one folder per call in `~/CallRecordings/<date>_<app>/`, containing `meta.json` (app, start, end, status, kept, audio routes, headset), `me.m4a`, `them.m4a`, `context.jsonl` (the window's text at each change), `screens/*.jpg`, `context.json` and `context.md` (identification by Claude: title, subject, meeting with evidence, participants, vocabulary), `transcript.md`. Settings in `config.json`, log in `usage.jsonl`, models in `models/`.
 
-## Places in the interface (breadboard)
+## Places in the interface (breadboard, October)
 
 - Menu bar: stop or delete the current call, open the Calls window, settings, updates.
 - Calls window: transcribe (fast or maximum quality), read, keep, show in Finder, delete.

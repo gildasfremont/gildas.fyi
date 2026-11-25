@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CallRecorder — Gildas Frémont</title>
-  <meta name="description" content="Keeping a record of your calls without having to remember to hit record: a Mac app that starts recording when a calling app picks up the microphone, transcribes on the spot, and that Claude can read.">
+  <meta name="description" content="Keeping a record of your calls without having to remember to hit record: a Mac app that records on its own, transcribes on the spot, and whose memory AI agents can read.">
   <link rel="canonical" href="https://gildas.fyi/en/experimental/callrecorder">
   <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/callrecorder">
   <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/callrecorder">
   <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/callrecorder">
   <meta property="og:type" content="article">
   <meta property="og:title" content="CallRecorder — Gildas Frémont">
-  <meta property="og:description" content="Keeping a record of your calls without having to remember to hit record: a Mac app that starts recording when a calling app picks up the microphone, transcribes on the spot, and that Claude can read.">
+  <meta property="og:description" content="Keeping a record of your calls without having to remember to hit record: a Mac app that records on its own, transcribes on the spot, and whose memory AI agents can read.">
   <meta property="og:url" content="https://gildas.fyi/en/experimental/callrecorder">
   <meta property="og:image" content="https://gildas.fyi/img/og.png">
   <meta property="og:locale" content="en_US">
@@ -70,10 +70,10 @@
 
   <article>
     <header class="article-page-header">
-      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · October 2026</p>
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · October and November 2026</p>
       <h1>Keeping a record of your calls without having to remember to hit record</h1>
-      <p class="article-page-subtitle">A Mac app that records when a calling app picks up the microphone, transcribes on the spot, and that Claude can read</p>
-      <p class="article-meta">October 22–25, 2026, version 0.3.5 released · Swift · built with Claude Code · <a href="https://gildasfremont.github.io/callrecorder-site/" target="_blank" rel="noopener">download page (in French)</a> · <a href="/en/experimental/context/callrecorder.md">full write-up (Markdown)</a></p>
+      <p class="article-page-subtitle">A Mac app that records on its own, transcribes on the spot, and whose memory AI agents can read</p>
+      <p class="article-meta">Since October 22, 2026, version 0.30.0 released November 21 · Swift and Kotlin · built with Claude Code · <a href="https://gildasfremont.github.io/callrecorder/" target="_blank" rel="noopener">download page (in French)</a> · <a href="/en/experimental/context/callrecorder.md">full write-up (Markdown)</a></p>
     </header>
 
     <div class="article-body">
@@ -147,6 +147,21 @@
       <p>The app has been public since October 24, for Apple silicon Macs running macOS 15 or later, with automatic updates that the user approves.</p>
 
       <p>The next day, a first person installed it on their own Mac, over a video call. Two things slowed them down: Claude Desktop only rereads its configuration at launch, and nothing said so; and on the .dmg's background image, the "Open Anyway" box looked like a real button. Version 0.3.4, released the same day, asks you to restart Claude and redraws the box as a screenshot. Version 0.3.5 followed half an hour later.</p>
+
+      <h2>A month later, a memory rather than a recorder</h2>
+
+      <p>The project didn't slow down after the first release: by November 25 it had more than 2,400 commits, and version 0.30.0 came out on the 21st. On October 27, Whisper left the interface: on recent Macs, Apple's own transcription, then proofread by Claude, did just as well. On November 1, the thing changed its name. "I don't want it to turn into an AI assistant. It's just a memory." A manifesto put it in writing within a quarter of an hour: the app remembers and lets you find things again; it doesn't summarize, doesn't remind you of anything, and doesn't act on your behalf. The agents I already use, Claude or Codex, come to it for what they need.</p>
+
+      <figure class="cr-shot">
+        <img src="/img/experimental/callrecorder-enregistrements.jpg" alt="The CallRecorder window in November: an open meeting, its screenshots, each participant's timestamped lines and an audio player" width="1600" height="988" loading="lazy">
+        <figcaption>A meeting opened in the version 0.29 window: the screenshots taken during the call, everyone's lines, the audio. The people and the meeting are fictional, made up for the download page.</figcaption>
+      </figure>
+
+      <p>What gets recorded widened in four steps: calls, then any conversation (a meeting around a table, a note dictated with fn&nbsp;+&nbsp;D), then the whole day. An Android app, born on November 1 and now in beta, records the phone's calls and, if asked, what it hears around you: those hours go to the Listening Journal, where you can pull out a moment worth keeping. Voices are separated and recognized from one call to the next, and the MCP server finds a passage said in different words from the ones you search for.</p>
+
+      <p>A memory of conversations also speaks about people who installed nothing. When someone says "don't record me" or "between us," the app notes it, without cutting anything: the reservation is shown to agents before they quote or pass on the call. Groups of calls can be closed to agents, which never see them, and whatever the proofreading infers (a corrected name, a participant found in the calendar) stays marked as an inference. Since 0.30.0, the app installs by asking your AI for it, or entirely locally, with nothing leaving the Mac.</p>
+
+      <p>The way of working changed as much as the app. Several Claude Code conversations move forward at once, each in its own folder and branch, after two accidents where one had swept away another's work. One session launches others at night, and most of the project's rules carry a date and the incident that gave rise to them. My requests are ten words long at the median: the rest is written in the files the sessions reread.</p>
 
     </div>
   </article>

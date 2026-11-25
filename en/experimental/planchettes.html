@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planchettes — Gildas Frémont</title>
+  <meta name="description" content="Having Claude invent a wooden-plank construction from a picture, and turning it into wordless instructions a five-year-old can follow. A program checks that everything stands up.">
+  <link rel="canonical" href="https://gildas.fyi/en/experimental/planchettes">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/planchettes">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/planchettes">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/planchettes">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Planchettes — Gildas Frémont">
+  <meta property="og:description" content="Having Claude invent a wooden-plank construction from a picture, and turning it into wordless instructions a five-year-old can follow. A program checks that everything stands up.">
+  <meta property="og:url" content="https://gildas.fyi/en/experimental/planchettes">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/en/experimental/context/planchettes.md" title="Full write-up">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.pl-shot img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--border); background: #fff; }
+.pl-page { max-width: 30em; margin-left: auto !important; margin-right: auto !important; }
+.pl-code { font-family: var(--xp-mono); font-size: 12.5px; line-height: 1.55; color: var(--dark); background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; overflow-x: auto; margin: 1.5rem 0 2rem; white-space: pre; }
+.pl-code .c { color: var(--light); }
+.pl-roles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0 2rem; }
+.pl-roles > div { border-top: 2px solid var(--black); padding-top: 0.6rem; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+.pl-roles > div.prog { border-top-color: rgb(var(--xp-live)); }
+.pl-roles b { display: block; color: var(--black); font-weight: 600; margin-bottom: 0.3rem; }
+@media (max-width: 640px) { .pl-roles { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-planchettes">
+
+  <nav class="lang-toggle">
+    <a href="/en/experimental">← Experimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/en/experimental">Experimental</a> · November 2026</p>
+      <h1>Turning a picture into a plank construction, and its instructions for a five-year-old</h1>
+      <p class="article-page-subtitle">Claude invents the model, a program checks that it stands up and draws wordless instructions</p>
+      <p class="article-meta">November 25, 2026, in one day · Python · built with Claude Code · <a href="/en/experimental/context/planchettes.md">full write-up (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>Identical wooden planks, 1 × 3 × 15, can become anything, but a four- or five-year-old can't read written instructions yet, and drawn instructions only exist for a handful of models. I wanted to hand over any picture, the Eiffel Tower or a village church, along with the number of planks we have, and get back one black-and-white A4 page, without a single word, that the child can follow alone.</p>
+
+      <div class="pl-roles">
+        <div><b>Claude looks and invents</b>It recognizes the subject, looks for what makes it recognizable (the silhouette, the proportions, the parts) and writes the construction as text, plank by plank, step by step.</div>
+        <div class="prog"><b>The program judges and draws</b>Deterministic, it checks that nothing overlaps, that everything stands up, that each plank has a reference to be placed right, and that the count fits the box. Then it draws the instructions.</div>
+      </div>
+
+      <p>The model is a text file you read like instructions (its keywords are in French). The unit is the thickness of a plank; one line places one plank, flat, on its edge or upright, and <code>repeter</code> repeats the step with an offset:</p>
+
+<pre class="pl-code">nom: Le pont
+
+etape        <span class="c"># the walkway, on the floor: it sets the gap between the piers</span>
+plat-x 0 -3 0
+
+etape        <span class="c"># the two piers</span>
+plat-y 0 0 0
+plat-y 12 0 0
+repeter 6 0 0 1   <span class="c"># 6 times, one thickness higher each time</span></pre>
+
+      <p>The program is plugged into Claude through an MCP server with four tools: <code>verifier</code> (check), which reports every problem at once with the model line at fault, <code>voir</code> (see), which renders the finished model, <code>notice</code>, which makes the PDF, and <code>exemple</code>, which shows models that work. Claude writes, checks, fixes, looks, and starts over until it stands and looks right.</p>
+
+      <figure class="pl-shot pl-page">
+        <img src="/img/experimental/planchettes-notice-eglise.jpg" alt="First page of the church instructions: at the top, the finished model in perspective, its front, side and top views, and the total of 182 planks; below, four numbered steps, each with the plank to take, the repeated gesture and the result" width="1240" height="1754" loading="lazy">
+        <figcaption>The first of the church's four pages. At the top, the finished model, its flat views and the total. Each step shows which plank to take and how many; a repeated gesture is drawn once in gray, the next one dashed, "×26", then the result, with what the step added in gray.</figcaption>
+      </figure>
+
+      <h2>Look like it first, be three-dimensional second</h2>
+
+      <p>The first real test was the Eiffel Tower. The facade, 50 planks, had the monument's proportions: 2.7 times taller than wide, against 2.6 for the real one. The 3D version, 103 planks, got the four legs and the arches back, but turned squat, 1.2 times taller than wide, and looked less like it. Hence the principle written that same day: aim for volume, which you recognize by walking around it, but not at the cost of proportions. <code>verifier</code> and <code>voir</code> now report front and side proportions, to compare with the subject's, and a measure of volume.</p>
+
+      <figure class="pl-shot pl-page">
+        <img src="/img/experimental/planchettes-sacre-coeur.jpg" alt="The Sacré-Cœur in two versions, 173 and 291 planks, each in perspective with its front, side and top views" width="1200" height="1226" loading="lazy">
+        <figcaption>The Sacré-Cœur in profile, with what sets it apart, the round dome and the bell tower, in 173 and 291 planks. The number of planks is a ceiling: the goal is to use as few as possible while still looking like the subject.</figcaption>
+      </figure>
+
+      <h2>Standing up is not the same as buildable</h2>
+
+      <p>The Bibliothèque nationale de France fit in the box, 152 planks out of 195, but asked for far more than a five-year-old places in one go. <code>verifier</code> now suggests sessions, breaking at the end of a step or a block. It also gives age-based advice: an upright plank is a hard gesture, unless it leans against a plank already in place; pushed against an upright plank that nothing holds, it knocks the rest over like dominoes. Temporary planks, such as a spacer setting the gap between two legs of the Eiffel Tower, come out as soon as they're no longer needed, and the instructions show which way to slide them.</p>
+
+      <p>Gravity, first computed for straight planks, ended up in three dimensions, with friction, once roofs wanted to lean. A leaning plank tips until it rests on something, and the computation finds what physics says: propped against a wall, it holds from about 60°, like a ladder. Two planks placed together as an A hold at 64°; a single one falls. That's the church spire, in two pairs, with no post or crossbar. The first version balanced a bar on a post, centered by eye. The program accepted it; I caught it on the instructions.</p>
+
+      <p>By the end of the day, the project has 38 commits, 31 models, from a simple portal to a 245-plank fortress, and about 2,400 lines of Python. What would complete the journey is still missing: comparing the model's silhouette with the subject's in the photo, as a second numeric judge next to "it stands", and a page usable without Claude.</p>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/en/experimental/recettes"><small>← Previous</small>Recettes</a>
+      <a class="next" href="/en/experimental/swisser"><small>Next →</small>Swisser</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Book a call</span></div></a>
+    <div class="footer-links">
+      <a href="/resume-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Resume ↓</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copy WhatsApp link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copy LinkedIn link"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas.fremont" data-d="gmail.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copy email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

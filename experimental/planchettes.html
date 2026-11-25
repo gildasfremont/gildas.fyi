@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planchettes — Gildas Frémont</title>
+  <meta name="description" content="Faire inventer à Claude une construction en planchettes de bois à partir d'une image, et en tirer une notice sans texte qu'un enfant de cinq ans peut suivre. Un programme vérifie que tout tient debout.">
+  <link rel="canonical" href="https://gildas.fyi/experimental/planchettes">
+  <link rel="alternate" hreflang="fr" href="https://gildas.fyi/experimental/planchettes">
+  <link rel="alternate" hreflang="en" href="https://gildas.fyi/en/experimental/planchettes">
+  <link rel="alternate" hreflang="x-default" href="https://gildas.fyi/en/experimental/planchettes">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Planchettes — Gildas Frémont">
+  <meta property="og:description" content="Faire inventer à Claude une construction en planchettes de bois à partir d'une image, et en tirer une notice sans texte qu'un enfant de cinq ans peut suivre. Un programme vérifie que tout tient debout.">
+  <meta property="og:url" content="https://gildas.fyi/experimental/planchettes">
+  <meta property="og:image" content="https://gildas.fyi/img/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#fafcf9">
+  <link rel="preload" href="/CalSansUI-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="text/markdown" href="/experimental/contexte/planchettes.md" title="Dossier complet">
+  <link rel="stylesheet" href="/experimental/experimental.css">
+  <style>
+.pl-shot img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--border); background: #fff; }
+.pl-page { max-width: 30em; margin-left: auto !important; margin-right: auto !important; }
+.pl-code { font-family: var(--xp-mono); font-size: 12.5px; line-height: 1.55; color: var(--dark); background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; overflow-x: auto; margin: 1.5rem 0 2rem; white-space: pre; }
+.pl-code .c { color: var(--light); }
+.pl-roles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0 2rem; }
+.pl-roles > div { border-top: 2px solid var(--black); padding-top: 0.6rem; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+.pl-roles > div.prog { border-top-color: rgb(var(--xp-live)); }
+.pl-roles b { display: block; color: var(--black); font-weight: 600; margin-bottom: 0.3rem; }
+@media (max-width: 640px) { .pl-roles { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<script>
+(function(){var b=document.body;if(!b)return;if(document.fonts&&document.fonts.check('1em "Cal Sans UI"')){b.classList.add('fonts-instant')}else{var t=setTimeout(function(){b.classList.add('fonts-loaded')},200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(t);b.classList.add('fonts-loaded')})}else{b.classList.add('fonts-loaded')}}})();
+</script>
+
+<div class="container article-page xp-page xp-planchettes">
+
+  <nav class="lang-toggle">
+    <a href="/experimental">← Expérimental</a>
+  </nav>
+
+  <article>
+    <header class="article-page-header">
+      <p class="xp-kicker xp-crumb"><a href="/experimental">Expérimental</a> · novembre 2026</p>
+      <h1>Faire d'une image une construction en planchettes, et sa notice pour un enfant de cinq ans</h1>
+      <p class="article-page-subtitle">Claude invente le modèle, un programme vérifie qu'il tient debout et dessine une notice sans texte</p>
+      <p class="article-meta">25 novembre 2026, en une journée · Python · écrit avec Claude Code · <a href="/experimental/contexte/planchettes.md">dossier complet (Markdown)</a></p>
+    </header>
+
+    <div class="article-body">
+
+      <p>Les planchettes de bois toutes pareilles, 1 × 3 × 15, se prêtent à tout, mais un enfant de quatre ou cinq ans ne sait pas encore lire une notice écrite, et les notices dessinées n'existent que pour quelques modèles. Je voulais pouvoir donner n'importe quelle image, la tour Eiffel ou une église de village, avec le nombre de planchettes qu'on a, et recevoir une page A4 en noir et blanc, sans un mot, qu'il puisse suivre seul.</p>
+
+      <div class="pl-roles">
+        <div><b>Claude regarde et invente</b>Il reconnaît le sujet, cherche ce qui le fait reconnaître (la silhouette, les proportions, les parties) et écrit la construction comme un texte, planchette par planchette, étape par étape.</div>
+        <div class="prog"><b>Le programme juge et dessine</b>Déterministe, il vérifie que rien ne se chevauche, que tout tient debout, que chaque planchette a un repère pour être posée juste, et que le compte ne dépasse pas la boîte. Puis il dessine la notice.</div>
+      </div>
+
+      <p>Le modèle est un fichier texte qu'on lit comme une notice. L'unité est l'épaisseur d'une planchette&nbsp;; une ligne pose une planchette, à plat, sur la tranche ou debout, et <code>repeter</code> refait l'étape en la décalant&nbsp;:</p>
+
+<pre class="pl-code">nom: Le pont
+
+etape        <span class="c"># le trottoir, au sol : il donne l'écart des deux piles</span>
+plat-x 0 -3 0
+
+etape        <span class="c"># les deux piles</span>
+plat-y 0 0 0
+plat-y 12 0 0
+repeter 6 0 0 1   <span class="c"># 6 fois, en montant d'une épaisseur</span></pre>
+
+      <p>Le programme est branché sur Claude par un serveur MCP de quatre outils&nbsp;: <code>verifier</code>, qui donne tous les problèmes d'un coup avec la ligne du modèle en cause, <code>voir</code>, qui rend une image du modèle fini, <code>notice</code>, qui fabrique le PDF, et <code>exemple</code>, qui montre des modèles qui marchent. Claude écrit, vérifie, corrige, regarde, et recommence jusqu'à ce que ça tienne et que ça ressemble.</p>
+
+      <figure class="pl-shot pl-page">
+        <img src="/img/experimental/planchettes-notice-eglise.jpg" alt="Première page de la notice de l'église : en haut, le modèle fini en perspective, ses vues de face, de côté, de dessus, et le total de 182 planchettes ; en dessous, quatre étapes numérotées, chacune avec la planchette à prendre, le geste répété et le résultat" width="1240" height="1754" loading="lazy">
+        <figcaption>La première des quatre pages de l'église. En tête, le modèle fini, ses vues à plat et le total. Chaque étape dit quelle planchette prendre et combien&nbsp;; un geste répété est montré une fois en gris, la suivante en pointillés, «&nbsp;×26&nbsp;», puis le résultat, avec en gris ce que l'étape a ajouté.</figcaption>
+      </figure>
+
+      <h2>Ressembler d'abord, être en volume ensuite</h2>
+
+      <p>Le premier vrai essai a été la tour Eiffel. La façade, 50 planchettes, avait les proportions du monument, 2,7 fois plus haute que large pour 2,6 en vrai. La version en volume, 103 planchettes, retrouvait les quatre pieds et les arches, mais devenait trapue, 1,2 fois plus haute que large, et ressemblait moins. D'où le principe écrit le jour même&nbsp;: on tend vers le volume, qu'on reconnaît en tournant autour, mais pas au prix des proportions. <code>verifier</code> et <code>voir</code> donnent maintenant les proportions de face et de côté, à comparer à celles du sujet, et une mesure du volume.</p>
+
+      <figure class="pl-shot pl-page">
+        <img src="/img/experimental/planchettes-sacre-coeur.jpg" alt="Le Sacré-Cœur en deux versions, 173 et 291 planchettes, chacune en perspective avec ses vues de face, de côté et de dessus" width="1200" height="1226" loading="lazy">
+        <figcaption>Le Sacré-Cœur de profil, avec ce qui le distingue, le dôme rond et le campanile, en 173 et en 291 planchettes. Le nombre de planchettes est un maximum&nbsp;: le but est d'en utiliser le moins possible pour que ça ressemble.</figcaption>
+      </figure>
+
+      <h2>Tenir debout n'est pas pouvoir le construire</h2>
+
+      <p>La Bibliothèque nationale de France tenait dans la boîte, 152 planchettes sur 195, mais demandait bien plus qu'un enfant de cinq ans n'en pose d'affilée. <code>verifier</code> propose depuis des séances, et s'arrête à la fin d'une étape ou d'un bloc. Il donne aussi des conseils selon l'âge&nbsp;: une planchette debout est un geste difficile, sauf adossée contre une planchette déjà posée&nbsp;; poussée contre une planchette debout que rien ne retient, elle fait tomber le reste en domino. Les planchettes provisoires, une cale qui donne l'écart entre deux pieds de la tour Eiffel, s'enlèvent dès qu'elles ne servent plus, et la notice montre dans quel sens les faire glisser.</p>
+
+      <p>La gravité, d'abord calculée pour des planchettes droites, a fini en trois dimensions, avec le frottement, quand les toits ont voulu pencher. Une planchette penchée se couche jusqu'à son appui, et le calcul retrouve ce que dit la physique&nbsp;: appuyée contre un mur, elle tient à partir d'environ 60°, comme une échelle. Deux planchettes posées ensemble en A tiennent à 64°, une seule tombe&nbsp;: c'est la flèche de l'église, en deux paires, sans poteau ni barre. La première version posait une barre en équilibre sur un poteau, centrée à l'œil. Le programme l'acceptait&nbsp;; je l'ai repérée sur la notice.</p>
+
+      <p>En fin de journée, le projet compte 38 commits, 31 modèles, du portique à une forteresse de 245 planchettes, et environ 2&nbsp;400 lignes de Python. Il manque encore ce qui ferait le parcours entier&nbsp;: comparer la silhouette du modèle à celle du sujet sur la photo, pour un second juge chiffré à côté de «&nbsp;ça tient&nbsp;», et une page utilisable sans Claude.</p>
+
+    </div>
+  </article>
+
+    <nav class="xp-nav">
+      <a href="/experimental/recettes"><small>← Précédent</small>Recettes</a>
+      <a class="next" href="/experimental/swisser"><small>Suivant →</small>Swisser</a>
+    </nav>
+
+  <footer id="contact" class="footer-contact contact">
+    <a href="https://cal.com/gildas/15min?overlayCalendar=true&amp;layout=column_view" target="_blank" rel="noopener" class="header-name"><span class="avatar-wrap"><img src="/img/gildas.jpg" alt="" class="avatar" width="14" height="14"></span> <div class="header-name-text"><h2>Gildas Frémont</h2><span class="footer-rdv no-print">Prendre rendez-vous</span></div></a>
+    <div class="footer-links">
+      <a href="/cv-gildas-fremont.pdf" target="_blank" rel="noopener" class="no-print footer-glow-rainbow">Télécharger CV (pdf)</a>
+      <span class="footer-link-row" style="--glow:37,211,102">
+        <a href="https://wa.me/33660247171" target="_blank" rel="noopener" class="contact-tel">WhatsApp</a>
+        <button class="copy-btn" data-copy="tel" aria-label="Copier le lien WhatsApp"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:10,102,194">
+        <a href="https://linkedin.com/in/gildasfremont" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" data-copy="linkedin" aria-label="Copier le lien LinkedIn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <span class="footer-link-row" style="--glow:220,50,50">
+        <a href="#" data-u="gildas.fremont" data-d="gmail.com" class="contact-email">Email</a>
+        <button class="copy-btn" data-copy="email" aria-label="Copier l'email"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      </span>
+      <a href="https://x.com/legildas" target="_blank" rel="noopener" style="--glow:80,80,80">X</a>
+    </div>
+  </footer>
+
+</div>
+<script src="/script.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

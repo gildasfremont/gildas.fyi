@@ -6,7 +6,7 @@ Overview page: https://gildas.fyi/en/experimental
 
 ## In use
 
-- [CallRecorder](https://gildas.fyi/en/experimental/context/callrecorder.md): keeping a record of your calls without having to remember to hit record. macOS app in Swift, version 0.3.5 released October 25, 2026.
+- [CallRecorder](https://gildas.fyi/en/experimental/context/callrecorder.md): keeping a record of your calls without having to remember to hit record, now a memory of your conversations that AI agents read over MCP. macOS app in Swift and Android app, version 0.30.0 released November 21, 2026.
 - [Condominium accounts](https://gildas.fyi/en/experimental/context/copropriete.md): being able to check a condominium's accounts against the property manager's documents, every figure leading back to its sources. Next.js, private tool, since September 2026.
 - [Job search](https://gildas.fyi/en/experimental/context/recherche-emploi.md): letting Claude do the legwork of a job search and keeping the decisions, with a sourced knowledge base and a tracking tool that computes nothing. Next.js and MCP, since October 2026.
 - [Futurun](https://gildas.fyi/en/experimental/context/futurun.md): bringing your accounts together to see how many months of runway you have, with reconnecting fitting on one screen. Local app, since October 2026.
@@ -14,6 +14,7 @@ Overview page: https://gildas.fyi/en/experimental
 
 ## Prototypes
 
+- [Planchettes](https://gildas.fyi/en/experimental/context/planchettes.md): turning a picture into a wooden-plank construction and wordless instructions for a five-year-old; Claude invents, a program checks it stands and draws. Python and MCP, November 2026.
 - [Swisser](https://gildas.fyi/en/experimental/context/swisser.md): adjusting a page's typography from what you see, by dragging the average of the line endings. Prototype, June 2026.
 - [Campagne](https://gildas.fyi/en/experimental/context/campagne.md): seeing how many beds are taken each night in a family country house. Next.js, April 2026.
 - [Commentaire](https://gildas.fyi/en/experimental/context/commentaire.md): pinning a remark to the passage you're reading and letting an AI answer in the margin. Rust and Tauri, April 2026.
