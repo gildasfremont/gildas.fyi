@@ -196,3 +196,34 @@
 .xp-intro a:hover { color: var(--black); }
 
 .xp-dot.proto { --c: 31,95,153; }
+
+/* ---------- Vignettes de la liste ---------- */
+
+.xp-item { grid-template-columns: 4.5rem 1fr 9.5rem; }
+
+.xp-thumb {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  align-self: start;
+  margin-top: 0.15rem;
+}
+.xp-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform .3s ease;
+}
+.xp-item:hover .xp-thumb img { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) { .xp-item:hover .xp-thumb img { transform: none; } }
+
+@media (max-width: 600px) {
+  .xp-item { grid-template-columns: 1fr; }
+  .xp-thumb { order: -1; aspect-ratio: 16 / 9; margin: 0 0 0.75rem; }
+}
+.xp-thumb.centre img { object-position: center; }
